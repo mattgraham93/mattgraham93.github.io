@@ -1,0 +1,18 @@
+button {
+    background-color: #373737;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    border: none;
+    padding: 15px;
+}
+
+input {
+    font-family: "Segoe UI", sans-serif;
+    border-color: #373737;
+    padding: 15px
+}
+
+ul {
+    font-family: "Segoe UI", sans-serif;
+    padding: 15px;
+}

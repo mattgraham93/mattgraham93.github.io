@@ -1,0 +1,68 @@
+nav ul{
+    list-style: none;
+    margin: 0 2px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    display: inline;
+    padding: 8px;
+}
+
+nav a  {
+    color: steelblue;
+}
+
+nav a:visited {
+    color: rebeccapurple;
+}
+
+a:hover, a:active {
+    color: rebeccapurple;
+}
+
+h4 {
+    font-size: 125%;
+}
+
+h6 {
+    font-size: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #fbfbfb;
+    text-align: center;
+    color: #373737;
+    font-size: 133%;
+}
+
+ul {
+    list-style: none;
+}
+
+a:link, a:visited, .phone {
+    color: steelblue;
+}
+
+a:hover, a:active {
+    color: firebrick;
+}
+
+.headline {
+    color: #16519f;
+}
+
+.current {
+    color: steelblue;
+}
+
+.past {
+    color: rebeccapurple;
+}
+
+.education {
+    color: #373737;
+}
