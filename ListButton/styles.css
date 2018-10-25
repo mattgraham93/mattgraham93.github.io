@@ -18,7 +18,8 @@ button:hover {
 }
 
 input {
-    border: #373737 2px;
+    border: #373737 2px solid;
+    border-radius: 2px;
     padding: 15px;
     font-size: 133%;
 }
