@@ -1,18 +1,28 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 133%;
+}
+
 button {
     background-color: #373737;
-    font-family: "Segoe UI", sans-serif;
     color: white;
-    border: none;
     padding: 15px;
+    border: 2px solid #191919;
+    border-radius: 3px;
+    font-size: 133%;
+}
+
+button:hover {
+    background-color: rebeccapurple;
+    border-color: #262046;
 }
 
 input {
-    font-family: "Segoe UI", sans-serif;
-    border-color: #373737;
-    padding: 15px
+    border: #373737 2px;
+    padding: 15px;
+    font-size: 133%;
 }
 
 ul {
-    font-family: "Segoe UI", sans-serif;
     padding: 15px;
 }
