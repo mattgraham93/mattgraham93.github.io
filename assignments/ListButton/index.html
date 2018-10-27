@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Learn about JavaScript</title>
-    <meta name="viewport" content="width-device-width, initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="../../theme/styles.css">
+    <meta name="viewport" content="width-device-width, initial-scale=1,shrink-to-fit=no"/>
+    <link href="../../theme/styles.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" type="image/png" href="../../Images/favicon.png">
     <script src="../../index.js"></script>
-    <script src="elf-code.js"></script>
+    <title>about me</title>
 </head>
+
 <body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="../index.html">home</a>
+    <a href="../../assets/about%20me.html">about</a>
+    <a href="#">what's next?</a>
+    <a href="../../assignments/index.html">assignments</a>
+    <a href="#">contact</a>
+</div>
+
+<span onclick="openNav()">
+        <img src="../../Images/menu.png" class="menuLeft" alt="menu button"/>
+    </span>
+
+<div id="main">
     <label for="list-data"></label>
     <input type="text" name="list-data" id="list-data">
     <button id="set-text" type="button" class="listButton">Set text</button>
     <button id="add-to-list" type="button" class="listButton">Add to list</button>
-    <ul id="my-list">
+    <ul id="my-list" class="textContentLeft">
     </ul>
+</div>
+
 </body>
-</html>
