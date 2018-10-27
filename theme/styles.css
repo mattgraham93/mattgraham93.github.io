@@ -2,16 +2,7 @@ body {
     font-family: "Segoe UI", sans-serif;
     font-size: 110%;
     background-color: #fbfbfb;
-    text-align: center;
-    color: #373737;
-}
-
-a:link, a:visited, .phone {
-    color: #373737;
-}
-
-a:hover, a:active {
-    color: firebrick;
+    color: #0F2828;
 }
 
 aside {
@@ -25,12 +16,16 @@ aside {
     width: 33%;
 }
 
-h4 {
-    font-size: 125%;
+a:link, a:visited, .phone {
+    color: #373737;
 }
 
-h6 {
-    font-size: 100%;
+a:hover, a:active {
+    color: firebrick;
+}
+
+h4 {
+    font-size: 125%;
 }
 
 input {
@@ -85,11 +80,11 @@ ul {
 .menuHome {
     color: #373737;
     font-size: 100%;
-    background:none;
-    border:none;
-    margin:0;
-    padding:0;
-    float:left;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    float: left;
     cursor: pointer;
 }
 
@@ -97,6 +92,7 @@ ul {
     float: left;
     height: auto;
     padding-left: 5px;
+    padding-right: 10px;
     padding-top: 20px;
     width: 20px;
 }
@@ -146,13 +142,13 @@ ul {
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {
-        padding-top: 15px;
+        padding-top: 25px;
     }
 
     .sidenav a {
@@ -160,9 +156,12 @@ ul {
     }
 }
 
-.textContent {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 133%;
-    color: #0F2828;
-    text-align: center;
+.textContentLeft {
+    padding-left: 40px;
+    text-align: left;
+}
+
+.textContentRight {
+    padding-right: 40px;
+    text-align: right;
 }
