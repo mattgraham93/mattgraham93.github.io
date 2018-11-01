@@ -56,32 +56,6 @@ ul {
 .authorcredit {
     font-size: 80%;
 }
-
-.column {
-    float: left;
-    width: 50%;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.homeimage {
-    float: right;
-    width: 40%;
-    height: auto;
-}
-
-.flex-container {
-    align-items: flex-start;
-    align-content: stretch;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-}
-
 .containercenter {
     margin-left: auto;
     margin-right: auto;
@@ -97,16 +71,8 @@ ul {
     float: right;
 }
 
-.containflex {
-    display: flex;
-}
-
 .current {
     color: steelblue;
-}
-
-.education {
-    color: #373737;
 }
 
 .drop-shadow {
@@ -142,8 +108,26 @@ ul {
     transform:skew(8deg) rotate(3deg);
 }
 
+.education {
+    color: #373737;
+}
+
+.flex-container {
+    align-items: flex-start;
+    align-content: stretch;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
 .headline {
     color: #16519f;
+}
+
+.homeimage {
+    float: right;
+    width: 40%;
+    height: auto;
 }
 
 .listButton {
@@ -216,9 +200,22 @@ ul {
     margin-left: 50px;
 }
 
-.shrinkphoto{
+.shrinkphoto {
     height: auto;
     width:50%;
+}
+
+.textContentCenter {
+    text-align: center;
+}
+.textContentLeft {
+    padding-left: 60px;
+    text-align: left;
+}
+
+.textContentRight {
+    padding-right: 60px;
+    text-align: right;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -236,14 +233,4 @@ ul {
     .sidenav a {
         font-size: 18px;
     }
-}
-
-.textContentLeft {
-    padding-left: 60px;
-    text-align: left;
-}
-
-.textContentRight {
-    padding-right: 60px;
-    text-align: right;
 }
