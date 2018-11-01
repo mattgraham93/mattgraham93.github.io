@@ -126,8 +126,9 @@ ul {
 
 .homeimage {
     float: right;
-    width: 40%;
     height: auto;
+    margin: 0 10px 0 20px;
+    width: 40%;
 }
 
 .listButton {
