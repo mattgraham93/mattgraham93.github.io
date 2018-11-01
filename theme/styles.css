@@ -113,7 +113,7 @@ ul {
 }
 
 .flex-container {
-    align-items: flex-start;
+    align-items: flex-end;
     align-content: stretch;
     display: flex;
     flex-flow: row wrap;
