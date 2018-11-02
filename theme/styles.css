@@ -1,8 +1,10 @@
 body {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 110%;
     background-color: #fbfbfb;
     color: #0F2828;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 110%;
+    height: 100%;
+    position: relative;
 }
 
 aside {
@@ -22,6 +24,13 @@ a:link, a:visited, .phone {
 
 a:hover, a:active {
     color: firebrick;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #16519f;
 }
 
 h4 {
@@ -55,11 +64,6 @@ ul {
 
 .authorcredit {
     font-size: 80%;
-}
-.containercenter {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px 0 10px 15px;
 }
 
 .containerleft {
@@ -97,6 +101,7 @@ ul {
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
 }
+
 .drop-shadow:after
 {
     right:10px;
