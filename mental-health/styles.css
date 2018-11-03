@@ -1,0 +1,34 @@
+.small-image {
+    height: 450px;
+    width: auto;
+    margin: 30px 20px 20px 30px;
+    float: right;
+}
+
+.map-image {
+    height: auto;
+    width: 60%;
+    margin: 30px 30px 20px 30px;
+    float: right;
+}
+
+.map2 {
+    height: auto;
+    width: 60%;
+    margin: 30px 30px 20px 30px;
+    float: left;
+}
+
+.map3 {
+    height: auto;
+    width: 40%;
+    margin: 30px 30px 20px 30px;
+    float: left;
+}
+
+.info-image {
+    height: 800px;
+    width: auto;
+    margin: 30px 20px 20px 30px;
+    float: left;
+}
