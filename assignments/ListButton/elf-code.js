@@ -4,4 +4,4 @@ const elfCode = {
         li.appendChild(document.createTextNode(value));
         list.appendChild(li);
     }
-}
+};
