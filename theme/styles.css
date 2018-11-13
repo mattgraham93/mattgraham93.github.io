@@ -18,14 +18,6 @@ aside {
     width: 33%;
 }
 
-a:link, a:visited, .phone {
-    color: #373737;
-}
-
-a:hover, a:active {
-    color: firebrick;
-}
-
 footer {
     position: absolute;
     bottom: 0;
@@ -51,6 +43,49 @@ input {
 img {
     max-width: 70%;
     height: auto;
+}
+
+nav {
+    padding-bottom: 30px;
+}
+
+nav a {
+    background-color: #16519f;
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #0078D4;
+    color:white;
+    text-decoration: none;
+}
+
+nav ul {
+    background-color: #16519f;
+    clear: left;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: sticky;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+nav li {
+    border-bottom: #111111;
+    float: left;
+    font-family: "Segoe UI Light", sans-serif;
+    font-size: 115%;
+    height: 45px;
+    color: white;
+}
+
+nav li a {
+    display: block;
+    padding: 14px 16px;
 }
 
 ul {
