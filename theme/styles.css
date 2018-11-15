@@ -101,15 +101,6 @@ ul {
     font-size: 80%;
 }
 
-.containerleft {
-    float: left;
-}
-
-.containerright {
-    padding: 15px 0 10px 15px;
-    float: right;
-}
-
 .current {
     color: steelblue;
 }
@@ -153,18 +144,18 @@ ul {
 }
 
 .flex-container {
-    align-items: flex-end;
+    align-items: flex-start;
     align-content: stretch;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .headline {
     color: #16519f;
 }
 
-.homeimage {
+.home-image {
     float: right;
     height: auto;
     margin: 0 60px;
@@ -185,17 +176,6 @@ ul {
     border-color: #262046;
 }
 
-.menuHome {
-    color: #373737;
-    font-size: 100%;
-    background: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-    float: left;
-    cursor: pointer;
-}
-
 .menuLeft {
     float: left;
     height: auto;
@@ -207,40 +187,6 @@ ul {
     color: rebeccapurple;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: 0.5s;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
 .shrinkphoto {
     height: auto;
     width:50%;
@@ -249,6 +195,7 @@ ul {
 .textContentCenter {
     text-align: center;
 }
+
 .textContentLeft {
     padding-left: 60px;
     text-align: left;
@@ -257,21 +204,4 @@ ul {
 .textContentRight {
     padding-right: 60px;
     text-align: right;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 10px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 25px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
-    }
 }
