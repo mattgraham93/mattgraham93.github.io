@@ -1,0 +1,12 @@
+input {
+    float: left;
+    width: 45px;
+}
+
+div {
+    clear: both;
+}
+
+.button-input {
+    width: 50px;
+}
