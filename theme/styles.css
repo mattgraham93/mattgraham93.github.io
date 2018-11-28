@@ -23,6 +23,15 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: #16519f;
+    color: white;
+    align-items: center;
+}
+
+footer a {
+    color: white;
+    text-align: left;
+    padding-left: 10px;
+    vertical-align: center;
 }
 
 h4 {
@@ -38,7 +47,6 @@ input {
     border-radius: 2px;
     padding: 15px;
     font-size: 133%;
-    width: 45px;
 }
 
 img {
@@ -100,6 +108,19 @@ ul {
 
 .authorcredit {
     font-size: 80%;
+}
+
+
+.blueBackground {
+    background-color: aqua;
+}
+
+.greenBackground {
+    background-color: green;
+}
+
+.copyright {
+    text-align: right;
 }
 
 .current {
