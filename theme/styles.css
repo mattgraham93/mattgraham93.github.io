@@ -119,6 +119,10 @@ ul {
     background-color: green;
 }
 
+.redBackground {
+    background-color: red;
+}
+
 .copyright {
     text-align: right;
 }
