@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1,shrink-to-fit=no"/>
-    <link href="../theme/styles.css" rel="stylesheet" type="text/css"/>
-    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../theme/styles.css" rel="stylesheet" type="text/css" id="default"/>
+    <link href="../theme/basic.css" rel="alternate stylesheet" type="text/css" id="basic"/>
     <link rel="shortcut icon" type="image/png" href="../Images/favicon.png">
+    <link href="styles.css" rel="stylesheet" type="text/css" id="default2">
     <script src="../index.js"></script>
+    <script src="../lib/javascripts-tests/css-swap.js"></script>
     <title>Mental health & data</title>
 </head>
 
@@ -41,6 +43,8 @@
         As education becomes a more regular thing, we notice that people are becoming more and more depressed. Interesting how that works, huh?
         <a href="Pages/depression-and-education.html">Follow this link to learn more about education and depression</a>.
     </p>
+    <button id="appearanceAction" type="button">Change appearance</button>
+    <button id="appearanceAction2" type="button">Change back</button>
 </main>
 <footer>
 
