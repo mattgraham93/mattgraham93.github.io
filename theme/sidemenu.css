@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .w3-sidebar {
     height: 100%;
-    width: 180px;
+    width: 200px;
     background-color: #fff;
     position: fixed !important;
     z-index: 1;
@@ -325,7 +325,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .w3-container, .w3-panel {
-    padding: 0.01em 16px
+    padding: 0.01em 16px;
+    margin-left: 150px;
 }
 
 .w3-panel {
