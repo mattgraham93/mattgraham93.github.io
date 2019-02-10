@@ -115,6 +115,10 @@ ul {
     background-color: aqua;
 }
 
+.child-container {
+
+}
+
 .copyright {
     text-align: right;
 }
@@ -193,16 +197,9 @@ ul {
     font-size: 133%;
 }
 
-.listButton button:hover {
+.listButton:hover {
     background-color: #373737;
     border-color: #262046;
-}
-
-.menuLeft {
-    float: left;
-    height: auto;
-    padding: 30px 10px 0 20px;
-    width: 20px;
 }
 
 .past {
