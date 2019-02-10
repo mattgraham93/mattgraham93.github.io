@@ -1,0 +1,3 @@
+ALTER AUTHORIZATION 
+ON DATABASE::[SalesOrdersExample]
+TO sa;
