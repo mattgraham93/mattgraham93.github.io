@@ -115,14 +115,6 @@ ul {
     background-color: aqua;
 }
 
-.greenBackground {
-    background-color: green;
-}
-
-.redBackground {
-    background-color: red;
-}
-
 .copyright {
     text-align: right;
 }
@@ -177,6 +169,10 @@ ul {
     justify-content: space-evenly;
 }
 
+.greenBackground {
+    background-color: green;
+}
+
 .headline {
     color: #16519f;
 }
@@ -185,7 +181,7 @@ ul {
     float: right;
     height: auto;
     margin: 0 60px;
-    width: 40%;
+    width: 50%;
 }
 
 .listButton {
@@ -211,6 +207,10 @@ ul {
 
 .past {
     color: rebeccapurple;
+}
+
+.redBackground {
+    background-color: red;
 }
 
 .shrinkphoto {
