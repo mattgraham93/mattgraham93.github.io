@@ -110,13 +110,50 @@ ul {
     font-size: 80%;
 }
 
+.banner-child {
+    display: block;
+    width: fit-content;
+    height: auto;
+    margin-bottom: 15px;
+}
 
 .blueBackground {
     background-color: aqua;
 }
 
 .child-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: left;
+    margin-left: 15px;
+    width: 100%;
+    word-wrap: normal;
+}
 
+.child-div-slim {
+    width: 200px;
+    margin: 0 20px 20px 0;
+}
+
+.child-div-med {
+    width: 400px;
+    margin: 0 20px 20px 0;
+}
+
+.child-div-norm-center {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.child-div-wide {
+    width: 800px;
+    margin: 0 20px 20px 0;
+}
+
+.child-div-extra-wide {
+    width: 1000px;
+    margin: 0 20px 20px 0;
 }
 
 .copyright {
@@ -200,6 +237,10 @@ ul {
 .listButton:hover {
     background-color: #373737;
     border-color: #262046;
+}
+
+.parent-container {
+    width: auto;
 }
 
 .past {
