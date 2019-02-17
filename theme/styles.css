@@ -22,6 +22,7 @@ button {
     font-family: "Segoe UI Semilight", sans-serif;
     font-size: 175%;
     width: 100%;
+    word-wrap: normal;
 }
 
 footer {
@@ -54,49 +55,6 @@ input {
 img {
     max-width: 70%;
     height: auto;
-}
-
-nav {
-    padding-bottom: 30px;
-}
-
-nav a {
-    background-color: #16519f;
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    background-color: #0078D4;
-    color: white;
-    text-decoration: none;
-}
-
-nav ul {
-    background-color: #16519f;
-    clear: left;
-    list-style-type: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    position: sticky;
-    text-align: center;
-    top: 0;
-    width: 100%;
-}
-
-nav li {
-    border-bottom: #111111;
-    float: left;
-    font-family: "Segoe UI Light", sans-serif;
-    font-size: 115%;
-    height: 45px;
-    color: white;
-}
-
-nav li a {
-    display: block;
-    padding: 14px 16px;
 }
 
 ul {
@@ -244,6 +202,13 @@ ul {
     width: 50%;
 }
 
+.info-image {
+    height: 800px;
+    width: auto;
+    margin: 30px 20px 20px 30px;
+    float: left;
+}
+
 .listButton {
     background-color: #868686;
     color: white;
@@ -256,6 +221,28 @@ ul {
 .listButton:hover {
     background-color: #373737;
     border-color: #262046;
+}
+
+
+.map-image {
+    height: auto;
+    width: 45%;
+    margin: 30px 30px 20px 30px;
+    float: right;
+}
+
+.map2 {
+    height: auto;
+    width: 35%;
+    margin: 30px 20px;
+    float: left;
+}
+
+.map3 {
+    height: auto;
+    width: 50%;
+    margin: 30px 20px;
+    float: right;
 }
 
 .module-child {
@@ -334,6 +321,13 @@ ul {
 
 .shrink-text {
     font-size: 80%;
+}
+
+.small-image {
+    height: 450px;
+    width: auto;
+    margin: 30px 20px 20px 30px;
+    float: right;
 }
 
 .teal-btn {
