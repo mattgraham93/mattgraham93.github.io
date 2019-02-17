@@ -18,6 +18,15 @@ aside {
     width: 33%;
 }
 
+button {
+    border-radius: 4px;
+    font-family: "Segoe UI Semilight", sans-serif;
+    font-size: 175%;
+    height: 100px;
+    width: 100%;
+    margin: 10px 10px;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -32,14 +41,6 @@ footer a {
     text-align: left;
     padding-left: 10px;
     vertical-align: center;
-}
-
-h4 {
-    font-size: 125%;
-}
-
-h6 {
-    font-size: 85%;
 }
 
 input {
@@ -66,7 +67,7 @@ nav a {
 
 nav a:hover {
     background-color: #0078D4;
-    color:white;
+    color: white;
     text-decoration: none;
 }
 
@@ -164,42 +165,53 @@ ul {
     color: steelblue;
 }
 
+.dark-btn {
+    background-color: #274b47;
+    border: #274b47 1px solid;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
 .drop-shadow {
-    position:relative;
-    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-.drop-shadow:before, .drop-shadow:after
-{
-    content:"";
-    position:absolute;
-    z-index:-1;
-    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
-    top:50%;
-    bottom:0;
-    left:10px;
-    right:10px;
-    -moz-border-radius:100px / 10px;
-    border-radius:100px / 10px;
+.drop-shadow:before, .drop-shadow:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 50%;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
 }
 
-.drop-shadow:after
-{
-    right:10px;
-    left:auto;
-    -webkit-transform:skew(8deg) rotate(3deg);
-    -moz-transform:skew(8deg) rotate(3deg);
-    -ms-transform:skew(8deg) rotate(3deg);
-    -o-transform:skew(8deg) rotate(3deg);
-    transform:skew(8deg) rotate(3deg);
+.drop-shadow:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
 }
 
 .education {
     color: #373737;
+}
+
+.enlarge-image {
+    width: 120%;
+    height: auto;
 }
 
 .flex-container {
@@ -208,6 +220,14 @@ ul {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+}
+
+.gray-btn {
+    background-color: #505050;
+    border: #2f2f2f 1px solid;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 .greenBackground {
@@ -239,6 +259,11 @@ ul {
     border-color: #262046;
 }
 
+.module-child {
+    width: 337px;
+    margin: 0 20px 20px 0;
+}
+
 .parent-container {
     width: auto;
 }
@@ -247,13 +272,66 @@ ul {
     color: rebeccapurple;
 }
 
+.raise:hover,
+.raise:focus {
+    background-color: #30e5d0;
+    border: #274b47 1px solid;
+    box-shadow: 0 0.5em 0.5em -0.4em #274b47;
+    color: #274b47;
+    transform: translateY(-0.35em);
+}
+
+.raise:active {
+    background-color: #fff;
+    color: #008575;
+}
+
+.raise-alt:hover,
+.raise-alt:focus {
+    background-color: #30e5d0;
+    border: #274b47 1px solid;
+    box-shadow: 0 0.5em 0.5em -0.4em #274b47;
+    color: #274b47;
+    transform: translateY(-0.35em);
+}
+
+.raise-alt:active {
+    background-color: #fff;
+    color: #008575;
+}
+
+.raise-gray:hover,
+.raise-gray:focus {
+    background-color: #e6e6e6;
+    border: #d2d2d2 1px solid;
+    box-shadow: 0 0.5em 0.5em -0.4em #2f2f2f;
+    color: #2f2f2f;
+    transform: translateY(-0.35em);
+}
+
 .redBackground {
     background-color: red;
 }
 
+.short-btn {
+    height: 60px;
+}
+
 .shrinkphoto {
     height: auto;
-    width:50%;
+    width: 50%;
+}
+
+.shrink-text {
+    font-size: 80%;
+}
+
+.teal-btn {
+    background-color: #008575;
+    border: #274b47 1px solid;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 .textContentCenter {
