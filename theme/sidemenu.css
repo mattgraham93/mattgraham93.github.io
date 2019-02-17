@@ -3,30 +3,6 @@ body {
     margin: 0
 }
 
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
-    display: block
-}
-
-a {
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects
-}
-
-a:active, a:hover {
-    outline-width: 0
-}
-
-code, kbd, pre, samp {
-    font-family: monospace, monospace;
-    font-size: 1em
-}
-
-hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible
-}
-
 button, input, select, textarea {
     font: inherit;
     margin: 0;
@@ -72,7 +48,7 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: "Segoe UI Semilight", Arial, sans-serif;
     font-weight: 400;
     margin: 10px 0
 }
@@ -160,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 .w3-sidebar {
     height: 100%;
     width: 200px;
-    background-color: #fff;
+    background-color: #ffffff;
     position: fixed !important;
     z-index: 1;
     overflow: auto

@@ -142,7 +142,7 @@ ul {
 }
 
 .child-div-norm-center {
-    width: 60%;
+    width: 70%;
     margin: 20px auto;
 }
 
@@ -258,10 +258,11 @@ ul {
 
 .textContentCenter {
     text-align: center;
+    margin: 10px 10px 20px 10px
 }
 
 .textContentLeft {
-    padding-left: 60px;
+    margin: 20px 10px;
     text-align: left;
 }
 
