@@ -2,7 +2,6 @@ body {
     background-color: #fbfbfb;
     color: #0F2828;
     font-family: "Segoe UI", sans-serif;
-    font-size: 110%;
     height: 100%;
     position: relative;
 }
@@ -22,9 +21,7 @@ button {
     border-radius: 4px;
     font-family: "Segoe UI Semilight", sans-serif;
     font-size: 175%;
-    height: 100px;
     width: 100%;
-    margin: 10px 10px;
 }
 
 footer {
@@ -41,6 +38,10 @@ footer a {
     text-align: left;
     padding-left: 10px;
     vertical-align: center;
+}
+
+hr {
+    width: 90%;
 }
 
 input {
@@ -122,14 +123,8 @@ ul {
     background-color: aqua;
 }
 
-.child-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    float: left;
-    margin-left: 15px;
-    width: 100%;
-    word-wrap: normal;
+.bottom-shim {
+    padding-bottom: 20px;
 }
 
 .child-div-slim {
@@ -143,7 +138,7 @@ ul {
 }
 
 .child-div-norm-center {
-    width: 70%;
+    width: 100%;
     margin: 20px auto;
 }
 
@@ -171,6 +166,8 @@ ul {
     color: #fff;
     cursor: pointer;
     transition: 0.25s;
+    height: 100px;
+    margin: 0 20px 20px 0;
 }
 
 .drop-shadow {
@@ -228,6 +225,8 @@ ul {
     color: #fff;
     cursor: pointer;
     transition: 0.25s;
+    height: 100px;
+    margin: 0 20px 20px 0;
 }
 
 .greenBackground {
@@ -260,12 +259,23 @@ ul {
 }
 
 .module-child {
-    width: 337px;
-    margin: 0 20px 20px 0;
+    width: 240px;
+    margin: 20px 10px 0 10px;
+}
+
+.module-child-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: left;
+    margin: 10px 20px 0 10px;
+    width: 80%;
+    word-wrap: normal;
 }
 
 .parent-container {
     width: auto;
+    margin-left: 240px;
 }
 
 .past {
@@ -331,7 +341,9 @@ ul {
     border: #274b47 1px solid;
     color: #fff;
     cursor: pointer;
+    height: 100px;
     transition: 0.25s;
+    margin: 0 20px 20px 0;
 }
 
 .textContentCenter {
@@ -340,11 +352,20 @@ ul {
 }
 
 .textContentLeft {
-    margin: 20px 10px;
+    margin: 20px 30px 20px 0;
     text-align: left;
 }
 
 .textContentRight {
     padding-right: 60px;
     text-align: right;
+}
+
+p.textContentLeft {
+    margin-top: -20px;
+}
+
+ul.textContentLeft {
+    margin-top: -30px;
+    margin-bottom: 20px;
 }
