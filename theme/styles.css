@@ -18,7 +18,7 @@ aside {
 }
 
 button {
-    border-radius: 4px;
+    cursor: pointer;
     font-family: "Segoe UI Semilight", sans-serif;
     font-size: 175%;
     width: 100%;
@@ -45,18 +45,6 @@ hr {
     width: 90%;
 }
 
-input {
-    border: #373737 2px solid;
-    border-radius: 2px;
-    padding: 15px;
-    font-size: 133%;
-}
-
-img {
-    max-width: 70%;
-    height: auto;
-}
-
 ul {
     list-style: none;
     padding: 15px;
@@ -81,8 +69,19 @@ ul {
     background-color: aqua;
 }
 
+.bottom-element {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+}
+
 .bottom-shim {
     padding-bottom: 20px;
+}
+
+.btn-example {
+    width: 150px;
+    border-radius: 4px;
 }
 
 .child-div-slim {
@@ -108,6 +107,12 @@ ul {
 .child-div-extra-wide {
     width: 1000px;
     margin: 0 20px 20px 0;
+}
+
+.contact-sub {
+    width: 600px;
+    margin-bottom: 20px;
+    padding-left: 10px;
 }
 
 .copyright {
@@ -197,9 +202,8 @@ ul {
 
 .home-image {
     float: right;
-    height: auto;
     margin: 0 60px;
-    width: 50%;
+    max-width: 500px;
 }
 
 .info-image {
@@ -212,10 +216,12 @@ ul {
 .listButton {
     background-color: #868686;
     color: white;
-    padding: 15px;
     border: 2px solid #191919;
     border-radius: 3px;
-    font-size: 133%;
+    cursor: pointer;
+    transition: 0.25s;
+    height: 100px;
+    margin: 0 20px 20px 0;
 }
 
 .listButton:hover {

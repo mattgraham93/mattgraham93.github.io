@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #ffffff;
     position: fixed !important;
     z-index: 1;
-    overflow: auto
+    overflow: hidden;
 }
 
 .w3-bar-block .w3-dropdown-hover, .w3-bar-block .w3-dropdown-click {
@@ -153,7 +153,8 @@ h1, h2, h3, h4, h5, h6 {
 .w3-bar-block .w3-dropdown-hover .w3-button, .w3-bar-block .w3-dropdown-click .w3-button {
     width: 100%;
     text-align: left;
-    padding: 8px 16px
+    padding: 8px 16px;
+    border-radius: 0;
 }
 
 .w3-main, #main {
@@ -381,5 +382,5 @@ h1, h2, h3, h4, h5, h6 {
 
 .menu-light-grey, .hover-light-grey:hover, .menu-light-gray, .hover-light-gray:hover {
     color: #000 !important;
-    background-color: #f1f1f1 !important
+    background-color: #e6e6e6 !important
 }
