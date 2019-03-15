@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/basic-stacks" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/burger-gui" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/class-extensions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/google-map-api" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/heap-queue-1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/heap-queue-2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/keyvalue-stacks-1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/keyvalue-stacks-2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/list-operations-speedtest" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/random-number-generator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/word-game" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

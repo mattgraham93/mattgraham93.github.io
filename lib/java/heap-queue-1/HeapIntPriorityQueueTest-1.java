@@ -1,15 +1,18 @@
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+
 // Implements a priority queue of integers using a
 // min-heap represented as an array.
 public class HeapIntPriorityQueueTest {
     private int[] elementData;
     private int size;
+
     // Constructs an empty queue.
     public HeapIntPriorityQueueTest() {
         elementData = new int[10];
         size = 0;
     }
+
     // Adds the given element to this queue.
     public void add(int value) {
 // resize if necessary
@@ -38,6 +41,7 @@ public class HeapIntPriorityQueueTest {
     public boolean isEmpty() {
         return size == 0;
     }
+
     // Returns the minimum value in the queue without modifying the queue.
 // If the queue is empty, throws a NoSuchElementException.
     public int peek() {
@@ -46,6 +50,7 @@ public class HeapIntPriorityQueueTest {
         }
         return elementData[1];
     }
+
     // Removes and returns the minimum value in the queue.
 // If the queue is empty, throws a NoSuchElementException.
     public int remove() {
@@ -72,11 +77,13 @@ public class HeapIntPriorityQueueTest {
 
         return result;
     }
+
     // Returns the number of elements in the queue.
     public int size() {
         return size;
     }
-// Returns a string representation of this queue, such as "[10, 20, 30]";
+
+    // Returns a string representation of this queue, such as "[10, 20, 30]";
     // The elements are not guaranteed to be listed in sorted order.
     public String toString() {
         String result = "[";
@@ -88,30 +95,37 @@ public class HeapIntPriorityQueueTest {
         }
         return result + "]";
     }
+
     // helpers for navigating indexes up/down the tree
     private int parent(int index) {
         return index / 2;
     }
+
     // returns index of left child of given index
     private int leftChild(int index) {
         return index * 2;
     }
+
     // returns index of right child of given index
     private int rightChild(int index) {
         return index * 2 + 1;
     }
+
     // returns true if the node at the given index has a parent (is not the root)
     private boolean hasParent(int index) {
         return index > 1;
     }
-// returns true if the node at the given index has a non-empty left child
+
+    // returns true if the node at the given index has a non-empty left child
     private boolean hasLeftChild(int index) {
         return leftChild(index) <= size;
     }
-// returns true if the node at the given index has a non-empty right child
+
+    // returns true if the node at the given index has a non-empty right child
     private boolean hasRightChild(int index) {
         return rightChild(index) <= size;
     }
+
     // switches the values at the two given indexes of the given array
     private void swap(int[] a, int index1, int index2) {
         int temp = a[index1];
