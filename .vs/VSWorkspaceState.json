@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\websitre_rework",
+    "\\websitre_rework\\Pages"
   ],
-  "SelectedNode": "\\pages",
+  "SelectedNode": "\\websitre_rework\\websitre_rework.sln",
   "PreviewInSolutionExplorer": false
 }
