@@ -80,9 +80,9 @@ def delete_book(book_catalog):
 
 
 def display_menu():
-    print("The Book Catalog program")
+    print("Welcome to our dictionaried book catalog!")
     print()
-    print("COMMAND MENU")
+    print("Select an option")
     print("list - Show all book info")
     print("show - Show book info")
     print("add -  Add book")
@@ -111,6 +111,7 @@ def main():
         command = input("Command: ").lower()
         if command == "list":
             list_books(book_catalog)
+            display_menu()
         elif command == "show":
             show_book(book_catalog)
         elif command == "add":
