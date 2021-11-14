@@ -4,29 +4,24 @@
 
 # TODO
 #  run code
-#  modify main to list dictionaries using name as key for the movies year
-#  modify list function to use the correct key to get the name and year of the movie
-#  modify add function to use dictionary instead of list
-#   use a list to store the list of the movies. use dictionary to store date
-#  modify delete to use dictionary
+#  modify main to list dictionaries using name as key for the movies year -- done
+#  modify list function to use the correct key to get the name and year of the movie -- done
+#  modify add function to use dictionary instead of list -- done
+#   use a list to store the list of the movies. use dictionary to store date -- done
+#  modify delete to use dictionary -- done
 #  add title/greeting, exit messages
 #  test and debug
 #  comment your shit
 
-movie = {
-    "Title": {
-        "Release year": "XXXX"
-    }
-}
-movies = [1, movie]
-
 
 def display_menu():
-    print("COMMAND MENU")
+    print("Select a command")
+    print("----------------------------")
     print("list - List all movies")
     print("add -  Add a movie")
     print("del -  Delete a movie")
     print("exit - Exit program")
+    print("----------------------------")
     print()
 
 
@@ -36,9 +31,8 @@ def list(movie_list):
         return
     else:
         i = 1
-        for movie in movie_list:
-            row = movie
-            print(str(i) + ". " + row[0] + " (" + str(row[1]) + ")")
+        for row in movie_list:
+            print(str(i) + ". " + row["name"] + " (" + str(row["year"]) + ")")
             i += 1
         print()
 
@@ -46,11 +40,13 @@ def list(movie_list):
 def add(movie_list):
     name = input("Name: ")
     year = input("Year: ")
-    movie = []
-    movie.append(name)
-    movie.append(year)
+    # set name and year to key pair in dictionary
+    movie = {
+        "name": name,
+        "year": year
+    }
     movie_list.append(movie)
-    print(movie[0] + " was added.\n")
+    print(movie["name"] + " was added.\n")
 
 
 def delete(movie_list):
@@ -59,13 +55,19 @@ def delete(movie_list):
         print("Invalid movie number.\n")
     else:
         movie = movie_list.pop(number - 1)
-        print(movie[0] + " was deleted.\n")
+        print(movie["name"] + " was deleted.\n")
 
 
 def main():
-    movie_list = [["Monty Python and the Holy Grail", 1975],
-                  ["On the Waterfront", 1954],
-                  ["Cat on a Hot Tin Roof", 1958]]
+    print("Welcome to the movie dictionary program!")
+    movie_list = [
+        {"name": "Monty Python and the Holy Grail",
+         "year": 1975},
+        {"name": "On the Waterfront",
+         "year": 1954},
+        {"name": "Cat on a Hot Tin Roof",
+         "year": 1958}
+    ]
 
     display_menu()
     while True:
@@ -80,7 +82,7 @@ def main():
             break
         else:
             print("Not a valid command. Please try again.\n")
-    print("Bye!")
+    print("Thank you for letting us try a new data type with you!")
 
 
 if __name__ == "__main__":
