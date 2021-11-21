@@ -1,18 +1,24 @@
+# Matt Graham
+# 11/18/21
+# Lab 8 - SQLite3 database manipulation
+
 import sqlite
 
 
 def main():
     print("------- START PROGRAM -------\n")
-    print("Welcome to the Pulp Fiction database! It was, at one point, my favorite movie. I don't think it is anymore.")
+    print("Welcome to the Pulp Fiction database! It was, at one point, my favorite movie.")
     print("Feel free to browse around and learn more about the characters!\n ")
+    print("NOTE: You must select 5 before ending the program to commit all changes.\n ")
     # set database name/location
     db_name = "C:/mattgraham93.github.io/DataSpellProjects/data/ISIT333.db"
     table_name = "users"
     # connect to db and create table
     print("----------- Establishing connection -----------")
     conn, cursor = sqlite.connect(db_name)
+    # setup table if it does not exist
     sqlite.create_table(cursor, table_name)
-    print(f"------ Successfully connected to {table_name}! -------\n")
+    print(f"------ Successfully connected to {db_name}.{table_name}! -------\n")
     # set baseline error count to track when to re-print menu
     error_count = -1
 
@@ -35,33 +41,44 @@ def main():
                 pass
 
             if user_input == 1:
-                error_count = 0
-                sqlite.create_table(cursor, table_name)  # debugging
-                print("table created")  # debugging
+                error_count = -1
+                sql = """
+                    SELECT rowid, * FROM users
+                """
+                sqlite.report_query(cursor, sql)
             elif user_input == 2:
-                print("Let's add a user!\n")
-                error_count = 0
-                sqlite.add_user(cursor, table_name)  # debugging
-                menu()
+                print("----- You selected: Users with W as their last name ---\n")
+                error_count = -1
+                sql = """
+                    SELECT rowid, * from users WHERE last_name like 'W%'
+                """
+                sqlite.report_query(cursor, sql)
             elif user_input == 3:
-                print("option 3")
-                error_count = 0
-                sqlite.print_table(cursor, table_name)
+                print("----- You selected: All WA residents -----\n")
+                error_count = -1
+                sql = """
+                    SELECT rowid, * from users WHERE state like 'WA'
+                """
+                sqlite.report_query(cursor, sql)
             elif user_input == 4:
-                print("option 4")
-                error_count = 0
+                print("----- You selected: Add user -----\n")
+                error_count = -1
+                sqlite.add_user(cursor, table_name)
             elif user_input == 5:
                 print("\n----------------- FINAL TABLE ----------------")
-                sqlite.print_table(cursor, table_name)
+                sql = """
+                    SELECT rowid, * FROM users
+                """
+                sqlite.report_query(cursor, sql)
                 # commit changes
                 conn.commit()
-                print("Changes committed")
+                print("All changes committed")
                 # close the connection
                 conn.close()
                 print("Connection closed")
                 # end the program
                 break
-            # failure message
+            # failure message and share error count
             else:
                 error_count += 1
                 print("---------------- ERROR ---------------")
@@ -71,10 +88,10 @@ def main():
 
 def menu():
     print("--------------------- MENU --------------------")
-    print("1: Setup table and add base users  ------------")
-    print("2: Add new user  ------------------------------")
-    print("3: Print table  -------------------------------")
-    print("4: Report  ------------------------------------")
+    print("1: Show all records for all users  ------------")
+    print("2: Show all users with W as their last name ---")
+    print("3: Show all records for Washington residents --")
+    print("4: Add user -----------------------------------")
     print("5: Commit changes and exit  -------------------")
 
 
