@@ -10,20 +10,27 @@ def main():
     print("Welcome to the Pulp Fiction database! It was, at one point, my favorite movie.")
     print("Feel free to browse around and learn more about the characters!\n ")
     print("NOTE: You must select 5 before ending the program to commit all changes.\n ")
+
     # set database name/location
     db_name = "C:/mattgraham93.github.io/DataSpellProjects/data/ISIT333.db"
     table_name = "users"
+
     # connect to db and create table
     print("----------- Establishing connection -----------")
     conn, cursor = sqlite.connect(db_name)
+
     # setup table if it does not exist
-    sqlite.create_table(cursor, table_name)
+    cursor.execute("select * from users")
+    row = cursor.fetchone()
+    if row is None:
+        sqlite.create_table(cursor, table_name)
     print(f"------ Successfully connected to {db_name}.{table_name}! -------\n")
+
     # set baseline error count to track when to re-print menu
     error_count = -1
 
     while True:
-        # print menu if first load or user has submitted the wrong input 5 times
+        # print menu if first load, returning from previous section, or user has submitted the wrong input 5 times
         if error_count == -1:
             menu()
             error_count += 1
