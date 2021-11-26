@@ -59,13 +59,18 @@ print(poke_reduce[df_legendary])
 
 # 7 - Create a search for a name of a Pokemon and return the data associated with the Pokemon. Do a try/except to
 # catch any error or record not found. Allow the user to search multiple times until they choose to exit.
+while True:
+    try:
+        user_pokemon = input("Type a Pokemon's name or [x] to quit: ")
+        user_df = poke_reduce["Name"] == user_pokemon
+        if user_pokemon.lower() == 'x':
+            break
+        if poke_reduce[user_df].empty:
+            raise RuntimeError("Pokemon does not exist")
+        else:
+            print(poke_reduce[user_df])
+        # break
+    except Exception as e:
+        print(f"{e}. Please search again.")
 
-try:
-    user_pokemon = input("Please type a pokemon's name see if they exist: ")
-    df_user = poke_reduce["Name"] == user_pokemon
-    print(poke_reduce[df_user])
-except TypeError:
-    print("Please enter a valid pokemon name")
-except ValueError:
-    print("Please enter a valid pokemon name")
-    print("Change to commit")
+print("Thank you for using our pandas Pokemon program!")
