@@ -68,3 +68,4 @@ except TypeError:
     print("Please enter a valid pokemon name")
 except ValueError:
     print("Please enter a valid pokemon name")
+    print("Change to commit")
