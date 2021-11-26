@@ -40,6 +40,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "IronPython": {
+              "target": "Package",
+              "version": "[2.7.11, )"
+            },
+            "IronPython.StdLib": {
+              "target": "Package",
+              "version": "[2.7.11, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.21, )"
