@@ -4,7 +4,7 @@ import pandas as pd
 pd.options.display.max_columns = 10
 
 # then save data to a variable "pokemon"
-pokemon = pd.read_csv("pokemon.csv")
+pokemon = pd.read_csv("../../../data/pokemon.csv")
 
 ## EXAMPLE DATA CALLS - COMMENT OR REMOVE lines 7 - 25 BEFORE SUBMITTING
 
