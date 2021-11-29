@@ -1,3 +1,7 @@
+# Matt Graham
+# 11/24/21
+# ISIT - Lab 9
+
 # import pandas
 import pandas as pd
 
@@ -8,6 +12,10 @@ pd.options.display.max_columns = 10
 pokemon = pd.read_csv("../../../data/pokemon.csv")
 # simplify the dataset for easier printing
 poke_reduce = pokemon[["Name", "Type 1", "Type 2", "HP", "Attack", "Defense", "Generation", "Legendary"]]
+
+
+def reset_error():
+    return -1
 
 
 # 1 - Print out a report with only the following fields displaying - Name, Type, Generation
@@ -49,53 +57,93 @@ def poke_search():
     while True:
         try:
             # get user input
-            user_pokemon = input("Type a Pokemon's name or [x] to quit: ")
+            user_pokemon = input("Type a Pokemon's name or [x] to return to the menu: ")
             user_df = poke_reduce["Name"] == user_pokemon
             # check user input and if they want to quit
             if user_pokemon.lower() == 'x':
-                break
+                # return False to return to the menu
+                return False
             # raise an error when the dataframe is empty
             if poke_reduce[user_df].empty:
                 raise RuntimeError("Pokemon does not exist")
             else:
                 # otherwise print the dataframe
                 print(poke_reduce[user_df])
-            # try
-            break
+                # return true to continue looping through search feature
+                return True
         except Exception as e:
             print(f"{e}. Please search again.")
 
 
-def nav_menu(menu_select):
-    print(menu_select)
-
-
 def menu():
+    print()
     print("--------- MENU --------")
     print("[1] - View all Pokemon, their type(s), and their lineage")
     print("[2] - View all Pokemon and their stats")
     print("[3] - View all Grass Pokemon")
     print("[4] - View all Pokemon and their HP in descending order")
-    print("[5] - View all Pokemon and their stats")
-    print("[6] - View all Pokemon and their stats")
+    print("[5] - View all Pokemon in alphabetical order")
+    print("[6] - View all legendary Pokemon")
     print("[7] - Search all Pokemon")
     print("[x] - Quit the program")
 
 
 def main():
     print("Hello and welcome to the Pokemon database!")
-    menu()
+
+    # track user error to print menu
+    user_error = -1
 
     while True:
-        menu_select = input("Select an item: ")
+        # print the menu each time user error is reset or exceeds
+        if user_error == -1 or user_error >= 4:
+            menu()
+            # reset user_error + 1 count if user has failed many times to avoid continuous menu printing
+            if user_error >= 4:
+                user_error = 0
+
+        # get menu selection
+        menu_select = input("\nSelect an item: ")
 
         try:
             if menu_select.lower() == "x":
+                # end the program when the user requests
                 break
             else:
+                # try converting string to integer
                 menu_select = int(menu_select)
-                nav_menu(menu_select)
-        except TypeError:
+                if menu_select == 1:
+                    poke_gen()
+                    user_error = reset_error()
+                elif menu_select == 2:
+                    poke_stat()
+                    user_error = reset_error()
+                elif menu_select == 3:
+                    poke_grass()
+                    user_error = reset_error()
+                elif menu_select == 4:
+                    poke_hp_sort()
+                    user_error = reset_error()
+                elif menu_select == 5:
+                    poke_name_sort()
+                    user_error = reset_error()
+                elif menu_select == 6:
+                    poke_legend()
+                    user_error = reset_error()
+                elif menu_select == 7:
+                    cont = True
+                    while cont:
+                        cont = poke_search()
+                    user_error = reset_error()
+                else:
+                    # if any value not expected, incorrect selection and increase user error count
+                    print("Please enter a valid menu option")
+                    user_error += 1
+        # if not an integer, throw an exception and increase user error count
+        except ValueError:
+            print(f"Please enter a valid menu option")
+            user_error += 1
+            # pass to continue looping through until user is done
             pass
     print("Thank you for using our pandas Pokemon program!")
 
