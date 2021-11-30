@@ -11,9 +11,10 @@ def main():
     # connect to db and create table
     print("----------- Establishing connection -----------")
     conn, cursor = sqlite.connect(db_name)
-
+    print("----------- Database connected -----------")
+    print("----------- Checking for table -----------")
     # setup table if it does not exist
-    sqlite.create_table(cursor, table_name)
+    sqlite.create_table(conn, cursor, table_name)
     print(f"------ Successfully connected to {db_name}.{table_name}! -------\n")
 
     print("getting employee dataframe")
