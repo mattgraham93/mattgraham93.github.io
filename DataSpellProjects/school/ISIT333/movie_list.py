@@ -1,3 +1,4 @@
+import movielist_2d
 # Starting file for Exercise 6.2 from our textbook
 
 # Be sure to follow the instructions in our book to complete this lab activity.
