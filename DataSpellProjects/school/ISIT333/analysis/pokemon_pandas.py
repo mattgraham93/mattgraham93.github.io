@@ -2,7 +2,6 @@
 # 11/24/21
 # ISIT - Lab 9
 
-# import pandas
 import pandas as pd
 
 # set max column width
