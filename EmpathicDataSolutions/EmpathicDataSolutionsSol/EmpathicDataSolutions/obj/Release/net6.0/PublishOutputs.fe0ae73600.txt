@@ -1,1 +1,0 @@
-C:\mattgraham93.github.io\EmpathicDataSolutions\EmpathicDataSolutionsSol\EmpathicDataSolutions\obj\Release\net6.0\browser-wasm\PubTmp\Out\web.config
