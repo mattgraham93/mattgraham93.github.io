@@ -1,5 +1,5 @@
-import pandas as pd
 import sqlite
+import reports
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
     print(f"------ Successfully connected to {db_name}.{table_name}! -------\n")
 
     print("getting employee dataframe")
-    employee_df = pd.read_sql_query(f"select * from {table_name}", conn)
+    employee_df = reports.pd.read_sql_query(f"select * from {table_name}", conn)
     print(employee_df)
 
 

@@ -1,8 +1,6 @@
 import sqlite3
 import random as rand
 
-import pandas as pd
-
 
 def load_employee(conn, cursor, table_name, employee):
     employee_id = employee[0]
