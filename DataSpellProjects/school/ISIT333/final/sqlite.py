@@ -20,7 +20,7 @@ def load_employee(conn, cursor, table_name, employee):
                     VALUES (?,?,?,?,?,?,?,?,?,?,?)
                 """
 
-    cursor.execute(table_name, (employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email, user_phone, hourly_rate, department))
+    cursor.execute(sql, (employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email, user_phone, hourly_rate, department))
     conn.commit()
 
 
@@ -53,7 +53,6 @@ def add_employee(conn, cursor, table_name, employees, mode):
 
 def generate_employees(conn, cursor, table_name):
     employees = []
-    first_id = rand.randint(1000, 9999)
     first_names = ["Name", "Name", "Name", "Name", "Name"]
     last_names = ["Name", "Name", "Name", "Name", "Name"]
 
