@@ -2,19 +2,22 @@ import sqlite3
 import random as rand
 import names
 import random_address
+import pandas as pd
 
 
-def update_rate(conn, cursor, table_name, employees):
-    people = search_employees(conn, cursor, table_name, employees, mode="update_rate")
+def update_rate(cursor):
+    people = search_employees(cursor)
     print(people)
 
 
-def search_employees(conn, cursor, table_name, employees, mode):
-    last_name = input("Please provide the last name: ")
-
-    if mode == "update_rate":
-        return employees.query(f'last_name = {last_name}')
-
+def search_employees(cursor):
+    input_last_name = input("Please provide the last name: ")
+    sql = f"""
+        select * from employees where last_name like ?
+    """
+    search = (input_last_name, )
+    cursor.execute(sql, search)
+    return cursor.fetchall()
 
 
 def load_employee(conn, cursor, table_name, employee):
@@ -121,23 +124,13 @@ def check_rand(employees, rand_int):
 
 def create_table(conn, cursor, table_name):
     # create the table if it doesn't already exist
-    # note that primary keys are automatically created in sqlit3 and referenced as rowid -- noted!
+    # note that primary keys are automatically created in sqlite3 and referenced as rowid -- noted!
     cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} "
                    f"(employee_ID INTEGER, first_name TEXT, last_name TEXT, address TEXT, "
                    "city TEXT, state TEXT, zipcode TEXT, email TEXT, phone TEXT, hourly_rate REAL, department TEXT)")
 
     # setup initial employees
     generate_employees(conn, cursor, table_name)
-
-    sql = f"""
-        select * from {table_name}
-    """
-
-    cursor.execute(sql)
-    employees = cursor.fetchall()
-
-    # create baseline records of data
-    add_employee(conn, cursor, table_name, employees, mode="load")
 
 
 def connect(db_name, table_name):

@@ -52,7 +52,7 @@ def main():
                 # employees is only used when loading initial users
                 sqlite.add_employee(conn, cursor, table_name, employee_df, mode="user")
             elif user_input == 5:
-                sqlite.update_rate(conn, cursor, table_name, employee_df)
+                sqlite.update_rate(cursor)
             elif user_input == 6:
                 print()
             elif user_input == 7:
