@@ -1,5 +1,20 @@
 import sqlite3
 import random as rand
+import names
+import random_address
+
+
+def update_rate(conn, cursor, table_name, employees):
+    people = search_employees(conn, cursor, table_name, employees, mode="update_rate")
+    print(people)
+
+
+def search_employees(conn, cursor, table_name, employees, mode):
+    last_name = input("Please provide the last name: ")
+
+    if mode == "update_rate":
+        return employees.query(f'last_name = {last_name}')
+
 
 
 def load_employee(conn, cursor, table_name, employee):
@@ -33,7 +48,7 @@ def add_employee(conn, cursor, table_name, employees, mode):
         user_city = input("City: ")
         user_state = input("State: ")
         user_zipcode = input("Zipcode: ")
-        user_email = input("Email: ")
+        user_email = set_email(user_firstname, user_lastname)
         user_phone = input("Phone: ")
         hourly_rate = input("Hourly rate: $")
         department = input("Department: ")
@@ -53,24 +68,22 @@ def add_employee(conn, cursor, table_name, employees, mode):
 
 def generate_employees(conn, cursor, table_name):
     employees = []
-    first_names = ["Name", "Name", "Name", "Name", "Name"]
-    last_names = ["Name", "Name", "Name", "Name", "Name"]
-
+    departments = ["Leadership", "Technology", "People", "DE&I", "Finance", "Operations"]
     for i in range(15):
         if i == 0:
             employee_id = rand.randint(1000, 9999)
         else:
             employee_id = check_rand(employees, rand_int=rand.randint(1000, 9999))
-        first_name = first_names[rand.randint(0, 4)]
-        last_name = last_names[rand.randint(0, 4)]
-        address = ""
-        city = ""
-        state = ""
-        zipcode = ""
-        email = ""
-        phone = ""
-        hourly_rate = 11.11
-        department = ""
+        first_name = names.get_first_name()
+        last_name = names.get_last_name()
+        address = random_address.real_random_address().get('address1')
+        city = random_address.real_random_address().get('city')
+        state = random_address.real_random_address().get('state')
+        zipcode = random_address.real_random_address().get('postalCode')
+        email = set_email(first_name, last_name)
+        phone = create_phone()
+        hourly_rate = round(rand.uniform(10, 85), 2)
+        department = departments[rand.randint(0, 5)]
 
         # create employee
         employee = [
@@ -84,6 +97,18 @@ def generate_employees(conn, cursor, table_name):
         i += 1
 
 
+def create_phone():
+    first = str(rand.randint(200, 899))
+    middle = str(rand.randint(100,999))
+    last = str(rand.randint(1000, 9999))
+
+    return f"{first}-{middle}-{last}"
+
+
+def set_email(first_name, last_name):
+    return first_name[0] + last_name[0:4] + "@bigcorp.com"
+
+
 def check_rand(employees, rand_int):
     for employee in employees:
         # continue checking for random integers until one does not match
@@ -92,13 +117,6 @@ def check_rand(employees, rand_int):
         # otherwise the random int is valid
         else:
             return rand_int
-
-
-def connect(db_name):
-    # connect to database and return connection and cursor to main
-    conn = sqlite3.connect(db_name)
-    cursor = conn.cursor()
-    return conn, cursor
 
 
 def create_table(conn, cursor, table_name):
@@ -120,3 +138,18 @@ def create_table(conn, cursor, table_name):
 
     # create baseline records of data
     add_employee(conn, cursor, table_name, employees, mode="load")
+
+
+def connect(db_name, table_name):
+    # connect to database and return connection and cursor to main
+    conn = sqlite3.connect(db_name)
+    cursor = conn.cursor()
+    print("----------- Checking for table -----------")
+    try:
+        # setup table if it does not exist
+        cursor.execute(f"select * from {table_name}")
+    except sqlite3.OperationalError:
+        create_table(conn, cursor, table_name)
+    print(f"------ Successfully connected to {db_name}.{table_name}! -------\n")
+    return conn, cursor
+
