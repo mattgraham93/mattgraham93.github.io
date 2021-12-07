@@ -2,22 +2,43 @@ import sqlite3
 import random as rand
 import names
 import random_address
-import pandas as pd
+import reports
 
 
-def update_rate(cursor):
-    people = search_employees(cursor)
-    print(people)
+def remove_employee(conn, cursor):
+    print()
 
 
-def search_employees(cursor):
-    input_last_name = input("Please provide the last name: ")
-    sql = f"""
-        select * from employees where last_name like ?
-    """
-    search = (input_last_name, )
-    cursor.execute(sql, search)
-    return cursor.fetchall()
+def update_rate(conn, cursor):
+    people = reports.list_employees(conn)
+
+    while True:
+        try:
+            print(people)
+            # get user input
+            user_sel = input("Please type the person's last name or [x] to quit: ")
+            found = reports.find_employee(conn, user_sel)
+            # check user input and if they want to quit
+            if user_sel.lower() == 'x':
+                # return False to return to the menu
+                return False
+            # raise an error when the dataframe is empty
+            if people[found].empty:
+                raise RuntimeError("Last name does not exist")
+            elif len(people[found]) > 1:
+                print("There is more than one person with that last name!")
+                print(people[found])
+            else:
+                # otherwise print the dataframe
+                print(people[found])
+                # return true to continue looping through search feature
+                return True
+        except Exception as e:
+            print(f"{e}. Please search again.")
+
+
+
+
 
 
 def load_employee(conn, cursor, table_name, employee):

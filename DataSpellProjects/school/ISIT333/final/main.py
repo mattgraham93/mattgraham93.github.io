@@ -1,10 +1,5 @@
-import sqlite3
-
 import sqlite
 import reports
-
-
-# would like to get some basic list of random info from internet to pass in
 
 
 def main():
@@ -21,9 +16,12 @@ def main():
     error_count = -1
 
     while True:
-        print("getting employee dataframe")
-        employee_df = reports.pd.read_sql_query(f"select * from {table_name}", conn)
-        print(employee_df)
+        # print("getting employee dataframe") # debugging
+        # get raw dataframe for reporting
+        employee_df = reports.list_employees(conn)
+        # set index to be the employee ID
+        employee_df.set_index('employee_ID', inplace=True)
+        # print(employee_df) # debugging
 
         # print menu if first load, returning from previous section, or user has submitted the wrong input 5 times
         if error_count == -1:
@@ -43,16 +41,19 @@ def main():
                 pass
 
             if user_input == 1:
-                print()
+                # print employee dataframe
+                print(reports.employee_departments(employee_df))
             elif user_input == 2:
                 print()
             elif user_input == 3:
                 print()
             elif user_input == 4:
-                # employees is only used when loading initial users
+                # add a user
+                print("----- Add user -----")
                 sqlite.add_employee(conn, cursor, table_name, employee_df, mode="user")
             elif user_input == 5:
-                sqlite.update_rate(cursor)
+                print("---- Update rate ----")
+                sqlite.update_rate(conn, cursor)
             elif user_input == 6:
                 print()
             elif user_input == 7:
@@ -98,12 +99,12 @@ def menu():
     #  Create an update contact information function that will allow the user to update the street address, city, state,
     #  zipcode, and phone number for a given employee. (10 points)
     #  Create a delete function that will allow the user to delete a given employee. (10 points)
-    #  Create a search function to search for an employee by last name. Then list all of the matches of the last
-    #  name, first name, email and department name. (15 points)
 
     # TODO - pandas
     #  Create a function to list all employee id numbers, names, email addresses, and their department name. (5 points)
     #  Create a function to list all employee names, full addresses, and phone numbers. (5 points)
+    #  Create a search function to search for an employee by last name. Then list all of the matches of the last
+    #  name, first name, email and department name. (15 points)
 
 
 if __name__ == "__main__":
