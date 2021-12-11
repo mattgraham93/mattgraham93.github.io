@@ -5,7 +5,70 @@ import random_address
 import reports
 
 
+def update_contact_info(conn, cursor):
+    people = reports.list_employees(conn)
+
+    while True:
+        try:
+            print(people)
+
+            # get user input
+            user_sel = input("Please type the person's last name or [x] to quit: ")
+
+            # check user input and if they want to quit
+            if user_sel.lower() == 'x':
+                # return False to return to the menu
+                return False
+            # search employee dataframe
+            found = reports.find_employee(conn, user_sel)
+            # raise an error when the dataframe is empty
+            if people[found].empty:
+                raise RuntimeError("Last name does not exist")
+            elif len(people[found]) > 1:
+                print("There is more than one person with that last name!")
+                print(people[found])
+                user_id = input("Please enter an employee ID: ")
+                set_rate(user_id, cursor)
+                conn.commit()
+                return True
+            else:
+                # otherwise print the dataframe
+                print("------ Person was found! -------")
+                print(people[found])
+                user_id = found["employee_ID"]
+                rate = set_rate(user_id, cursor)
+                conn.commit()
+                print(f"{found.first_name}'s hourly rate has been updated to ${str(rate)}")
+                # return true to continue looping through search feature
+                return True
+        except Exception as e:
+            print(f"{e}. Please search again.")
+
+
+def set_rate(employee_id, cursor):
+    rate = input("Please enter a rate: $")
+    sql = f"""
+        update employees
+        set hourly_rate = ?
+        where employee_ID = ?
+    """
+
+    cursor.execute(sql, (rate, employee_id))
+    return rate
+
+
 def remove_employee(conn, cursor):
+    last_name = get_last_name()
+
+    employees = reports.get_employee_by_last_name(last_name)
+    employee_id = reports.get_user_id(employees, last_name)
+    sql = """
+        delete from employees
+        where employee_ID = ?
+    """
+    cursor.execute(sql, employee_id)
+    conn.commit()
+
     print()
 
 
@@ -15,30 +78,38 @@ def update_rate(conn, cursor):
     while True:
         try:
             print(people)
+
             # get user input
             user_sel = input("Please type the person's last name or [x] to quit: ")
-            found = reports.find_employee(conn, user_sel)
+
             # check user input and if they want to quit
             if user_sel.lower() == 'x':
                 # return False to return to the menu
                 return False
+            # search employee dataframe
+            found = reports.find_employee(conn, user_sel)
             # raise an error when the dataframe is empty
             if people[found].empty:
                 raise RuntimeError("Last name does not exist")
             elif len(people[found]) > 1:
                 print("There is more than one person with that last name!")
                 print(people[found])
+                user_id = input("Please enter an employee ID: ")
+                set_rate(user_id, cursor)
+                conn.commit()
+                return True
             else:
                 # otherwise print the dataframe
+                print("------ Person was found! -------")
                 print(people[found])
+                user_id = found["employee_ID"]
+                rate = set_rate(user_id, cursor)
+                conn.commit()
+                print(f"{found.first_name}'s hourly rate has been updated to ${str(rate)}")
                 # return true to continue looping through search feature
                 return True
         except Exception as e:
             print(f"{e}. Please search again.")
-
-
-
-
 
 
 def load_employee(conn, cursor, table_name, employee):

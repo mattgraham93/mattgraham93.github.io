@@ -42,11 +42,14 @@ def main():
 
             if user_input == 1:
                 # print employee dataframe
+                print("----- Getting employee department list -----")
                 print(reports.employee_departments(employee_df))
             elif user_input == 2:
-                print()
+                print("------- Getting employee contact list ------")
+                print(reports.employee_contacts(employee_df))
             elif user_input == 3:
-                print()
+                print("------ Find an employee -----")
+                user_sel = input("Please type the person's last name or [x] to quit: ")
             elif user_input == 4:
                 # add a user
                 print("----- Add user -----")
@@ -57,7 +60,7 @@ def main():
             elif user_input == 6:
                 print()
             elif user_input == 7:
-                print()
+                sqlite.remove_employee(conn, cursor)
             elif user_input == 8:
                 # commit changes
                 conn.commit()
@@ -89,22 +92,28 @@ def menu():
     print("-----------------------------------------------")
     print()
 
+    # TODO
+    #   Create get last name function and replace all that
+    #   Figure out a way to make searching employees without so many searches
+    #   Test test test
+
     # TODO - SQL
     #  Create a function to add an employee using the given inputs.
     #  Automatically assign a random employee id and automatically create an email address from their first and last
-    #  name. Allow the user to input all other fields. (15 points) -- DONE
-    #  Create function to generate email address -- DONE
+    #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTED
+    #  Create function to generate email address -- DONE, TESTED
     #  Create an update hourly rate function that will allow the user to update the hourly rate for a given employee.
-    #  (10 points)
+    #  (10 points) -- DONE, NOT TESTED
     #  Create an update contact information function that will allow the user to update the street address, city, state,
-    #  zipcode, and phone number for a given employee. (10 points)
-    #  Create a delete function that will allow the user to delete a given employee. (10 points)
+    #  zipcode, and phone number for a given employee. (10 points) -- DONE, NOT TESTED
+    #  Create a delete function that will allow the user to delete a given employee. (10 points) -- DONE, NOT TESTED
 
     # TODO - pandas
     #  Create a function to list all employee id numbers, names, email addresses, and their department name. (5 points)
-    #  Create a function to list all employee names, full addresses, and phone numbers. (5 points)
+    #  -- DONE, TESTED
+    #  Create a function to list all employee names, full addresses, and phone numbers. (5 points)--  DONE, TESTED
     #  Create a search function to search for an employee by last name. Then list all of the matches of the last
-    #  name, first name, email and department name. (15 points)
+    #  name, first name, email and department name. (15 points) -- DONE, NOT TESTED
 
 
 if __name__ == "__main__":
