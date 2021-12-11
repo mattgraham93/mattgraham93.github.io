@@ -1,8 +1,9 @@
 import pandas as pd
 
 
-def find_employee(conn, user_sel):
-    return pd.read_sql_query(f"select employee_ID, first_name, last_name, email, department from employees where employees.employee_ID like {user_sel}", conn)
+def find_employee(df, user_sel):
+    reduce_df = df["last_name"] == user_sel
+    return reduce_df
 
 
 def list_employees(conn):
@@ -18,7 +19,7 @@ def employee_contacts(df):
 
 
 def get_employee_by_last_name(df, user_sel):
-    return df.query(f"last_name = {user_sel}")
+    return df.query(f"last_name = '{user_sel}'")
 
 
 def get_user_id(df, user_sel):

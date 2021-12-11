@@ -103,7 +103,7 @@ def menu():
     #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTED
     #  Create function to generate email address -- DONE, TESTED
     #  Create an update hourly rate function that will allow the user to update the hourly rate for a given employee.
-    #  (10 points) -- DONE, NOT TESTED
+    #  (10 points) -- DONE, ACTIVELY TESTING *********
     #  Create an update contact information function that will allow the user to update the street address, city, state,
     #  zipcode, and phone number for a given employee. (10 points) -- DONE, NOT TESTED
     #  Create a delete function that will allow the user to delete a given employee. (10 points) -- DONE, NOT TESTED

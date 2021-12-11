@@ -20,7 +20,7 @@ def update_contact_info(conn, cursor):
                 # return False to return to the menu
                 return False
             # search employee dataframe
-            found = reports.find_employee(conn, user_sel)
+            found = reports.get_employee_by_last_name(people, user_sel)
             # raise an error when the dataframe is empty
             if people[found].empty:
                 raise RuntimeError("Last name does not exist")
@@ -87,7 +87,7 @@ def update_rate(conn, cursor):
                 # return False to return to the menu
                 return False
             # search employee dataframe
-            found = reports.find_employee(conn, user_sel)
+            found = reports.find_employee(people, user_sel)
             # raise an error when the dataframe is empty
             if people[found].empty:
                 raise RuntimeError("Last name does not exist")
@@ -102,7 +102,10 @@ def update_rate(conn, cursor):
                 # otherwise print the dataframe
                 print("------ Person was found! -------")
                 print(people[found])
-                user_id = found["employee_ID"]
+                ############################################################
+                # DEBUGGING HERE - NEED TO FIGURE OUT HOW TO ISOLATE EMPLOYEE ID
+                user_id = people[found["employee_ID"]]
+                print(f"employee ID: {user_id}")
                 rate = set_rate(user_id, cursor)
                 conn.commit()
                 print(f"{found.first_name}'s hourly rate has been updated to ${str(rate)}")
@@ -130,7 +133,9 @@ def load_employee(conn, cursor, table_name, employee):
                     VALUES (?,?,?,?,?,?,?,?,?,?,?)
                 """
 
-    cursor.execute(sql, (employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email, user_phone, hourly_rate, department))
+    cursor.execute(sql, (
+    employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email,
+    user_phone, hourly_rate, department))
     conn.commit()
 
 
@@ -194,7 +199,7 @@ def generate_employees(conn, cursor, table_name):
 
 def create_phone():
     first = str(rand.randint(200, 899))
-    middle = str(rand.randint(100,999))
+    middle = str(rand.randint(100, 999))
     last = str(rand.randint(1000, 9999))
 
     return f"{first}-{middle}-{last}"
@@ -237,4 +242,3 @@ def connect(db_name, table_name):
         create_table(conn, cursor, table_name)
     print(f"------ Successfully connected to {db_name}.{table_name}! -------\n")
     return conn, cursor
-
