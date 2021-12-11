@@ -27,5 +27,6 @@ def get_user_id(df, user_sel):
 
 
 def get_department_search(df):
+    # todo - create get_last_name
     last_name = get_last_name()
     return df.query(f"last_name = {last_name}")

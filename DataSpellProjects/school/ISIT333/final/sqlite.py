@@ -6,11 +6,12 @@ import reports
 
 
 def update_contact_info(conn, cursor):
+    # get dataframe of people
     people = reports.list_employees(conn)
 
     while True:
         try:
-            print(people)
+            print(people) # debugging
 
             # get user input
             user_sel = input("Please type the person's last name or [x] to quit: ")
@@ -24,10 +25,12 @@ def update_contact_info(conn, cursor):
             # raise an error when the dataframe is empty
             if people[found].empty:
                 raise RuntimeError("Last name does not exist")
+            # check to make sure only one person is selected, if not, isolate by employee ID
             elif len(people[found]) > 1:
                 print("There is more than one person with that last name!")
                 print(people[found])
                 user_id = input("Please enter an employee ID: ")
+                # can I use continue here and pass the values in? We need to see
                 set_rate(user_id, cursor)
                 conn.commit()
                 return True
@@ -58,18 +61,23 @@ def set_rate(employee_id, cursor):
 
 
 def remove_employee(conn, cursor):
+    # todo - create get_last_name
     last_name = get_last_name()
-
+    # isolate employee last names
     employees = reports.get_employee_by_last_name(last_name)
+    # select employee id
     employee_id = reports.get_user_id(employees, last_name)
+    # prep query to pass in employee ID to remove employee from database
     sql = """
         delete from employees
         where employee_ID = ?
     """
+    # execute sql statement
     cursor.execute(sql, employee_id)
+    # commit change to database
     conn.commit()
-
-    print()
+    # print success message
+    print("----- Person was removed successfully ------")
 
 
 def update_rate(conn, cursor):
@@ -91,23 +99,28 @@ def update_rate(conn, cursor):
             # raise an error when the dataframe is empty
             if people[found].empty:
                 raise RuntimeError("Last name does not exist")
+            # check to make sure only one person is found, otherwise isolate by user id
             elif len(people[found]) > 1:
                 print("There is more than one person with that last name!")
                 print(people[found])
                 user_id = input("Please enter an employee ID: ")
+                # todo - can I use continue here and pass the values in? We need to see what we can do
                 set_rate(user_id, cursor)
                 conn.commit()
                 return True
             else:
-                # otherwise print the dataframe
+                # print the dataframe
                 print("------ Person was found! -------")
                 print(people[found])
                 ############################################################
                 # DEBUGGING HERE - NEED TO FIGURE OUT HOW TO ISOLATE EMPLOYEE ID
                 user_id = people[found["employee_ID"]]
                 print(f"employee ID: {user_id}")
+                # set the new rate
                 rate = set_rate(user_id, cursor)
+                # commit to the database
                 conn.commit()
+                # print confirmation message
                 print(f"{found.first_name}'s hourly rate has been updated to ${str(rate)}")
                 # return true to continue looping through search feature
                 return True
@@ -116,6 +129,7 @@ def update_rate(conn, cursor):
 
 
 def load_employee(conn, cursor, table_name, employee):
+    # set each employee to value to pass in to insert statement
     employee_id = employee[0]
     user_firstname = employee[1]
     user_lastname = employee[2]
@@ -127,19 +141,21 @@ def load_employee(conn, cursor, table_name, employee):
     user_phone = employee[8]
     hourly_rate = employee[9]
     department = employee[10]
-
+    # create sql query
     sql = f"""
                     INSERT INTO {table_name} (employee_id, first_name, last_name, address, city, state, zipcode, email, phone, hourly_rate, department)
                     VALUES (?,?,?,?,?,?,?,?,?,?,?)
                 """
-
+    # pass in all values and execute query to load employee
     cursor.execute(sql, (
     employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email,
     user_phone, hourly_rate, department))
+    # commit to database
     conn.commit()
 
 
 def add_employee(conn, cursor, table_name, employees, mode):
+    # if a person is adding an employee, display prompt for intake
     if mode == "user":
         employee_id = check_rand(employees, rand_int=rand.randint(1000, 9999))
         user_firstname = input("First name: ")
@@ -152,13 +168,18 @@ def add_employee(conn, cursor, table_name, employees, mode):
         user_phone = input("Phone: ")
         hourly_rate = input("Hourly rate: $")
         department = input("Department: ")
-        # expect to reach else statement? want to go to load
+
         employee = [employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode,
                     user_email, user_phone, hourly_rate, department]
+
+        # load the employee to the database and commit
         load_employee(conn, cursor, table_name, employee)
+
         print(f"{user_firstname} added successfully!\n")
         pass
     elif mode == "load":
+        # would like to check to see if I can remove the for loop, feels redundant
+        # todo: remove???? I already use load employee for each employee and I used to have double load because of this
         for employee in employees:
             load_employee(conn, cursor, table_name, employee)
             print(f"{employee[1]} added successfully!\n")
@@ -190,14 +211,15 @@ def generate_employees(conn, cursor, table_name):
             employee_id, first_name, last_name, address, city, state, zipcode, email, phone, hourly_rate, department
         ]
 
-        # add employee to employee list
+        # add employee to employee dataframe to check for all random integers for each load
         employees.append(employee)
-
+        # add individual employee to database
         load_employee(conn, cursor, table_name, employee)
         i += 1
 
 
 def create_phone():
+    # create a random phone number for intro people
     first = str(rand.randint(200, 899))
     middle = str(rand.randint(100, 999))
     last = str(rand.randint(1000, 9999))
@@ -206,6 +228,7 @@ def create_phone():
 
 
 def set_email(first_name, last_name):
+    # create standardized email > would like to check for duplicates in furture
     return first_name[0] + last_name[0:4] + "@bigcorp.com"
 
 

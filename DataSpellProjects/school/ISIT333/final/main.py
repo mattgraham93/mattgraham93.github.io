@@ -41,33 +41,50 @@ def main():
                 pass
 
             if user_input == 1:
-                # print employee dataframe
+                # print employee department list
                 print("----- Getting employee department list -----")
                 print(reports.employee_departments(employee_df))
+                error_count = reset_error()
             elif user_input == 2:
+                # print employee contact list
                 print("------- Getting employee contact list ------")
                 print(reports.employee_contacts(employee_df))
+                error_count = reset_error()
             elif user_input == 3:
-                print("------ Find an employee -----")
+                # search database
+                print("-------------- Find an employee ------------")
                 user_sel = input("Please type the person's last name or [x] to quit: ")
+                print(reports.find_employee(employee_df, user_sel))
+                error_count = reset_error()
             elif user_input == 4:
-                # add a user
-                print("----- Add user -----")
+                # add a user to database
+                print("----------------- Add user -----------------")
                 sqlite.add_employee(conn, cursor, table_name, employee_df, mode="user")
+                error_count = reset_error()
             elif user_input == 5:
-                print("---- Update rate ----")
+                # update rate in database
+                print("--------------- Update rate ----------------")
                 sqlite.update_rate(conn, cursor)
+                error_count = reset_error()
             elif user_input == 6:
-                print()
+                # update employee contact information
+                print("-------- Update contact information --------")
+                sqlite.update_contact_info(conn, cursor)
+                error_count = reset_error()
             elif user_input == 7:
+                # remove an employee
+                print("------------ Remove an employee -------------")
                 sqlite.remove_employee(conn, cursor)
+                error_count = reset_error()
             elif user_input == 8:
+                print("Thank you for using our employee database program! We hope you found it helpful. :)")
                 # commit changes
                 conn.commit()
-                print("All changes committed")
+                print("---------- All changes committed ----------")
                 # close the connection
                 conn.close()
-                print("Connection closed")
+                print("----------- Connection closed --------------")
+                print("---------------- Goodbye -------------------")
                 # end the program
                 break
             # failure message and share error count
@@ -76,6 +93,10 @@ def main():
                 print("---------------- ERROR ---------------")
                 print(f"---- Error count: {error_count} -----")  # debugging
                 print("---- Please select a valid option ----\n")
+
+
+def reset_error():
+    return -1
 
 
 def menu():
