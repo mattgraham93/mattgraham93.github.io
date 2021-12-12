@@ -8,7 +8,6 @@ import reports
 
 def main():
     print()
-    # todo - update string to just db name, and copy in db >>>> DELETE TABLE AND TEST ONE MORE TIME FOR TABLE CREATION
     db_name = "C:/mattgraham93.github.io/DataSpellProjects/data/ISIT333.db"
     table_name = "employees"
 

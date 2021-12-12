@@ -307,7 +307,7 @@ def generate_employees(conn, cursor, table_name):
         # add employee to employee dataframe to check for all random integers for each load
         employees.append(employee)
         # add individual employee to database
-        load_employee(conn, cursor, table_name, employee)
+        load_employee(conn, table_name, employee)
         i += 1
 
 
