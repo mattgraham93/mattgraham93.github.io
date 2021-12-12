@@ -8,7 +8,7 @@ import reports
 
 def main():
     print()
-
+    # todo - update string to just db name, and copy in db >>>> DELETE TABLE AND TEST ONE MORE TIME FOR TABLE CREATION
     db_name = "C:/mattgraham93.github.io/DataSpellProjects/data/ISIT333.db"
     table_name = "employees"
 
@@ -47,18 +47,20 @@ def main():
 
             if user_input == 1:
                 # print employee department list
-                print("----- Getting employee department list -----")
+                print("----- Getting employee department list -----\n")
                 print(reports.employee_departments(employee_df))
                 error_count = reset_error()
             elif user_input == 2:
                 # print employee contact list
-                print("------- Getting employee contact list ------")
+                print("------- Getting employee contact list ------\n")
                 print(reports.employee_contacts(employee_df))
                 error_count = reset_error()
             elif user_input == 3:
                 # search database
-                print("-------------- Find an employee ------------")
+                print("-------------- Find an employee ------------\n")
                 error_count = reset_error()
+                print("You will see all people with matching last names and their associated departments.")
+                # let person immediately quit if desired, otherwise, we will proceed with the search
                 user_sel = input("Please type the person's last name or [x] to quit: ")
                 print()
                 if user_sel == 'x':
@@ -66,23 +68,24 @@ def main():
                 print(reports.get_department_search(employee_df, user_sel))
             elif user_input == 4:
                 # add a user to database
-                print("----------------- Add user -----------------")
+                print("-------=------- Add employee --------------\n")
+                # user adds employee to database
                 sqlite.add_employee(conn, table_name, employee_df, mode="user")
                 error_count = reset_error()
             elif user_input == 5:
                 # update rate in database
-                print("--------------- Update rate ----------------")
-                sqlite.update_rate(conn, cursor)
+                print("--------------- Update rate ----------------\n")
+                sqlite.update_rate(conn)
                 error_count = reset_error()
             elif user_input == 6:
-                # update employee contact information
-                print("-------- Update contact information --------")
-                sqlite.update_contact_info(conn, cursor)
+                # update employee contact information in the database
+                print("-------- Update contact information --------\n")
+                sqlite.update_contact_info(conn)
                 error_count = reset_error()
             elif user_input == 7:
-                # remove an employee
-                print("------------ Remove an employee -------------")
-                sqlite.remove_employee(conn, cursor)
+                # remove an employee from the database
+                print("------------ Remove an employee -------------\n")
+                sqlite.remove_employee(conn)
                 error_count = reset_error()
             elif user_input == 8:
                 print("Thank you for using our employee database program! We hope you found it helpful. :)")
@@ -104,10 +107,12 @@ def main():
 
 
 def reset_error():
+    # after each successful transaction, we reset the error to ensure the user sees the menu
     return -1
 
 
 def menu():
+    # default menu - add items here as your elif statements grow
     print()
     print("--------------------- MENU --------------------")
     print("1: Employee email and department info ---------")
@@ -121,16 +126,20 @@ def menu():
     print("-----------------------------------------------")
     print()
 
+
+if __name__ == "__main__":
+    main()
+
     # TODO
-    #   Create get last name function and replace all that
-    #   Figure out a way to make searching employees without so many searches
-    #   Test test test
-    #   finalize comments
+    #   Test test test - DONE
+    #   finalize comments - DONE
+    #   Identify unused functions
+    #   optimize, but only after initial submission
 
     # TODO - SQL
     #  Create a function to add an employee using the given inputs.
     #  Automatically assign a random employee id and automatically create an email address from their first and last
-    #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTING **** RUNNING INTO DATABASE LOCK ERROR
+    #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTED
     #  Create function to generate email address -- DONE, TESTED
     #  Create an update hourly rate function that will allow the user to update the hourly rate for a given employee.
     #  (10 points) -- DONE, TESTED
@@ -144,7 +153,3 @@ def menu():
     #  Create a function to list all employee names, full addresses, and phone numbers. (5 points)--  DONE, TESTED
     #  Create a search function to search for an employee by last name. Then list all of the matches of the last
     #  name, first name, email and department name. (15 points) -- DONE, TESTED
-
-
-if __name__ == "__main__":
-    main()
