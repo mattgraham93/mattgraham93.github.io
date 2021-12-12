@@ -38,6 +38,7 @@ def main():
         # otherwise run the program
         else:
             user_input = input("\nPlease select an option: ")
+            print()
             try:
                 user_input = int(user_input)
             # check to make sure we are only accepting integer input for easy navigation. Pass to failure message
@@ -57,13 +58,16 @@ def main():
             elif user_input == 3:
                 # search database
                 print("-------------- Find an employee ------------")
-                user_sel = input("Please type the person's last name or [x] to quit: ")
-                print(reports.find_employee(employee_df, user_sel))
                 error_count = reset_error()
+                user_sel = input("Please type the person's last name or [x] to quit: ")
+                print()
+                if user_sel == 'x':
+                    continue
+                print(reports.get_department_search(employee_df, user_sel))
             elif user_input == 4:
                 # add a user to database
                 print("----------------- Add user -----------------")
-                sqlite.add_employee(conn, cursor, table_name, employee_df, mode="user")
+                sqlite.add_employee(conn, table_name, employee_df, mode="user")
                 error_count = reset_error()
             elif user_input == 5:
                 # update rate in database
@@ -126,7 +130,7 @@ def menu():
     # TODO - SQL
     #  Create a function to add an employee using the given inputs.
     #  Automatically assign a random employee id and automatically create an email address from their first and last
-    #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTED
+    #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTING **** RUNNING INTO DATABASE LOCK ERROR
     #  Create function to generate email address -- DONE, TESTED
     #  Create an update hourly rate function that will allow the user to update the hourly rate for a given employee.
     #  (10 points) -- DONE, TESTED
@@ -139,7 +143,7 @@ def menu():
     #  -- DONE, TESTED
     #  Create a function to list all employee names, full addresses, and phone numbers. (5 points)--  DONE, TESTED
     #  Create a search function to search for an employee by last name. Then list all of the matches of the last
-    #  name, first name, email and department name. (15 points) -- DONE, NOT TESTED
+    #  name, first name, email and department name. (15 points) -- DONE, TESTED
 
 
 if __name__ == "__main__":

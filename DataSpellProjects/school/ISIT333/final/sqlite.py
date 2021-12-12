@@ -47,7 +47,8 @@ def remove_employee(conn, cursor):
                 return True
             else:
                 # print the dataframe
-                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
+                print(
+                    f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
                 print(people[found])
                 # set employee id to user id since user input the last name
                 user_id = people[found]['employee_ID'].values[0]
@@ -59,7 +60,7 @@ def remove_employee(conn, cursor):
                 drop_employee(user_id, conn)
 
                 # print confirmation message
-                print(f"{people[found]['first_name'].values[0]}'s address has been removed successfully.\n")
+                print(f"{people[found]['first_name'].values[0]} has been removed successfully.\n")
                 # continue through loop until user is finished updating rates
                 continue
         except Exception as e:
@@ -116,7 +117,8 @@ def update_contact_info(conn, cursor):
                 return True
             else:
                 # print the dataframe
-                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
+                print(
+                    f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
                 print(people[found])
                 # set employee id to user id since user input the last name
                 user_id = people[found]['employee_ID'].values[0]
@@ -182,7 +184,8 @@ def update_rate(conn, cursor):
                 return True
             else:
                 # print the dataframe
-                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
+                print(
+                    f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
                 print(people[found])
                 # set employee id to user id since user input the last name
                 user_id = people[found]['employee_ID'].values[0]
@@ -202,8 +205,9 @@ def update_rate(conn, cursor):
             print(f"{e}. Please search again.")
 
 
-def load_employee(conn, cursor, table_name, employee):
+def load_employee(conn, table_name, employee):
     # set each employee to value to pass in to insert statement
+    cursor = conn.cursor()
     employee_id = employee[0]
     user_firstname = employee[1]
     user_lastname = employee[2]
@@ -222,14 +226,13 @@ def load_employee(conn, cursor, table_name, employee):
                 """
     # pass in all values and execute query to load employee
     cursor.execute(sql, (
-    employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email,
-    user_phone, hourly_rate, department))
-    # commit to database
+        employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode, user_email,
+        user_phone, hourly_rate, department))
     conn.commit()
 
 
 # todo remove mode, remove "load"
-def add_employee(conn, cursor, table_name, employees, mode):
+def add_employee(conn, table_name, employees, mode):
     # if a person is adding an employee, display prompt for intake
     if mode == "user":
         employee_id = check_rand(employees, rand_int=rand.randint(1000, 9999))
@@ -248,7 +251,7 @@ def add_employee(conn, cursor, table_name, employees, mode):
                     user_email, user_phone, hourly_rate, department]
 
         # load the employee to the database and commit
-        load_employee(conn, cursor, table_name, employee)
+        load_employee(conn, table_name, employee)
 
         print(f"{user_firstname} added successfully!\n")
         pass
@@ -256,7 +259,7 @@ def add_employee(conn, cursor, table_name, employees, mode):
         # would like to check to see if I can remove the for loop, feels redundant
         # todo: remove???? I already use load employee for each employee and I used to have double load because of this
         for employee in employees:
-            load_employee(conn, cursor, table_name, employee)
+            load_employee(conn, table_name, employee)
             print(f"{employee[1]} added successfully!\n")
     else:
         print("Reached else statement, what happened?")

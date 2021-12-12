@@ -26,7 +26,6 @@ def get_user_id(df, user_sel):
     return df["employeeID"].query(f"last_name = {user_sel}")
 
 
-def get_department_search(df):
-    # todo - create get_last_name
-    last_name = get_last_name()
-    return df.query(f"last_name = {last_name}")
+def get_department_search(df, last_name):
+    reduce_df = df["last_name"] == last_name
+    return df[reduce_df].loc[:, ['first_name', 'last_name', 'department']]
