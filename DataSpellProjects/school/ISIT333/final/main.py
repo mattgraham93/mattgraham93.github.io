@@ -1,3 +1,7 @@
+# Matt Graham
+# 11/29/2021
+# Final project - Database reporting
+
 import sqlite
 import reports
 
@@ -117,6 +121,7 @@ def menu():
     #   Create get last name function and replace all that
     #   Figure out a way to make searching employees without so many searches
     #   Test test test
+    #   finalize comments
 
     # TODO - SQL
     #  Create a function to add an employee using the given inputs.
@@ -124,10 +129,10 @@ def menu():
     #  name. Allow the user to input all other fields. (15 points) -- DONE, TESTED
     #  Create function to generate email address -- DONE, TESTED
     #  Create an update hourly rate function that will allow the user to update the hourly rate for a given employee.
-    #  (10 points) -- DONE, ACTIVELY TESTING *********
+    #  (10 points) -- DONE, TESTED
     #  Create an update contact information function that will allow the user to update the street address, city, state,
-    #  zipcode, and phone number for a given employee. (10 points) -- DONE, NOT TESTED
-    #  Create a delete function that will allow the user to delete a given employee. (10 points) -- DONE, NOT TESTED
+    #  zipcode, and phone number for a given employee. (10 points) -- DONE, TESTED
+    #  Create a delete function that will allow the user to delete a given employee. (10 points) -- DONE, TESTED
 
     # TODO - pandas
     #  Create a function to list all employee id numbers, names, email addresses, and their department name. (5 points)

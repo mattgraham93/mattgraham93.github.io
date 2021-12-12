@@ -5,90 +5,25 @@ import random_address
 import reports
 
 
-def update_contact_info(conn, cursor):
-    # get dataframe of people
-    people = reports.list_employees(conn)
-
-    while True:
-        try:
-            print(people) # debugging
-
-            # get user input
-            user_sel = input("Please type the person's last name or [x] to quit: ")
-
-            # check user input and if they want to quit
-            if user_sel.lower() == 'x':
-                # return False to return to the menu
-                return False
-            # search employee dataframe
-            found = reports.get_employee_by_last_name(people, user_sel)
-            # raise an error when the dataframe is empty
-            if people[found].empty:
-                raise RuntimeError("Last name does not exist")
-            # check to make sure only one person is selected, if not, isolate by employee ID
-            elif len(people[found]) > 1:
-                print("There is more than one person with that last name!")
-                print(people[found])
-                user_id = input("Please enter an employee ID: ")
-                # can I use continue here and pass the values in? We need to see
-                set_rate(user_id, cursor)
-                conn.commit()
-                return True
-            else:
-                # otherwise print the dataframe
-                print("------ Person was found! -------")
-                print(people[found])
-                user_id = found["employee_ID"]
-                rate = set_rate(user_id, cursor)
-                conn.commit()
-                print(f"{found.first_name}'s hourly rate has been updated to ${str(rate)}")
-                # return true to continue looping through search feature
-                return True
-        except Exception as e:
-            print(f"{e}. Please search again.")
-
-
-def set_rate(employee_id, cursor):
-    rate = input("Please enter a rate: $")
-    sql = f"""
-        update employees
-        set hourly_rate = ?
-        where employee_ID = ?
-    """
-
-    cursor.execute(sql, (rate, employee_id))
-    return rate
-
-
-def remove_employee(conn, cursor):
-    # todo - create get_last_name
-    last_name = get_last_name()
-    # isolate employee last names
-    employees = reports.get_employee_by_last_name(last_name)
-    # select employee id
-    employee_id = reports.get_user_id(employees, last_name)
-    # prep query to pass in employee ID to remove employee from database
+def drop_employee(employee_id, conn):
     sql = """
         delete from employees
         where employee_ID = ?
     """
-    # execute sql statement
-    cursor.execute(sql, employee_id)
-    # commit change to database
+    cur = conn.cursor()
+    cur.execute(sql, (int(employee_id),))
     conn.commit()
-    # print success message
-    print("----- Person was removed successfully ------")
 
 
-def update_rate(conn, cursor):
-    people = reports.list_employees(conn)
-
+def remove_employee(conn, cursor):
     while True:
         try:
+            # refresh table each time the rate is change and committed
+            people = reports.list_employees(conn)
             print(people)
 
             # get user input
-            user_sel = input("Please type the person's last name or [x] to quit: ")
+            user_sel = input("\nPlease type the person's last name or [x] to return to the main menu: ")
 
             # check user input and if they want to quit
             if user_sel.lower() == 'x':
@@ -100,30 +35,169 @@ def update_rate(conn, cursor):
             if people[found].empty:
                 raise RuntimeError("Last name does not exist")
             # check to make sure only one person is found, otherwise isolate by user id
+            # todo - not tested this functionality yet, need to add same last name
             elif len(people[found]) > 1:
                 print("There is more than one person with that last name!")
+                # show multiple records
                 print(people[found])
+                # if more than one person is found, make user select by user id
                 user_id = input("Please enter an employee ID: ")
-                # todo - can I use continue here and pass the values in? We need to see what we can do
+                drop_employee(user_id, cursor)
+                conn.commit()
+                return True
+            else:
+                # print the dataframe
+                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
+                print(people[found])
+                # set employee id to user id since user input the last name
+                user_id = people[found]['employee_ID'].values[0]
+
+                # print(people[found].columns) # debugging
+                # print(f"employee ID: {user_id}") # debugging
+
+                # remove the employee
+                drop_employee(user_id, conn)
+
+                # print confirmation message
+                print(f"{people[found]['first_name'].values[0]}'s address has been removed successfully.\n")
+                # continue through loop until user is finished updating rates
+                continue
+        except Exception as e:
+            print(f"{e}. Please search again.")
+
+
+def set_contact_info(employee_id, conn):
+    address = input("Please enter the street address: ")
+    city = input("City: ")
+    state = input("State: ")
+    zipcode = input("Zipcode: ")
+    sql = """
+            update employees
+            set address = ?,
+                city = ?,
+                state = ?,
+                zipcode = ?
+            where employee_ID = ?
+        """
+    cur = conn.cursor()
+    cur.execute(sql, (address, city, state, zipcode, int(employee_id)))
+    conn.commit()
+
+
+def update_contact_info(conn, cursor):
+    while True:
+        try:
+            # refresh table each time the rate is change and committed
+            people = reports.list_employees(conn)
+            print(people)
+
+            # get user input
+            user_sel = input("\nPlease type the person's last name or [x] to return to the main menu: ")
+
+            # check user input and if they want to quit
+            if user_sel.lower() == 'x':
+                # return False to return to the menu
+                return False
+            # search employee dataframe
+            found = reports.find_employee(people, user_sel)
+            # raise an error when the dataframe is empty
+            if people[found].empty:
+                raise RuntimeError("Last name does not exist")
+            # check to make sure only one person is found, otherwise isolate by user id
+            # todo - not tested this functionality yet, need to add same last name
+            elif len(people[found]) > 1:
+                print("There is more than one person with that last name!")
+                # show multiple records
+                print(people[found])
+                # if more than one person is found, make user select by user id
+                user_id = input("Please enter an employee ID: ")
+                set_contact_info(user_id, cursor)
+                conn.commit()
+                return True
+            else:
+                # print the dataframe
+                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
+                print(people[found])
+                # set employee id to user id since user input the last name
+                user_id = people[found]['employee_ID'].values[0]
+
+                # print(people[found].columns) # debugging
+                # print(f"employee ID: {user_id}") # debugging
+
+                # set the new rate
+                set_contact_info(user_id, conn)
+
+                # print confirmation message
+                print(f"{people[found]['first_name'].values[0]}'s address has been updated successfully.\n")
+
+                # continue through loop until user is finished updating rates
+                continue
+        except Exception as e:
+            print(f"{e}. Please search again.")
+
+
+def set_rate(employee_id, conn):
+    rate = float(input("Please enter a rate: $"))
+    sql = """
+        update employees
+        set hourly_rate = ?
+        where employee_ID = ?
+    """
+    cur = conn.cursor()
+    cur.execute(sql, (rate, int(employee_id)))
+    conn.commit()
+
+    return rate
+
+
+def update_rate(conn, cursor):
+    while True:
+        try:
+            # refresh table each time the rate is change and committed
+            people = reports.list_employees(conn)
+            print(people)
+
+            # get user input
+            user_sel = input("\nPlease type the person's last name or [x] to return to the main menu: ")
+
+            # check user input and if they want to quit
+            if user_sel.lower() == 'x':
+                # return False to return to the menu
+                return False
+            # search employee dataframe
+            found = reports.find_employee(people, user_sel)
+            # raise an error when the dataframe is empty
+            if people[found].empty:
+                raise RuntimeError("Last name does not exist")
+            # check to make sure only one person is found, otherwise isolate by user id
+            # todo - not tested this functionality yet, need to add same last name
+            elif len(people[found]) > 1:
+                print("There is more than one person with that last name!")
+                # show multiple records
+                print(people[found])
+                # if more than one person is found, make user select by user id
+                user_id = input("Please enter an employee ID: ")
                 set_rate(user_id, cursor)
                 conn.commit()
                 return True
             else:
                 # print the dataframe
-                print("------ Person was found! -------")
+                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------")
                 print(people[found])
-                ############################################################
-                # DEBUGGING HERE - NEED TO FIGURE OUT HOW TO ISOLATE EMPLOYEE ID
-                user_id = people[found["employee_ID"]]
-                print(f"employee ID: {user_id}")
+                # set employee id to user id since user input the last name
+                user_id = people[found]['employee_ID'].values[0]
+
+                # print(people[found].columns) # debugging
+                # print(f"employee ID: {user_id}") # debugging
+
                 # set the new rate
-                rate = set_rate(user_id, cursor)
-                # commit to the database
-                conn.commit()
+                rate = set_rate(user_id, conn)
+
                 # print confirmation message
-                print(f"{found.first_name}'s hourly rate has been updated to ${str(rate)}")
-                # return true to continue looping through search feature
-                return True
+                print(f"{people[found]['first_name'].values[0]}'s hourly rate has been updated to ${str(rate)}\n")
+
+                # continue through loop until user is finished updating rates
+                continue
         except Exception as e:
             print(f"{e}. Please search again.")
 
@@ -154,6 +228,7 @@ def load_employee(conn, cursor, table_name, employee):
     conn.commit()
 
 
+# todo remove mode, remove "load"
 def add_employee(conn, cursor, table_name, employees, mode):
     # if a person is adding an employee, display prompt for intake
     if mode == "user":
