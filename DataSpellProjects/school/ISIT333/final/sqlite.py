@@ -17,58 +17,6 @@ def drop_employee(employee_id, conn):
     conn.commit()
 
 
-def remove_employee(conn):
-    while True:
-        try:
-            # refresh table each time the rate is change and committed
-            people = reports.list_employees(conn)
-            reports.get_print_list(people)
-
-            # get user input
-            user_sel = input("\nPlease type the person's last name or [x] to return to the main menu: ")
-
-            # check user input and if they want to quit
-            if user_sel.lower() == 'x':
-                # return False to return to the menu
-                return False
-            # search employee dataframe
-            found = reports.find_employee(people, user_sel)
-            # raise an error when the dataframe is empty
-            if people[found].empty:
-                raise RuntimeError("Last name does not exist")
-            # check to make sure only one person is found, otherwise isolate by user id
-            elif len(people[found]) > 1:
-                print("There is more than one person with that last name!")
-                # show multiple records
-                reports.get_print_list(people[found])
-                # if more than one person is found, make user select by user id
-                user_id = input("Please enter an employee ID: ")
-                drop_employee(user_id, conn)
-                employee = reports.get_employee_by_emp_id(people[found], user_id)
-                print(f"\n{employee['first_name'].values[0]} has been removed successfully.\n")
-                continue
-            else:
-                # set employee id to user id since user input the last name
-                user_id = people[found]['employee_ID'].values[0]
-                # print(people[found].columns) # debugging
-                # print(f"employee ID: {user_id}") # debugging
-                print(
-                    f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------\n")
-                # print the dataframe
-                reports.get_print_list(people[found])
-
-                # set the new rate
-                drop_employee(user_id, conn)
-
-                # print confirmation message
-                print(f"{people[found]['first_name'].values[0]} has been removed successfully.\n")
-
-            # continue through loop until user is finished updating rates
-            continue
-        except Exception as e:
-            print(f"{e}. Please search again.")
-
-
 def set_contact_info(employee_id, conn):
     address = input("Please enter the street address: ")
     city = input("City: ")
@@ -85,57 +33,6 @@ def set_contact_info(employee_id, conn):
     cur = conn.cursor()
     cur.execute(sql, (address, city, state, zipcode, int(employee_id)))
     conn.commit()
-
-
-def update_contact_info(conn):
-    while True:
-        try:
-            # refresh table each time the rate is change and committed
-            people = reports.list_employees(conn)
-            reports.get_print_list(people)
-
-            # get user input
-            user_sel = input("\nPlease type the person's last name or [x] to return to the main menu: ")
-
-            # check user input and if they want to quit
-            if user_sel.lower() == 'x':
-                # return False to return to the menu
-                return False
-            # search employee dataframe
-            found = reports.find_employee(people, user_sel)
-            # raise an error when the dataframe is empty
-            if people[found].empty:
-                raise RuntimeError("Last name does not exist")
-            # check to make sure only one person is found, otherwise isolate by user id
-            elif len(people[found]) > 1:
-                print("There is more than one person with that last name!")
-                # show all records
-                reports.get_print_list(people[found])
-                # if more than one person is found, make user select by user id
-                user_id = input("Please enter an employee ID: ")
-                set_contact_info(user_id, conn)
-                employee = reports.get_employee_by_emp_id(people[found], user_id)
-                print(f"\n{employee['first_name'].values[0]}'s address information has been updated successfully!\n")
-                continue
-            else:
-                # set employee id to user id since user input the last name
-                user_id = people[found]['employee_ID'].values[0]
-                # print(people[found].columns) # debugging
-                # print(f"employee ID: {user_id}") # debugging
-                print(f"------ {people[found]['first_name'].values[0]} {people[found]['last_name'].values[0]} was found! -------\n")
-                # print the dataframe
-                reports.get_print_list(people[found])
-
-                # set the new rate
-                set_contact_info(user_id, conn)
-
-                # print confirmation message
-                print(f"{people[found]['first_name'].values[0]}'s address information has been updated successfully!\n")
-
-            # continue through loop until user is finished updating rates
-            continue
-        except Exception as e:
-            print(f"{e}. Please search again.")
 
 
 def set_rate(employee_id, conn):
@@ -155,7 +52,7 @@ def set_rate(employee_id, conn):
     return rate
 
 
-def update_rate(conn):
+def edit_employee(conn, mode):
     while True:
         try:
             # refresh table each time the rate is change and committed
@@ -181,9 +78,29 @@ def update_rate(conn):
                 reports.get_print_list(people[found])
                 # if more than one person is found, make user select by user id
                 user_id = input("Please enter an employee ID: ")
-                rate = set_rate(user_id, conn)
-                employee = reports.get_employee_by_emp_id(people[found], user_id)
-                print(f"\n{employee['first_name'].values[0]} had their rate adjusted to: ${str(rate)}\n")
+                # check mode selection passed from main
+                if mode == "update_rate":
+                    # get user selection rate to print in confirmation
+                    rate = set_rate(user_id, conn)
+                    # get the employee by ID
+                    employee = reports.get_employee_by_emp_id(people[found], user_id)
+                    # print success message
+                    print(f"\n{employee['first_name'].values[0]} had their rate adjusted to: ${str(rate)}\n")
+                elif mode == "update_contact":
+                    # prompt user to update contact
+                    set_contact_info(user_id, conn)
+                    # get the employee by ID
+                    employee = reports.get_employee_by_emp_id(people[found], user_id)
+                    # print confirmation message and new address dataframe
+                    print(f"\n{employee['first_name'].values[0]}'s address information has been updated successfully!\n")
+                    print(reports.employee_contacts(people[employee]))
+                elif mode == "remove":
+                    drop_employee(user_id, conn)
+                    employee = reports.get_employee_by_emp_id(people[found], user_id)
+                    print(f"\n{employee['first_name'].values[0]} has been removed successfully.\n")
+                else:
+                    print("reached end of elif - what happened?")  # debugging
+                # continue through selection loop
                 continue
             else:
                 # set employee id to user id since user input the last name
@@ -195,15 +112,25 @@ def update_rate(conn):
                 # print the dataframe
                 print()
                 reports.get_print_list(people[found])
-
-                # set the new rate
-                rate = set_rate(user_id, conn)
-
-                # print confirmation message
-                print(f"{people[found]['first_name'].values[0]}'s hourly rate has been updated to ${str(rate)}\n")
-
-            # continue through loop until user is finished updating rates
-            continue
+                if mode == "update_rate":
+                    # set the new rate
+                    rate = set_rate(user_id, conn)
+                    # print confirmation message
+                    print(f"{people[found]['first_name'].values[0]}'s hourly rate has been updated to ${str(rate)}\n")
+                    # continue through loop until user is finished updating rates
+                elif mode == "update_contact":
+                    set_contact_info(user_id, conn)
+                    # print confirmation message
+                    print(f"{people[found]['first_name'].values[0]}'s address information has been updated successfully!\n")
+                    print(reports.employee_contacts(people[found]))
+                elif mode == "remove":
+                    # set the new rate
+                    drop_employee(user_id, conn)
+                    # print confirmation message
+                    print(f"{people[found]['first_name'].values[0]} has been removed successfully.\n")
+                else:
+                    print("Reached end of loop - what happened")  # debugging
+                continue
         except Exception as e:
             print(f"{e}. Please search again.")
 
@@ -235,41 +162,30 @@ def load_employee(conn, table_name, employee):
     conn.commit()
 
 
-# todo remove mode, remove "load"
-def add_employee(conn, table_name, employees, mode):
+def add_employee(conn, table_name, employees):
     # if a person is adding an employee, display prompt for intake
-    if mode == "user":
-        employee_id = check_rand(employees, rand_int=rand.randint(1000, 9999))
-        user_firstname = input("First name: ")
-        user_lastname = input("Last name: ")
-        user_address = input("Address: ")
-        user_city = input("City: ")
-        user_state = input("State: ")
-        user_zipcode = input("Zipcode: ")
-        user_email = set_email(user_firstname, user_lastname)
-        user_phone = input("Phone: ")
-        hourly_rate = input("Hourly rate: $")
-        department = input("Department: ")
+    employee_id = check_rand(employees, rand_int=rand.randint(1000, 9999))
+    user_firstname = input("First name: ")
+    user_lastname = input("Last name: ")
+    user_address = input("Address: ")
+    user_city = input("City: ")
+    user_state = input("State: ")
+    user_zipcode = input("Zipcode: ")
+    user_email = set_email(user_firstname, user_lastname)
+    user_phone = input("Phone: ")
+    hourly_rate = input("Hourly rate: $")
+    department = input("Department: ")
 
-        employee = [employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode,
-                    user_email, user_phone, hourly_rate, department]
+    employee = [employee_id, user_firstname, user_lastname, user_address, user_city, user_state, user_zipcode,
+                user_email, user_phone, hourly_rate, department]
 
-        # load the employee to the database and commit
-        load_employee(conn, table_name, employee)
+    # load the employee to the database and commit
+    load_employee(conn, table_name, employee)
 
-        print(f"\n{user_firstname} added successfully!\n")
-        pass
-    elif mode == "load":
-        # would like to check to see if I can remove the for loop, feels redundant
-        # todo: remove???? I already use load employee for each employee and I used to have double load because of this
-        for employee in employees:
-            load_employee(conn, table_name, employee)
-            print(f"{employee[1]} added successfully!\n")
-    else:
-        print("Reached else statement, what happened?") # debugging line, never hit
+    print(f"\n{user_firstname} added successfully!\n")
 
 
-def generate_employees(conn, cursor, table_name):
+def generate_employees(conn, table_name):
     # create empty list of employees to append each employee to for data validation
     employees = []
     # establish base department names
@@ -343,7 +259,7 @@ def create_table(conn, cursor, table_name):
                    "city TEXT, state TEXT, zipcode TEXT, email TEXT, phone TEXT, hourly_rate REAL, department TEXT)")
 
     # setup initial employees
-    generate_employees(conn, cursor, table_name)
+    generate_employees(conn, table_name)
 
 
 def connect(db_name, table_name):

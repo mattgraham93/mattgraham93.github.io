@@ -70,24 +70,24 @@ def main():
                 print(reports.get_department_search(employee_df, user_sel))
             elif user_input == 4:
                 # add a user to database
-                print("-------=------- Add employee --------------\n")
+                print("--------------- Add employee --------------\n")
                 # user adds employee to database
-                sqlite.add_employee(conn, table_name, employee_df, mode="user")
+                sqlite.add_employee(conn, table_name, employee_df)
                 error_count = reset_error()
             elif user_input == 5:
                 # update rate in database
                 print("--------------- Update rate ----------------\n")
-                sqlite.update_rate(conn)
+                sqlite.edit_employee(conn, mode="update_rate")
                 error_count = reset_error()
             elif user_input == 6:
                 # update employee contact information in the database
                 print("-------- Update contact information --------\n")
-                sqlite.update_contact_info(conn)
+                sqlite.edit_employee(conn, mode="update_contact")
                 error_count = reset_error()
             elif user_input == 7:
                 # remove an employee from the database
                 print("------------ Remove an employee -------------\n")
-                sqlite.remove_employee(conn)
+                sqlite.edit_employee(conn, mode="remove")
                 error_count = reset_error()
             elif user_input == 8:
                 print("Thank you for using our employee database program! We hope you found it helpful. :)")
@@ -135,8 +135,8 @@ if __name__ == "__main__":
     # TODO
     #   Test test test - DONE
     #   finalize comments - DONE
-    #   Identify unused functions
-    #   optimize, but only after initial submission
+    #   Identify unused functions - DONE
+    #   optimize, but only after initial submission - DONE
 
     # TODO - SQL
     #  Create a function to add an employee using the given inputs.
