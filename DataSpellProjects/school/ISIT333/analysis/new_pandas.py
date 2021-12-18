@@ -8,6 +8,8 @@ pd.options.display.max_columns = None
 # see all or specfic number of rows
 pd.options.display.max_rows = 20
 
+data.head(7)
+
 # show head
 # print(data.head())
 # show all data

@@ -77,8 +77,10 @@ def edit_employee(conn, mode):
                 # show multiple records
                 reports.get_print_list(people[found])
                 # if more than one person is found, make user select by user id
-                user_id = input("Please enter an employee ID: ")
+                user_id = input("Please enter an employee ID or [x] to return: ")
                 # check mode selection passed from main
+                if user_id == "x":
+                    continue
                 if mode == "update_rate":
                     # get user selection rate to print in confirmation
                     rate = set_rate(user_id, conn)
@@ -93,7 +95,7 @@ def edit_employee(conn, mode):
                     employee = reports.get_employee_by_emp_id(people[found], user_id)
                     # print confirmation message and new address dataframe
                     print(f"\n{employee['first_name'].values[0]}'s address information has been updated successfully!\n")
-                    print(reports.employee_contacts(people[employee]))
+                    # print(reports.employee_contacts(people[employee]))
                 elif mode == "remove":
                     drop_employee(user_id, conn)
                     employee = reports.get_employee_by_emp_id(people[found], user_id)
