@@ -1,4 +1,3 @@
-
 -- Projects by quarter
 --select concat(d.Clientfiscalyear,'Q',d.Clientfiscalquarter) ClientFYQuarter, count(*) [ProjectsCreated]
 --from Fact_CPS_PI_Project_Information i
