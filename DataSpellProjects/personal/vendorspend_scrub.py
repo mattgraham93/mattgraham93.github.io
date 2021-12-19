@@ -4,7 +4,7 @@ import pandas as pd
 # would like to get this into SQL, but let's start with just fixing the data
 from pandas import DataFrame
 
-file_name = "SAPVendorSpend.xlsx"
+file_name = "fixedSpend.xlsx"
 file_save = "fixedSpend.xlsx"
 
 vsd = pd.read_excel(file_name)
@@ -30,7 +30,7 @@ for sub in unique_subs:
     i += 1
     vsd = vsd.replace(sub, name, regex=True)
 
-vsd
+# vsd
 
 print("---- writing to excel ----")
 try:
