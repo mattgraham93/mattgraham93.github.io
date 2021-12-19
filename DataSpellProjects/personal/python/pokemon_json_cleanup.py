@@ -1,6 +1,6 @@
 import json
 
-pokemon_file = r"C:\mattgraham93.github.io\DataSpellProjects\data\pokemon.json"
+pokemon_file = r"/data/pokemon.json"
 
 with open(pokemon_file) as f:
     data = json.load(f)

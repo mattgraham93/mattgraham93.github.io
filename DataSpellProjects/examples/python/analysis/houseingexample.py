@@ -19,7 +19,7 @@ warnings.filterwarnings('ignore')
 
 print("######################## reading files")
 train = pd.read_csv('train.csv')
-test = pd.read_csv('../../data/test.csv')
+test = pd.read_csv('../../../data/test.csv')
 
 print("########################get/show test and train size and columns")
 train.shape, test.shape

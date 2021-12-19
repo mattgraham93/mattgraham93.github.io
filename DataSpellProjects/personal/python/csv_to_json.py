@@ -29,8 +29,8 @@ def make_json(csv_file_path, json_file_path):
 
 # Decide the two file paths according to your
 # computer system
-csv_file_path = r"C:\mattgraham93.github.io\DataSpellProjects\data\pokemon.csv"
-json_file_path = r"C:\mattgraham93.github.io\DataSpellProjects\data\pokemon.json"
+csv_file_path = r"/data/pokemon.csv"
+json_file_path = r"/data/pokemon.json"
 
 # Call the make_json function
 print("running conversion")
