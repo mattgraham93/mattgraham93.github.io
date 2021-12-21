@@ -169,9 +169,22 @@ def main():
     print(f"Pokemon: {p.weight}")
     print(f"Name: {p.name}")
     # f"Moves: {p.get_move_by_number(p.moves)}"
-    moves = p.get_move_by_number(str(p.number))
+    stats = p.stats
+    stat_list = {}
+    for item in stats:
+        # print(item)
+        stat = item['stat']
+        name = stat['name']
+        val = stat['base_stat']
 
-    get_all_items(moves)
+        stat_val = {
+            'name': name,
+            'base_stat': val
+        }
+
+        stat_list[item] = stat_val
+
+    print(stat_list)
     # print(moves)
 
 
@@ -181,6 +194,15 @@ def get_all_items(d_items):
             get_all_items(value)
         else:
             print(f"{key}, {value}")
+
+
+def get_power(d_items):
+    for key in d_items.items():
+        if key == "power":
+            for item in key:
+                print(item)
+
+
 
 
 if __name__ == '__main__':
