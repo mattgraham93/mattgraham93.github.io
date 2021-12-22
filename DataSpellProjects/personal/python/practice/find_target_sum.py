@@ -1,56 +1,31 @@
 # Function to find all unique combination of
 # given elements such that their sum is K
 
-
-def unique_combination(l, sum, k, local, a):
-
-    # If a unique combination is found
-    if sum == k:
-        print("{", end="")
-        for i in range(len(local)):
-            if i != 0:
-                print(" ", end="")
-            print(local[i], end="")
-            if i != len(local) - 1:
-                print(", ", end="")
-        print("}")
-        return
-
-    # For all other combinations
-    for i in range(l, len(a), 1):
-
-        # Check if the sum exceeds K
-        if sum + a[i] > k:
-            continue
-
-        # Check if it is repeated or not
-        if (i > l and
-                a[i] == a[i - 1]):
-            continue
-
-        # Take the element into the combination
-        local.append(a[i])
-
-        # Recursive call
-        unique_combination(i + 1, sum + a[i],
-                           k, local, a)
-
-        # Remove element from the combination
-        local.remove(local[len(local) - 1])
-
-
-# Function to find all combination of the given elements
-def combination(a, k):
-    # Sort the given elements
-    a.sort(reverse=False)
-    local = []
-    unique_combination(0, 0, k, local, a)
+def sum_to_n(integers, target):
+    # create empty list
+    output = []
+    # check for end of list
+    if target < 0:
+        return []
+    # iterate through list of numbers
+    for i in range(len(integers)):
+        # check if the passed value is the sum of the target
+        if target == integers[i]:
+            output.append([integers[i]])
+        else:
+            # get the next remaining values without the selected integer
+            # pass the next integer of the list to identify as a target to sum
+            for j in sum_to_n(integers[i:], target-integers[i]):
+                # append items where remaining items and selected value are the sum of target
+                output.append([integers[i]]+j)
+    return output
 
 
 def main():
     nums = [2, 3, 5]
     target = 8
-    combination(nums, target)
+    combos = sum_to_n(nums, target)
+    print(combos)
 
 
 if __name__ == "__main__":
