@@ -15,7 +15,7 @@ def weekly_aggregation(ts, delim='-'):
     # ts: str, list of timestamps
     # delim: str, delimeter that separates the date
     out, week, week_ind = [], [], 0
-    for i,t in enumerate(ts):
+    for i, t in enumerate(ts):
         if i == 0:
             week.append(t)
             start_date = datetime.strptime(t, f'%Y{delim}%m{delim}%d')
