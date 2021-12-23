@@ -1,10 +1,7 @@
-import json
 
-filename = "file1"
-
-recs = json.load(filename)
 
 """
+    parse through large json without key
     get hashes from main datasource
 
     when a file is received with specified name
