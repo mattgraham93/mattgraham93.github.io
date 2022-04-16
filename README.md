@@ -9,3 +9,19 @@ We all often to focus on our own needs and not the needs of others. I believe we
 Global villages scare nationalists. I believe we, as the human race, require each other to push our race to the next phase of evolution. It's my life goal to share this with the world and help progress our race.
 
 [Link to County Voter check-in for Pete for America 2020](https://app.powerbi.com/view?r=eyJrIjoiZTE0ZDE5NGUtY2E4Yi00YjdmLTgwNWItMjM0N2NlNWQzNmYzIiwidCI6ImY5NGMyNTFjLTEzNDctNDIyZS1iM2VhLThhYzU2YmVmZDZjYiIsImMiOjZ9)
+
+Employee database program (Python/pandas/SQLite3): [repo](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/school/21_4_ISIT333/final)
+
+Mortality analysis: [notebook](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/21_4_ISIT333/analysis/ex_2-2_mortality.ipynb)
+
+GDP by state analysis: [notebook](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)
+
+Pokemon API: [python](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/python/personal/pokemon_api.py)
+
+Redfin interview: [SQL/Tableau]: [folder]()
+
+### Fun programs/algorithms
+Random number checker assigner/checker: [python](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/python/personal/random_checker.py)
+
+Finding bigrams: [python](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/python/personal/practice/find_bigrams.py)
+
