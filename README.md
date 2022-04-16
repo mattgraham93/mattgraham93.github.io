@@ -8,4 +8,4 @@ We all often to focus on our own needs and not the needs of others. I believe we
 
 Global villages scare nationalists. I believe we, as the human race, require each other to push our race to the next phase of evolution. It's my life goal to share this with the world and help progress our race.
 
-[https://app.powerbi.com/view?r=eyJrIjoiZTE0ZDE5NGUtY2E4Yi00YjdmLTgwNWItMjM0N2NlNWQzNmYzIiwidCI6ImY5NGMyNTFjLTEzNDctNDIyZS1iM2VhLThhYzU2YmVmZDZjYiIsImMiOjZ9] (Link to County Voter check-in for Pete for America 2020)
+[Link to County Voter check-in for Pete for America 2020] (https://app.powerbi.com/view?r=eyJrIjoiZTE0ZDE5NGUtY2E4Yi00YjdmLTgwNWItMjM0N2NlNWQzNmYzIiwidCI6ImY5NGMyNTFjLTEzNDctNDIyZS1iM2VhLThhYzU2YmVmZDZjYiIsImMiOjZ9)
