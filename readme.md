@@ -10,6 +10,8 @@ Global villages scare nationalists. I believe we, as the human race, require eac
 
 ## Primary works
 ### Analyses
+*Latest* House Representation by GDP analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)
+
 Healthcare analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/DA310_Group5Project(1).ipynb)
 
 HR analysis: [python/jupyter]()
@@ -20,7 +22,6 @@ Mortality analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham9
 
 Basic linear regression: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/multiple_linear/stock_market.ipynb)
 
-GDP by state analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)
 
 ### Programs
 Employee database program: [python/pandas/SQLite3](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/school/21_4_ISIT333/final)
