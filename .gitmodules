@@ -1,8 +1,3 @@
 [submodule "examples/python/codebasics/data-structures-algorithms-python"]
 path = examples/python/codebasics/data-structures-algorithms-python
-url = git://https://github.com/codebasics/data-structures-algorithms-python
-
-
-[submodule "examples/python/codebasics/py"]
-path = examples/python/codebasics/py
-url = git://https://github.com/codebasics/py
+url = git://codebasics/data-structures-algorithms-python
