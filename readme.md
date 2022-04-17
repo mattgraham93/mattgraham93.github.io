@@ -10,7 +10,7 @@ Global villages scare nationalists. I believe we, as the human race, require eac
 
 ## Primary works
 ### Analyses
-*Latest* House Representation by GDP analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)
+*Latest* House Representation by GDP analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)/[article](https://grahammr93.medium.com/can-us-state-gdp-determine-congressional-representation-e3cda57285f3)
 
 Healthcare analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/DA310_Group5Project(1).ipynb)
 
