@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Future Value Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1>Future Value Calculator</h1>
+    <form action="{{ url_for('calculate') }}" method="post">
+        <label class="pad_top">Monthly Investment:</label>
+        <input type="text" name="monthly_investment" 
+               value="{{ fv.monthly_investment }}" required><br>
+        <label class="pad_top">Yearly Interest Rate:</label>
+        <input type="text" name="yearly_interest_rate" 
+               value="{{ fv.yearly_interest_rate }}" required><br>
+        <label class="pad_top">Years:</label>
+        <input type="text" name="years" 
+               value="{{ fv.years }}" required><br>
+        <label class="pad_top">Future Value:</label>
+        <input type="text" name="future_value" 
+               value="{{ fv.future_value }}" disabled><br>
+        <label>&nbsp;</label>
+        <input type="submit" value="Calculate" class="margin_left">
+    </form>
+</body>
+</html>
