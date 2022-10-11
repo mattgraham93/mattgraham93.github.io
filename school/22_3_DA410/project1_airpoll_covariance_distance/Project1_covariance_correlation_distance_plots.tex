@@ -1,0 +1,327 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={DA410\_Project1\_MattGraham},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DA410\_Project1\_MattGraham}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+This is our first project, analyzing air pollution, mortality rates, and
+relevant parameters.
+
+\hypertarget{getting-imports-for-analysis}{%
+\paragraph{Getting imports for
+analysis}\label{getting-imports-for-analysis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(nnspat)  }\CommentTok{\# used for dist2full()}
+\FunctionTok{library}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)  }\CommentTok{\# used to select numeric datatypes}
+\FunctionTok{library}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(reshape)  }\CommentTok{\# used for melting matricies}
+
+\NormalTok{airpol.full }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/mattgraham93.github.io/school/22\_3\_DA410/data/airpoll.txt"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{city.names }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(airpol.full[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\NormalTok{airpol.data.sub }\OtherTok{\textless{}{-}}\NormalTok{ airpol.full[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{8}\NormalTok{]}
+
+\NormalTok{airpol.data.sub}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Rainfall Education Popden Nonwhite NOX SO2 Mortality
+## 1        36      11.4   3243      8.8  15  59     921.9
+## 2        35      11.0   4281      3.5  10  39     997.9
+## 3        44       9.8   4260      0.8   6  33     962.4
+## 4        47      11.1   3125     27.1   8  24     982.3
+## 5        43       9.6   6441     24.4  38 206    1071.0
+## 6        53      10.2   3325     38.5  32  72    1030.0
+## 7        43      12.1   4679      3.5  32  62     934.7
+## 8        45      10.6   2140      5.3   4   4     899.5
+## 9        36      10.5   6582      8.1  12  37    1002.0
+## 10       36      10.7   4213      6.7   7  20     912.3
+## 11       52       9.6   2302     22.2   8  27    1018.0
+## 12       33      10.9   6122     16.3  63 278    1025.0
+## 13       40      10.2   4101     13.0  26 146     970.5
+## 14       35      11.1   3042     14.7  21  64     986.0
+## 15       37      11.9   4259     13.1   9  15     958.8
+## 16       35      11.8   1441     14.8   1   1     860.1
+\end{verbatim}
+
+\hypertarget{calculating-covariance-and-correlation}{%
+\subsubsection{1 - Calculating covariance and
+correlation}\label{calculating-covariance-and-correlation}}
+
+Identify which pairs of variables seem to be strongly associated, and
+describe the nature (strength and direction) of the relationship between
+these variable pairs.
+
+\hypertarget{covariance}{%
+\paragraph{Covariance}\label{covariance}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.S }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{var}\NormalTok{(airpol.data.sub), }\AttributeTok{digits=}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{melted.my.S }\OtherTok{\textless{}{-}} \FunctionTok{melt}\NormalTok{(my.S)}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ melted.my.S, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{X1, }\AttributeTok{y=}\NormalTok{X2, }\AttributeTok{fill=}\NormalTok{value)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(value, }\DecValTok{1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project1_covariance_correlation_distance_plots_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\hypertarget{correlation}{%
+\paragraph{Correlation}\label{correlation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.R }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{cor}\NormalTok{(airpol.data.sub), }\AttributeTok{digits=}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{melted.my.R }\OtherTok{\textless{}{-}} \FunctionTok{melt}\NormalTok{(my.R)}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ melted.my.R, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{X1, }\AttributeTok{y=}\NormalTok{X2, }\AttributeTok{fill=}\NormalTok{value)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(value, }\DecValTok{1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project1_covariance_correlation_distance_plots_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\hypertarget{covariance-vs.-correlation}{%
+\paragraph{Covariance
+vs.~Correlation}\label{covariance-vs.-correlation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{cov2cor}\NormalTok{(my.S))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Rainfall   Education     Popden   Nonwhite         NOX        SO2
+## Rainfall   1.0000000 -0.49976469 -0.2939816  0.5419172 -0.08035640 -0.1737525
+## Education -0.4997647  1.00000000 -0.1924363 -0.2842847 -0.08906087 -0.2663758
+## Popden    -0.2939816 -0.19243630  1.0000000 -0.1100481  0.58408307  0.6185629
+## Nonwhite   0.5419172 -0.28428472 -0.1100481  1.0000000  0.31286146  0.2537516
+## NOX       -0.0803564 -0.08906087  0.5840831  0.3128615  1.00000000  0.9230345
+## SO2       -0.1737525 -0.26637581  0.6185629  0.2537516  0.92303455  1.0000000
+## Mortality  0.2925457 -0.58057023  0.5787939  0.5271655  0.56885330  0.5879137
+##            Mortality
+## Rainfall   0.2925457
+## Education -0.5805702
+## Popden     0.5787939
+## Nonwhite   0.5271655
+## NOX        0.5688533
+## SO2        0.5879137
+## Mortality  1.0000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{melted.my.cor2cov }\OtherTok{\textless{}{-}} \FunctionTok{melt}\NormalTok{(}\FunctionTok{cov2cor}\NormalTok{(my.S))}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ melted.my.cor2cov, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{X1, }\AttributeTok{y=}\NormalTok{X2, }\AttributeTok{fill=}\NormalTok{value)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(value, }\DecValTok{1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project1_covariance_correlation_distance_plots_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\hypertarget{covariancecorrelation-analysis}{%
+\paragraph{Covariance/correlation
+analysis}\label{covariancecorrelation-analysis}}
+
+Looking at our correlation plots, a few things really stood out to me.
+The first being the negative correlation between education and rainfall.
+There is also a strong positive correlation between NOX and SO2. It
+would make sense for pollutanats to be holistically more present in
+places with more pollution versus those without.
+
+We can also see the positive correlation between NOX and SO2 has on
+mortality rates! Theo only negative correlation is education, which is
+quite interesting.
+
+\hypertarget{calculating-weighted-distance}{%
+\subsubsection{2 - Calculating weighted
+distance}\label{calculating-weighted-distance}}
+
+Describe some of the most similar pairs of cities and some of the most
+different pairs of cities, giving evidence from the distance matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{std }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(airpol.data.sub, sd) }\CommentTok{\# finding standard deviations of variables}
+\NormalTok{airpol.data.std }\OtherTok{\textless{}{-}} \FunctionTok{sweep}\NormalTok{(airpol.data.sub,}\DecValTok{2}\NormalTok{,std,}\AttributeTok{FUN=}\StringTok{"/"}\NormalTok{)  }\CommentTok{\# dividing each variable by its standard deviation}
+\NormalTok{dis }\OtherTok{\textless{}{-}} \FunctionTok{dist}\NormalTok{(airpol.data.std) }
+\NormalTok{dis.matrix}\OtherTok{\textless{}{-}}\FunctionTok{dist2full}\NormalTok{(dis) }
+\FunctionTok{rownames}\NormalTok{(dis.matrix) }\OtherTok{\textless{}{-}}\NormalTok{ city.names}
+\FunctionTok{colnames}\NormalTok{(dis.matrix) }\OtherTok{\textless{}{-}}\NormalTok{ city.names}
+
+\NormalTok{my.melted.dist }\OtherTok{\textless{}{-}} \FunctionTok{melt}\NormalTok{(}\FunctionTok{round}\NormalTok{(dis.matrix,}\AttributeTok{digits=}\DecValTok{2}\NormalTok{))}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ my.melted.dist, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{X1, }\AttributeTok{y=}\NormalTok{X2, }\AttributeTok{fill=}\NormalTok{value)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(value, }\DecValTok{1}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project1_covariance_correlation_distance_plots_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\hypertarget{distance-analysis}{%
+\paragraph{Distance analysis}\label{distance-analysis}}
+
+We can see that some of the biggest differences are stemming from
+Chicago, IL. It differs most from other metro areas like Atlanta, GA and
+even Dallas, TX!
+
+Some of the most similar are among the cities in Ohio - Akron, Canton,
+Cleveland, and Columbus.
+
+\hypertarget{determining-multivariate-normality}{%
+\subsubsection{3 - Determining multivariate
+normality}\label{determining-multivariate-normality}}
+
+What is your conclusion based on the plot?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Copy the chisplot function into R}
+\NormalTok{chisplot }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{is.matrix}\NormalTok{(x)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"x is not a matrix"}\NormalTok{)}
+  \DocumentationTok{\#\#\# determine dimensions}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(x)}
+\NormalTok{  p }\OtherTok{\textless{}{-}} \FunctionTok{ncol}\NormalTok{(x)}
+\NormalTok{  xbar }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(x, }\DecValTok{2}\NormalTok{, mean)}
+\NormalTok{  S }\OtherTok{\textless{}{-}} \FunctionTok{var}\NormalTok{(x)}
+\NormalTok{  S }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(S)}
+\NormalTok{  index }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n)}\SpecialCharTok{/}\NormalTok{(n}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+\NormalTok{  xcent }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(}\FunctionTok{t}\NormalTok{(x) }\SpecialCharTok{{-}}\NormalTok{ xbar)}
+\NormalTok{  di }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(xcent, }\DecValTok{1}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x,S) x }\SpecialCharTok{\%*\%}\NormalTok{ S }\SpecialCharTok{\%*\%}\NormalTok{ x,S)}
+\NormalTok{  quant }\OtherTok{\textless{}{-}} \FunctionTok{qchisq}\NormalTok{(index,p)}
+  \FunctionTok{plot}\NormalTok{(quant, }\FunctionTok{sort}\NormalTok{(di), }\AttributeTok{ylab =} \StringTok{"Ordered distances"}\NormalTok{,}
+  \AttributeTok{xlab =} \StringTok{"Chi{-}square quantile"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}\AttributeTok{pch=}\DecValTok{1}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Note: You must check if airpol.full has non{-}numerical columns or not. Use only numerical columns for plot!}
+\FunctionTok{chisplot}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{select\_if}\NormalTok{(airpol.full, is.numeric)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project1_covariance_correlation_distance_plots_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\hypertarget{normality-analysis}{%
+\paragraph{Normality analysis}\label{normality-analysis}}
+
+Given the quantile plot above, we can see an exponentially increase in
+distance from our mean expected value. This implies that mortality is
+not normal across the United States in cities that were measured!
+
+\end{document}

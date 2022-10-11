@@ -1,0 +1,113 @@
+---
+title: "DA410_Project2_MattGraham"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+This is our first project, analyzing air pollution, mortality rates, and relevant parameters.
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+```
+
+## Part 1
+#### Scores by sex
+
+```{r}
+testdata <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/testscoredata.txt", header=TRUE)
+testdata.noIDs <- testdata[,-1]  #to remove the ID numbers
+as.data.frame(testdata.noIDs)
+```
+
+### Hotelling's test
+
+```{r warning=FALSE}
+
+summary(manova(cbind(math, reading) ~sex, data=testdata.noIDs), test="Hotelling")
+
+```
+
+#### Hotelling's Analysis
+At alpha = 0.05 and p-value < 0.05, we can conclude there is sufficient evidence to state there are differences between mean math and reading scores between the recorded sexes. 
+
+
+## Part 2
+
+
+Suppose we have gathered the following data on female athletes in three sports. The 
+measurements we have made are the athletes' heights and vertical jumps, both in inches. The 
+data are listed as (height, jump) as follows: 
+
+```{r}
+sport <- c('B','B','B','B','B','T','T','T','T','S','S','S','S','S','S') 
+height <- c(66,65,68,64,67,63,61,62,60,62,65,63,62,63.5,66) 
+jump<-c(27,29,26,29,29,23,26,23,26,23,21,21,23,22,21.5)
+
+sports <- as.data.frame(cbind(sport, jump, height))
+sports$jump <- as.numeric(sports$jump)
+sports$height <- as.numeric(sports$height)
+
+sports
+
+```
+
+
+### Wilks' Lambda test
+
+```{r}
+
+summary(manova(cbind(height, jump) ~ sport), data=sports, test="Wilks")
+
+```
+
+ 
+### Assumption check
+
+```{r}
+
+sport.manova <- manova(cbind(height, jump) ~ sport)
+  
+chisplot <- function(x) { 
+    if (!is.matrix(x)) stop("x is not a matrix") 
+    ### determine dimensions 
+    n <- nrow(x) 
+    p <- ncol(x) 
+    xbar <- apply(x, 2, mean) 
+    S <- var(x) 
+    S <- solve(S) 
+    index <- (1:n)/(n+1) 
+    xcent <- t(t(x) - xbar) 
+    di <- apply(xcent, 1, function(x,S) x %*% S %*% x,S) 
+    quant <- qchisq(index,p) 
+    plot(quant, sort(di), ylab = "Ordered distances", 
+         xlab = "Chi-square quantile", lwd=2,pch=1) 
+}
+
+chisplot(residuals(sport.manova))
+
+```
+
+#### Normality analysis
+There is a bit of a sine pattern on our plot. This does make me second-guess the assumption of our tests. However, As this is a mostly-linear line, we can assume we have met all our assumptions and can continue stating there are differences between recorded sexes.
+ 
+### Mean analysis 
+
+```{r}
+
+my.n <- nrow(sports)  # number of individuals 
+ 
+# Sample mean vectors for the SAT scores data: 
+as.data.frame(
+  sports %>% 
+    group_by(sport) %>%
+    summarise_at(vars("jump", "height"), mean)
+)
+```
+
+Above, we can see the differences in our height vs. jump averages. We can note our softball players are between track and basketball players in terms of height. They are, however, lowest when jumping. Meanwhile, the inverse of that statement is true for our shorest track folks. Our basketball players are both the tallest and jump the highest.

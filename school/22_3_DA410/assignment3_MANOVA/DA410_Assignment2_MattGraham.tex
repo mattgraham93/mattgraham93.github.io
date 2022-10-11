@@ -1,0 +1,717 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={DA410\_Assignment3\_MattGraham},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DA410\_Assignment3\_MattGraham}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych)  }\CommentTok{\# used for Pillai Statistic}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section}{%
+\subsubsection{6.27}\label{section}}
+
+Baten, Tack, and Baeder (1958) compared judges' scores on fish prepared
+by three methods. Twelve fish were cooked by each method, and several
+judges tasted fish samples and rated each on four variables: y1 ---
+aroma, y2 = flavor, y3 = texture, and y4 --- moisture. The data are in
+Table 6.17. Each entry is an average score for the judges on that fish.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_6}\FloatTok{.17} \OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/mattgraham93.github.io/school/22\_3\_DA410/data/T6\_17\_FISH.DAT"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(t\_6}\FloatTok{.17}\NormalTok{) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"method"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\StringTok{"Y"}\NormalTok{, }\AttributeTok{sep =} \StringTok{\textquotesingle{}.\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{))}
+\NormalTok{t\_6}\FloatTok{.17}\SpecialCharTok{$}\NormalTok{method }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(t\_6}\FloatTok{.17}\SpecialCharTok{$}\NormalTok{method)}
+
+\NormalTok{method1 }\OtherTok{\textless{}{-}}\NormalTok{ t\_6}\FloatTok{.17}\NormalTok{[t\_6}\FloatTok{.17}\SpecialCharTok{$}\NormalTok{method}\SpecialCharTok{==}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{method2 }\OtherTok{\textless{}{-}}\NormalTok{ t\_6}\FloatTok{.17}\NormalTok{[t\_6}\FloatTok{.17}\SpecialCharTok{$}\NormalTok{method}\SpecialCharTok{==}\DecValTok{2}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{method3 }\OtherTok{\textless{}{-}}\NormalTok{ t\_6}\FloatTok{.17}\NormalTok{[t\_6}\FloatTok{.17}\SpecialCharTok{$}\NormalTok{method}\SpecialCharTok{==}\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+
+\FunctionTok{as.data.frame}\NormalTok{(t\_6}\FloatTok{.17}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    method Y.1 Y.2 Y.3 Y.4
+## 1       1 5.4 6.0 6.3 6.7
+## 2       1 5.2 6.5 6.0 5.8
+## 3       1 6.1 5.9 6.0 7.0
+## 4       1 4.8 5.0 4.9 5.0
+## 5       1 5.0 5.7 5.0 6.5
+## 6       1 5.7 6.1 6.0 6.6
+## 7       1 6.0 6.0 5.8 6.0
+## 8       1 4.0 5.0 4.0 5.0
+## 9       1 5.7 5.4 4.9 5.0
+## 10      1 5.6 5.2 5.4 5.8
+## 11      1 5.8 6.1 5.2 6.4
+## 12      1 5.3 5.9 5.8 6.0
+## 13      2 5.0 5.3 5.3 6.5
+## 14      2 4.8 4.9 4.2 5.6
+## 15      2 3.9 4.0 4.4 5.0
+## 16      2 4.0 5.1 4.8 5.8
+## 17      2 5.6 5.4 5.1 6.2
+## 18      2 6.0 5.5 5.7 6.0
+## 19      2 5.2 4.8 5.4 6.0
+## 20      2 5.3 5.1 5.8 6.4
+## 21      2 5.9 6.1 5.7 6.0
+## 22      2 6.1 6.0 6.1 6.2
+## 23      2 6.2 5.7 5.9 6.0
+## 24      2 5.1 4.9 5.3 4.8
+## 25      3 4.8 5.0 6.5 7.0
+## 26      3 5.4 5.0 6.0 6.4
+## 27      3 4.9 5.1 5.9 6.5
+## 28      3 5.7 5.2 6.4 6.4
+## 29      3 4.2 4.6 5.3 6.3
+## 30      3 6.0 5.3 5.8 6.4
+## 31      3 5.1 5.2 6.2 6.5
+## 32      3 4.8 4.6 5.7 5.7
+## 33      3 5.3 5.4 6.8 6.6
+## 34      3 4.6 4.4 5.7 5.6
+## 35      3 4.5 4.0 5.0 5.9
+## 36      3 4.4 4.2 5.6 5.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculating between matricies}
+
+\NormalTok{method1.bar }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(method1)}
+\NormalTok{method2.bar }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(method2)}
+\NormalTok{method3.bar }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(method3)}
+
+\NormalTok{method.all.bar }\OtherTok{\textless{}{-}}\NormalTok{ (method1.bar }\SpecialCharTok{+}\NormalTok{ method2.bar }\SpecialCharTok{+}\NormalTok{ method3.bar) }\SpecialCharTok{/} \DecValTok{3}
+
+\NormalTok{method1.bar.diff }\OtherTok{\textless{}{-}}\NormalTok{ method1.bar }\SpecialCharTok{{-}}\NormalTok{ method.all.bar}
+\NormalTok{method2.bar.diff }\OtherTok{\textless{}{-}}\NormalTok{ method2.bar }\SpecialCharTok{{-}}\NormalTok{ method.all.bar}
+\NormalTok{method3.bar.diff }\OtherTok{\textless{}{-}}\NormalTok{ method3.bar }\SpecialCharTok{{-}}\NormalTok{ method.all.bar}
+
+\NormalTok{H }\OtherTok{\textless{}{-}} \DecValTok{12} \SpecialCharTok{*} \FunctionTok{unname}\NormalTok{(method1.bar.diff }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(method1.bar.diff) }
+                 \SpecialCharTok{+}\NormalTok{ method2.bar.diff }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(method2.bar.diff) }
+                 \SpecialCharTok{+}\NormalTok{ method3.bar.diff }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(method3.bar.diff)}
+\NormalTok{                 )}
+
+
+
+\StringTok{"compute.within.matrix"} \OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, mean) \{ }
+\NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(}\DecValTok{0}\NormalTok{), }\AttributeTok{nrow=}\DecValTok{4}\NormalTok{, }\AttributeTok{ncol=}\DecValTok{4}\NormalTok{)}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{) \{ }
+\NormalTok{      diff }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(data[i,] }\SpecialCharTok{{-}}\NormalTok{ mean)}
+\NormalTok{      ret }\OtherTok{\textless{}{-}}\NormalTok{ ret }\SpecialCharTok{+}\NormalTok{ diff }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(diff) }
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(ret) }
+\NormalTok{\}}
+
+\NormalTok{E }\OtherTok{\textless{}{-}} \FunctionTok{compute.within.matrix}\NormalTok{(method1, method1.bar) }\SpecialCharTok{+} \FunctionTok{compute.within.matrix}\NormalTok{(method2, method2.bar) }\SpecialCharTok{+}
+\FunctionTok{compute.within.matrix}\NormalTok{(method3, method3.bar)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a-compare-the-three-methods-using-all-four-manova-tests.}{%
+\paragraph{(a) Compare the three methods using all four MANOVA
+tests.}\label{a-compare-the-three-methods-using-all-four-manova-tests.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Wilks\textquotesingle{} Test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Wilks\textquotesingle{} test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Wilks' test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y}\FloatTok{.1}\NormalTok{, Y}\FloatTok{.2}\NormalTok{, Y}\FloatTok{.3}\NormalTok{, Y}\FloatTok{.4}\NormalTok{) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ method, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.17}\NormalTok{), }\AttributeTok{test=}\StringTok{"Wilks"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df   Wilks approx F num Df den Df    Pr(>F)    
+## method     2 0.22449   8.3294      8     60 1.609e-07 ***
+## Residuals 33                                             
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Roy\textquotesingle{}s test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Wilks\textquotesingle{} test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Wilks' test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y}\FloatTok{.1}\NormalTok{, Y}\FloatTok{.2}\NormalTok{, Y}\FloatTok{.3}\NormalTok{, Y}\FloatTok{.4}\NormalTok{) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ method, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.17}\NormalTok{), }\AttributeTok{test=}\StringTok{"Roy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df    Roy approx F num Df den Df    Pr(>F)    
+## method     2 2.9515   22.874      4     31 7.077e-09 ***
+## Residuals 33                                            
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pillai test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Pillai test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pillai test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y}\FloatTok{.1}\NormalTok{, Y}\FloatTok{.2}\NormalTok{, Y}\FloatTok{.3}\NormalTok{, Y}\FloatTok{.4}\NormalTok{) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ method, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.17}\NormalTok{), }\AttributeTok{test=}\StringTok{"Pillai"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df  Pillai approx F num Df den Df    Pr(>F)    
+## method     2 0.85987    5.845      8     62 1.465e-05 ***
+## Residuals 33                                             
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Lawley{-}Hotelling Test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Lawley{-}Hotelling\textquotesingle{} test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Lawley-Hotelling' test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y}\FloatTok{.1}\NormalTok{, Y}\FloatTok{.2}\NormalTok{, Y}\FloatTok{.3}\NormalTok{, Y}\FloatTok{.4}\NormalTok{) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ method, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.17}\NormalTok{), }\AttributeTok{test=}\StringTok{"Hotelling{-}Lawley"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df Hotelling-Lawley approx F num Df den Df    Pr(>F)    
+## method     2           3.0788   11.161      8     58 2.161e-09 ***
+## Residuals 33                                                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# F{-}stat @ 95\%}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{analysis}{%
+\paragraph{Analysis}\label{analysis}}
+
+According to all four of our tests, we can conclude there is significant
+evidence there are differences among the methods and how it impacts the
+overall score on that fish.
+
+\hypertarget{b-compute-the-following-measures-of-multivariate-association-from-section-6.1.8.}{%
+\paragraph{(b) Compute the following measures of multivariate
+association from Section
+6.1.8.}\label{b-compute-the-following-measures-of-multivariate-association-from-section-6.1.8.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k }\OtherTok{=} \DecValTok{3}
+\NormalTok{s }\OtherTok{=}\NormalTok{ k }\SpecialCharTok{{-}} \DecValTok{1}
+
+\CommentTok{\# eta.lambda.sq}
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \FunctionTok{det}\NormalTok{(E) }\SpecialCharTok{/} \FunctionTok{det}\NormalTok{(E}\SpecialCharTok{+}\NormalTok{H)}
+\NormalTok{eta.lambda }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ lambda}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"eta.lambda: \%s"}\NormalTok{, eta.lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "eta.lambda: 0.775512677874853"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# eta.theta.sq:}
+\NormalTok{lambda}\FloatTok{.1} \OtherTok{\textless{}{-}} \FunctionTok{eigen}\NormalTok{(}\FunctionTok{solve}\NormalTok{(E) }\SpecialCharTok{\%*\%}\NormalTok{ H)}\SpecialCharTok{$}\NormalTok{values[}\DecValTok{1}\NormalTok{]}
+\NormalTok{theta }\OtherTok{\textless{}{-}}\NormalTok{ lambda}\FloatTok{.1} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ lambda}\FloatTok{.1}\NormalTok{)}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"eta.theta.sq: \%s"}\NormalTok{, theta)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "eta.theta.sq: 0.746929971701092"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# a.lambda}
+\NormalTok{a.lambda }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ lambda }\SpecialCharTok{**}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{/}\NormalTok{ s)}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"a.lambda: \%s"}\NormalTok{, a.lambda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a.lambda: 0.526199069096369"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# a.rho}
+\NormalTok{V.s }\OtherTok{\textless{}{-}} \FunctionTok{tr}\NormalTok{(}\FunctionTok{solve}\NormalTok{(E }\SpecialCharTok{+}\NormalTok{ H) }\SpecialCharTok{\%*\%}\NormalTok{ H)}
+\NormalTok{a.rho }\OtherTok{\textless{}{-}}\NormalTok{ V.s }\SpecialCharTok{/}\NormalTok{ s}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"a.rho: \%s"}\NormalTok{, a.rho)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a.rho: 0.42993691649735"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# a.lh}
+\NormalTok{U.s }\OtherTok{\textless{}{-}} \FunctionTok{tr}\NormalTok{(}\FunctionTok{solve}\NormalTok{(E) }\SpecialCharTok{\%*\%}\NormalTok{ H) }
+\NormalTok{a.lh }\OtherTok{\textless{}{-}}\NormalTok{ (U.s }\SpecialCharTok{/}\NormalTok{ s) }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ (U.s }\SpecialCharTok{/}\NormalTok{ s))}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"a.lh: \%s"}\NormalTok{, a.lh)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a.lh: 0.606206175032727"
+\end{verbatim}
+
+\hypertarget{c-based-on-the-eigenvalues-is-the-essential-dimensionality-of-the-space}{%
+\paragraph{(c) Based on the eigenvalues, is the essential dimensionality
+of the
+space}\label{c-based-on-the-eigenvalues-is-the-essential-dimensionality-of-the-space}}
+
+containing the mean vectors equal to 1 or 2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# See example 6.2}
+
+\NormalTok{vals }\OtherTok{\textless{}{-}} \FunctionTok{eigen}\NormalTok{(}\FunctionTok{solve}\NormalTok{(E) }\SpecialCharTok{\%*\%}\NormalTok{ H)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{eigen\_mean }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(vals, mean)}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Eigenvalue mean: \%s"}\NormalTok{, eigen\_mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Eigenvalue mean: 0.769699950326934"
+\end{verbatim}
+
+---- Analysis Given our eigenvalues and averaging them out, we see that
+our mean vectors are more equal to 1 than 2.
+
+\hypertarget{section-1}{%
+\subsubsection{6.28}\label{section-1}}
+
+Table 6.18 from Keuls et al.~(1984) gives data from a two-way
+(fixed-effects) MANOVA on snap beans showing the results of four
+variables: yi = yield earliness, y2 = specific leaf area (SLA)
+earliness, y3 = total yield, and y4 = average SLA. The factors are
+sowing date (S) and variety (V).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_6}\FloatTok{.18} \OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/mattgraham93.github.io/school/22\_3\_DA410/data/T6\_18\_SNAPBEAN.DAT"}\NormalTok{)}
+\NormalTok{t\_6}\FloatTok{.18} \OtherTok{\textless{}{-}}\NormalTok{ t\_6}\FloatTok{.18}\NormalTok{[}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{]  }\CommentTok{\# remove sample id}
+\FunctionTok{colnames}\NormalTok{(t\_6}\FloatTok{.18}\NormalTok{) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}S\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}V\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Y1\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Y2\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Y3\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Y4\textquotesingle{}}\NormalTok{)  }\CommentTok{\# label columns}
+\FunctionTok{as.data.frame}\NormalTok{(t\_6}\FloatTok{.18}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    S V   Y1  Y2   Y3  Y4
+## 1  1 1 59.3 4.5 38.4 295
+## 2  1 1 60.3 3.5 38.6 302
+## 3  1 1 60.9 5.3 37.2 318
+## 4  1 1 60.6 5.8 38.1 345
+## 5  1 1 60.4 6.0 38.8 325
+## 6  1 2 59.3 6.7 37.9 275
+## 7  1 2 59.4 4.8 36.6 290
+## 8  1 2 60.0 5.1 38.7 295
+## 9  1 2 58.9 5.8 37.5 296
+## 10 1 2 59.5 4.8 37.0 330
+## 11 1 3 59.4 5.1 38.7 299
+## 12 1 3 60.2 5.3 37.0 315
+## 13 1 3 60.7 6.4 37.4 304
+## 14 1 3 60.5 7.1 37.0 302
+## 15 1 3 60.1 7.8 36.9 308
+## 16 2 1 63.7 5.4 39.5 271
+## 17 2 1 64.1 5.4 39.2 284
+## 18 2 1 63.4 5.4 39.0 281
+## 19 2 1 63.2 5.3 39.0 291
+## 20 2 1 63.2 5.0 39.0 270
+## 21 2 2 60.6 6.8 38.1 248
+## 22 2 2 61.0 6.5 38.6 264
+## 23 2 2 60.7 6.8 38.8 257
+## 24 2 2 60.6 7.1 38.6 260
+## 25 2 2 60.3 6.0 38.5 261
+## 26 2 3 63.8 5.7 40.5 282
+## 27 2 3 63.2 6.1 40.2 284
+## 28 2 3 63.3 6.0 40.0 291
+## 29 2 3 63.2 5.9 40.0 299
+## 30 2 3 63.1 5.4 39.7 295
+## 31 3 1 68.1 3.4 42.2 280
+## 32 3 1 68.0 2.9 42.4 284
+## 33 3 1 68.5 3.3 41.5 286
+## 34 3 1 68.6 3.1 41.9 284
+## 35 3 1 68.6 3.3 42.1 268
+## 36 3 2 64.0 3.6 40.9 233
+## 37 3 2 63.4 3.9 41.4 248
+## 38 3 2 63.5 3.7 41.6 244
+## 39 3 2 63.4 3.7 41.4 266
+## 40 3 2 63.5 4.1 41.1 244
+## 41 3 3 68.0 3.7 42.3 293
+## 42 3 3 68.7 3.5 41.6 284
+## 43 3 3 68.7 3.8 40.7 277
+## 44 3 3 68.4 3.5 42.0 299
+## 45 3 3 68.6 3.4 42.4 285
+## 46 4 1 69.8 1.4 48.4 265
+## 47 4 1 69.5 1.3 47.8 247
+## 48 4 1 69.5 1.3 46.9 231
+## 49 4 1 69.9 1.3 47.5 268
+## 50 4 1 70.3 1.1 47.1 247
+## 51 4 2 66.6 1.8 45.7 205
+## 52 4 2 66.5 1.7 46.8 239
+## 53 4 2 67.1 1.7 46.3 230
+## 54 4 2 65.8 1.8 46.3 235
+## 55 4 2 65.6 1.9 46.1 220
+## 56 4 3 70.1 1.7 48.1 253
+## 57 4 3 72.3 0.7 47.8 249
+## 58 4 3 69.7 1.5 46.7 226
+## 59 4 3 69.9 1.3 47.1 248
+## 60 4 3 69.8 1.4 46.7 236
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Test for main effects and interaction using all four MANOVA statistics
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Wilks\textquotesingle{} Test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Wilks\textquotesingle{} test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Wilks' test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y1, Y2, Y3, Y4) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ S}\SpecialCharTok{*}\NormalTok{V, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.18}\NormalTok{), }\AttributeTok{test=}\StringTok{"Wilks"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df   Wilks approx F num Df den Df Pr(>F)    
+## S          1 0.03384   378.32      4     53 <2e-16 ***
+## V          1 0.90842     1.34      4     53 0.2689    
+## S:V        1 0.94029     0.84      4     53 0.5052    
+## Residuals 56                                          
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Roy\textquotesingle{}s test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Wilks\textquotesingle{} test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Wilks' test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y1, Y2, Y3, Y4) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ S}\SpecialCharTok{*}\NormalTok{V, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.18}\NormalTok{), }\AttributeTok{test=}\StringTok{"Roy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df     Roy approx F num Df den Df Pr(>F)    
+## S          1 28.5524   378.32      4     53 <2e-16 ***
+## V          1  0.1008     1.34      4     53 0.2689    
+## S:V        1  0.0635     0.84      4     53 0.5052    
+## Residuals 56                                          
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pillai test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Pillai test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pillai test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y1, Y2, Y3, Y4) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ S}\SpecialCharTok{*}\NormalTok{V, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.18}\NormalTok{), }\AttributeTok{test=}\StringTok{"Pillai"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df  Pillai approx F num Df den Df Pr(>F)    
+## S          1 0.96616   378.32      4     53 <2e-16 ***
+## V          1 0.09158     1.34      4     53 0.2689    
+## S:V        1 0.05971     0.84      4     53 0.5052    
+## Residuals 56                                          
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Lawley{-}Hotelling Test}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Lawley{-}Hotelling\textquotesingle{} test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Lawley-Hotelling' test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Y1, Y2, Y3, Y4) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ S}\SpecialCharTok{*}\NormalTok{V, }\AttributeTok{data=}\NormalTok{t\_6}\FloatTok{.18}\NormalTok{), }\AttributeTok{test=}\StringTok{"Hotelling{-}Lawley"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df Hotelling-Lawley approx F num Df den Df Pr(>F)    
+## S          1          28.5524   378.32      4     53 <2e-16 ***
+## V          1           0.1008     1.34      4     53 0.2689    
+## S:V        1           0.0635     0.84      4     53 0.5052    
+## Residuals 56                                                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\hypertarget{analysis-1}{%
+\paragraph{Analysis}\label{analysis-1}}
+
+According to our 4 tests, we can conclude there are differences among
+our sowing dates across all measured variables. Variety, however, does
+not have significance, which implies and is determined to be ineffective
+at their cross product. This means sowing date and variety have no
+difference among any variable. Extra simply, varieties are independent
+of each other.
+
+\end{document}

@@ -1,0 +1,202 @@
+---
+title: "DA410_Assignment3_MattGraham"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r message=FALSE, warning=FALSE}
+
+library(psych)  # used for Pillai Statistic
+
+```
+
+
+<!-- Chapter 6 Page 245: #6.27 (a) (b) (c)           -->
+
+### 6.27
+
+Baten, Tack, and Baeder (1958) compared judges' scores on fish prepared by
+three methods. Twelve fish were cooked by each method, and several judges
+tasted fish samples and rated each on four variables: y1 — aroma, y2 = flavor,
+y3 = texture, and y4 — moisture. The data are in Table 6.17. Each entry is an
+average score for the judges on that fish.
+
+```{r}
+t_6.17 <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T6_17_FISH.DAT", header=FALSE)
+colnames(t_6.17) <- c("method", paste("Y", sep = '.', 1:4))
+t_6.17$method <- as.factor(t_6.17$method)
+
+method1 <- t_6.17[t_6.17$method==1, -1]
+method2 <- t_6.17[t_6.17$method==2, -1]
+method3 <- t_6.17[t_6.17$method==3, -1]
+
+as.data.frame(t_6.17)
+
+# calculating between matricies
+
+method1.bar <- colMeans(method1)
+method2.bar <- colMeans(method2)
+method3.bar <- colMeans(method3)
+
+method.all.bar <- (method1.bar + method2.bar + method3.bar) / 3
+
+method1.bar.diff <- method1.bar - method.all.bar
+method2.bar.diff <- method2.bar - method.all.bar
+method3.bar.diff <- method3.bar - method.all.bar
+
+H <- 12 * unname(method1.bar.diff %*% t(method1.bar.diff) 
+                 + method2.bar.diff %*% t(method2.bar.diff) 
+                 + method3.bar.diff %*% t(method3.bar.diff)
+                 )
+
+
+
+"compute.within.matrix" <- function(data, mean) { 
+  ret <- matrix(as.numeric(0), nrow=4, ncol=4)
+  
+  for (i in 1:12) { 
+      diff <- as.numeric(data[i,] - mean)
+      ret <- ret + diff %*% t(diff) 
+  }
+  return(ret) 
+}
+
+E <- compute.within.matrix(method1, method1.bar) + compute.within.matrix(method2, method2.bar) +
+compute.within.matrix(method3, method3.bar)
+
+```
+
+#### (a) Compare the three methods using all four MANOVA tests.
+
+```{r}
+
+# Wilks' Test
+print("Wilks' test")
+fprint("")
+
+# Roy's test
+print("Wilks' test")
+summary(manova(cbind(Y.1, Y.2, Y.3, Y.4) ~ method, data=t_6.17), test="Roy")
+print("")
+
+# Pillai test
+print("Pillai test")
+summary(manova(cbind(Y.1, Y.2, Y.3, Y.4) ~ method, data=t_6.17), test="Pillai")
+print("")
+
+# Lawley-Hotelling Test
+print("Lawley-Hotelling' test")
+summary(manova(cbind(Y.1, Y.2, Y.3, Y.4) ~ method, data=t_6.17), test="Hotelling-Lawley")
+print("")
+
+# F-stat @ 95%
+
+```
+#### Analysis
+
+According to all four of our tests, we can conclude there is significant evidence there are differences among the methods and how it impacts the overall score on that fish.
+
+
+#### (b) Compute the following measures of multivariate association from Section 6.1.8.
+
+```{r}
+k = 3
+s = k - 1
+
+# eta.lambda.sq
+lambda <- det(E) / det(E+H)
+eta.lambda <- 1 - lambda
+sprintf("eta.lambda: %s", eta.lambda)
+
+# eta.theta.sq:
+lambda.1 <- eigen(solve(E) %*% H)$values[1]
+theta <- lambda.1 / (1 + lambda.1)
+sprintf("eta.theta.sq: %s", theta)
+
+# a.lambda
+a.lambda <- 1 - lambda ** (1 / s)
+sprintf("a.lambda: %s", a.lambda)
+
+# a.rho
+V.s <- tr(solve(E + H) %*% H)
+a.rho <- V.s / s
+sprintf("a.rho: %s", a.rho)
+
+# a.lh
+U.s <- tr(solve(E) %*% H) 
+a.lh <- (U.s / s) / (1 + (U.s / s))
+sprintf("a.lh: %s", a.lh)
+
+```
+
+
+
+#### (c) Based on the eigenvalues, is the essential dimensionality of the space
+containing the mean vectors equal to 1 or 2
+
+```{r}
+
+# See example 6.2
+
+vals <- eigen(solve(E) %*% H)[1]
+eigen_mean <- sapply(vals, mean)
+sprintf("Eigenvalue mean: %s", eigen_mean)
+
+
+```
+
+---- Analysis
+Given our eigenvalues and averaging them out, we see that our mean vectors are more equal to 1 than 2.
+
+<!-- Chapter 6 Page 246: #6.28 (a) -->
+
+### 6.28
+Table 6.18 from Keuls et al. (1984) gives data from a two-way (fixed-effects)
+MANOVA on snap beans showing the results of four variables: yi = yield
+earliness, y2 = specific leaf area (SLA) earliness, y3 = total yield, and y4 =
+average SLA. The factors are sowing date (S) and variety (V).
+
+```{r}
+
+t_6.18 <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T6_18_SNAPBEAN.DAT")
+t_6.18 <- t_6.18[-3]  # remove sample id
+colnames(t_6.18) <- c('S', 'V', 'Y1','Y2','Y3','Y4')  # label columns
+as.data.frame(t_6.18)
+
+```
+
+
+(a) Test for main effects and interaction using all four MANOVA statistics
+
+```{r}
+# Wilks' Test
+print("Wilks' test")
+summary(manova(cbind(Y1, Y2, Y3, Y4) ~ S*V, data=t_6.18), test="Wilks")
+print("")
+
+# Roy's test
+print("Wilks' test")
+summary(manova(cbind(Y1, Y2, Y3, Y4) ~ S*V, data=t_6.18), test="Roy")
+print("")
+
+# Pillai test
+print("Pillai test")
+summary(manova(cbind(Y1, Y2, Y3, Y4) ~ S*V, data=t_6.18), test="Pillai")
+print("")
+
+# Lawley-Hotelling Test
+print("Lawley-Hotelling' test")
+summary(manova(cbind(Y1, Y2, Y3, Y4) ~ S*V, data=t_6.18), test="Hotelling-Lawley")
+print("")
+
+```
+
+
+#### Analysis
+
+According to our 4 tests, we can conclude there are differences among our sowing dates across all measured variables. Variety, however, does not have significance, which implies and is determined to be ineffective at their cross product. This means sowing date and variety have no difference among any variable. Extra simply, varieties are independent of each other. 
+
+

@@ -1,0 +1,71 @@
+---
+title: "DA410_Project2_MattGraham"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+This is our first project, analyzing air pollution, mortality rates, and relevant parameters.
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+```
+
+
+```{r}
+
+```
+
+
+### 8.7
+
+For the psychological data in Table 5.1, the discriminant function coefficient 
+vector was given in Example 5.5. 
+(a) Find the standardized coefficients. 
+(b) Calculate ί-tests for the individual variables. 
+(c) Compare the results of (a) and (b) as to the contribution of the variables 
+to separation of the two groups. 
+(d) Find the partial F for each variable, as in (8.26), and compare with the 
+standardized coefficients.
+
+```{r}
+
+psych <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_1_PSYCH.DAT", header=FALSE)
+colnames(psych) <- c('method', 'y1', 'y2', 'y3', 'y4')
+as.data.frame(psych)
+```
+
+
+
+### 8.11 (a and b)
+
+ Using the fish data in Table 6.17, do the following: 
+(a) Find the eigenvectors of E_ 1 H . 
+(b) Carry out tests of significance for the discriminant functions and find 
+the relative importance of each as in (8.13), λ*/ ^ ■ λ^. Do these two 
+procedures agree as to the number of important discriminant functions?
+```{r}
+
+fish <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T6_17_FISH.DAT", header=FALSE)
+colnames(fish) <- c('method', 'y1', 'y2', 'y3', 'y4')
+as.data.frame(fish)
+
+
+```
+
+
+
+### 8.15
+
+Carry out a stepwise selection of variables on the fish data of Table 6.17. 
+
+```{r}
+
+
+
+```
