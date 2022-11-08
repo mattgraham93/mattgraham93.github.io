@@ -1,0 +1,110 @@
+---
+title: "DA410_Assignment7_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Principal Component Analysis (PCA)
+Unsupervised ML technique that seeks linear combinations (principals) of original predictors that explain a large portion of variation in dataset.
+
+Goal: Explain most variability in dataset w/ fewer variables vs. the original dataset.
+
+Allows to better visualize variation present in a dataset w/ many variables. Most helpful w/ wide datasets when you have many variables for each sample. W/ many variables present, it's hard to plot data to explain trends.
+
+PCA allows us to see overall shape of data and explaing which variables are very similar and  different.
+
+High level process summary:
+
+- Get dataset w/ many variables
+- Simplify dataset down to principal components (multiple linear combinations) 
+
+These are underlying structure of data that shows where data has most variance and most spread out. Meaning we find straight line that best spreads that data out when it is projected upon it. First principal componant shows most substantial variation in data. Then second, third, etc.
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+```
+Get data
+```{r}
+probe <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T3_6_PROBE.DAT", header=FALSE)
+colnames(probe) <- c('ind', 'pos_1', 'pos_2', 'pos_3', 'pos_4', 'pos_5')
+probe <- probe[, 2:6]
+probe
+```
+
+
+### a. Get S and R
+```{r}
+S = cov(probe)
+R = cor(probe)
+```
+
+S
+```{r}
+as.data.frame(S)
+```
+
+R
+```{r}
+as.data.frame(R)
+```
+
+### b. Get eigenvalues and eigenvectors of S and R
+```{r}
+eig.S <- eigen(S)
+eig.R <- eigen(R)
+```
+
+Eigen S
+```{r}
+eig.S
+```
+
+Eigen R
+```{r}
+eig.R
+```
+
+
+### c. Percent variance explained and plot S and R
+```{r}
+
+for (r in eig.R$values) {
+  print(r/sum(eig.R$values))
+}
+
+```
+We can see that of our eigen values, ~65.5% of our variance is explained with just one dimension, while ~26% is explained with 2 and 3 dimensions. This can be seen below.
+
+#### Plot
+```{r}
+plot(eig.R$values/sum(eig.R$values), xlab = 'Number of components', ylab='Eigen size', main='Plot of probe dimension variance')
+```
+
+
+### d. Decide compontent retention and show reasoning
+Based on the percentage of total variance, it makes sense to keep the first 3 components as components 4 and 5 make up less over 10% of all explained variance. 
+
+### e. Interpretation
+Over the duration of subjects' time, as we model our data, we can conclude that most of our variation happens within the first 3 time windows as compared to subsequent ones. This makes sense as the longer it takes people to complete things reduces in probability. 
+
+
+#### Example for discussion
+```{r}
+library(factoextra)
+probe.pca <- prcomp(probe)
+fviz_eig(probe.pca)
+```
+

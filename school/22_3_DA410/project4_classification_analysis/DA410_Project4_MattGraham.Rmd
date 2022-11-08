@@ -1,0 +1,123 @@
+---
+title: "DA410_Project 4_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+In this project, we are working on k-nearest neighbors analysis, or KNN. We classify new data based on stored datapoints by similarity of measure. 
+
+KNN uses a 'majority vote' rule and determines classification by count of nearest closest to the calculated value. In other words, the closer your predicted point is to what actually happened, the more likely it is to fall within that classification.
+
+We will be leveraging the iris dataset for this.
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+```
+
+
+## Getting and understanding our data
+```{r}
+iris
+```
+
+### Visualizing our data
+#### Sepal length vs. Sepal width
+```{r}
+iris %>% ggvis(~Sepal.Length, ~Sepal.Width, fill = ~Species) %>% 
+  layer_points() 
+```
+Above, we can see Setosa is a cluster having shorter, but wider sepal lengths. We can also note the linear trend among both clusters. Setosa, again, appearing to have a stronger relationship compared to the mixed cluster of Versicolor and Virginica.
+
+```{r}
+as.data.frame(
+  iris %>%
+    group_by(Species) %>%
+    summarize(cor=cor(Sepal.Length, Sepal.Width))
+)
+```
+According to our correlation plot, we can see the Setosa is our most correlated species. 
+
+#### Petal length vs. Petal width
+```{r}
+iris %>%
+  ggvis(~Petal.Length, ~Petal.Width, fill = ~Species) %>% 
+  layer_points() 
+```
+
+While Setosa was our primary standout for sepal width, they have the smallest petals We can note Virginica having the largest set of petals. There are three distinct clusters.
+
+```{r}
+as.data.frame(
+  iris %>%
+    group_by(Species) %>%
+    summarize(cor=cor(Petal.Length, Petal.Width))
+)
+```
+We can see above that Versicolor, our middle-most cluster, is our most correlated species. Setosa and Virginica are the opposite. 
+
+## Training and testing our models
+```{r}
+
+set.seed(1234)
+# splitting our data (2/3 is training, 1/3 is testing)
+ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.67, 0.33))
+
+# assigning sets for use
+iris.training <- iris[ind==1, 1:4]
+iris.test <- iris[ind==2, 1:4]
+
+# creating labels to check for correct classification determination
+iris.trainLabels <- iris[ind==1, 5] 
+iris.testLabels <- iris[ind==2, 5] 
+```
+
+Training dataset
+```{r}
+iris.training
+```
+
+Testing dataset
+```{r}
+iris.test
+```
+
+### Creating our model
+```{r}
+iris.pred <- knn(train = iris.training, test=iris.test, cl=iris.trainLabels, k=3)
+iris.pred
+```
+
+Above is a list of predicted classifiers that we will check against what we passed into our test. 
+
+### Showing the comparison
+```{r}
+merge <- data.frame(iris.pred, iris.testLabels)
+merge
+```
+
+### Making a cross table
+```{r}
+CrossTable(x=iris.testLabels, y=iris.pred, prop.chisq = FALSE)
+```
+
+```{r}
+mis.calc <- 1
+total.calc <- 40
+
+err.rate <- mis.calc / total.calc
+err.rate
+```
+
+
+Above, we can see how accurate our model was. We only had 1 misclassification across all 40 test values. Resulting in a 2.5% error rate. This is very strong! We do not need to improve this model any further.

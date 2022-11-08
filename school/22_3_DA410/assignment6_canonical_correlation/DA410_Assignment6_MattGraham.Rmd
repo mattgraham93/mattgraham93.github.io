@@ -1,0 +1,200 @@
+---
+title: "DA410_Assignment6_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Finding canonical correlationss
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+```
+
+
+Determines set of canonical varirates that are orthogonal linear combinations that best explain variabilities within and between sets. It is common to have multiple canonical variables.
+
+## 11.9
+### a
+
+Get data
+```{r}
+sons <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T3_8_SONS.DAT", header=FALSE)
+colnames(sons) <- c('fs_hl', 'fs_hb', 'ss_hl', 'ss_hb')  ## hl = head length, hb = head breadth, fs = first son, ss = second son
+sons
+```
+
+Standardize variables and assign measure groups
+```{r}
+sons.std <- sweep(sons, 2, sqrt(apply(sons, 2, var)), FUN="/")
+
+y.meas <- sons.std[, 1:2] ## first son
+x.meas <- sons.std[, 3:4] ## second son
+
+sons.std
+```
+
+Find blocks of correlation matrix
+```{r}
+R11 <- cor(x.meas)
+R22 <- cor(y.meas)
+R12 <- c(cor(y.meas[, 1], x.meas[, 1]),
+         cor(y.meas[, 1], x.meas[, 2]),
+         cor(y.meas[, 2], x.meas[, 1]),
+         cor(y.meas[, 2], x.meas[, 2])
+         )
+R21 <- matrix(R12, ncol=ncol(R22), byrow=T)
+
+```
+
+Display matricies
+```{r}
+R11
+```
+```{r}
+R22
+```
+```{r}
+### splitting the list to make a matrix for multiplication
+r12.fs <- R12[1:2]
+r12.ss <- R12[3:4]
+
+R12 <- rbind(r12.fs, r12.ss)
+R12
+```
+
+```{r}
+R21
+```
+
+Finding E1 and E2 matricies
+```{r}
+E1 <- solve(R11) %*% R12 %*% solve(R22) %*% R21
+E1
+```
+E2
+```{r}
+E2 <- solve(R22) %*% R21 %*% solve(R11) %*% R12
+E2
+```
+
+Find eigenvalues
+```{r}
+eigen(E1)
+```
+
+```{r}
+eigen(E2)
+```
+
+
+Finding canonical correlation
+```{r}
+can.cor <- sqrt(eigen(E1)$values)
+can.cor
+```
+
+Find and plot characteristic equation
+```{r}
+# slope1 <- 1
+# slope2 <- 1
+# 
+# u1 <- (slope1 * y.meas$fs_hl) + (slope2 * y.meas$fs_hb)
+
+u1 <- as.matrix(sons.std[, 1:2]) %*% as.matrix(eigen(E1)$vectors[,1])
+v1 <- as.matrix(sons.std[, 3:4]) %*% as.matrix(eigen(E2)$vectors[,1])
+plot(u1, v1)
+```
+
+Correlation for u1, v1
+```{r}
+cor(u1, v1)
+```
+
+#### Interpretation
+For every shift in head length, head breadth decreasess when all other variables are held constant.
+
+```{r}
+u2 <- as.matrix(sons.std[, 3:4]) %*% as.matrix(eigen(E1)$vectors[,1])
+v2 <- as.matrix(sons.std[, 1:2]) %*% as.matrix(eigen(E2)$vectors[,1])
+plot(u2, v2)
+```
+
+Correlation for u2, v2
+```{r}
+cor(u2, v2)
+```
+
+#### Interpretation:
+For every shift in head breadth, head length decreases when all other variables are held constant.
+
+### c
+
+*Ho:* fs_ss_lth = O, independence between head length between first and second son
+*Ha:* fs_ss_lth != O, dependence between head length between first and second son
+
+Calculating F stat
+```{r}
+k = 2
+p = 2
+q = 2
+n = 25
+
+## formula on page 394
+w = n - ( (1/2) * (p + q + 3) )
+df1 = (p - k + 1)* (q - k + 1)
+t.1 = ( ( (p - k + 1)**2 * (q - k + 1)**2) - 4) /
+      ( ( (p - k + 1)**2 + (q - k + 1)**2) - 5)
+df2 =(w *  t.1) - ( (1/2) * ( (p - k + 1) * (q - k + 1) + 1) )
+F.1 = ( (1 - cor(u1, u2)**(1/t.1)) * df2) / ( (cor(u1, u2)**(1/t.1) ) * df1)
+F.1
+```
+
+Find rejection region
+```{r}
+qf(.05, df1, df2, lower.tail=FALSE)
+```
+
+#### Interpretation
+Given our rejection region = 4.072654, and our calculated statistic = 5.508333, there is enough evidence to conclude that there is dependence between the head length between the first and second born sons!
+
+
+*Ho:* fs_ss_bth = O, independence between head breadth between first and second son
+*Ha:* fs_ss_bth != O, dependence between head breadth between first and second son
+
+Calculating F stat
+```{r}
+## use same k, p, q, n, df1, and df2 as above
+t.2 = ( ( (p - k + 1)**2 * (q - k + 1)**2) - 4) /
+      ( ( (p - k + 1)**2 + (q - k + 1)**2) - 5)
+df2 =(w *  t.2) - ( (1/2) * ( (p - k + 1) * (q - k + 1) + 1) )
+F.2 = ( (1 - cor(v1, v2)**(1/t.2)) * df2) / ( (cor(v1, v2)**(1/t.2) ) * df1)
+F.2
+
+# (repeat for 1 and 2)
+```
+
+#### Interpretation
+Given our rejection region = 4.072654, and our calculated statistic = 5.503333, there is enough evidence to conclude that there is dependence between the head breadth between the first and second born sons!
+
+Discussion example
+```{r}
+library(CCA)
+
+model <- cc(x.meas, y.meas)
+model
+plt.cc(model, var.label = TRUE)
+```
+

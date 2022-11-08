@@ -1,0 +1,472 @@
+---
+title: "DA410_Exam1_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+R portion of Exam 1
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+```
+
+
+## Problem 1
+```{r}
+
+c1 <- c(2, -2, 1)
+c2 <- c(1, 2, 2)
+c3 <- c(2, 1, -2)
+
+p.1.mat <- t(cbind(c1, c2, c3))
+p.1.mat
+
+```
+### A - Normalize the matrix and set = C
+```{r}
+
+```
+
+
+### B - Prove C is orthogonal
+```{r}
+
+```
+
+
+
+## Problem 2
+```{r}
+
+p.2.a <- cbind(c(3, -1), c(2, 1))
+p.2.b <- cbind(c(0, 6), c(2, 2))
+
+```
+
+
+### A
+```{r}
+p.2.a %*% p.2.b
+```
+
+### B
+```{r}
+p.2.b %*% p.2.a
+```
+
+
+## Problem 3
+```{r}
+
+p.3.a <- cbind(c(3, 8), c(4, 5), c(2, 7))
+p.3.b <- cbind(c(4, -5), c(3, 9), c(-2, 6))
+
+```
+
+
+### A
+```{r}
+a.pl.b <- p.3.a + p.3.b
+a.pl.b
+```
+
+```{r}
+a.mi.b <- p.3.a - p.3.b
+a.mi.b
+```
+
+### B
+```{r}
+p.3.a.t <- t(p.3.a)
+a.tr.a <- p.3.a %*% p.3.a.t
+a.tr.a
+```
+```{r}
+a.a.tr <- p.3.a.t %*% p.3.a
+a.a.tr
+```
+
+### C
+```{r}
+t(p.3.a + p.3.b)
+```
+
+```{r}
+p.3.a.t + t(p.3.b)
+```
+
+
+## Problem 4
+Get Reagent data
+```{r}
+reagents <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T6_19_REAGENT.DAT", header=FALSE)
+colnames(reagents) <- c("Reagent", 'Subject', 'w_bc', 'r_bc','hemo')
+regeants <- reagents[-2]  # remove subject id
+reagents
+```
+
+#### Preparing the matricies
+```{r}
+reagents$Reagent <- as.factor(reagents$Reagent)
+
+reagent1 <- reagents[reagents$Reagent==1, 3:5]
+reagent2 <- reagents[reagents$Reagent==2, 3:5]
+reagent3 <- reagents[reagents$Reagent==3, 3:5]
+reagent4 <- reagents[reagents$Reagent==4, 3:5]
+
+
+# calculating within matricies
+
+reagent1.bar <- colMeans(reagent1)
+reagent2.bar <- colMeans(reagent2)
+reagent3.bar <- colMeans(reagent3)
+reagent4.bar <- colMeans(reagent4)
+
+reagent.bar <- (reagent1.bar + reagent2.bar + reagent3.bar + reagent4.bar) / 4
+
+reagent1.bar.diff <- reagent1.bar - reagent.bar
+reagent2.bar.diff <- reagent2.bar - reagent.bar
+reagent3.bar.diff <- reagent3.bar - reagent.bar
+reagent4.bar.diff <- reagent4.bar - reagent.bar
+
+
+H <- 12 * unname(reagent1.bar.diff %*% t(reagent1.bar.diff)
+                 + reagent2.bar.diff %*% t(reagent2.bar.diff)
+                 + reagent3.bar.diff %*% t(reagent3.bar.diff)
+                 + reagent4.bar.diff %*% t(reagent4.bar.diff)
+                 )
+
+"compute.within.matrix" <- function(data, mean) {
+  ret <- matrix(as.numeric(0), nrow=3, ncol=3)
+
+  for (i in 1:12) {
+      diff <- as.numeric(data[i,] - mean)
+      ret <- ret + diff %*% t(diff)
+  }
+  return(ret)
+}
+
+E <- compute.within.matrix(reagent1, reagent1.bar) + compute.within.matrix(reagent3, reagent2.bar) +
+compute.within.matrix(reagent3, reagent3.bar) + compute.within.matrix(reagent4, reagent4.bar)
+
+E
+
+```
+
+Our linear discriminate values are: 152
+
+### A - Compare reagents using all four MANOVA tests
+#### Wilks' test
+```{r}
+# Wilks' Test
+lambda <- det(E) / det(E + H)
+lambda
+```
+
+Hypothesis: Wilks' looks at all discriminate functions versus just one combination. Lambda becomes smaller as the between groups variance increases We are looking to determine whether or not there is a significant variance across each of our reagents. 
+
+*Ho:* There are no significant differences between reagents
+
+*Ha:* There exists at least one differences between reagents
+
+Conclusion: When testing for significance at 0.05, we can conclude there is not enough evidence to conclude there are significant differences between our 4 reagents.
+
+Analysis:
+
+#### Roy's Test
+```{r}
+lambda.1 <- eigen(solve(E) %*% H)$values[1]
+theta <- lambda.1 / (1 + lambda.1)
+theta
+```
+
+Hypothesis: Roy is best used when variables are strongly interrelated on a single dimension, most affected by assumptions. We are looking to determine whether or not there is a significant variance across each of our reagents.
+
+*Ho:* There are no significant differences between reagents
+
+*Ha:* There exists at least one differences between reagents
+
+Conclusion: When testing for significance at 0.05, we can conclude there is not enough evidence to conclude there are significant differences between our 4 reagents.
+
+#### Pillai test
+```{r}
+V.s <- tr(solve(E+H) %*% H)
+V.s
+```
+
+Hypothesis: Like Roy, considers all discriminant functions. Has wider range of accuracy due to addition of actual values. Best used on small, unequal groups. Or covariance exists
+
+*Ho:* There are no significant differences between reagents
+
+*Ha:* There exists at least one differences between reagents
+
+Conclusion: When testing for significance at 0.05, we can conclude there is not enough evidence to conclude there are significant differences between our 4 reagents.
+
+#### Lawley-Hotelling Test
+```{r}
+U.s <- tr(solve(E) %*% H)
+U.s
+```
+
+Hypothesis: Like Roy, considers all discriminant functions. Narrower accuracy band, resulting in greater risk of error
+
+*Ho:* There are no significant differences between reagents
+
+*Ha:* There exists at least one differences between reagents
+
+Conclusion: When testing for significance at 0.05, we can conclude there is not enough evidence to conclude there are significant differences between our 4 reagents.
+
+### B - Multivariate associations
+```{r}
+s = 3
+
+eta.sq.lam <- 1 - lambda
+eta.sq.theta <- theta
+a.lam <- 1 - lambda ** (1/s)
+a.p <- V.s / s
+a.lh <- (U.s / s) / (1 + (U.s / s))
+
+mult.df <- data.frame(
+  cbind(
+    c("eta.sq.lam", "eta.sq.theta", "a.lam", "a.p", "a.lh"), 
+    c(eta.sq.lam, eta.sq.theta, a.lam, a.p, a.lh))
+)
+mult.df
+```
+
+
+
+## Problem 5
+Get student score data
+```{r}
+
+student <- c(1, 2, 3, 4, 5)
+math <- c(90, 90, 60, 60, 30)
+english <- c(60, 90, 60, 60, 30)
+art <- c(90, 30, 60, 90, 30)
+
+scores <- data.frame(cbind(student, math, english, art))
+scores
+```
+
+### A - Finding covariance
+```{r}
+S <- cov(scores[, -1])
+S
+```
+
+### B - Finding correlation
+```{r}
+R <- cor(scores[, -1])
+R
+```
+
+Analysis: We can see there is a relatively strong correlation between math and english scores. There is no correlation between art and english, with moderate correlation between art and math. 
+
+### C - Vector calculations
+```{r}
+### z = -2(math) + 3(engliths) + art
+
+lin_comb <- matrix(c(-2, 3, 1), nrow=1)
+a <- t(lin_comb)
+
+sub.means <- matrix(colMeans(scores[, -1]))
+z.bar <- lin_comb %*% sub.means
+z.s2 <- lin_comb %*% S %*% a
+
+data.frame(z.bar, z.s2)
+
+```
+
+## Problem 6
+Get Beetles data
+```{r}
+beetles <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_5_FBEETLES.DAT", header=FALSE)
+colnames(beetles) <- c("Experiment", 'Species', 'post_dist', 'l_elytra','len_sec_an', 'len_thi_an')
+
+oleracea <- beetles[beetles$Species==1, -c(1:2)]  # we assume that species 1 = oleracea
+carduorum <- beetles[beetles$Species==2, -c(1:2)] # we assume that species 2 = carduorum
+
+beetles
+```
+
+
+### A
+```{r}
+beetles.lda <- lda(Species ~ post_dist + l_elytra + len_sec_an + len_thi_an, data=beetles, prior=c(0.5, 0.5))
+beetles.lda
+```
+
+We can see above that our discriminants are all positive exist for post_dist. Which means that is our primary differentiations between our 2 classifications. We will note this in the plot below.
+
+species = -.0932 * post_dist + .0352 * l_elytra + .0288 * len_sec_an + .0387 * len_thi_an
+
+```{r}
+plot(beetles.lda)
+```
+
+We can see the distinct range with very little overlap between our 2 species So the longer the length, the more probable it is going to be olerecea.
+
+### B
+
+Getting covariance matricies for subsets
+```{r}
+cov.oleracea <- cov(oleracea)
+cov.carduorum <- cov(carduorum)
+```
+
+Male covariance matrix
+```{r}
+as.data.frame(cov.oleracea)
+```
+
+Female covariance matrix
+```{r}
+as.data.frame(cov.carduorum)
+```
+
+Calculating pooled variance:
+```{r}
+oleracea.n <- nrow(oleracea)
+oleracea.df <- oleracea.n - 1
+
+carduorum.n <- nrow(carduorum)
+carduorum.df <- carduorum.n - 1
+
+beetles.n <- nrow(beetles)
+
+beetles.pooled.var <- ( (oleracea.df*cov.oleracea) %*% (carduorum.df*cov.carduorum)) / beetles.n
+as.data.frame(beetles.pooled.var)
+```
+Standardized Coefficients
+```{r}
+diag(beetles.pooled.var)
+```
+
+### C - T tests
+```{r}
+t.test(beetles$post_dist~beetles$Species)
+t.test(beetles$l_elytra~beetles$Species)
+t.test(beetles$len_sec_an~beetles$Species)
+t.test(beetles$len_thi_an~beetles$Species)
+
+```
+Above, we can conclude that there are significant differences between all variables as it pertains to both beetles species. 
+
+
+## Problem 7
+Get Glucose data
+```{r}
+glucose <- read_excel("C:/mattgraham93.github.io/school/22_3_DA410/data/gluecose.xlsx")
+
+fasting <- subset(glucose, SugarIntakeFlag == "Before")[-1]
+post.cons <- subset(glucose, SugarIntakeFlag == "After")[-1]
+
+glucose <- cbind(fasting, post.cons)
+colnames(glucose) <- c('b_time1', 'b_time2', 'b_time3', 'a_time1', 'a_time2', 'a_time3')  # b = before, a = after
+
+glucose
+```
+
+### Getting mean vector and covariance matrix
+Mean matrix
+```{r}
+x.bar <- mean(colMeans(fasting))
+y.bar <- mean(colMeans(post.cons))
+
+cbind.data.frame(x.bar, y.bar)
+```
+
+```{r}
+my.S <- round(var(glucose), digits=2)
+my.S
+```
+
+Finding correlation matrix
+```{r}
+my.R <- round(cor(glucose), digits=2)
+my.R
+```
+
+
+
+## Problem 8
+Get Goods data
+```{r}
+goods <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_8_GOODS.DAT", header=FALSE)
+## GoodType = 1 = Consumer; GoodType = 2 = Producer
+colnames(goods) <- c("Item", 'GoodType', 'l_cycle', 'pct_hir_price','cyc_amp', 'chng_rt')
+
+consumer.goods <- goods[goods$GoodType==1,]
+producer.goods <- goods[goods$GoodType==2,]
+
+goods
+```
+
+### A
+Hotelling's T^2 test
+```{r}
+
+goods.manova <- manova(cbind(l_cycle, pct_hir_price, cyc_amp, chng_rt) ~GoodType, data=goods[, 2:6])
+
+summary(goods.manova, test="Hotelling")
+```
+*Ho:* The good types have equal variation between all variables  
+
+*Ha:* At least one variable is unequal between the 2 good types
+
+Conclusion: At alpha = 0.05, we can say there is enough evidence to conclude at least one variable has significant differences between the two good types. We will learn more about this below.
+
+### B
+Assumption check
+
+```{r}
+
+chisplot <- function(x) { 
+    if (!is.matrix(x)) stop("x is not a matrix") 
+    ### determine dimensions 
+    n <- nrow(x) 
+    p <- ncol(x) 
+    xbar <- apply(x, 2, mean) 
+    S <- var(x) 
+    S <- solve(S) 
+    index <- (1:n)/(n+1) 
+    xcent <- t(t(x) - xbar) 
+    di <- apply(xcent, 1, function(x,S) x %*% S %*% x,S) 
+    quant <- qchisq(index,p) 
+    plot(quant, sort(di), ylab = "Ordered distances", 
+         xlab = "Chi-square quantile", lwd=2,pch=1) 
+}
+
+chisplot(residuals(goods.manova))
+```
+
+
+```{r}
+my.n <- nrow(goods)  # number of individuals 
+ 
+# Sample mean vectors for goods: 
+as.data.frame(
+  goods %>% 
+    group_by(GoodType) %>%
+    summarise_at(vars('l_cycle', 'pct_hir_price','cyc_amp', 'chng_rt'), mean)
+)
+```
+
+Overall, we can notice there is some increasing variation the more extreme our values become. This makes sense due to the consistency within our data. It is safe to say that our model checks all the necessary requirements to be utilized for predictions.
+
+As hinted to above, our primary variable with significant differences are l_cycle. 
+

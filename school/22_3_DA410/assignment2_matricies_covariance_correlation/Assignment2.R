@@ -40,7 +40,7 @@ s2z
 # (Frets 1921). Define j/i and yi as the measurements on the first son and x\
 # and X2 for the second son.
 
-t3_8 <- read.table("../data/T3_8_SONS.DAT", header=FALSE,
+t3_8 <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T3_8_SONS.DAT", header=FALSE,
                    col.names=c("FHL", "FHB", "SHL", "SHB"))
 attach(t3_8)
 

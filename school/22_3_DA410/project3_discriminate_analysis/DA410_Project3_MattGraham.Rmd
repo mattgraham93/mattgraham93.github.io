@@ -1,0 +1,94 @@
+---
+title: "DA410_Project3_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+In project 3, we are working through Linear Discriminate Analysis (LDA) on newborns who were victims of Sudden Infant Death Syndrome (SIDS). Group 1 is our control group, Group 2 are victims of SIDS.
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library("klaR")
+library(MASS)
+library(readxl)
+library(BSDA)
+```
+
+## Part 1: Creating and understanding our LDA
+#### Import data
+```{r}
+sids <- read_excel("C:/mattgraham93.github.io/school/22_3_DA410/data/SIDS.xlsx")
+
+sids$HR <- as.numeric(sids$HR)
+sids$BW <- as.numeric(sids$BW)
+sids$Factor68 <- as.numeric(sids$Factor68)
+sids$Gesage <- as.numeric(sids$Gesage)
+
+
+sids
+```
+
+### Create LDA
+```{r}
+sids.lda <- lda(Group ~ HR + BW + Factor68 + Gesage, data=sids, prior=c(0.5, 0.5))
+```
+
+Group means
+```{r}
+sids.lda$means
+```
+
+Coefficients of discriminates
+```{r}
+sids.lda$scaling
+```
+
+### Interpretation
+When looking at our coefficients of linear discriminates, it is evident that 2 variables have the greatest impact on determining whether a baby has SIDS or not: Factor68 seems to greatly increase the likelihood while Gesage slighly reduces the risk.
+
+#### Plot LDA
+```{r}
+plot(sids.lda)
+```
+
+When observing the above plot, we can note how abnormal the spreads are between our groups. Group 2 displays how being ~5% beyond the expected mean can lead to a higher likelihood of a newborn developing SIDS. 
+
+## Part 2: Predictions and summary
+
+```{r}
+newinf <- rbind( c(100, 3000, 0.3, 40) ) # classification of newborn
+dimnames(newinf) <- list(NULL, c('HR', 'BW', 'Factor68','Gesage'))
+newinf <- data.frame(newinf)
+predict(sids.lda, newdata = newinf)
+```
+
+Our output is fascinating. I thought of limiting it to just the class to keep it simple. Personally, seeing the full summary makes things interesting.
+
+To start, we can conclude that our baby is likely to not be affected by SIDS. We can see this through the posterior probability returning ~0.666 and our predicted value ~-.443. When looking at our plot above, we can start to see why/where this is helpful.
+
+Z test
+```{r}
+
+group1.pred <- rbind( c(sids.lda$means[1,]) )
+names(group1.pred) <- NULL
+dimnames(group1.pred) <- list(NULL, c('HR', 'BW', 'Factor68','Gesage'))
+
+group1.pred <- data.frame(group1.pred)
+
+newinf.pred.val <- predict(sids.lda, newdata = newinf)$x
+group1.pred.val <- predict(sids.lda, newdata=group1.pred)$x
+
+z.stat <- (newinf.pred.val - group1.pred.val) / (sids.lda$svd / sqrt(sids.lda$N))
+z.stat
+
+```
+
+Observing our z.stat above, we can conclude that we are far within rejection region at nearly any percentile. 
+
+This is exactly how we can prove to our new mothers how confident we are that their pregancies are within a range of normality.

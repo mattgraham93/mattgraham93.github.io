@@ -1,10 +1,10 @@
 ---
-title: "DA410_Project2_MattGraham"
+title: "DA410_Assignment4_MattGraham"
 output:
-  pdf_document: default
-  word_document: default
   html_document:
     df_print: paged
+  word_document: default
+  pdf_document: default
 ---
 
 This is our first project, analyzing air pollution, mortality rates, and relevant parameters.
@@ -14,11 +14,7 @@ library(nnspat)  # used for dist2full()
 library("dplyr")  # used to select numeric datatypes
 library("ggplot2")
 library(reshape)  # used for melting matricies
-```
-
-
-```{r}
-
+library(klaR)
 ```
 
 
@@ -26,39 +22,201 @@ library(reshape)  # used for melting matricies
 
 For the psychological data in Table 5.1, the discriminant function coefficient 
 vector was given in Example 5.5. 
-(a) Find the standardized coefficients. 
+
+```{r}
+psych <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_1_PSYCH.DAT", header=FALSE)
+colnames(psych) <- c('gender', 'y1', 'y2', 'y3', 'y4')
+
+# create subsets and remove gender column
+male <- psych[psych$gender==1,-1]
+female <- psych[psych$gender==2,-1]
+
+as.data.frame(psych)
+```
+
+#### (a) Find the standardized coefficients. 
+
+Getting covariance matricies for subsets
+```{r}
+
+cov.male <- cov(male)
+cov.female <- cov(female)
+
+```
+
+Male covariance matrix
+```{r}
+as.data.frame(cov.male)
+```
+
+Female covariance matrix
+```{r}
+as.data.frame(cov.female)
+```
+
+Calculating pooled variance:
+```{r}
+male.n <- nrow(male)
+male.df <- male.n - 1
+
+female.n <- nrow(female)
+female.df <- female.n - 1
+
+psych.n <- nrow(psych)
+
+psych.pooled.var <- ( (male.df*cov.male) %*% (female.df*cov.female)) / psych.n
+as.data.frame(psych.pooled.var)
+```
+
+```{r}
+a <- matrix(c(.5104, -.2033, .4660, -.3097))
+
+a.star <- sqrt(diag(psych.pooled.var)) %*% a
+a.star
+```
+The result is not as expected/given in the book. I expected to return a matrix and was given one single value.
+
 (b) Calculate ί-tests for the individual variables. 
+
+```{r}
+lapply(psych[-1], function(x) t.test(x~psych$gender))
+```
+
 (c) Compare the results of (a) and (b) as to the contribution of the variables 
 to separation of the two groups. 
+
+Given part a did not calculate as expected, I can't determine the differences between the two. I can conclude the rank for part b in important are: y3, y1, y2, then y4.
+
 (d) Find the partial F for each variable, as in (8.26), and compare with the 
 standardized coefficients.
 
 ```{r}
 
-psych <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_1_PSYCH.DAT", header=FALSE)
-colnames(psych) <- c('method', 'y1', 'y2', 'y3', 'y4')
-as.data.frame(psych)
+full.psych <- lm(gender ~y1+y2+y3+y4, data=psych)
+
+reduced.psych.y1 <- lm(gender ~y2+y3+y4, data=psych)
+reduced.psych.y2 <- lm(gender ~y1+y3+y4, data=psych)
+reduced.psych.y3 <- lm(gender ~y1+y2+y4, data=psych)
+reduced.psych.y4 <- lm(gender ~y1+y2+y3, data=psych)
+
 ```
 
 
+y1 ANOVA table
+```{r}
+anova(reduced.psych.y1, full.psych)
+```
+
+y2 ANOVA table
+```{r}
+anova(reduced.psych.y2, full.psych)
+```
+
+y3 ANOVA table
+```{r}
+anova(reduced.psych.y3, full.psych)
+```
+
+y4 ANOVA table
+```{r}
+anova(reduced.psych.y4, full.psych)
+```
+
+Observing our linear models, we can see that our ranks across all 4 reduced models = 3. We can also conclude that y2 is not a significant variable when looking to seek differences between genders. While it may have fallen within our initial scope of "reasonable", it's lack of variability does not make it a good fit for our model.
 
 ### 8.11 (a and b)
 
  Using the fish data in Table 6.17, do the following: 
-(a) Find the eigenvectors of E_ 1 H . 
-(b) Carry out tests of significance for the discriminant functions and find 
-the relative importance of each as in (8.13), λ*/ ^ ■ λ^. Do these two 
-procedures agree as to the number of important discriminant functions?
+
 ```{r}
 
 fish <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T6_17_FISH.DAT", header=FALSE)
 colnames(fish) <- c('method', 'y1', 'y2', 'y3', 'y4')
-as.data.frame(fish)
 
+method1 <- fish[fish$method==1, -1]
+method2 <- fish[fish$method==2, -1]
+method3 <- fish[fish$method==3, -1]
+
+method1.bar <- colMeans(method1)
+method2.bar <- colMeans(method2)
+method3.bar <- colMeans(method3)
+y.bar.all <- colMeans(fish[-1])
+
+as.data.frame(fish)
+```
+
+Calculate E and H
+```{r}
+method1.bar.diff <- method1.bar - y.bar.all
+method2.bar.diff <- method2.bar - y.bar.all
+method3.bar.diff <- method3.bar - y.bar.all
+
+H <- 12 * unname(method1.bar.diff %*% t(method1.bar.diff) 
+                 + method2.bar.diff %*% t(method2.bar.diff) 
+                 + method3.bar.diff %*% t(method3.bar.diff)
+                 )
+
+"compute.within.matrix" <- function(data, mean) { 
+  ret <- matrix(as.numeric(0), nrow=4, ncol=4)
+  
+  for (i in 1:12) { 
+      diff <- as.numeric(data[i,] - mean)
+      ret <- ret + diff %*% t(diff) 
+  }
+  return(ret) 
+}
+
+E <- compute.within.matrix(method1, method1.bar) + compute.within.matrix(method2, method2.bar) +
+compute.within.matrix(method3, method3.bar)
+
+E.H <- solve(E) %*% H
+```
+
+
+Matrix E
+```{r}
+as.data.frame(E)
+```
+
+Matrix H
+```{r}
+as.data.frame(H)
+```
+
+
+Matrix E*H
+```{r}
+as.data.frame(E.H)
+```
+
+(a) Find the eigenvectors of E^-1 * H . 
+
+```{r}
+
+n <- 12  # total records
+k <- 3  # methods of cooking
+p <- 4  # dependent variables (judges)
+
+eigen(E.H)
 
 ```
 
 
+(b) Carry out tests of significance for the discriminant functions and find 
+the relative importance of each as in (8.13). Do these two 
+procedures agree as to the number of important discriminant functions?
+
+```{r}
+
+vals <- eigen(E.H)[1]
+eigen_mean <- sapply(vals, mean)
+sprintf("Eigenvalue mean: %s", eigen_mean)
+
+sapply(vals, FUN = '/', FUN.VALUE = eigen_mean)
+
+```
+
+Looking at our eigenvalues and eigenvectors, we can conclude our judge, V1, does not obtain agreement between our two procedures. 
 
 ### 8.15
 
@@ -66,6 +224,9 @@ Carry out a stepwise selection of variables on the fish data of Table 6.17.
 
 ```{r}
 
-
-
+fish.model <- greedy.wilks(fish[-1],fish$method, "lda", niveau = .1)
+fish.model
 ```
+
+When looking at our stepwise selection, we are returned with 2 significant variables. Both y2 and y3 are significant and should be included in our linear models. 
+
