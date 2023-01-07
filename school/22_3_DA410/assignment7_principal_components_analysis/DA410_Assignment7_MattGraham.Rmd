@@ -38,7 +38,7 @@ library(psych)
 ```
 Get data
 ```{r}
-probe <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T3_6_PROBE.DAT", header=FALSE)
+probe <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/foodstuff.dat", header=FALSE)
 colnames(probe) <- c('ind', 'pos_1', 'pos_2', 'pos_3', 'pos_4', 'pos_5')
 probe <- probe[, 2:6]
 probe

@@ -1,0 +1,90 @@
+```{r}
+library(bayesm)
+library(ggplot2)
+library(viridis)
+library(hrbrthemes)
+library(plyr)
+library(forcats)
+```
+
+
+
+
+```{r}
+data(orangeJuice)
+```
+
+```{r}
+oj.prices <- orangeJuice$yx
+oj.prices
+```
+
+### Data cleansing
+```{r}
+oj.prices$feat[oj.prices$feat > 0] = 1
+oj.prices$feat[oj.prices$feat == 1] = "with"
+oj.prices$feat[oj.prices$feat == 0] = "without"
+oj.prices$logmove = exp(oj.prices$logmove)
+oj.prices$brand_ch = as.character(oj.prices$brand)
+
+```
+
+
+### Aggregating the means
+```{r}
+sold.by.brand.feature <- aggregate(x=oj.prices$logmove, by=list(oj.prices$brand, oj.prices$feat, oj.prices$brand_ch), FUN=mean)
+colnames(sold.by.brand.feature) <- c('brand', 'feature', 'brand_ch', 'avg_sold')
+sold.by.brand.feature
+```
+### Splitting the means
+```{r}
+no.feature <- sold.by.brand.feature[sold.by.brand.feature$feature=="without",]
+no.feature
+```
+
+```{r}
+feature <- sold.by.brand.feature[sold.by.brand.feature$feature=="with",]
+feature
+```
+
+### ANOVA w/ interaction on brands w/ and/or w/o features
+```{r}
+feat.model <- aov(avg_sold ~ brand*feature, data=sold.by.brand.feature)
+summary(feat.model)
+```
+
+```{r}
+plot(feat.model)
+```
+
+
+### Barplot of brand sales
+```{r}
+
+sold.by.brand.feature %>%
+  mutate(brand = fct_reorder(brand_ch, desc(avg_sold))) %>%
+  ggplot(aes(fill=feature, y=avg_sold, x=brand)) +
+    geom_bar(position="dodge", stat="identity") +
+    theme_ft_rc()
+
+```
+
+
+### Understanding the summary
+```{r}
+summary(feature$avg_sold)
+```
+
+```{r}
+summary(no.feature$avg_sold)
+```
+
+### Overall boxplot of average units sold
+```{r}
+# Basic box plot
+p <- ggplot(sold.by.brand.feature, aes(x=brand_ch, y=avg_sold)) + 
+  geom_boxplot()
+
+p
+```
+

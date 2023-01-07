@@ -1,0 +1,70 @@
+---
+title: "DA410_Project7_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Exploratory Factor Analysis
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+library(corrplot)
+```
+Get data
+```{r}
+subject <- read.csv("subject.csv", header=TRUE)
+subject
+```
+
+
+Assumption check:
+
+Variables used should be metric.  Dummy variables can also be considered, but only in special cases. -> check
+
+Sample size: Sample size should be more than 200. -> check
+
+Homogeneous sample: A sample should be homogenous.  Violation of this assumption increases the 
+sample size as the number of variables increases.  Reliability analysis is conducted to check the 
+homogeneity between variables. 
+
+Correlation: At least 0.30 correlations are required between the research variables. 
+```{r}
+subject.cor <- cor(subject)
+as.data.frame(subject.cor)
+```
+We have a few correlations that are unable to be compared, and will be noted through analysis
+
+There should be no outliers in the data. 
+```{r}
+boxplot(subject)
+```
+There are no outliers
+
+### Running fa
+```{r}
+solution <- fa(r = subject.cor, nfactors = 2, rotate = "oblimin", fm="pa")
+solution
+```
+
+Similar to maximum likelihood. WLS = weighted least squared.
+
+Overall, our model does a great job explaining ~96% of variation when using 2 factors. Our most-ideal values to model from would be Calculus and either Biology or Geography. We can also see in our console output that hypothesis tests with 2 factors are sufficient. 
+
+
+
+```{r}
+parallel <- fa.parallel(subject)
+```

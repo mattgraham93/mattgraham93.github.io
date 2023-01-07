@@ -1,0 +1,1004 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={DA410\_Exam2\_MattGraham},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DA410\_Exam2\_MattGraham}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(nnspat)  }\CommentTok{\# used for dist2full()}
+\FunctionTok{library}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)  }\CommentTok{\# used to select numeric datatypes}
+\FunctionTok{library}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(reshape)  }\CommentTok{\# used for melting matricies}
+\FunctionTok{library}\NormalTok{(klaR)}
+\FunctionTok{library}\NormalTok{(ggvis)}
+\FunctionTok{library}\NormalTok{(class)}
+\FunctionTok{library}\NormalTok{(gmodels)}
+\FunctionTok{library}\NormalTok{(MASS)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(psych)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'corrplot' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lavaan)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'lavaan' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(semPlot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'semPlot' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(semTable)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'semTable' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(kutils)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'kutils' was built under R version 4.2.2
+\end{verbatim}
+
+\hypertarget{problem-1}{%
+\subsection{Problem 1}\label{problem-1}}
+
+Get data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cov.mat }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{9}\NormalTok{,}\DecValTok{0}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{9}\NormalTok{))}
+\NormalTok{cov.mat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   c.5..0..0. c.0..9..0. c.0..0..9.
+## 1          5          0          0
+## 2          0          9          0
+## 3          0          0          9
+\end{verbatim}
+
+\hypertarget{a-find-eigenvalues-and-vectors}{%
+\subsubsection{A) Find eigenvalues and
+vectors}\label{a-find-eigenvalues-and-vectors}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cov.mat.vals }\OtherTok{\textless{}{-}} \FunctionTok{eigen}\NormalTok{(cov.mat)}\SpecialCharTok{$}\NormalTok{values}
+\NormalTok{cov.mat.vals}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9 9 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cov.mat.vects }\OtherTok{\textless{}{-}} \FunctionTok{eigen}\NormalTok{(cov.mat)}\SpecialCharTok{$}\NormalTok{vectors}
+\NormalTok{cov.mat.vects}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    0    0    1
+## [2,]    0    1    0
+## [3,]    1    0    0
+\end{verbatim}
+
+\hypertarget{b-find-variance-explained}{%
+\subsubsection{B) Find variance
+explained}\label{b-find-variance-explained}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (r }\ControlFlowTok{in}\NormalTok{ cov.mat.vals) \{}
+  \FunctionTok{print}\NormalTok{(r}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(cov.mat.vals))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3913043
+## [1] 0.3913043
+## [1] 0.2173913
+\end{verbatim}
+
+We can see that of our eigen values, \textasciitilde80\% of our variance
+is explained with 2 dimensions, while \textasciitilde20\% is explained
+with 1 dimension. This can be seen below.
+
+\hypertarget{plot}{%
+\paragraph{Plot}\label{plot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(cov.mat.vals}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(cov.mat.vals), }\AttributeTok{xlab =} \StringTok{\textquotesingle{}Number of components\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Eigen size\textquotesingle{}}\NormalTok{, }\AttributeTok{main=}\StringTok{\textquotesingle{}Plot of dimension variance\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\#\#\#C) Decision Ultimately, we will want to select 2 components in our
+analysis.
+
+\hypertarget{problem-2}{%
+\subsection{Problem 2}\label{problem-2}}
+
+Assumption check:
+
+Variables used should be metric. Dummy variables can also be considered,
+but only in special cases. -\textgreater{} check
+
+Sample size: Sample size should be more than 200. -\textgreater{} check
+
+Homogeneous sample: A sample should be homogenous. Violation of this
+assumption increases the sample size as the number of variables
+increases. Reliability analysis is conducted to check the homogeneity
+between variables.
+
+Correlation: At least 0.30 correlations are required between the
+research variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{french }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{44}\NormalTok{, .}\DecValTok{41}\NormalTok{, .}\DecValTok{29}\NormalTok{, .}\DecValTok{33}\NormalTok{, .}\DecValTok{25}\NormalTok{)}
+\NormalTok{english }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(.}\DecValTok{44}\NormalTok{, }\DecValTok{1}\NormalTok{, .}\DecValTok{35}\NormalTok{, .}\DecValTok{35}\NormalTok{, .}\DecValTok{32}\NormalTok{, .}\DecValTok{33}\NormalTok{)}
+\NormalTok{history }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(.}\DecValTok{41}\NormalTok{, .}\DecValTok{35}\NormalTok{, }\DecValTok{1}\NormalTok{, .}\DecValTok{16}\NormalTok{, .}\DecValTok{19}\NormalTok{, .}\DecValTok{18}\NormalTok{)}
+\NormalTok{arithmetic }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(.}\DecValTok{29}\NormalTok{, .}\DecValTok{35}\NormalTok{, .}\DecValTok{16}\NormalTok{, }\DecValTok{1}\NormalTok{, .}\DecValTok{59}\NormalTok{, .}\DecValTok{47}\NormalTok{)}
+\NormalTok{algebra }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(.}\DecValTok{33}\NormalTok{, .}\DecValTok{32}\NormalTok{, .}\DecValTok{19}\NormalTok{, .}\DecValTok{59}\NormalTok{, }\DecValTok{1}\NormalTok{, .}\DecValTok{46}\NormalTok{)}
+\NormalTok{geometry }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(.}\DecValTok{25}\NormalTok{, .}\DecValTok{33}\NormalTok{, .}\DecValTok{18}\NormalTok{, .}\DecValTok{47}\NormalTok{, .}\DecValTok{46}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\NormalTok{subject.cor }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(french, english, history, arithmetic, algebra, geometry)}
+\FunctionTok{row.names}\NormalTok{(subject.cor) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}french\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}english\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}history\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}arithmetic\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}algebra\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}geometry\textquotesingle{}}\NormalTok{)}
+\FunctionTok{as.data.frame}\NormalTok{(subject.cor)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            french english history arithmetic algebra geometry
+## french       1.00    0.44    0.41       0.29    0.33     0.25
+## english      0.44    1.00    0.35       0.35    0.32     0.33
+## history      0.41    0.35    1.00       0.16    0.19     0.18
+## arithmetic   0.29    0.35    0.16       1.00    0.59     0.47
+## algebra      0.33    0.32    0.19       0.59    1.00     0.46
+## geometry     0.25    0.33    0.18       0.47    0.46     1.00
+\end{verbatim}
+
+We have a few correlations that are unable to be compared, and will be
+noted through analysis
+
+Since we do not have a raw dataset, we assume there are no outliers.
+
+\hypertarget{running-fa}{%
+\subsubsection{Running fa}\label{running-fa}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{solution }\OtherTok{\textless{}{-}} \FunctionTok{fa}\NormalTok{(}\AttributeTok{r =}\NormalTok{ subject.cor, }\AttributeTok{nfactors =} \DecValTok{2}\NormalTok{, }\AttributeTok{rotate =} \StringTok{"oblimin"}\NormalTok{, }\AttributeTok{fm=}\StringTok{"pa"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required namespace: GPArotation
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in fac(r = r, nfactors = nfactors, n.obs = n.obs, rotate = rotate, : I
+## am sorry, to do these rotations requires the GPArotation package to be installed
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{solution}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Factor Analysis using method =  pa
+## Call: fa(r = subject.cor, nfactors = 2, rotate = "oblimin", fm = "pa")
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##             PA1   PA2   h2   u2 com
+## french     0.59  0.37 0.49 0.51 1.7
+## english    0.59  0.23 0.41 0.59 1.3
+## history    0.43  0.41 0.36 0.64 2.0
+## arithmetic 0.71 -0.34 0.62 0.38 1.4
+## algebra    0.70 -0.27 0.56 0.44 1.3
+## geometry   0.58 -0.18 0.38 0.62 1.2
+## 
+##                        PA1  PA2
+## SS loadings           2.22 0.59
+## Proportion Var        0.37 0.10
+## Cumulative Var        0.37 0.47
+## Proportion Explained  0.79 0.21
+## Cumulative Proportion 0.79 1.00
+## 
+## Mean item complexity =  1.5
+## Test of the hypothesis that 2 factors are sufficient.
+## 
+## The degrees of freedom for the null model are  15  and the objective function was  1.43
+## The degrees of freedom for the model are 4  and the objective function was  0.01 
+## 
+## The root mean square of the residuals (RMSR) is  0.01 
+## The df corrected root mean square of the residuals is  0.03 
+## 
+## Fit based upon off diagonal values = 1
+## Measures of factor score adequacy             
+##                                                    PA1  PA2
+## Correlation of (regression) scores with factors   0.90 0.73
+## Multiple R square of scores with factors          0.82 0.53
+## Minimum correlation of possible factor scores     0.63 0.06
+\end{verbatim}
+
+Overall, our model does a great job explaining \textasciitilde90\% of
+variation when using 2 factors. Our most-ideal values to model from
+would be arithmetic and algebra. We can also see in our console output
+that hypothesis tests with 2 factors are sufficient. Neither of these
+have correlations below .30.
+
+\hypertarget{problem-3}{%
+\subsection{Problem 3}\label{problem-3}}
+
+Get data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{food.stuff }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/mattgraham93.github.io/school/22\_3\_DA410/data/foodstuff.dat"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{food.stuff }\OtherTok{\textless{}{-}}\NormalTok{ food.stuff[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{food.stuff}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Energy Protein Fat Calcium Iron
+## 1     340      20  28       9  2.6
+## 2     245      21  17       9  2.7
+## 3     420      15  39       7  2.0
+## 4     375      19  32       9  2.5
+## 5     180      22  10      17  3.7
+## 6     115      20   3       8  1.4
+## 7     170      25   7      12  1.5
+## 8     160      26   5      14  5.9
+## 9     265      20  20       9  2.6
+## 10    300      18  25       9  2.3
+## 11    340      20  28       9  2.5
+## 12    340      19  29       9  2.5
+## 13    355      19  30       9  2.4
+## 14    205      18  14       7  2.5
+## 15    185      23   9       9  2.7
+## 16    135      22   4      25  0.6
+## 17     70      11   1      82  6.0
+## 18     45       7   1      74  5.4
+## 19     90      14   2      38  0.8
+## 20    135      16   5      15  0.5
+## 21    200      19  13       5  1.0
+## 22    155      16   9     157  1.8
+## 23    195      16  11      14  1.3
+## 24    120      17   5     159  0.7
+## 25    180      22   9     367  2.5
+## 26    170      25   7       7  1.2
+## 27    110      23   1      98  2.6
+\end{verbatim}
+
+\hypertarget{a.-determine-factors-to-use}{%
+\subsubsection{a. Determine factors to
+use}\label{a.-determine-factors-to-use}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(factoextra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'factoextra' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{food.stuff.pca }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(food.stuff)}
+\FunctionTok{fviz\_eig}\NormalTok{(food.stuff.pca)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+We will ultimately use 2 dimensions when concluding our analysis.
+
+\hypertarget{b---obtaining-loadings}{%
+\subsubsection{B - obtaining loadings}\label{b---obtaining-loadings}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S }\OtherTok{\textless{}{-}} \FunctionTok{cov}\NormalTok{(food.stuff)}
+\NormalTok{R }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(food.stuff)}
+\end{Highlighting}
+\end{Shaded}
+
+S
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.data.frame}\NormalTok{(S)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Energy    Protein          Fat      Calcium        Iron
+## Energy  10243.01994  74.807692 1124.5655271 -2530.292023 -14.7521368
+## Protein    74.80769  18.076923    1.1923077   -28.230769  -1.0846154
+## Fat      1124.56553   1.192308  126.7207977  -270.673789  -0.9965812
+## Calcium -2530.29202 -28.230769 -270.6737892  6089.344729   5.0491453
+## Iron      -14.75214  -1.084615   -0.9965812     5.049145   2.1341026
+\end{verbatim}
+
+R
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.data.frame}\NormalTok{(R)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Energy     Protein         Fat     Calcium        Iron
+## Energy   1.00000000  0.17384812  0.98706740 -0.32038440 -0.09977765
+## Protein  0.17384812  1.00000000  0.02491163 -0.08508934 -0.17462478
+## Fat      0.98706740  0.02491163  1.00000000 -0.30813212 -0.06060118
+## Calcium -0.32038440 -0.08508934 -0.30813212  1.00000000  0.04429196
+## Iron    -0.09977765 -0.17462478 -0.06060118  0.04429196  1.00000000
+\end{verbatim}
+
+Get eigenvalues and eigenvectors of S and R
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eig.S }\OtherTok{\textless{}{-}} \FunctionTok{eigen}\NormalTok{(S)}
+\NormalTok{eig.R }\OtherTok{\textless{}{-}} \FunctionTok{eigen}\NormalTok{(R)}
+\end{Highlighting}
+\end{Shaded}
+
+Eigen S
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eig.S}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## eigen() decomposition
+## $values
+## [1] 1.155253e+04 4.903923e+03 2.042503e+01 2.066907e+00 3.516836e-01
+## 
+## $vectors
+##              [,1]          [,2]         [,3]          [,4]          [,5]
+## [1,]  0.901061141  0.4195897978 -0.034918237 -0.0089992248  0.1035999595
+## [2,]  0.006887716  0.0011983568 -0.924379029  0.1023111641 -0.3674329322
+## [3,]  0.098689332  0.0474125325  0.374781853  0.0877224332 -0.9164364709
+## [4,] -0.422255831  0.9064738840 -0.002194532 -0.0001874493  0.0005097596
+## [5,] -0.001344580 -0.0003389534  0.061950579  0.9908361011  0.1200167645
+\end{verbatim}
+
+Eigen R
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eig.R}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## eigen() decomposition
+## $values
+## [1] 2.197777619 1.144204758 0.848574671 0.807842783 0.001600169
+## 
+## $vectors
+##            [,1]        [,2]       [,3]      [,4]         [,5]
+## [1,] -0.6539155  0.08725829 -0.1490040 0.1985936  0.709322816
+## [2,] -0.1511882 -0.69052953  0.4629211 0.5245825 -0.104059181
+## [3,] -0.6394332  0.20196122 -0.2157528 0.1336768 -0.697078234
+## [4,]  0.3546581 -0.00633049 -0.6521357 0.6699900  0.003161132
+## [5,]  0.1219811  0.68900403  0.5400663 0.4675657  0.010235855
+\end{verbatim}
+
+\hypertarget{c.-obtain-scores}{%
+\subsubsection{c.~Obtain scores}\label{c.-obtain-scores}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (r }\ControlFlowTok{in}\NormalTok{ eig.R}\SpecialCharTok{$}\NormalTok{values) \{}
+  \FunctionTok{print}\NormalTok{(r}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(eig.R}\SpecialCharTok{$}\NormalTok{values))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4395555
+## [1] 0.228841
+## [1] 0.1697149
+## [1] 0.1615686
+## [1] 0.0003200338
+\end{verbatim}
+
+We can see that of our eigen values, \textasciitilde65\% of our variance
+is explained with just two dimensions, and inerestingly enough going
+with all 5 shows almost no meaningful value. We can see this below.
+
+\hypertarget{plot-1}{%
+\paragraph{Plot}\label{plot-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(eig.R}\SpecialCharTok{$}\NormalTok{values}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(eig.R}\SpecialCharTok{$}\NormalTok{values), }\AttributeTok{xlab =} \StringTok{\textquotesingle{}Number of components\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Eigen size\textquotesingle{}}\NormalTok{, }\AttributeTok{main=}\StringTok{\textquotesingle{}Plot of dimension variance\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\hypertarget{e.-interpretation}{%
+\subsubsection{e. Interpretation}\label{e.-interpretation}}
+
+Over the impact of foods' macros pertaining to total energy, as we model
+our data, we can conclude that most of our variation happens within the
+first 2 measures compared to subsequent ones. This makes sense as
+protein and fat are our primary determinate for overall macro tracking
+and impact caloric intake.
+
+\hypertarget{problem-4}{%
+\subsection{Problem 4}\label{problem-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scores }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/mattgraham93.github.io/school/22\_3\_DA410/data/test\_score.dat"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{scores }\OtherTok{\textless{}{-}}\NormalTok{ scores[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{scores}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      math reading  sex
+## 1   83.16   79.67  boy
+## 2  102.51  101.13  boy
+## 3   81.63   80.53  boy
+## 4   88.25   84.58  boy
+## 5   81.47   76.52  boy
+## 6   87.19   84.70  boy
+## 7   88.66   85.86  boy
+## 8   79.35   81.03  boy
+## 9   83.35   80.44  boy
+## 10  86.58   84.67  boy
+## 11  81.73   80.71  boy
+## 12  85.00   81.32  boy
+## 13  85.23   81.31  boy
+## 14  80.30   79.37  boy
+## 15  81.18   79.65  boy
+## 16  88.41   85.85  boy
+## 17  90.80   88.81  boy
+## 18  81.68   79.71  boy
+## 19  82.22   79.81  boy
+## 20  78.21   74.20  boy
+## 21  72.64   69.13  boy
+## 22  84.61   83.05  boy
+## 23  82.06   82.12  boy
+## 24  87.01   84.62  boy
+## 25  86.25   85.45  boy
+## 26  77.05   74.03  boy
+## 27  90.76   87.13  boy
+## 28  81.39   78.53  boy
+## 29  81.20   79.73  boy
+## 30  83.07   79.94  boy
+## 31  76.99   75.74 girl
+## 32  83.32   81.40 girl
+## 33  75.37   78.26 girl
+## 34  84.81   83.93 girl
+## 35  81.61   79.58 girl
+## 36  76.08   78.18 girl
+## 37  84.43   86.48 girl
+## 38  82.29   83.16 girl
+## 39  81.91   81.88 girl
+## 40  97.85   97.01 girl
+## 41  75.96   75.72 girl
+## 42  82.47   80.84 girl
+## 43  78.43   75.01 girl
+## 44  82.89   82.92 girl
+## 45  86.26   84.84 girl
+## 46  88.48   87.90 girl
+## 47  82.47   82.29 girl
+## 48  87.24   87.45 girl
+## 49  79.72   79.75 girl
+## 50  87.52   85.44 girl
+## 51  84.73   82.24 girl
+## 52  77.15   77.63 girl
+## 53  85.33   81.96 girl
+## 54  80.58   81.67 girl
+## 55  88.70   87.57 girl
+## 56  79.20   77.14 girl
+## 57  91.84   91.55 girl
+## 58  81.07   77.01 girl
+## 59  88.15   88.16 girl
+## 60  76.98   75.65 girl
+## 61  79.27   80.33 girl
+## 62  85.70   84.27 girl
+\end{verbatim}
+
+\hypertarget{hotellings-test}{%
+\subsubsection{Hotelling's test}\label{hotellings-test}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{manova}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(math, reading) }\SpecialCharTok{\textasciitilde{}}\NormalTok{sex, }\AttributeTok{data=}\NormalTok{scores), }\AttributeTok{test=}\StringTok{"Hotelling"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Df Hotelling-Lawley approx F num Df den Df    Pr(>F)    
+## sex        1          0.30593   9.0249      2     59 0.0003805 ***
+## Residuals 60                                                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\hypertarget{hotellings-analysis}{%
+\paragraph{Hotelling's Analysis}\label{hotellings-analysis}}
+
+At alpha = 0.05 and p-value \textless{} 0.05, we can conclude there is
+sufficient evidence to state there are differences between mean math and
+reading scores between the recorded sexes.
+
+\hypertarget{problem-5}{%
+\subsection{Problem 5}\label{problem-5}}
+
+Get data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{glucose }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/mattgraham93.github.io/school/22\_3\_DA410/data/T3\_5\_DIABETES.DAT"}\NormalTok{, }\AttributeTok{header=}\ConstantTok{FALSE}\NormalTok{)[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{34}\NormalTok{,]}
+\NormalTok{glucose }\OtherTok{\textless{}{-}}\NormalTok{ glucose[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\FunctionTok{colnames}\NormalTok{(glucose) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}rel\_wt\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fst\_pls\_glu\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}gl\_int\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}ins\_resp\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}ins\_resist\textquotesingle{}}\NormalTok{)  }
+
+\NormalTok{ys }\OtherTok{\textless{}{-}}\NormalTok{ glucose[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
+\NormalTok{xs }\OtherTok{\textless{}{-}}\NormalTok{ glucose[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+
+\NormalTok{glucose}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    rel_wt fst_pls_glu gl_int ins_resp ins_resist
+## 1    0.81          80    356      124         55
+## 2    0.95          97    289      117         76
+## 3    0.94         105    319      143        105
+## 4    1.04          90    356      199        108
+## 5    1.00          90    323      240        143
+## 6    0.76          86    381      157        165
+## 7    0.91         100    350      221        119
+## 8    1.10          85    301      186        105
+## 9    0.99          97    379      142         98
+## 10   0.78          97    296      131         94
+## 11   0.90          91    353      221         53
+## 12   0.73          87    306      178         66
+## 13   0.96          78    290      136        142
+## 14   0.84          90    371      200         93
+## 15   0.74          86    312      208         68
+## 16   0.98          80    393      202        102
+## 17   1.10          90    364      152         76
+## 18   0.85          99    359      185         37
+## 19   0.83          85    296      116         60
+## 20   0.93          90    345      123         50
+## 21   0.95          90    378      136         47
+## 22   0.74          88    304      134         50
+## 23   0.95          95    347      184         91
+## 24   0.97          90    327      192        124
+## 25   0.72          92    386      279         74
+## 26   1.11          74    365      228        235
+## 27   1.20          98    365      145        158
+## 28   1.13         100    352      172        140
+## 29   1.00          86    325      179        145
+## 30   0.78          98    321      222         99
+## 31   1.00          70    360      134         90
+## 32   1.00          99    336      143        105
+## 33   0.71          75    352      169         32
+## 34   0.76          90    353      263        165
+\end{verbatim}
+
+Find means
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.bar }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(xs)}
+\NormalTok{x.bar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     gl_int   ins_resp ins_resist 
+##  341.47059  175.32353   99.11765
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y.bar }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(ys)}
+\NormalTok{y.bar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      rel_wt fst_pls_glu 
+##   0.9164706  89.6470588
+\end{verbatim}
+
+\hypertarget{a---find-canonical-correlations}{%
+\subsubsection{a - Find canonical
+correlations}\label{a---find-canonical-correlations}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cancor2}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x,y,}\AttributeTok{dec=}\DecValTok{4}\NormalTok{)\{ }
+\CommentTok{\#Canonical Correlation Analysis to mimic SAS PROC CANCOR output. }
+\CommentTok{\#Basic formulas can be found in Chapter 10 of Mardia, Kent, and Bibby (1979). }
+\CommentTok{\# The approximate F statistic is exercise 3.7.6b. }
+\NormalTok{    x}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(x)}
+\NormalTok{    y}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(y) }
+    
+\NormalTok{    n}\OtherTok{\textless{}{-}}\FunctionTok{dim}\NormalTok{(x)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    q1}\OtherTok{\textless{}{-}}\FunctionTok{dim}\NormalTok{(x)[}\DecValTok{2}\NormalTok{]}
+\NormalTok{    q2}\OtherTok{\textless{}{-}}\FunctionTok{dim}\NormalTok{(y)[}\DecValTok{2}\NormalTok{]}
+\NormalTok{    q}\OtherTok{\textless{}{-}}\FunctionTok{min}\NormalTok{(q1,q2) }
+    
+\NormalTok{    S11}\OtherTok{\textless{}{-}}\FunctionTok{cov}\NormalTok{(x)}
+\NormalTok{    S12}\OtherTok{\textless{}{-}}\FunctionTok{cov}\NormalTok{(x,y)}
+\NormalTok{    S21}\OtherTok{\textless{}{-}}\FunctionTok{t}\NormalTok{(S12)}
+\NormalTok{    S22}\OtherTok{\textless{}{-}}\FunctionTok{cov}\NormalTok{(y) }
+    
+\NormalTok{    E1}\OtherTok{\textless{}{-}}\FunctionTok{eigen}\NormalTok{(}\FunctionTok{solve}\NormalTok{(S11)}\SpecialCharTok{\%*\%}\NormalTok{S12}\SpecialCharTok{\%*\%}\FunctionTok{solve}\NormalTok{(S22)}\SpecialCharTok{\%*\%}\NormalTok{S21)}
+\NormalTok{    E2}\OtherTok{\textless{}{-}}\FunctionTok{eigen}\NormalTok{(}\FunctionTok{solve}\NormalTok{(S22)}\SpecialCharTok{\%*\%}\NormalTok{S21}\SpecialCharTok{\%*\%}\FunctionTok{solve}\NormalTok{(S11)}\SpecialCharTok{\%*\%}\NormalTok{S12) }
+    
+\NormalTok{    rsquared}\OtherTok{\textless{}{-}}\FunctionTok{as.double}\NormalTok{(E1}\SpecialCharTok{$}\NormalTok{values[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{q]) }
+    
+\NormalTok{    LR}\OtherTok{\textless{}{-}}\ConstantTok{NULL}\NormalTok{;pp}\OtherTok{\textless{}{-}}\ConstantTok{NULL}\NormalTok{;qq}\OtherTok{\textless{}{-}}\ConstantTok{NULL}\NormalTok{;tt}\OtherTok{\textless{}{-}}\ConstantTok{NULL} 
+    
+    \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{q)\{ }
+\NormalTok{        LR}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(LR,}\FunctionTok{prod}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{rsquared[i}\SpecialCharTok{:}\NormalTok{q])) }
+\NormalTok{        pp}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(pp,q1}\SpecialCharTok{{-}}\NormalTok{i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{) }
+\NormalTok{        qq}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(qq,q2}\SpecialCharTok{{-}}\NormalTok{i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{) }
+\NormalTok{        tt}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(tt,n}\DecValTok{{-}1}\SpecialCharTok{{-}}\NormalTok{i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)\} }
+    
+\NormalTok{    m}\OtherTok{\textless{}{-}}\NormalTok{tt}\FloatTok{{-}0.5}\SpecialCharTok{*}\NormalTok{(pp}\SpecialCharTok{+}\NormalTok{qq}\SpecialCharTok{+}\DecValTok{1}\NormalTok{);lambda}\OtherTok{\textless{}{-}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{)}\SpecialCharTok{*}\NormalTok{(pp}\SpecialCharTok{*}\NormalTok{qq}\DecValTok{{-}2}\NormalTok{);s}\OtherTok{\textless{}{-}}\FunctionTok{sqrt}\NormalTok{((pp}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{qq}\SpecialCharTok{\^{}}\DecValTok{2{-}4}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(pp}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{+}\NormalTok{qq}\SpecialCharTok{\^{}}\DecValTok{2{-}5}\NormalTok{)) }
+\NormalTok{    F}\OtherTok{\textless{}{-}}\NormalTok{((m}\SpecialCharTok{*}\NormalTok{s}\DecValTok{{-}2}\SpecialCharTok{*}\NormalTok{lambda)}\SpecialCharTok{/}\NormalTok{(pp}\SpecialCharTok{*}\NormalTok{qq))}\SpecialCharTok{*}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{LR}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{s))}\SpecialCharTok{/}\NormalTok{LR}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{s))}
+\NormalTok{    df1}\OtherTok{\textless{}{-}}\NormalTok{pp}\SpecialCharTok{*}\NormalTok{qq;df2}\OtherTok{\textless{}{-}}\NormalTok{(m}\SpecialCharTok{*}\NormalTok{s}\DecValTok{{-}2}\SpecialCharTok{*}\NormalTok{lambda)}
+\NormalTok{    pval}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pf}\NormalTok{(F,df1,df2) }
+\NormalTok{    outmat}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(rsquared),rsquared,LR,F,df1,df2,pval),dec) }
+      
+    \FunctionTok{colnames}\NormalTok{(outmat) }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\StringTok{"R"}\NormalTok{,}\StringTok{"RSquared"}\NormalTok{,}\StringTok{"LR"}\NormalTok{,}\StringTok{"ApproxF"}\NormalTok{,}\StringTok{"NumDF"}\NormalTok{,}\StringTok{"DenDF"}\NormalTok{,}\StringTok{"pvalue"}\NormalTok{)}
+    \FunctionTok{rownames}\NormalTok{(outmat) }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{q)}
+\NormalTok{    xrels}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{cor}\NormalTok{(x,x}\SpecialCharTok{\%*\%}\NormalTok{E1}\SpecialCharTok{$}\NormalTok{vectors)[,}\DecValTok{1}\SpecialCharTok{:}\NormalTok{q],dec) }
+    \FunctionTok{colnames}\NormalTok{(xrels)}\OtherTok{\textless{}{-}}\FunctionTok{apply}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"U"}\NormalTok{,q),}\FunctionTok{as.character}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{q)),}\DecValTok{1}\NormalTok{,paste,}\AttributeTok{collapse=}\StringTok{""}\NormalTok{)}
+\NormalTok{    yrels}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{cor}\NormalTok{(y,y}\SpecialCharTok{\%*\%}\NormalTok{E2}\SpecialCharTok{$}\NormalTok{vectors)[,}\DecValTok{1}\SpecialCharTok{:}\NormalTok{q],dec) }
+    \FunctionTok{colnames}\NormalTok{(yrels)}\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"V"}\NormalTok{,q),}\FunctionTok{as.character}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{q)),}\DecValTok{1}\NormalTok{,paste,}\AttributeTok{collapse=}\StringTok{""}\NormalTok{)}
+    \FunctionTok{list}\NormalTok{(}\AttributeTok{Summary=}\NormalTok{outmat,}
+         \AttributeTok{a.Coefficients=}\NormalTok{E1}\SpecialCharTok{$}\NormalTok{vectors,}
+         \AttributeTok{b.Coefficients=}\NormalTok{E2}\SpecialCharTok{$}\NormalTok{vectors, }
+         \AttributeTok{XUCorrelations=}\NormalTok{xrels,}\AttributeTok{YVCorrelations=}\NormalTok{yrels}
+\NormalTok{     ) }
+\NormalTok{   \}  }
+\DocumentationTok{\#\# }\RegionMarkerTok{END}\DocumentationTok{ FUNCTION }
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b---find-standard-coefficients}{%
+\subsubsection{b - Find standard
+coefficients}\label{b---find-standard-coefficients}}
+
+For canonical variables
+
+Fasting coefficients
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{before.coefficients }\OtherTok{\textless{}{-}} \FunctionTok{cancor2}\NormalTok{(xs, ys)}\SpecialCharTok{$}\NormalTok{a.Coefficients}
+\NormalTok{after.coefficients }\OtherTok{\textless{}{-}} \FunctionTok{cancor2}\NormalTok{(xs, ys)}\SpecialCharTok{$}\NormalTok{b.Coefficients}
+
+\FunctionTok{diag}\NormalTok{(before.coefficients)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.42680635 0.07577154 0.27703237
+\end{verbatim}
+
+Post-consumption coefficients
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diag}\NormalTok{(after.coefficients)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.99999176 0.09433123
+\end{verbatim}
+
+\hypertarget{c---test-significance-for-reach-canonical-correlation}{%
+\subsubsection{c - Test significance for reach canonical
+correlation}\label{c---test-significance-for-reach-canonical-correlation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cancor2}\NormalTok{(xs, ys) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Summary
+##        R RSquared     LR ApproxF NumDF DenDF pvalue
+## 1 0.6024   0.3628 0.6353  2.4616     6    58 0.0345
+## 2 0.0546   0.0030 0.9970     NaN     2   NaN    NaN
+## 
+## $a.Coefficients
+##            [,1]        [,2]       [,3]
+## [1,]  0.4268063 -0.96431194 0.06551464
+## [2,] -0.5231307  0.07577154 0.95862448
+## [3,]  0.7376792  0.25369501 0.27703237
+## 
+## $b.Coefficients
+##              [,1]       [,2]
+## [1,]  0.999991761 0.99554087
+## [2,] -0.004059221 0.09433123
+## 
+## $XUCorrelations
+##                 U1      U2
+## gl_int      0.2754 -0.9065
+## ins_resp   -0.2448 -0.0518
+## ins_resist  0.7781  0.3186
+## 
+## $YVCorrelations
+##                  V1     V2
+## rel_wt       0.9691 0.2465
+## fst_pls_glu -0.1661 0.9861
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# It produces two other pieces of information:  An F{-}test for the  }
+\CommentTok{\# significance of each canonical correlation, and the correlations between  }
+\CommentTok{\# the original variables and the corresponding canonical variates. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{interpretation}{%
+\paragraph{Interpretation}\label{interpretation}}
+
+Given all our p-values \textless{} 0.05, there is enough evidence to
+conclude that there is at least one non-zero canonical correlation
+between relative weight and plasma glucose across glucose intolerance,
+insulin response to oral glucose, and insulin resistance.This means our
+subjects had different responses to ingesting glucose. This makes sense
+as diabetes and insulin are directly correlated.
+
+\hypertarget{problem-6}{%
+\subsection{Problem 6}\label{problem-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hematology }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}C:/mattgraham93.github.io/school/22\_3\_DA410/data/hematology.csv\textquotesingle{}}\NormalTok{, }\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{hematology}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Observation.number X..1 X..2 X..3 X..4 X..5 X..6
+## 1                   1 13.4   39 4100   14   25   17
+## 2                   2 14.6   46 5000   15   30   20
+## 3                   3 13.5   42 4500   19   21   18
+## 4                   4 15.0   46 4600   23   16   18
+## 5                   5 14.6   44 5100   17   31   19
+## 6                   6 14.0   44 4900   20   24   19
+## 7                   7 16.4   49 4300   21   17   18
+## 8                   8 14.8   44 4400   16   26   29
+## 9                   9 15.2   46 4100   27   13   27
+## 10                 10 15.5   48 8400   34   42   36
+## 11                 11 15.2   47 5600   26   27   22
+## 12                 12 16.9   50 5100   28   17   23
+## 13                 13 14.8   44 4700   24   20   23
+## 14                 14 16.2   45 5600   26   25   19
+## 15                 15 14.7   43 4000   23   13   17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pairs}\NormalTok{(hematology[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+Normalizing
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ hematology[,}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)]}
+\NormalTok{means }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(z,}\DecValTok{2}\NormalTok{,mean)}
+\NormalTok{sds }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(z,}\DecValTok{2}\NormalTok{,sd)}
+\NormalTok{nor }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(z,}\AttributeTok{center=}\NormalTok{means,}\AttributeTok{scale=}\NormalTok{sds)}
+
+\NormalTok{distance }\OtherTok{=} \FunctionTok{dist}\NormalTok{(nor)}
+\end{Highlighting}
+\end{Shaded}
+
+Plotting
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mydata.hclust }\OtherTok{=} \FunctionTok{hclust}\NormalTok{(distance)}
+\FunctionTok{plot}\NormalTok{(mydata.hclust)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(mydata.hclust,}\AttributeTok{labels=}\NormalTok{hematology}\SpecialCharTok{$}\NormalTok{Observation.number,}\AttributeTok{main=}\StringTok{\textquotesingle{}Default from hclust\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-30-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(mydata.hclust,}\AttributeTok{hang=}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{labels=}\NormalTok{hematology}\SpecialCharTok{$}\NormalTok{Observation.number,}\AttributeTok{main=}\StringTok{\textquotesingle{}Default from hclust\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-30-3.pdf}
+
+Average linkage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mydata.hclust}\OtherTok{\textless{}{-}}\FunctionTok{hclust}\NormalTok{(distance,}\AttributeTok{method=}\StringTok{"average"}\NormalTok{) }
+\FunctionTok{plot}\NormalTok{(mydata.hclust,}\AttributeTok{hang=}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DA410_Exam2_MattGraham_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\end{document}

@@ -1,0 +1,109 @@
+---
+title: "DA410_Project8_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Confirmatory Factor Analysis (CFA)
+
+EFA is used to explore possible underlying factor structure of a set of observed variables without imposing a preconceived structure of outcome.
+
+CFA is a stat technique to verify the factor strucutre of a set of observed variables. Allows peeps to test hypotheses of relations between observed variables and underlying structure. This is provided by experience, theory, or research. Mostly prior=known and test to see if statistically significant.
+
+Similar to EFA - CFA uses the common factor model. It uses covariance between observed variables as reflection of the influence of one or more factors, and if a variance is not explained. Different from network as it allows covariance between items to have a cost. It is believed covariance of items has a latent factor that explains it.
+
+If not common factor, it may be network model.
+
+What is it and when do we apply CFA?
+- Serves to estimate structure of instrument to determine how well measured variables measures number of constructs
+- Must state which instrument to test - generally used when previous study shows previous measurement of instrument
+- Use case: Explaining how well structure of US measurements fit Brazilian
+- Use case: Explore dimensionality and test different models w/ CFA
+
+
+Fit test: How well our model we are estimating with testing. E.g. A well fitting model reduces discrepancy between population covariance matrix and S matrix, or sample covariance matrix. 
+
+Can have great fit, but it does not apply to the population.
+
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+library(corrplot)
+library(lavaan)
+library(semPlot)
+library(semTable)
+library(kutils)
+```
+Get data
+```{r}
+probe <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T3_6_PROBE.DAT", header=FALSE)[-1]
+colnames(probe) <- c('r_time1', 'r_time2', 'r_time3', 'r_time4', 'r_time5')
+probe
+```
+
+
+#### Correlation matrix
+```{r}
+probe.cor <- cor(probe)
+probe.cor
+```
+
+
+#### Covariance matrix
+```{r}
+probe.cov <- var(probe)
+probe.cov
+```
+
+### Hypothesis
+#### *Ho:* The model is a perfect fit
+#### *Ha:* The model is not a perfect fit
+
+### Testing
+```{r}
+probe.fit1 <- factanal(covmat=probe.cor, factors=1, rotation="none", n.obs = 55)
+probe.fit1
+```
+
+```{r}
+probe.fit2 <- factanal(covmat=probe.cov, factors=1, rotation="none", n.obs = 55)
+probe.fit2
+```
+
+## Assess the goodness of fit
+```{r}
+
+model <- "f1=~r_time1+r_time2+r_time3+r_time4+r_time5"
+
+fit1 <- cfa(model=model, data=probe, likelihood="wishart")
+summary(fit1, fit.measures=TRUE, standardized=TRUE)
+
+```
+
+Discussion
+```{r include=FALSE}
+semTable(fit1, type="html", file="probe.fitted.html")
+```
+
+
+<<insertHTML:[probe.fitted.html]
+```{r}
+htmltools::includeHTML("probe.fitted.html")
+```
+
+
+## Summary
+When looking at our output, we can conclude that our chi-squared is valuable and can state our model is generally adequate when looking at differencs between expected and observed covariances. With TLI and CFA falling under 0.95, we cannot state the model is adequate for 95% in relation, which is compounded through our RMSEA value, concluding our fit index model is inadequate. Finally, our SRMR is adequate, which makes sense as this is most-related to chi-squared.

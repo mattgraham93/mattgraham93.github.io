@@ -1,0 +1,149 @@
+---
+title: "DA410_Project6_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Principal Component Analysis (PCA)
+
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+```
+Get data
+```{r}
+beetles <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_5_FBEETLES.DAT", header=FALSE)
+colnames(beetles) <- c("Experiment", 'Species', 'post_dist', 'l_elytra','len_sec_an', 'len_thi_an')
+
+oleracea <- beetles[beetles$Species==1, -c(1:2)]  # we assume that species 1 = oleracea
+carduorum <- beetles[beetles$Species==2, -c(1:2)] # we assume that species 2 = carduorum
+
+beetles
+```
+
+
+## Oleracea PCA
+### a. Get S and R
+```{r}
+S1 = cov(oleracea)
+R1 = cor(oleracea)
+```
+
+S1
+```{r}
+as.data.frame(S1)
+```
+
+R1
+```{r}
+as.data.frame(R1)
+```
+
+### b. Get eigenvalues and eigenvectors of S and R
+```{r}
+eig.S1 <- eigen(S1)
+eig.R1 <- eigen(R1)
+```
+
+Eigen S1
+```{r}
+eig.S1
+```
+
+Eigen R1
+```{r}
+eig.R1
+```
+
+
+### c. Percent variance explained and plot S and R
+```{r}
+
+for (r in eig.R1$values) {
+  print(r/sum(eig.R1$values))
+}
+
+```
+We can see that of our eigen values, ~60% of our variance is explained with just one dimension, while ~32% is explained with 2 and 3 dimensions. This can be seen below.
+
+#### Plot
+```{r}
+plot(eig.R1$values/sum(eig.R1$values), xlab = 'Number of components', ylab='Eigen size', main='Plot of oleracea dimension variance')
+```
+
+
+### d. Decide compontent retention and show reasoning
+Based on the percentage of total variance, it makes sense to keep the first 3 components as component 4 makes up less over 10% of all explained variance. 
+
+### e. Interpretation
+Over the duration of subjects' time, as we model our data, we can conclude that most of our variation happens within the post_dist, l_elytra, and len_sec_an.
+
+
+## Carduorum PCA
+### a. Get S and R
+```{r}
+S2 = cov(carduorum)
+R2 = cor(carduorum)
+```
+
+S2
+```{r}
+as.data.frame(S2)
+```
+
+R2
+```{r}
+as.data.frame(R2)
+```
+
+### b. Get eigenvalues and eigenvectors of S and R
+```{r}
+eig.S2 <- eigen(S2)
+eig.R2 <- eigen(R2)
+```
+
+Eigen S2
+```{r}
+eig.S2
+```
+
+Eigen R2
+```{r}
+eig.R2
+```
+
+
+### c. Percent variance explained and plot S and R
+```{r}
+
+for (r in eig.R2$values) {
+  print(r/sum(eig.R2$values))
+}
+
+```
+We can see that of our eigen values, ~57.9% of our variance is explained with just one dimension, while ~36% is explained with 2 and 3 dimensions. This can be seen below.
+
+#### Plot
+```{r}
+plot(eig.R2$values/sum(eig.R2$values), xlab = 'Number of components', ylab='Eigen size', main='Plot of oleracea dimension variance')
+```
+
+
+### d. Decide compontent retention and show reasoning
+Based on the percentage of total variance, it makes sense to keep the first 3 components as component 4 makes up less over 10% of all explained variance. 
+
+### e. Interpretation
+Over the duration of subjects' time, as we model our data, we can conclude that most of our variation happens within the post_dist, l_elytra, and len_sec_an. THough it is interesting to see we have less variation in post_dist.

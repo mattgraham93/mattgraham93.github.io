@@ -1,0 +1,144 @@
+---
+title: "DA410_Assignment8_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Exploratory Factor Analysis
+
+Used to reduce large number of variables to fewer numbers of factors. Extracts common variance and puts in common score as index of all variables. Use score for further analysis.
+
+Part of general linear model (correct) - must check all assumptions
+
+Many methods to extract factors
+- most common = principal component analysis
+-- extracts max variance and puts into first factor. Then removes var explained by first factor, then extracts max variance for second through n factors.
+- Second preferred
+-- Common factor analysis = extracts common variance and puts into factors. Does not include unique variance of all variables
+- Third
+-- Image factoring - based on correlation matrix; predictions use ordinary least squared method. Maximum likelihood method for factoring
+
+
+This week:
+- Exploratory factor analysis (EFA) - assume indicator or variable is associated with any factor
+-- Most common factor analysis used by researchers, not based on prior theory
+--- Determine factor and factory 
+
+Next week:
+- Confirmatory factor analysis (CFA) - Assume each factor is associated with subset of measured variables
+
+EFA is a statistical technique used to reduce smaller set of variables and explore theoretical structure and identify relationship between variables and response
+
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+```
+Get data
+```{r}
+words <- read.table("C:/mattgraham93.github.io/school/22_3_DA410/data/T5_9_ESSAY.DAT", header=FALSE)
+
+words <- words[, -1]  # remove student ID
+colnames(words) <- c("y1", 'y2', 'x1', 'x2')
+words
+```
+
+
+## 13.7
+
+### a
+
+#### Step 1 - Find correlation matrix
+```{r}
+words.cor <- cor(words)
+words.cor
+```
+
+While one pair (y1, x2) has a correlation below .30, we will still proceed with exploratory factor analysis.
+
+#### Step 2 - Find eigenvaue D and eigenvectors C
+```{r}
+D <- eigen(words.cor)$values
+D
+```
+
+Finding C (vectors)
+```{r}
+C <- eigen(words.cor)$vectors
+C
+```
+
+#### Step 3 - Finding C1 and D1
+```{r}
+C1 <- C[,1:2]
+C1
+```
+
+D1
+```{r}
+D1 <- diag(D[1:2])
+D1
+```
+
+#### Step 4 - Finding lambda
+```{r}
+words.lambda <- C1 %*% sqrt(D1)
+words.lambda
+```
+
+
+```{r}
+C1[1,]
+```
+
+#### Step 5 - Obtain the loadings
+```{r}
+loading <- c('loading.lambda.1j', 'loading.lambda.2j', 'H.i2', 'psi.j')
+
+Y1 <- c(C1[1,], (C1[1,1]**2 + C1[1,2]**2), 1-(C1[1,1]**2 + C1[1,2]**2))
+loading <- rbind(loading, Y1)
+Y2 <- c(C1[2,], (C1[2,1]**2 + C1[2,2]**2), 1-(C1[2,1]**2 + C1[2,2]**2))
+loading <- rbind(loading, Y2)
+X1 <- c(C1[3,], (C1[3,1]**2 + C1[3,2]**2), 1-(C1[3,1]**2 + C1[3,2]**2))
+loading <- rbind(loading, X1)
+X2 <- c(C1[4,], (C1[4,1]**2 + C1[4,2]**2), 1-(C1[4,1]**2 + C1[4,2]**2))
+loading <- rbind(loading, X2)
+
+loading <- as.data.frame(loading)
+colnames(loading) <- loading[1,]
+loading <- loading[-1, ]
+
+loading
+```
+
+Obtain variance analysis
+```{r}
+prop.vars <- c('loading.lambda.1j', 'loading.lambda.2j', 'H.i2')
+
+# get two largest eigenvalues and prop of total var is eigen value / sum of all, cum prop = sum of prop
+var.acc <- c(D[1], D[2], sum(D[1], D[2]))
+prop.vars <- rbind(prop.vars, var.acc)
+prop.tot.var <- c(D[1] / sum(D), D[2] / sum(D), ((D[1] / sum(D)) + (D[2] / sum(D))))
+prop.vars <- rbind(prop.vars, prop.tot.var)
+cumul.prop <- c(D[1] / sum(D),((D[1] / sum(D)) + (D[2] / sum(D))), ((D[1] / sum(D)) + (D[2] / sum(D))))
+prop.vars <- rbind(prop.vars, cumul.prop)
+prop.vars <- as.data.frame(prop.vars)
+colnames(prop.vars) <- prop.vars[1,]
+prop.vars <- prop.vars[-1, ]
+
+prop.vars
+```
+
+Overall, we can conclude that 89% of total variance is present across 2 factors and represent our variables well. We can see across our commonalities, there are not very many. Our Y1 and X2 being our strongest with Y2 and X1 being our weakest and nearly even. 
