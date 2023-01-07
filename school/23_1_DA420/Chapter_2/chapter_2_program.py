@@ -1,18 +1,21 @@
 # Predictive Model for Los Angeles Dodgers Promotion and Attendance (Python)
 
+# how to convert to seaborn: https://pandas.pydata.org/pandas-docs/version/0.16.0/visualization.html
+
 # prepare for Python version 3x features and functions
 from __future__ import division, print_function
 from future_builtins import ascii, filter, hex, map, oct, zip
 
 # import packages for analysis and modeling
 import pandas as pd  # data frame operations
-from pandas.tools.rplot import RPlot, TrellisGrid, GeomPoint,\
-    ScaleRandomColour  # trellis/lattice plotting
+# from pandas.tools.rplot import RPlot, TrellisGrid, GeomPoint,\
+#     ScaleRandomColour  # trellis/lattice plotting
 import numpy as np  # arrays and math functions
 from scipy.stats import uniform  # for training-and-test split
 import statsmodels.api as sm  # statistical models (including regression)
 import statsmodels.formula.api as smf  # R-like model specification
 import matplotlib.pyplot as plt  # 2D plotting
+import seaborn as sns
 
 # read in Dodgers bobbleheads data and create data frame
 dodgers = pd.read_csv("dodgers.csv")
@@ -87,15 +90,15 @@ plt.savefig('fig_advert_promo_dodgers_eda_month_Python.pdf',
 # trellis/lattice plot attendance by temp, conditioning on skies 
 # and day_night with bobblehead NO/YES shown in distinct colors
 plt.figure()
-plot = RPlot(dodgers,  x = 'temp', y = 'attend_000')
+plot = sns.FacetGrid(dodgers,  row = 'temp', col = 'attend_000')
 plot.add(TrellisGrid(['day_night', 'skies']))
 plot.add(GeomPoint(colour = ScaleRandomColour('bobblehead')))
 plot.render(plt.gcf())
 plt.show()
-plt.savefig('fig_advert_promo_dodgers_eda_many.pdf', 
-    bbox_inches = 'tight', dpi=None, facecolor='w', edgecolor='b', 
-    orientation='portrait', papertype=None, format=None, 
-    transparent=True, pad_inches=0.25, frameon=None)  
+# plt.savefig('fig_advert_promo_dodgers_eda_many.pdf', 
+#     bbox_inches = 'tight', dpi=None, facecolor='w', edgecolor='b', 
+#     orientation='portrait', papertype=None, format=None, 
+#     transparent=True, pad_inches=0.25, frameon=None)  
 
 # map day_of_week to ordered_day_of_week 
 day_to_ordered_day = {'Monday' : '1Monday', 
