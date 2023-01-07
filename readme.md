@@ -6,6 +6,10 @@ It is my goal to help make the world more equitable using data to drive an empat
 
 ## Primary works
 ### Analyses
+
+Multivariate analyses: [R](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/school/22_3_DA410)
+
+
 *Latest* House Representation by GDP analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)/[article](https://grahammr93.medium.com/can-us-state-gdp-determine-congressional-representation-e3cda57285f3)
 
 Healthcare analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/DA310_Group5Project(1).ipynb)
