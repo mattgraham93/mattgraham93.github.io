@@ -4,7 +4,7 @@
 
 # prepare for Python version 3x features and functions
 from __future__ import division, print_function
-from future_builtins import ascii, filter, hex, map, oct, zip
+# from future_builtins import ascii, filter, hex, map, oct, zip
 
 # import packages for analysis and modeling
 import pandas as pd  # data frame operations
@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt  # 2D plotting
 import seaborn as sns
 
 # read in Dodgers bobbleheads data and create data frame
-dodgers = pd.read_csv("dodgers.csv")
+dodgers = pd.read_csv(r"school\23_1_DA420\Chapter_2\dodgers.csv")
 
 # examine the structure of the data frame
 print("\nContents of dodgers data frame ---------------")

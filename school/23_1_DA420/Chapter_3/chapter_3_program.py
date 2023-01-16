@@ -19,6 +19,9 @@ main_effects_model = 'ranking ~ C(brand, Sum) + C(startup, Sum) +  \
     C(monthly, Sum) + C(service, Sum) + C(retail, Sum) + C(apple, Sum) + \
     C(samsung, Sum) + C(google, Sum)'
 
+
+    ## month,day,attend,day_of_week,opponent,temp,skies,day_night,cap,shirt,fireworks,bobblehead
+
 # fit linear regression model using main effects only (no interaction terms)
 main_effects_model_fit = \
     smf.ols(main_effects_model, data = conjoint_data_frame).fit()
