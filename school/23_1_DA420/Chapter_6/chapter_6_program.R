@@ -8,9 +8,9 @@ library(lpSolve)  # linear programming package
 
 # ensure that two binary files are in the working directory
 # these come from running R code from R_Utilities_Appendix
-# source("R_utility_program_3.R") provides split-plotting utilities
+source("R_utility_program_3.R") # provides split-plotting utilities
 load("mtpa_split_plotting_utilities.Rdata")
-# source("R_utility_program_4.R") provides wait-time ribbon plots
+source("R_utility_program_4.R") # provides wait-time ribbon plots
 load("mtpa_wait_time_ribbon_utility.Rdata")
 
 put.title.on.plots <- TRUE  # put title on wait-time ribbon plots
@@ -100,10 +100,14 @@ print(with(call.center.data, table(day_of_week, call_hour)))
 # select first week of February 1999 for data visualization and analysis
 # that week began on Monday, February 1 and ended on Sunday, February 7
 selected.week <- subset(call.center.data, subset = (date < ymd("19990208")))
+sw.df <- selected.week$day_of_week
+print(table(sw.df))
 
-# check frequency of calls in week by hour and day of week
-print(with(selected.week, table(day_of_week, call_hour)))
+# get wait times > 120 minutes
+wait.time.120 <- subset(selected.week, selected.week$wait_time > 120)
+wt.df <- as.matrix(wait.time.120$day_of_week)
 
+print((table(wt.df) / table(sw.df))*100)
 
 
 # loop for day of week ignoring Saturdays in Isreal
@@ -125,7 +129,7 @@ for(index.day in seq(along=day.of.week.list)) {
     else {
     ribbon.plot.title <- "" 
     }
-  selected.day <- subset(selected.week, 
+  selected.day <- subset(wait.time.120, 
     subset = (day_of_week == this.day.of.week),
     select = c("call_hour","wait_time","ser_time","server"))
   colnames(selected.day) <- c("hour","wait","service","server")
@@ -136,8 +140,8 @@ for(index.day in seq(along=day.of.week.list)) {
   dev.off()  
   }
 
-# select Wednesdays in February for the queueing model
-wednesdays <- subset(call.center.data, subset = (day_of_week == "Wednesday"))
+# select wait.time.120 in February for the queueing model
+# wednesdays <- subset(call.center.data, subset = (day_of_week == "Wednesday"))
 
 # compute arrival rate of calls as calls for hour  
 # we do not use table() here because some hours could have zero calls
@@ -146,7 +150,7 @@ for(index.for.hour in 1:24) {
 # 24-hour clock has first hour coded as zero in input data file
   coded.index.for.hour <- index.for.hour - 1  
   this.hour.calls <- 
-    subset(wednesdays, subset = (call_hour == coded.index.for.hour))  
+    subset(wait.time.120, subset = (call_hour == coded.index.for.hour))  
   if(nrow(this.hour.calls) > 0) 
     calls.for.hour[index.for.hour] <- nrow(this.hour.calls)  
   }
@@ -157,7 +161,7 @@ hourly.arrival.rate <- calls.for.hour/4  # four Wednesdays in February
 # service times can vary hour-by-hour due to differences 
 # in service requests and individuals calling hour-by-hour
 # begin by selecting calls that receive service
-wednesdays.served <- subset(wednesdays, subset = (server != "NO_SERVER"))
+wait.time.120.served <- subset(wait.time.120, subset = (server != "NO_SERVER"))
 
 hourly.mean.service.time <- numeric(24)
 served.for.hour <- numeric(24)
@@ -165,7 +169,7 @@ for(index.for.hour in 1:24) {
 # 24-hour clock has first hour coded as zero in input data file
   coded.index.for.hour <- index.for.hour - 1  
   this.hour.calls <- 
-    subset(wednesdays.served, subset = (call_hour == coded.index.for.hour))
+    subset(wait.time.120.served, subset = (call_hour == coded.index.for.hour))
   if(nrow(this.hour.calls) > 0) {
     served.for.hour[index.for.hour] <- nrow(this.hour.calls)
     hourly.mean.service.time[index.for.hour] <- mean(this.hour.calls$ser_time)
@@ -185,7 +189,7 @@ value <- hourly.served.rate
 service.data.frame <- data.frame(hour, value, type) 
 arrival.service.data.frame <- rbind(arrival.data.frame, service.data.frame)
 
-pdf(file = "fig_operations_management_wednesdays_arrived_served.pdf", 
+pdf(file = "fig_operations_management_wait.time.120_arrived_served.pdf", 
   width = 11, height = 8.5)
 plotting.object <- ggplot(data = arrival.service.data.frame, 
   aes(x = hour, y = value, fill = type)) + 
@@ -208,7 +212,7 @@ dev.off()
 # for hours with no service time information use the mean as value
 hourly.mean.service.time <- 
   ifelse((hourly.mean.service.time == 0),
-    mean(wednesdays.served$ser_time),
+    mean(wait.time.120.served$ser_time),
     hourly.mean.service.time) 
 # compute service rate noting that there are 3600 seconds in an hour
 # adding 60 seconds to each mean service time for time between calls
@@ -266,7 +270,7 @@ print(constraint.matrix)
 # 1 ILS = 3.61 USD in June 2013
 # these go into the objective function for integer programing
 # with the objective of minimizing total costs
-cost.vector <- c(252,288,180,180,180,288,288,288) 
+cost.vector <- data.frame(c(252,288,180,180,180,288,288,288))
 
 call.center.schedule <- lp(const.mat=constraint.matrix,
 const.rhs = servers.needed,
@@ -329,5 +333,3 @@ dev.off()
 # Suggestion for the student:
 # Try running a sensitivity test, varying the workforce requirements
 # and noting the effect upon the optimal assignment of workers to shifts.
-
-

@@ -1,0 +1,81 @@
+---
+title: "DA410_Project7_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+Exploratory Factor Analysis
+
+```{r Imports, message=FALSE}
+library(nnspat)  # used for dist2full()
+library("dplyr")  # used to select numeric datatypes
+library("ggplot2")
+library(reshape)  # used for melting matricies
+library(klaR)
+library(ggvis)
+library(class)
+library(gmodels)
+library(MASS)
+library(readxl)
+library(psych)
+library(corrplot)
+```
+
+``` {r}
+
+# Janine capstone code
+cases <- read.csv('data/2021_cases.csv')
+
+PORT_df <- cases
+PORT_df$class_of_case = as.factor(PORT_df$class_of_case)
+PORT_df$chronic_disease = as.factor(PORT_df$chronic_disease)
+PORT_df$primary_site = as.factor(PORT_df$primary_site)
+PORT_df$histologic_type = as.factor(PORT_df$histologic_type)
+PORT_df$path_stage = as.factor(PORT_df$path_stage)
+PORT_df$primary_site = as.factor(PORT_df$primary_site)
+PORT_df$beam_radiation = as.factor(PORT_df$beam_radiation)
+PORT_df$chemotherapy= as.factor(PORT_df$chemotherapy)
+PORT_df$hpv = as.factor(PORT_df$hpv)
+PORT_df$Race= as.factor(PORT_df$Race)
+# PORT_df$birthplace= as.factor(PORT_df$birthplace)
+PORT_df$insurance = as.factor(PORT_df$insurance)
+PORT_df$median_income = as.factor(PORT_df$median_income)
+PORT_df$education_level = as.factor(PORT_df$education_level)
+PORT_df$distance = as.factor(PORT_df$distance)
+
+PORT_df
+```
+
+```{r}
+res.man <- manova(cbind(chronic_disease, age, class_of_case, histologic_type, path_stage, primary_site, beam_radiation, chemotherapy, hpv, Race) ~ delay, data=PORT_df)
+
+summary(res.man)
+```
+
+```{r}
+summary.aov(res.man)
+```
+
+
+
+```{r}
+glm <- glm(delay ~ chronic_disease + age + class_of_case + histologic_type + path_stage + primary_site + beam_radiation + chemotherapy + hpv + Race, data = PORT_df, family="binomial")
+summary(glm)
+```
+
+
+
+```{r}
+# install.packages('WebPower')
+# library(WebPower)
+
+# https://med.und.edu/research/daccota/_files/pdfs/berdc_resource_pdfs/sample_size_r_module.pdf
+
+wp.kanova(ndf = ncol(PORT_df) - 1, f = 0.25, ng = 2, alpha = 0.05, power = 0.8)
+```
+
+
+
