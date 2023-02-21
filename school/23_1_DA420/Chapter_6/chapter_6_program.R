@@ -140,8 +140,8 @@ for(index.day in seq(along=day.of.week.list)) {
   dev.off()  
   }
 
-# select wait.time.120 in February for the queueing model
-# wednesdays <- subset(call.center.data, subset = (day_of_week == "Wednesday"))
+# select all thursday's in February for the queueing model
+thursdays <- subset(call.center.data, subset = (day_of_week == "Thursday"))
 
 # compute arrival rate of calls as calls for hour  
 # we do not use table() here because some hours could have zero calls
@@ -150,7 +150,7 @@ for(index.for.hour in 1:24) {
 # 24-hour clock has first hour coded as zero in input data file
   coded.index.for.hour <- index.for.hour - 1  
   this.hour.calls <- 
-    subset(wait.time.120, subset = (call_hour == coded.index.for.hour))  
+    subset(thursdays, subset = (call_hour == coded.index.for.hour))  
   if(nrow(this.hour.calls) > 0) 
     calls.for.hour[index.for.hour] <- nrow(this.hour.calls)  
   }
@@ -189,7 +189,7 @@ value <- hourly.served.rate
 service.data.frame <- data.frame(hour, value, type) 
 arrival.service.data.frame <- rbind(arrival.data.frame, service.data.frame)
 
-pdf(file = "fig_operations_management_wait.time.120_arrived_served.pdf", 
+pdf(file = "fig_operations_management_thursday_arrived_served.pdf", 
   width = 11, height = 8.5)
 plotting.object <- ggplot(data = arrival.service.data.frame, 
   aes(x = hour, y = value, fill = type)) + 
