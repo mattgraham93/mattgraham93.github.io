@@ -1,0 +1,191 @@
+---
+title: "DA420_Project 8_MattGraham"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+
+```{r}
+# install.packages("Rcpp")
+# install.packages("aod")
+```
+
+#### Import libraries
+```{r Imports, message=FALSE}
+library(aod) 
+library(ggplot2) 
+library(Rcpp)
+```
+
+### Getting the data and data summaries
+```{r}
+###Get the data
+mydata <- read.csv (file="C:/mattgraham93.github.io/school/23_1_DA420/projects/binary.csv") 
+head(mydata)
+```
+
+
+#### Get table summary
+```{r}
+summary(mydata)
+```
+
+We can see that the average admissions was ~32%, implying that as their admission rate. The mean GPA is near that of the median at 3.9.
+
+The median and mean rank show that there may be a skew in ranking, and something worth investigating. The mean and median GRE is also nearly equal.
+
+#### Viewing standard deviations
+```{r}
+sapply(mydata, sd)
+```
+
+We can note how much variation there is in GRE scores. GPA is relatively wide, as is admission, given it's binary, it makes sense.
+
+### Contingency table
+```{r}
+## we want to make sure there are not 0 cells 
+xtabs(~ admit + rank, data = mydata) 
+```
+
+We can conclude all intersections of data exist
+
+## Logistic regression
+
+#### Creating the model
+```{r}
+mydata$rank <- factor(mydata$rank) 
+mylogit <- glm(admit ~ gre + gpa + rank, data = mydata, family = "binomial")
+```
+
+### Model summary and testing
+```{r}
+summary(mylogit)
+```
+
+We can see the GRE has a positive impact on admission. GPA appears to be negative, and rank appears inconsequential
+
+#### Coefficient 95% CI's
+```{r warning=FALSE}
+## CIs using profiled log-likelihood 
+confint(mylogit) 
+```
+
+#### Coefficient 95% CI's (default)
+```{r}
+## CIs using standard errors 
+confint.default(mylogit)
+```
+
+We can see our 95% confidence intervals and can conclude they're all valid in that they do not cross 0.
+
+The default test appears to be more conservative. 
+
+#### Testing effect of all ranks
+```{r}
+wald.test(b = coef(mylogit), Sigma = vcov(mylogit), Terms = 4:6) 
+```
+
+Based on our Wald test, we can conclude that Rank is a statistically significant when looking at all 3 ranks
+
+#### Testing difference between rank 2 and rank 3
+```{r}
+l <- cbind(0,0,0,1,-1,0) 
+wald.test(b = coef(mylogit), Sigma = vcov(mylogit), L = l) 
+```
+
+Again, we can conclude there is a significant difference between rank 2 and rank 3.
+
+### Testing odds ratios
+```{r}
+## odds ratios only 
+exp(coef(mylogit)) 
+```
+
+We can see the odds ratio of 2.23 as compared to a gre rank of 1, we can see how/why GPA is a negative trait. The lower variability in GPA vs. higher variability in GRE help explain why GRE is a highly positive trait.
+
+#### Odds ratios and  95% CIs
+```{r}
+# odds ratios and 95% CI 
+exp(cbind(OR = coef(mylogit), confint(mylogit)))
+```
+
+We can see how much more likely GPA is to happen as compared to the relative consistency of GRE. Ranks 2 looks to highly variable having the highest delta between variables. 
+
+
+## Calculating probabilities
+```{r}
+# calculate predictive probability of admission for each rank
+newdata1 <- with(mydata, 
+  data.frame(gre = mean(gre), gpa = mean(gpa), rank = factor(1:4))) 
+newdata1
+```
+
+```{r}
+newdata1$rankP <- predict(mylogit, newdata = newdata1, type = "response") 
+newdata1
+```
+
+We can see that people who have the mean GRE and GPA, if you are ranked 1st, there's a 51.6% chance you are gaining admission. Rank 2 is also fair, 3 and 4 are a lot less likely. 
+
+#### Creating dataframe with range of GRE score and rank
+```{r}
+newdata2 <- with(mydata, 
+  data.frame(gre = rep(seq(from = 200, to = 800, length.out = 100), 4), 
+  gpa = mean(gpa), rank = factor(rep(1:4, each = 100))))
+head(newdata2)
+```
+
+
+#### Predicted probabilities with statistics for visualizations
+```{r}
+newdata3 <- cbind(newdata2, predict(mylogit, newdata = newdata2, type="link", 
+se=TRUE)) 
+newdata3 <- within(newdata3, { 
+  PredictedProb <- plogis(fit) 
+  LL <- plogis(fit - (1.96 * se.fit)) 
+  UL <- plogis(fit + (1.96 * se.fit)) 
+}) 
+ 
+## view first few rows of final dataset 
+head(newdata3) 
+```
+
+#### Visualizing our data
+```{r}
+ggplot(newdata3, aes(x = gre, y = PredictedProb)) + 
+  geom_ribbon(aes(ymin = LL, ymax = UL, fill = rank), alpha = .2) + 
+  geom_line(aes(colour = rank), size=1)
+```
+We can see, overall - regardless of rank - all ranks are more likely to be admitted with higher GRE scores.
+
+### Final model analysis
+#### Testing overall fit
+```{r}
+with(mylogit, null.deviance - deviance)
+```
+
+Had we gone with a model with just an intercept, this model would out-perform it by a magnitude of 41.5
+
+#### Degrees of freedom for difference between models
+
+```{r}
+with(mylogit, df.null - df.residual)
+```
+#### Final p-value of significance
+```{r}
+with(mylogit, pchisq(null.deviance - deviance, df.null - df.residual, lower.tail = FALSE))
+```
+We can conclude our model is significant
+
+### Final test for model fit and analysis
+```{r}
+logLik(mylogit) 
+```
+
+While our model may be significant, our log-likelihood of -229.3 is not desirable. We may want to explore reducing total variables in our model, and explore interaction. This may open more insight into the intricacies of relationships.
+
+
+
