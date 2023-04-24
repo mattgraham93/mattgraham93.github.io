@@ -1,0 +1,69 @@
+```{r}
+library(readxl)
+```
+
+
+1.  Data BWGHT is a study to determine the effects of smoking during pregnancy on infant health; one measure of infant health is birth weight.  Since factors other than cigarette are likely to be correlated with smoking, we should take those factors into account, for example, higher family income – usually means better access to prenatal care as well as better nutrition for the mother. 
+
+```{r}
+bwght <- read_excel('BWGHT.xls')
+bwght
+```
+
+
+a) Consider the model: bwght = f { cigs, faminc }; what is the most likely sign for coefficient of cigs?
+
+
+
+b) How do you think cigs and faminc are likely to correlated? Explain why it might be positive or negative
+
+
+
+c) Now estimate the model; first just with cigs then add faminc; and report your results. Discuss whether adding faminc variable substantially changes the effect of cigs on birthweight.
+
+```{r}
+
+bwght_model <- lm(bwght ~ cigs+faminc, data = bwght)
+summary(bwght_model)
+
+```
+
+
+ 
+
+2.  Use data HTV to answer the following.  The dataset includes info on wages, education, parents’ education, and several other variables. 
+
+
+```{r}
+htv <- read_excel('htv.xls')
+htv
+```
+
+a) estimate the regression model: educ = f { mothereduc, fathereduc }; report your results, and how much sample variation in education is explained by parents’ education. Interpret the coefficient on both mother's education and father's education.
+
+```{r}
+
+educ_model <- lm(educ ~ motheduc+fatheduc, data=htv)
+summary(educ_model)
+```
+
+
+b) Add variable abil (a measure of cognitive ability) to the model, and report the results. Does “ability” help to explain variations in education?
+
+```{r}
+educ_model2 <- lm(educ ~ motheduc+fatheduc+abil, data=htv)
+summary(educ_model2)
+```
+
+
+c) Now estimate the model by adding abil in quadratic forms; how does it change your result?
+
+```{r}
+
+htv$abil_sq <- htv$abil**2
+
+educ_model3 <- lm(educ ~ motheduc+fatheduc+abil+abil_sq, data=htv)
+summary(educ_model3)
+```
+
+

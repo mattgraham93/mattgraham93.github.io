@@ -1,0 +1,114 @@
+```{r warning=FALSE}
+library(readxl)
+```
+
+
+1. Data set in CEOSAL2 contains information of CEOs for US corporations.  The salary is in annual compensation in thousands of dollars, and ceoten is prior number of years as company CEO.
+
+```{r}
+ceosal <- read_excel('ceosal2.xls')
+ceosal
+```
+
+a) Find the average salary and the average tenure in the sample.
+
+The average salary is ~$866,000 / year. The average tenure is right under 8 years.
+
+```{r}
+c(mean(ceosal$salary), mean(ceosal$ceoten))
+```
+
+
+b) How many CEOs are in their first year as CEO (that is, ceoten=0)?
+
+5 CEOs are in their first year.
+
+```{r}
+first_year <- subset(ceosal, ceoten == 0)
+first_year
+nrow(first_year)
+```
+
+
+
+c) What is the longest tenure as a CEO?
+
+37 years, there are 2 folks holding this record.
+
+```{r}
+max_ten <- max(ceosal$ceoten)
+subset(ceosal, ceoten == max_ten)
+max_ten
+```
+
+d) Estimate the simple regression model: log(salary) = f { ceoten }; report your results.
+```{r}
+
+sal_ten_red <- lm(log(salary) ~ ceoten, data=ceosal)
+summary(sal_ten_red)
+
+```
+
+We can conclude our intercept is solid, using tenure is not significantly significant, meaning we should not use it to predict salaries. This makes sense given return on equity is the main factor when looking at CEO salaries. 
+
+
+e) What is the approximate predicted percentage increase in salary given one more year as a CEO?
+
+~ $675,000 / year
+
+```{r}
+exp(predict(sal_ten_red, newdata = data.frame(ceoten = c(1))))
+```
+
+2. Data in CHARITY (from Franses and Paap, 2001) to answer the following:
+```{r}
+charity <- read_excel('charity.xls')
+charity
+```
+
+
+a) What is the average gift in the sample? What percentage of people gave no gift?
+
+The average gift was ~7.44 and ~ 60% of people gave no gifts.
+
+```{r}
+c(mean(charity$gift), (nrow(subset(charity, gift == 0)) / nrow(charity)))
+```
+
+
+b) What is the average mailings per year? What are the minimum and maximum values?
+
+Min: 0.25
+Average: ~2.05
+Max: 3.5
+
+```{r}
+c(mean(charity$mailsyear), min(charity$mailsyear), max(charity$mailsyear))
+```
+
+
+c) Estimate the model: gift = f { mailsyear }; report your results, including the sample size and R-squared.
+```{r}
+gift_mailsyr <- lm(gift ~ mailsyear, data=charity)
+summary(gift_mailsyr)
+```
+
+Overall we can see that our intercept and use of number of mailings per year is a good estimate to determining how many gifts the charity receives.
+
+
+d) Interpret the meaning of both of the slope coefficients. If each mailing costs one guilder, is the charity expected to make a net gain on each mailing? Does this mean that the charity makes a net gain on every mailing?
+
+The charity can say that across all their members, they can expect to see an average of 2 per member. We know this is not true given the significance of our number of mailings per year. For each mailing, they can expect between 2 or 3 each. 
+
+Absolutely! They will all wash out, especially since they expect to see at least 50% of the total gift.
+
+
+e) What is the smallest predicted charitable contributions in the sample? Can you ever predict zero for the amount of gift?
+
+The smallest predicted is 2 gifts, and our model cannot predict when no gifts are received. Unless they are not part of the charity. This makes sense as those who are "in" charities are ones most likely to give gifts.
+
+```{r}
+predict(gift_mailsyr, newdata = data.frame(mailsyear = c(-1,0,1,2,3,4,5)))
+```
+
+

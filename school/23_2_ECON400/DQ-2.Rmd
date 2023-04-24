@@ -1,0 +1,108 @@
+
+### Setting known variables
+```{r}
+
+sales_intercept <- 118.91
+price_coef <- 7.908
+advert_coef <- 1.863
+
+se_coef <- 6.35
+se_price <- 1.096
+se_advert <- 0.683
+
+r2 <- 0.448
+
+SSR <- 1718.943
+n=45
+
+k <- 2
+
+```
+
+
+### Predicting sales
+```{r}
+
+price <- 5.5
+advert <- 1200
+
+sales <- sales_intercept + (price * price_coef) + (advert * advert_coef)
+sales
+```
+
+### T-Tests and confdience intervals
+```{r}
+# sales t statistic for H0: mu=0:
+sales_t <- sales_intercept/se_coef
+sales_p <- pt(sales_t, n-1)
+sales_p
+```
+#### Sales intercept
+```{r}
+# sales confidence interval:
+c <- qt(.975, n-1)
+
+sales_95ci <- c(sales_intercept - c*se_coef, sales_intercept + c*se_coef)
+sales_95ci
+
+```
+
+#### Price
+```{r}
+# price t statistic for H0: mu=0:
+price_t <- price/se_coef
+price_p <- pt(price_t,n-1)
+price_p
+```
+
+```{r}
+# price confidence interval:
+price_95ci <- c(price_coef - c*se_price, price_coef + c*se_price)
+price_95ci
+```
+
+#### Advert
+```{r}
+# advert t statistic for H0: mu=0:
+advert_t <- advert/se_coef
+advert_p <- pt(advert_t,n-1)
+advert_p
+```
+
+```{r}
+# advert confidence interval:
+advert_95ci <- c(advert_coef - c*se_advert, advert_coef + c*se_advert)
+advert_95ci
+```
+
+
+### Calculating F
+```{r}
+SST <- SSR / (1-r2)
+SSE <- SST - SSR
+
+MSR = SSR / (k-1)
+MSE = SSE / (n-2)
+
+f <- MSR / MSE
+f
+```
+
+```{r}
+# Critical F
+qf(p=.05, df1=k-1, df2=n-1, lower.tail=FALSE)
+```
+
+
+
+### Calculating Adjusted R2
+```{r}
+adj_r2 <- 1 - (((1-r2) * (n-1)) / (n - k - 1))
+adj_r2
+```
+
+
+
+
+
+

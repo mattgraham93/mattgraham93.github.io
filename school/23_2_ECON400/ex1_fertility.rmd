@@ -1,0 +1,58 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+
+```{r}
+library(readxl)
+```
+
+
+```{r warning=FALSE}
+fertil2 <- read_excel('fertil2.xls')
+fertil2
+```
+
+### Children
+#### Minimum
+```{r}
+min(fertil2$children)
+```
+#### Maximum
+```{r}
+max(fertil2$children)
+```
+
+
+### Women with electricity
+```{r}
+w_elec <- subset(fertil2, electric == 1)
+wo_elec <- subset(fertil2, electric == 0)
+
+
+num_w_elec <- nrow(w_elec)
+num_total <- nrow(fertil2)
+num_wo_elec <- num_total - num_w_elec
+
+prop_w_elec <- round(w_elec_num / num_total, 4)
+prop_w_elec
+```
+
+### Mean and median without electricity
+```{r}
+mean(wo_elec$children)
+```
+```{r}
+median(wo_elec$children)
+```
+### Mean and median with electricity
+```{r}
+mean(w_elec$children)
+```
+
+
+```{r}
+median(w_elec$children)
+```
+
