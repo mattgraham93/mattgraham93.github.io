@@ -24,16 +24,13 @@ summary(pce_gdp)
 
 (5) Using the output of your estimation, conduct t-test on your estimated parameters using 95% confidence interval (the t-values are there on the output, or you can use the *** signs, or the p-values), and the overall measure of goodness of fit (using R-sq), then make your conclusion.
 
-
-
+Looking at our intercept and GDP p-values, and goodness of fit - we can conclude that our estimates are statistically significant. This means we can use our model to predict PCE based on GDP.
 
 
 (6) Interpret the meaning of the Intercept and the slope.
 
 
-By default, people are not going to spend money, and likely save money, if the overall income of the country is low. If income is negative (e.g., they've defaulted on debt), consumers are less likely to spend money.
-
-# We can see that for every $1B in GDP, spend increases by $6.815B.
+By default, people are not going to spend money, and likely save money, if the overall income of the country is low. If income is negative (e.g., they've defaulted on debt), consumers are less likely to spend money. We can see that for every 1B in GDP, spend increases by $681M.
 
 
 (7) Copy this output into your report, call this Model A; take note of the Model Selection Criteria (R-squared, Adjusted R-squared) of that regression output.
@@ -59,11 +56,11 @@ summary(model_b)
 
 
 ```{r}
-exp(predict(model_b, newdata = data.frame(GDP = c(50))))
+exp(predict(model_b, newdata = data.frame(GDP = c(15))))
 ```
 
 
-(11) compare the results of Model A and B.   Make your conclusion: choose the best model and give some reasonings.  Write up a cover page for your assessment and conclusion, and attach your summary of outputs (NO need to include the Raw Data).  Make it organized and presentable.  Upload it by clicking "Reply" below.
+(11) compare the results of Model A and B. Make your conclusion: choose the best model and give some reasonings.  Write up a cover page for your assessment and conclusion, and attach your summary of outputs (NO need to include the Raw Data).  Make it organized and presentable.
 
 
 

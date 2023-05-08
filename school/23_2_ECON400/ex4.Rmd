@@ -1,0 +1,51 @@
+```{r}
+library(readxl)
+```
+
+
+The data in 401KSUBS.RAW contains information on netfinancial wealth in dollars (nettfa), age of the survey (age), annual family income in dollars (inc), family size (fsize), and participation in pensions plans.  Use only fsize=1, throughout the following questions (just for this case).
+
+```{r}
+ira_subs <- read_excel('401ksubs.xls')
+ira_subs
+```
+
+
+How many single-person households are there in the data set?
+We have 3,445 single households in our dataset. 
+
+```{r}
+single_hh <- subset(ira_subs, marr == 0)
+single_hh
+nrow(single_hh)
+```
+
+
+Use OLS to estimate: nettfa = f {inc, age}, report the results; are there any surprises in the estimates?
+Does the intercept has any special meaning?
+
+```{r}
+nettfa_model <- lm(nettfa ~ inc+age, data=ira_subs)
+summary(nettfa_model)
+```
+
+Absolutely! The intercept indicates that folks are impoverished and unable to keep up with their daily lives. This money is debt.
+
+Find the p-value for test 
+  H0: β2 = 1  
+  H1: β2 < 1;  
+
+Do you reject Ho at the 1% significant level?
+age           1.03078    0.05912   17.43   <2e-16 ***
+
+Yes! We reject Ho and can conclude that β2 < 1. I don't know how this is true if our given coefficient is > 1.
+
+
+Do a regression of nettfa on inc. only , is the estimated coefficient on inc. much different?
+
+```{r}
+nettfa_model_lite <- lm(nettfa ~ inc, data=ira_subs)
+summary(nettfa_model_lite)
+```
+
+Not significantly! It does a great job explaining how we values "roll up" as we reduce our model. This is why it's our job to determine how much impact our variables have in our model and business.

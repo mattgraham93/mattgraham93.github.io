@@ -71,3 +71,8 @@ typings/
 .suo
 .Rproj.user
 .pdf
+data/postgresql/current_logfiles
+data/postgresql/global/pg_control
+data/postgresql/pg_stat_tmp/global.stat
+data/postgresql/pg_wal/000000010000000000000001
+school/.RData

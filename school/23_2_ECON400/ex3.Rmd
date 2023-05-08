@@ -13,14 +13,24 @@ bwght
 
 a) Consider the model: bwght = f { cigs, faminc }; what is the most likely sign for coefficient of cigs?
 
+I think the most likely sign for coefficient of cigs will be positive.
 
 
 b) How do you think cigs and faminc are likely to correlated? Explain why it might be positive or negative
 
+I don't think cigs and family income are likely to be correlated. I feel like it may be negative, and generally closed to 0.
 
 
-c) Now estimate the model; first just with cigs then add faminc; and report your results. Discuss whether adding faminc variable substantially changes the effect of cigs on birthweight.
+c) Now estimate the model. First just with cigs then add faminc; and report your results. Discuss whether adding faminc variable substantially changes the effect of cigs on birthweight.
 
+Cigs-only
+
+```{r}
+bwght_model_sm <- lm(bwght ~ cigs, data = bwght)
+summary(bwght_model_sm)
+```
+
+Cigs and family income
 ```{r}
 
 bwght_model <- lm(bwght ~ cigs+faminc, data = bwght)
@@ -28,7 +38,7 @@ summary(bwght_model)
 
 ```
 
-
+I like when my assumptions are wrong! Cigarettes aid in the reduction of bodyweight and excludes the increased risk of cancer. Family income has a positive impact on bodyweight, which now makes sense. The more access to money you have, the more likely you are able to have access to regular meals aiding in bodyweight gain.
  
 
 2.  Use data HTV to answer the following.  The dataset includes info on wages, education, parents’ education, and several other variables. 
@@ -42,10 +52,11 @@ htv
 a) estimate the regression model: educ = f { mothereduc, fathereduc }; report your results, and how much sample variation in education is explained by parents’ education. Interpret the coefficient on both mother's education and father's education.
 
 ```{r}
-
 educ_model <- lm(educ ~ motheduc+fatheduc, data=htv)
 summary(educ_model)
 ```
+
+We can see that using education from mothers and fathers only account for ~25% of all variation of our model. While the coefficients are statistically significant, we can't in good faith use these values to exclusively determine highest grade achieved. 
 
 
 b) Add variable abil (a measure of cognitive ability) to the model, and report the results. Does “ability” help to explain variations in education?
@@ -54,6 +65,8 @@ b) Add variable abil (a measure of cognitive ability) to the model, and report t
 educ_model2 <- lm(educ ~ motheduc+fatheduc+abil, data=htv)
 summary(educ_model2)
 ```
+
+Yes! Adding ability helped a significant amount - it was a nearly 2-fold increase in variation coverage. While we are hoping to reduce overfitting, one variable in the grandscheme of our data set is a good decision. 
 
 
 c) Now estimate the model by adding abil in quadratic forms; how does it change your result?
@@ -66,4 +79,5 @@ educ_model3 <- lm(educ ~ motheduc+fatheduc+abil+abil_sq, data=htv)
 summary(educ_model3)
 ```
 
+Adding ability in quadratic form did not help us. It only increased the risk of not controlling total variation in the model.
 

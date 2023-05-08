@@ -1,0 +1,69 @@
+```{r}
+library(readxl)
+library(strucchange) # for chow test
+```
+
+
+The data in 401KSUBS.RAW contains information on netfinancial wealth in dollars (nettfa), age of the survey (age), annual family income in dollars (inc), family size (fsize), and participation in pensions plans.  Use only fsize=1, throughout the following questions (just for this case).
+
+```{r}
+beauty <- read_excel('beauty.xls')
+beauty
+```
+
+Below average folks
+```{r}
+bel_avg <- subset(beauty, belavg == 1)
+bel_avg
+nrow(bel_avg)
+```
+
+Above average folks
+```{r}
+abv_avg <- subset(beauty, abvavg == 1)
+abv_avg
+nrow(abv_avg)
+```
+
+Separating by birth-assigned sex
+
+```{r}
+
+male <- subset(beauty, female == 0)
+female <- subset(beauty, female == 1)
+
+```
+
+
+```{r}
+male_wage_model <- lm(lwage ~ belavg+abvavg, data=male)
+summary(male_wage_model)
+```
+
+
+```{r}
+female_wage_model <- lm(lwage ~ belavg+abvavg, data=female)
+summary(female_wage_model)
+```
+
+
+3. p-values for below average, across sex-assigned males and females prove to be statistically significant, more so for those for males. An important fact is looking at the base wage, where women earn less than men. So females who are also below average in "beauty standards" earn even less than their below average male counterparts.
+
+
+4. No - we cannot conclude that sex-assigned females who are above average earn more than women with below average looks. This is determined by looking at our p-value of .54, meaning we have too much spread in our data to conclude this as an effective variable. 
+
+
+```{r}
+female_wage_model_exp <- lm(lwage ~ belavg+abvavg+educ+exper+expersq+union+goodhlth+black+married+south+bigcity+smllcity+service, data=female)
+summary(female_wage_model_exp)
+```
+
+```{r}
+male_wage_model_exp <- lm(lwage ~ belavg+abvavg+educ+exper+expersq+union+goodhlth+black+married+south+bigcity+smllcity+service, data=male)
+summary(male_wage_model_exp)
+```
+
+```{r}
+chow.test.r <- chow.test.r(male[, 2], male[, -2], female[, 2], female[, -2])
+```
+
