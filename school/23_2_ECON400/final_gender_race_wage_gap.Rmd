@@ -1,0 +1,812 @@
+
+```{r}
+library(readxl)
+library(strucchange) # for chow test
+library(quantreg) # for LAD regression (rq)
+library(stargazer)
+library(L1pack) # more LAD regression (lad)
+library(plyr)
+library(reshape2)
+library(ggplot2)
+library(ggrepel) # https://www.statology.org/label-scatterplot-points-r/
+library(car)
+library(sandwich)
+library(tinytex)
+library(rjson)
+library(censusapi)
+library(dplyr)
+library(devtools)
+library(blsAPI)
+library(car)
+library(dynlm)
+library(lmtest)
+library(jtools)
+library(sjPlot) # https://cran.r-project.org/web/packages/sjPlot/vignettes/plot_interactions.html
+library(sjmisc) # https://cran.r-project.org/web/packages/sjPlot/vignettes/plot_interactions.html
+library(fastDummies)
+library(corrplot)
+library(RColorBrewer)
+library(ggstatsplot)
+library (BSDA) 
+```
+
+
+
+# Getting and exploring data
+
+## 2021 - Census data
+https://data.census.gov/table?q=income+by+sex&tid=ACSST1Y2021.S2002&moe=false
+
+#### Creating dataframes
+```{r}
+class_earns_2021 <- read_excel('final_2021_median_earnings.xlsx', sheet='class')
+class_earns_2021
+```
+
+```{r}
+occ_earns_2021 <- read_excel('final_2021_median_earnings.xlsx', sheet='occupation')
+occ_earns_2021
+```
+
+```{r}
+ed_earns_2021 <- read_excel('final_2021_median_earnings.xlsx', sheet='education')
+ed_earns_2021
+```
+
+```{r}
+dem_earns_2021 <- read_excel('final_2021_median_earnings.xlsx', sheet='demographics')
+dem_earns_2021
+```
+
+#### Scatter plots
+```{r}
+ggplot(class_earns_2021, aes(f_perc_m_earn, f_median_earning)) + 
+         geom_point() +
+         geom_text_repel(aes(label=class_earns_2021$Label))
+```
+
+
+```{r}
+ggplot(ed_earns_2021, aes(f_perc_m_earn, f_median_earning)) + 
+         geom_point() +
+         geom_text_repel(aes(label=ed_earns_2021$Label))
+```
+
+
+
+```{r}
+top <- occ_earns_2021 %>% slice_max(f_perc_m_earn, n=5)
+
+ggplot(top, aes(f_perc_m_earn, m_median_earning)) + 
+         geom_point() +
+         geom_text_repel(aes(label=top$Label))
+```
+
+
+
+```{r}
+bottom <- occ_earns_2021 %>% slice_min(f_perc_m_earn, n=5)
+
+ggplot(bottom, aes(f_perc_m_earn, m_median_earning)) + 
+         geom_point() +
+         geom_text_repel(aes(label=top$Label))
+```
+
+
+```{r}
+ggplot(dem_earns_2021, aes(f_perc_m_earn, m_median_earning)) + 
+         geom_point() +
+         geom_text_repel(aes(label=dem_earns_2021$Label))
+```
+
+
+
+## 2000 - 2022 Bureau of Labor Statistics
+```{r}
+earnings <- read_excel('final_rw_earnings.xlsx')
+earnings
+```
+
+```{r}
+plot(earnings$all)
+```
+
+
+
+```{r}
+as.data.frame(colnames(earnings))
+```
+
+
+
+#### Tests
+
+T test
+
+
+F test
+
+```{r}
+mod_6 <- lm (all ~ all_wh + all_bl + all_hi + all_as, data = earnings)
+summary(mod_6)
+```
+
+This is an interesting model. It shows that only non-hispanic people make a significant difference from average. On top of that, it's less - comparing that to all our other coefficients. 
+
+```{r}
+mod_w_time <- lm(w_perc_m_tot ~ Year + w_all, data =earnings)
+summary(mod_w_time)
+```
+
+```{r}
+tsdata <- ts(earnings, start = 2000)
+res <- dynlm(w_perc_m_tot ~ w_all + all, data = tsdata)
+summary(res)
+```
+
+```{r}
+res_trend <- dynlm(w_perc_m_tot ~ w_all + all + trend(tsdata), data = tsdata)
+summary(res_trend)
+```
+
+```{r}
+stargazer(res,res_trend, type="text")
+```
+
+
+
+
+```{r}
+mod_wo_time <- lm(w_perc_m_tot ~ w_all, data =earnings)
+summary(mod_wo_time)
+```
+
+
+```{r}
+mod_1 <- lm(w_perc_m_tot ~ wh_w_perc_all_w + bl_m_perc_all_w + hi_m_perc_all_w + as_m_perc_all_w, data = earnings)
+summary(mod_1)
+```
+Across all races, women through all women do not earn proportionally less than their counterparts
+
+```{r}
+mod_2 <- lm(w_perc_m_tot ~ w_wh + w_bl + w_hi + w_as, data = earnings)
+summary(mod_2)
+```
+
+
+```{r}
+plot_model(mod_2, type="pred", terms = c("w_wh", "w_bl"))
+```
+
+
+
+
+Across all logged races, white and hispanic women tend to be paid proportionally less than their counterparts in proportion $ earned of men
+
+This is different from above in that our scope is focused on disparities through women versus disparity across women's differences and mens' earnings. 
+
+```{r}
+mod_2_red <- lm(w_perc_m_tot ~ w_wh + w_hi, data = earnings)
+summary(mod_2_red)
+```
+When diving deeper and reducing our model, we can see that hispanic women earn proportionally less than white women as it pertains to their difference in percent earnings compared to men
+
+```{r}
+mod_2_int <- lm(w_perc_m_tot ~ w_wh * w_bl * w_hi * w_as, data = earnings)
+summary(mod_2_int)
+```
+
+
+
+
+```{r}
+mod_3 <- lm(w_perc_m_tot ~ m_wh + m_bl + m_hi + m_as, data = earnings)
+summary(mod_3)
+```
+
+This is the recipricol of above, in that it shows white men nd hispanic men make proportionally more than women across logged races. 
+
+
+```{r}
+mod_4 <- lm(w_perc_m_tot ~ Year*m_wh, data = earnings)
+summary(mod_4)
+```
+
+
+
+
+```{r}
+plot_model(mod_4, type="pred", terms = c("Year", "m_wh"))
+```
+
+
+
+```{r}
+plot(earnings$Year, earnings$w_perc_m_tot)
+```
+
+
+```{r}
+plot(earnings$Year, earnings$m_all)
+```
+
+We can see tht over time, women have seen an upward trend in proportional earnings to that of men. We can see that mens' earnings are growing seeming exponentially. 
+
+```{r}
+mod_5 <- lm(w_perc_m_tot ~ Year*bl_m_perc_all_w, data = earnings)
+summary(mod_5)
+```
+
+
+```{r}
+plot(earnings$Year, earnings$bl_m_perc_all_w)
+```
+
+
+
+```{r}
+mod_7 <- lm(all ~ w_wh + w_bl + w_hi + w_as, data = earnings)
+summary(mod_7)
+```
+
+This shows that white women and asian women earn more than average of all races and genders
+
+```{r}
+mod_8 <- lm(wh_w_perc_all_w ~ bl_m_perc_all_w * hi_m_perc_all_w * as_m_perc_all_w, data = earnings)
+summary(mod_8)
+```
+
+## ACS 
+
+```{r}
+n_earnings <- read_excel('2021_med_earnsxlsx.xlsx', sheet = "Data")
+n_earnings
+```
+
+```{r}
+big_mod <- lm(f_perc_m ~ subject + m_med_earns + total_med_earns, data = n_earnings)
+summary(big_mod)
+```
+
+
+```{r}
+race <- subset(n_earnings, subject == "Race")
+race_mod <- lm(f_perc_m ~ m_med_earns + total_med_earns, data = race)
+summary(race_mod)
+```
+
+
+```{r}
+ed <- subset(n_earnings, subject == "Education")
+ed_mod <- lm(f_perc_m ~ m_med_earns + total_med_earns, data = ed)
+summary(ed_mod)
+```
+
+
+
+```{r}
+occ <- subset(n_earnings, subject == "Occupation")
+occ_mod <- lm(f_perc_m ~ m_med_earns + total_med_earns, data = occ)
+summary(occ_mod)
+```
+
+```{r}
+ind <- subset(n_earnings, subject == "Industry")
+ind_mod <- lm(f_perc_m ~ m_med_earns + total_med_earns, data = ind)
+summary(ind_mod)
+```
+
+
+```{r}
+
+```
+
+
+
+### ADP data
+```{r}
+adp <- read_excel("adp_pay.xlsx")
+adp
+```
+
+```{r}
+summary(lm(median_annual_pay ~ agg   + date, data = adp))
+```
+
+
+```{r}
+adp_state <- subset(adp, agg == "State")
+adp_firm <- subset(adp, agg == "Firm Size")
+adp_gender <- subset(adp, agg == "Gender")
+adp_industry <- subset(adp, agg == "Industry")
+adp_worker <- subset(adp, agg == "Worker Type")
+```
+
+
+
+```{r}
+adp_wt_mod <- lm(median_annual_pay ~ category + median_pay_change, data=adp_worker)
+summary(adp_wt_mod)
+```
+
+
+
+
+```{r}
+adp_s_mod <- lm(median_annual_pay ~ category, data=adp_industry)
+summary(adp_s_mod)
+```
+
+
+
+```{r}
+adp_s_mod <- lm(median_annual_pay ~ category, data=adp_gender)
+summary(adp_s_mod)
+```
+
+Assuming Woman, Man makes 17021.9 more 
+
+```{r}
+adp_s_mod <- lm(median_annual_pay ~ category, data=adp_firm)
+summary(adp_s_mod)
+```
+
+
+
+
+
+Wage disparities between black men and women have continued to decrease over time.
+
+R square
+
+Collinearity
+
+Non-linearity
+
+Interaction
+
+Dummy variables
+
+Heteroscedasticity
+
+Specification
+
+No time series~~~
+
+
+## CPS data
+
+```{r}
+cps <- read.csv("cps_00002.csv")
+cps <- subset(cps, INCTOT >= 12000 & INCTOT <= 500000)
+cps$SEX<- mapvalues(cps$SEX, from = c(1, 2), to = c(0, 1))
+cps$LOG_INCTOT <- log(cps$INCTOT)
+cps <- cps %>% select(c('YEAR', 'AGE':'RACE', 'INCTOT':'LOG_INCTOT'))
+head(cps)
+```
+
+
+
+
+```{r}
+M <- cor(cps)
+corrplot(M, type="upper", order="hclust",
+         col=brewer.pal(n=8, name="RdYlBu"))
+```
+
+
+
+```{r}
+cps.race.codes <- read_excel("cps_race_codes.xlsx")
+cps.race.codes
+```
+
+
+```{r}
+# cps <- merge(x = cps, y = cps.race.codes, by = "RACE")
+cps$RACE_HL <- ifelse(cps$RACE_LABEL=="White", "White", "Non-white")
+cps$SEX_LABEL <- ifelse(cps$SEX == 1, "Woman", "Man")
+cps
+```
+
+
+```{r}
+summary(cps)
+```
+```{r}
+hist(cps$LOG_INCTOT)
+```
+
+
+```{r}
+ggplot(data = cps) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ RACE_HL)
+```
+
+```{r}
+ggplot(data = cps) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+```
+
+
+
+```{r}
+boxplot(cps$LOG_INCTOT)
+```
+
+```{r}
+iqr <- IQR(cps$LOG_INCTOT)
+Q <- quantile(cps$LOG_INCTOT, probs = c(.25, .75), na.rm = FALSE)
+up <- Q[2] + (1.5*iqr)
+low <- Q[1] - (1.5 * iqr)
+outliers_rm <- subset(cps, cps$LOG_INCTOT > low & cps$LOG_INCTOT < up )
+outliers_rm
+```
+
+
+
+```{r}
+iqr <- IQR(cps$AGE)
+Q <- quantile(outliers_rm$AGE, probs = c(.25, .75), na.rm = FALSE)
+up <- Q[2] + (1.5*iqr)
+low <- Q[1] - (1.5 * iqr)
+
+print(low)
+print(up)
+
+outliers_rm <- subset(outliers_rm, outliers_rm$AGE > low & outliers_rm$AGE < up )
+outliers_rm
+```
+
+
+```{r}
+outliers_rm %>%
+  group_by(RACE_HL) %>%
+  summarize(min_inctot = exp(min(LOG_INCTOT)), max_inctot = exp(max(LOG_INCTOT)), med_inctot = exp(median(LOG_INCTOT)),
+            mean_inctot = exp(mean(LOG_INCTOT)),  var_inctot = exp(var(LOG_INCTOT))
+            )
+```
+
+
+
+```{r}
+
+w_df <- subset(outliers_rm, RACE_HL == "White")
+
+ggplot(data = w_df) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+
+```
+
+
+
+```{r}
+
+nw_df <- subset(outliers_rm, RACE_HL == "Non-white")
+
+ggplot(data = nw_df) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+```
+
+
+
+```{r}
+ggplot(data = outliers_rm) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ RACE_HL)
+```
+
+
+```{r}
+ggplot(data = outliers_rm) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+```
+
+
+
+```{r}
+hist(outliers_rm$AGE)
+```
+
+
+
+```{r}
+cps <- dummy_cols(outliers_rm, select_columns = 'RACE_LABEL', remove_selected_columns = TRUE)
+head(cps)
+```
+
+
+
+
+```{r}
+summary(cps)
+```
+
+
+
+```{r}
+cps_no_year <- cps %>% select(-'YEAR')
+cps_no_year
+```
+
+
+```{r}
+cps_full <- lm(LOG_INCTOT ~ ., data = cps)
+summary(cps_full)
+```
+
+
+intercept assumes: non-white man
+
+
+
+
+```{r}
+cps_mod <- lm(LOG_INCTOT ~ RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black
+              , data = cps)
+summary(cps_mod)
+```
+
+
+```{r}
+plot_model(cps_mod, type="pred", terms = c("RACE", "SEX"))
+```
+
+```{r}
+plot_model(cps_mod, type="pred", terms = c("AGE", "SEX"))
+
+```
+
+```{r}
+plot_model(cps_mod, type="pred", terms = c("AGE", "RACE"))
+
+```
+
+
+```{r}
+cps_mod_w_time <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black
+                , data = cps)
+summary(cps_mod_w_time)
+```
+
+
+
+```{r}
+cps_mod_int_r <- lm(LOG_INCTOT ~ YEAR * RACE * AGE * SEX * RACE_HL, data = cps)
+summary(cps_mod_int_r)
+```
+
+
+
+```{r}
+plot_model(cps_mod_int_r, type="pred", terms = c("SEX", "RACE", "AGE"))
+```
+
+```{r}
+cps_mod_comp <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX) + (AGE * SEX) + (YEAR * AGE * SEX) 
+                , data = cps)
+summary(cps_mod_comp)
+```
+
+```{r}
+cps_mod_final <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX) 
+                , data = cps)
+summary(cps_mod_final)
+```
+
+```{r}
+stargazer(cps_full,
+          cps_mod_w_time,
+          cps_mod_final, 
+          title="Displaying results for multiple response variables",
+          type = "text",
+          float = FALSE,
+          report = "vcs*",
+          no.space = FALSE,
+          header=FALSE,
+          font.size = "small",
+          intercept.bottom = F,
+          column.labels = c("Full model", "Reduced without interaction", "With interaction"),
+          column.separate = c(1, 1, 1),
+          digits = 4,
+          t.auto = F,
+          p.auto = F,
+          notes.align = "l",
+          notes = c("lm() function with Robust SE"),
+          notes.append = TRUE
+          )
+```
+
+
+### Testing our final model
+
+```{r}
+vif(cps_mod_final, type = 'predictor' )
+```
+
+
+```{r}
+coeftest(cps_mod_final)
+```
+
+F tests
+```{r}
+anova(cps_mod_final)
+```
+
+
+
+HSK
+```{r}
+bptest(cps_mod_final, ~ fitted(cps_mod_final) + I(fitted(cps_mod_final)^2) )
+```
+
+
+HSK is present
+
+```{r}
+
+u <- resid(cps_mod_final)
+
+logu2 <- log(u^2)
+
+varreg<-lm(logu2 ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX)
+           , data=cps)
+
+summary(varreg)
+w <- 1/exp(fitted(varreg))
+fgls <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX)
+                , data = cps, weight=w)
+summary(fgls)
+```
+
+
+```{r}
+stargazer(varreg, fgls, type="text")
+```
+
+WLS (2) is better 10x
+
+```{r}
+tsdata <- ts(cps, start = 2000)
+res <- dynlm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX)
+             , data = tsdata)
+summary(res)
+```
+
+```{r}
+res_trend <- dynlm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX) + 
+                  trend(tsdata), data = tsdata)
+summary(res_trend)
+```
+
+```{r}
+stargazer(res,res_trend, type="text")
+```
+
+
+
+
+```{r}
+linearHypothesis(res, matchCoefs(res, c("SEX","RACE")))
+```
+
+
+```{r}
+b <- coef(res)
+b["SEX"] + b["RACE"] + b["`RACE_LABEL_American Indian/Aleut/Eskimo`"] + b["`RACE_LABEL_Asian only`"] + 
+  + b["`RACE_LABEL_Asian or Pacific Islander`"] + b["RACE_LABEL_Black"] + b["`RACE_LABEL_Black-Mixed`"] + b["YEAR:RACE"] +
+  b["YEAR:AGE"] + b["YEAR:SEX"]
+```
+
+
+
+
+## Old
+
+
+```{r}
+payload <- list('seriesid'=c('LAUCN040010000000005','LAUCN040010000000006'), 'startyear'='2010', 'endyear'='2012') 
+response <- blsAPI(payload) 
+json <- fromJSON(response)
+```
+
+
+```{r}
+str(json)
+```
+
+
+## Getting API
+
+Getting our API key
+```{r}
+Sys.setenv(CENSUS_KEY=fromJSON(file="C:/repos/auth.json")$census)
+readRenviron("~/.Renviron")
+Sys.getenv("CENSUS_KEY")
+```
+
+Finding our API
+```{r}
+apis <- listCensusApis()
+colnames(apis)
+```
+```{r}
+apis
+```
+
+
+```{r}
+table(apis$type)
+```
+
+```{r}
+listCensusMetadata(name = "acs/acs5/cprofile", vintage = 2021, type = "variables")
+```
+
+
+
+```{r}
+listCensusMetadata(name = "acs/acs5", vintage = 2020, type = "variables")
+```
+
+
+
+
+```{r}
+acs_income <- getCensus(
+    name = "acs/acs5",
+    vintage = 2020, 
+    vars = c("NAME", "B01001_001E", "B19013_001E"), 
+    region = "place:*")
+head(acs_income)
+```
+
+
+
+
+
+```{r}
+acs_income_vars <- listCensusMetadata(
+  name = "acs/acs5",
+  vintage = 2020,
+  type = "variables")
+acs_income_vars
+```
+
+
+
+
+
+
+
+

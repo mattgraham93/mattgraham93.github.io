@@ -2,65 +2,51 @@
 library(readxl)
 ```
 
-
 Purpose: Familiarity with Economic Data sources and using Simple Linear Regression.
 
 ### Getting our data
+
 ```{r}
 gdp <- read_excel('gdp.xlsx', sheet = 'GDP_Clean')
 gdp
 ```
 
+(4) Using the software, estimate OLS, with Equation: PCE = f { GDP}; \~ always include the "constant" (intercept).
 
-(4) Using the software, estimate OLS, with Equation: PCE = f { GDP}; ~ always include the “constant” (intercept).   
-
-Note: GDP is total Income of a country, and PCE is total consumption/spending.  Your regression output will show the US trend of Spending with regards to the Income.
+Note: GDP is total Income of a country, and PCE is total consumption/spending. Your regression output will show the US trend of Spending with regards to the Income.
 
 ```{r}
 pce_gdp <- lm(PCE ~ GDP, data=gdp)
 summary(pce_gdp)
 ```
 
-
-(5) Using the output of your estimation, conduct t-test on your estimated parameters using 95% confidence interval (the t-values are there on the output, or you can use the *** signs, or the p-values), and the overall measure of goodness of fit (using R-sq), then make your conclusion.
+(5) Using the output of your estimation, conduct t-test on your estimated parameters using 95% confidence interval (the t-values are there on the output, or you can use the \*\*\* signs, or the p-values), and the overall measure of goodness of fit (using R-sq), then make your conclusion.
 
 Looking at our intercept and GDP p-values, and goodness of fit - we can conclude that our estimates are statistically significant. This means we can use our model to predict PCE based on GDP.
 
-
 (6) Interpret the meaning of the Intercept and the slope.
 
-
-By default, people are not going to spend money, and likely save money, if the overall income of the country is low. If income is negative (e.g., they've defaulted on debt), consumers are less likely to spend money. We can see that for every 1B in GDP, spend increases by $681M.
-
+By default, people are not going to spend money, and likely save money, if the overall income of the country is low. If income is negative (e.g., they've defaulted on debt), consumers are less likely to spend money. We can see that for every 1B in GDP, spend increases by \$681M.
 
 (7) Copy this output into your report, call this Model A; take note of the Model Selection Criteria (R-squared, Adjusted R-squared) of that regression output.
-
-
 
 ```{r}
 predict(pce_gdp, newdata = data.frame(GDP = c(1000000000)))
 ```
 
-
-(9)  Now, I would like you to do another estimation by making both measurements in percent. 
+(9) Now, I would like you to do another estimation by making both measurements in percent.
 
 You can do it in two ways: a) in Excel, you can transform your data into percent; b) transform into log-log model.
-
 
 ```{r}
 model_b <- lm(log(PCE) ~ log(GDP), data=gdp)
 summary(model_b)
 ```
 
-(10) Then do your OLS estimation:.  Call this Model B. 
-
+(10) Then do your OLS estimation:. Call this Model B.
 
 ```{r}
 exp(predict(model_b, newdata = data.frame(GDP = c(15))))
 ```
 
-
-(11) compare the results of Model A and B. Make your conclusion: choose the best model and give some reasonings.  Write up a cover page for your assessment and conclusion, and attach your summary of outputs (NO need to include the Raw Data).  Make it organized and presentable.
-
-
-
+(11) compare the results of Model A and B. Make your conclusion: choose the best model and give some reasonings. Write up a cover page for your assessment and conclusion, and attach your summary of outputs (NO need to include the Raw Data). Make it organized and presentable.

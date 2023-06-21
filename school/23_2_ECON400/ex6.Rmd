@@ -1,0 +1,78 @@
+
+```{r}
+library(readxl)
+library(reshape2)
+library(ggplot2)
+library(lmtest)
+# library(car)
+```
+
+
+
+### Getting our data
+```{r}
+meap <- read_excel('meap00_01.xls')
+meap
+```
+
+
+Estimate OLS model: math4 =  f { lunch, log(enroll), log(exppp) }
+EXPPP = expenditures per pupil: expend/enroll
+
+```{r}
+math_mod <- lm(math4 ~ lenroll + lexppp, data=meap)
+summary(math_mod)
+```
+
+
+Obtain the usual standard error, and the robust standard errors. How do they compare?
+```{r}
+coeftest(math_mod)
+```
+
+```{r}
+coeftest(math_mod, vcov=hccm)
+```
+
+Apply White test for HSK. What is the value of the F-test?  What do you conclude?
+```{r}
+bptest(math_mod, ~ fitted(math_mod) + I(fitted(math_mod)^2) )
+```
+
+Our F-test is 84.435 and our p-value is very small, we can conclude there is HSK.
+
+
+Obtain the fitted values of math4, call it y.  Obtain the residuals, u.
+
+```{r}
+u <- resid(y)
+plot(u)
+```
+
+We can see our residuals are random and centralized around 0. This means we have no trend in our model's data. This means we can summarize the significance of our variables. 
+
+Our variables result significant across the board. This implies that using log(enroll) and log(exppp) are good to predict the % of students eligible for free or reduced lunch. What's important to note are our R^2 values. They do not capture enough variability to result in accurate predictions.
+
+
+Run log(u^2) = f { y, y^2}
+```{r}
+# FGLS: estimation of the variance function
+logu2 <- log(u^2)
+varreg<-lm(logu2~lunch +log(enroll)+log(exppp), data=meap)
+summary(varreg)
+```
+
+Let h = exp(y); use h to obtain WLS estimates.  
+
+```{r}
+w <- 1/exp(fitted(varreg))
+fgls <- lm(math4~lunch +log(enroll)+log(exppp), data=meap, weight=w)
+summary(fgls)
+```
+
+
+Are the WLS estimates different from OLS estimates?
+Yes, significantly! I'm not sure if I did something wrong here. We can see that lunch is significant for both, even if they have opposite symbols. The intercepts are also significantly different. The R^s for WLS is significantly higher than that for OLS.
+
+Out of WLS and OLS, which one is the more precise?
+Based on what we saw, I trust WLS more than OLS. I'm excited to see what other folks got out of this!

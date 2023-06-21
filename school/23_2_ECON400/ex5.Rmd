@@ -64,6 +64,45 @@ summary(male_wage_model_exp)
 ```
 
 ```{r}
-chow.test.r <- chow.test.r(male[, 2], male[, -2], female[, 2], female[, -2])
+full_wage_model_exp <- lm(lwage ~ female + belavg + abvavg + educ + exper + expersq + union + goodhlth + black+married + south + bigcity + smllcity + service, data=beauty)
+summary(full_wage_model_exp)
 ```
+
+
+Chow test
+```{r}
+male_wage_anova <- anova(male_wage_model_exp)
+male_wage_anova
+```
+
+
+```{r}
+female_wage_anova <- anova(female_wage_model_exp)
+female_wage_anova
+```
+
+
+```{r}
+full_wage_anova <- anova(full_wage_model_exp)
+full_wage_anova
+```
+
+
+```{r}
+k <- 13
+N <- 1247
+
+ssrp <- 261.177
+ssr1 <- 83.693
+ssr2 <- 166.084
+
+f_chow <- ((ssrp - (ssr1 + ssr2)) / (ssr1 + ssr2)) / ((N - (2 * (k + 1))) / k)
+f_chow
+```
+
+```{r}
+qf(.95, 1245, 422, lower.tail = FALSE)
+```
+
+Generating our critical F value of 0.8792, and our Chow(F) being 0.0004, we cannot state there is enough evidence for there to be a difference in wage between men and women. This doesn't make sense to me, and am hopeful I did something wrong!
 

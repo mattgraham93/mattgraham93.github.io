@@ -1,0 +1,119 @@
+```{r}
+library(readxl)
+library(strucchange) # for chow test
+library(quantreg) # for LAD regression (rq)
+library(stargazer)
+library(L1pack) # more LAD regression (lad)
+```
+
+
+## 1 - Beauty
+The data in beauty.xls contains information on 
+
+```{r}
+beauty <- read_excel('beauty.xls')
+beauty
+```
+
+
+
+```{r}
+pooled_mod <- lm(lwage ~ belavg + abvavg + female + educ + exper + expersq, data=beauty)
+summary(pooled_mod)
+```
+
+Checking for heteroskedascity 
+```{r}
+bptest(pooled_mod, ~ fitted(pooled_mod) + I(fitted(pooled_mod)^2) )
+```
+
+With such a large p-value, we can conclude there is no HSK is present and can use OLS
+
+B - The degree to which female and below average impact overall wage are staggering. they're the only ones contributing > 0.1. Education and experience make sense in terms of having marginal impact, but not insignificant.
+
+C - As noted above, absolutely! 
+
+D 
+```{r}
+pooled_w_interaction <- lm(lwage ~ female + female*belavg + female*abvavg + female*educ + female*exper + female*expersq, data=beauty)
+summary(pooled_w_interaction)
+```
+
+```{r}
+bptest(pooled_w_interaction, ~ fitted(pooled_w_interaction) + I(fitted(pooled_w_interaction)^2) )
+```
+
+No, no change in outcome
+
+E - No, we cannot include the intersections of female and above/below average looks. I would personally avoid including one intersection. It may be worth considering the intersection between female and experience. While not within our 0.05 threshold, its impact is significant and may allow for great capture in variation.
+
+
+## 2 - RDCHEM
+```{r}
+rdchem <- read_excel('rdchem.xls')
+rdchem
+```
+
+
+
+```{r}
+rdchem_mod <- lm(rdintens ~ sales + salessq + profmarg, data=rdchem)
+summary(rdchem_mod)
+```
+
+```{r}
+studres <- rstudent(rdchem_mod)
+min(studres)
+max(studres)
+hist(studres, freq=FALSE)
+lines(density(studres), lwd=2)
+```
+
+
+```{r}
+rdchem_lad <- rq(rdintens ~ sales + profmarg, data=rdchem)
+summary(rdchem_lad)
+```
+```{r}
+lad_resid <- resid(rdchem_lad)
+min(lad_resid)
+max(lad_resid)
+hist(lad_resid, freq=FALSE)
+lines(density(lad_resid), lwd=2)
+```
+
+
+```{r}
+rdchem_ols <- lm(rdintens ~ sales + profmarg, data=rdchem)
+summary(rdchem_ols)
+```
+
+```{r}
+ols_resid <- resid(rdchem_mod)
+min(ols_resid)
+max(ols_resid)
+hist(ols_resid, freq=FALSE)
+lines(density(ols_resid), lwd=2)
+```
+
+
+
+```{r}
+stargazer(rdchem_ols, rdchem_lad, type = "text")
+```
+
+
+```{r}
+fit.lad <- lad(rdintens ~ sales + salessq + profmarg, data = rdchem)
+summary(fit.lad)
+```
+
+```{r}
+fit.ols<- lm(rdintens ~ sales + salessq + profmarg, data = rdchem)
+summary(fit.ols)
+```
+
+```{r}
+stargazer(fit.ols, fit.lad, type = "text")
+```
+

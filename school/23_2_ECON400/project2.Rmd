@@ -1,0 +1,176 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r}
+library(readxl)
+library(reshape2)
+library(ggplot2)
+library(car)
+library(stargazer)
+library(sandwich)
+library(tinytex)
+library(rmarkdown)
+library(lmtest)
+```
+
+Purpose: Familiarity with Economic Data sources and using Simple Linear Regression.
+
+I obtained my data using the FRED tool in Excel and exported it at the quarterly level from 2001 to 2022. \### Getting our data
+
+```{r}
+mort_rate <- read_excel('MortgageRateData.xlsx', sheet = 'data')
+mort_rate
+```
+
+```{r}
+table_desc <- read_excel('MortgageRateData.xlsx', sheet = 'background')
+table_desc
+```
+
+3 - It think federal funds will increase mortgage rates, same with inflation and the housing price index. Using things like bonds may decrease when mortgage rates are increasing makes sense, and same with GDP going down. I brought in corporate profits and layoffs to see how all of this is correlated with our daily lives.
+
+4 - OLS
+
+```{r}
+raw_model <- lm(MORTGAGE30US ~ ., data = mort_rate)
+summary(raw_model)
+```
+
+In short, we only yield 4 meaningful variables, 3 being usable (CPILFESL, gs20, CP). Another important note is our intercept not returning as significant. This can be problematic. We will ignore this issue until we continue to refine our model.
+
+We can see our model is significant and covers a lot of variability. We shouldn't mistake this for over-fitting. Let's see how well our model reduces and its performance as we continue this journey.
+
+5 - Multicolinearity using VIF
+
+```{r}
+vif(raw_model)
+```
+
+VIF score are very high, however, we are going to continue forward with: CPILFESL, gs20, CP
+
+```{r}
+model <- lm(MORTGAGE30US ~ CPILFESL+gs20+CP, data = mort_rate)
+summary(model)
+```
+
+Immediately, we can see how well our model performs. High adjusted and standard R-squared. All variables and intercept are significant. Let's see how our residuals shake out against our variables.
+
+```{r}
+vif(model)
+```
+
+We can see how much we have reduced multicolinearity across our main variables.
+
+```{r}
+
+mort_rate$resid <- resid(model)
+mort_rate
+
+```
+
+6)  Analyze the residuals against each of the x-variables using textplot or scatter. What do they say?
+
+```{r}
+ggplot(data = mort_rate) +
+  geom_point(mapping = aes(x = CPILFESL, y = resid)) +
+  geom_hline(yintercept=0,col="red") #hline is for horizontal line y=0
+```
+
+```{r}
+ggplot(data = mort_rate) +
+  geom_point(mapping = aes(x = gs20, y = resid)) +
+  geom_hline(yintercept=0,col="red") #hline is for horizontal line y=0
+```
+
+```{r}
+ggplot(data = mort_rate) +
+  geom_point(mapping = aes(x = CP, y = resid)) +
+  geom_hline(yintercept=0,col="red") #hline is for horizontal line y=0
+```
+
+7)  Change one or two variables into different format (logs, squares, etc.); if there's dummy vars, create interactive terms; then include them into your model.
+
+```{r}
+mort_rate$sq_cp <- mort_rate$CP**2
+mort_rate$log_CPIFESL <- log(mort_rate$CPILFESL)
+
+model_adj <- lm(MORTGAGE30US ~ CPILFESL+gs20+CP+sq_cp+log_CPIFESL, data = mort_rate)
+summary(model_adj)
+
+```
+
+8)  Carry out HSK test, make conclusion; if there's a case of HSK, carry out WLS (choose what variable as the weight), obtain the estimates. Eliminate some variables as necessary. Modify your model accordingly. Check t, F, p-values for significance.
+
+```{r}
+bptest(model, ~ fitted(model) + I(fitted(model)^2) )
+```
+
+9)  As you start with the original model, checked for significance of x-variables, omit one at a time as necessary, each time re-estimate and justify each omission; Use the stargazer commands (in R) to gather your regression outputs later, giving you a more professional output comparison.
+
+We are going to reduce by removing our highest p-value variable. After our raw model, we will remove JTSLDL
+
+```{r}
+model_red1 <- lm(MORTGAGE30US~date+fedfunds+CPILFESL+GDPC1+tb3ms+gs20+USSTHPI+CP, data=mort_rate)
+summary(model_red1)
+```
+
+Now we remove USSTHPI at p-value = .446
+
+```{r}
+model_red2 <- lm(MORTGAGE30US~date+fedfunds+CPILFESL+GDPC1+tb3ms+gs20+CP, data=mort_rate)
+summary(model_red2)
+```
+
+We remove tb3ms
+
+```{r}
+model_red3 <- lm(MORTGAGE30US~date+fedfunds+CPILFESL+GDPC1+gs20+CP, data=mort_rate)
+summary(model_red3)
+```
+
+Now we remove GDPC1
+
+```{r}
+model_red4 <- lm(MORTGAGE30US~date+fedfunds+CPILFESL+gs20+CP, data=mort_rate)
+summary(model_red4)
+```
+
+```{r results='asis'}
+model.lst = list(raw_model, model)
+
+stargazer(model_red1,
+          model_red2,
+          model_red3,
+          model_red4,
+          title="Displaying results for multiple response variables",
+          type = "text",
+          float = FALSE,
+          report = "vcs*",
+          # se=lapply(model.lst, function(x) sqrt(diag(vcovHC(x, type = "HC1")))),
+          no.space = FALSE,
+          header=FALSE,
+          font.size = "small",
+          intercept.bottom = F,
+          column.labels = c("30 year Mortgage Rates", "30 year Mortgate Rates"),
+          column.separate = c(1, 4),
+          digits = 2,
+          t.auto = F,
+          p.auto = F,
+          notes.align = "l",
+          notes = c("lm() function with Robust SE"),
+          notes.append = TRUE
+          )
+
+```
+
+10) What is your final model? Do the signs or the (non)linearity in the final model agree with your intuition?
+
+Our final model is our 4th reduction. All variables are significant and we have high coverage of total variability.
+
+Based on my iniital feeling, I was right about federal fundings leading to increases related to the price index. Corporate profits leading to decreases in mortgage rates didn't align with my expectations, but it makes sense. Banks typically lower rates when they earn more money.
+
+11) Write up a cover page for your assessment and conclusion, and attach your summary of outputs from stargazer; you can put the other regression outputs on Appendix at the very last page. Make it organized and presentable. Submit your report here on Canvas.
