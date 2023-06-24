@@ -1,0 +1,391 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r}
+library(readxl)
+library(strucchange) # for chow test
+library(quantreg) # for LAD regression (rq)
+library(stargazer)
+library(L1pack) # more LAD regression (lad)
+library(plyr)
+library(reshape2)
+library(ggplot2)
+library(ggrepel) # https://www.statology.org/label-scatterplot-points-r/
+library(car)
+library(sandwich)
+library(tinytex)
+library(rjson)
+library(censusapi)
+library(dplyr)
+library(devtools)
+library(blsAPI)
+library(car)
+library(dynlm)
+library(lmtest)
+library(jtools)
+library(sjPlot) # https://cran.r-project.org/web/packages/sjPlot/vignettes/plot_interactions.html
+library(sjmisc) # https://cran.r-project.org/web/packages/sjPlot/vignettes/plot_interactions.html
+library(fastDummies)
+library(corrplot)
+library(RColorBrewer)
+library(ggstatsplot)
+library(BSDA) 
+```
+
+
+
+## Getting data
+```{r}
+cps <- read.csv("cps_00002.csv")
+cps <- subset(cps, INCTOT >= 12000 & INCTOT <= 500000)
+cps$SEX<- mapvalues(cps$SEX, from = c(1, 2), to = c(0, 1))
+cps$LOG_INCTOT <- log(cps$INCTOT)
+cps <- cps %>% select(c('YEAR', 'AGE':'RACE', 'INCTOT':'LOG_INCTOT'))
+head(cps)
+```
+
+
+```{r}
+M <- cor(cps)
+corrplot(M, type="upper", order="hclust",
+         col=brewer.pal(n=8, name="RdYlBu"))
+```
+
+## Data exploration and transformation
+
+
+```{r}
+cps.race.codes <- read_excel("cps_race_codes.xlsx")
+head(cps.race.codes)
+```
+
+
+```{r}
+cps <- merge(x = cps, y = cps.race.codes, by = "RACE")
+cps$RACE_HL <- ifelse(cps$RACE_LABEL=="White", "White", "Non-white")
+cps$SEX_LABEL <- ifelse(cps$SEX == 1, "Woman", "Man")
+head(cps)
+```
+
+
+```{r}
+summary(cps)
+```
+
+```{r}
+hist(cps$LOG_INCTOT)
+```
+
+
+```{r}
+ggplot(data = cps) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ RACE_HL)
+```
+
+```{r}
+ggplot(data = cps) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+```
+
+
+
+```{r}
+boxplot(cps$LOG_INCTOT)
+```
+## Removing outliers
+```{r}
+iqr <- IQR(cps$LOG_INCTOT)
+Q <- quantile(cps$LOG_INCTOT, probs = c(.25, .75), na.rm = FALSE)
+up <- Q[2] + (1.5*iqr)
+low <- Q[1] - (1.5 * iqr)
+outliers_rm <- subset(cps, cps$LOG_INCTOT > low & cps$LOG_INCTOT < up )
+head(outliers_rm)
+```
+
+
+
+```{r}
+iqr <- IQR(cps$AGE)
+Q <- quantile(outliers_rm$AGE, probs = c(.25, .75), na.rm = FALSE)
+up <- Q[2] + (1.5*iqr)
+low <- Q[1] - (1.5 * iqr)
+
+print(low)
+print(up)
+
+outliers_rm <- subset(outliers_rm, outliers_rm$AGE > low & outliers_rm$AGE < up )
+head(outliers_rm)
+```
+
+### Racial differences
+```{r}
+outliers_rm %>%
+  group_by(RACE_HL) %>%
+  summarize(min_inctot = exp(min(LOG_INCTOT)), max_inctot = exp(max(LOG_INCTOT)), med_inctot = exp(median(LOG_INCTOT)),
+            mean_inctot = exp(mean(LOG_INCTOT)),  sd_inctot = exp(sd(LOG_INCTOT))
+            )
+```
+
+
+
+```{r}
+
+w_df <- subset(outliers_rm, RACE_HL == "White")
+
+ggplot(data = w_df) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+
+```
+
+
+
+```{r}
+
+nw_df <- subset(outliers_rm, RACE_HL == "Non-white")
+
+ggplot(data = nw_df) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+```
+
+```{r}
+z.test(x=w_df$LOG_INCTOT, y=nw_df$LOG_INCTOT, sigma.x=sd(w_df$LOG_INCTOT), sigma.y = sd(nw_df$LOG_INCTOT))
+```
+
+
+
+```{r}
+ggplot(data = outliers_rm) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ RACE_HL)
+```
+
+
+```{r}
+ggplot(data = outliers_rm) + 
+  geom_histogram(aes(x=LOG_INCTOT), bins = 4) +
+  facet_wrap(~ SEX_LABEL)
+```
+
+### Creating dummy variables
+```{r}
+cps <- dummy_cols(outliers_rm, select_columns = 'RACE_LABEL', remove_selected_columns = TRUE)
+head(cps)
+```
+
+
+
+```{r}
+summary(cps)
+```
+
+
+### Removing year from dummy model
+```{r}
+cps_no_year <- cps %>% select(-'YEAR')
+head(cps_no_year)
+```
+
+## Modeling
+### Full model
+```{r}
+cps_full <- lm(LOG_INCTOT ~ ., data = cps)
+summary(cps_full)
+```
+
+
+Intercept assumes: non-white man
+
+
+```{r}
+cps_mod <- lm(LOG_INCTOT ~ RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black
+              , data = cps)
+summary(cps_mod)
+```
+
+
+```{r}
+plot_model(cps_mod, type="pred", terms = c("RACE", "SEX"))
+```
+
+```{r}
+plot_model(cps_mod, type="pred", terms = c("AGE", "SEX"))
+
+```
+
+```{r}
+plot_model(cps_mod, type="pred", terms = c("AGE", "RACE"))
+
+```
+
+
+```{r}
+cps_mod_w_time <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black
+                , data = cps)
+summary(cps_mod_w_time)
+```
+
+
+
+```{r}
+cps_mod_int_r <- lm(LOG_INCTOT ~ RACE * AGE * SEX, data = cps)
+summary(cps_mod_int_r)
+```
+
+
+
+```{r}
+plot_model(cps_mod_int_r, type="pred", terms = c("SEX", "RACE", "AGE"))
+```
+
+```{r}
+cps_mod_comp <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX) + (AGE * SEX) + (YEAR * AGE * SEX)
+                , data = cps)
+summary(cps_mod_comp)
+```
+
+```{r}
+cps_mod_final <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX) 
+                , data = cps)
+summary(cps_mod_final)
+```
+
+```{r}
+stargazer(cps_full,
+          cps_mod,
+          cps_mod_w_time,
+          cps_mod_final, 
+          title="Displaying results for multiple response variables",
+          type = "text",
+          float = FALSE,
+          report = "vcs*",
+          no.space = FALSE,
+          header=FALSE,
+          font.size = "small",
+          intercept.bottom = F,
+          column.labels = c("Full model", "Reduced without", "Reduced with Time", "Reduced with Time and interaction"),
+          column.separate = c(1, 1, 1, 1),
+          digits = 4,
+          t.auto = F,
+          p.auto = F,
+          notes.align = "l",
+          notes = c("lm() function with Robust SE"),
+          notes.append = TRUE
+          )
+```
+
+
+### Testing our final model
+
+```{r}
+vif(cps_mod_final, type = 'predictor' )
+```
+
+
+```{r}
+coeftest(cps_mod_final)
+```
+
+F tests
+```{r}
+anova(cps_mod_final)
+```
+
+
+
+HSK
+```{r}
+bptest(cps_mod_final, ~ fitted(cps_mod_final) + I(fitted(cps_mod_final)^2) )
+```
+
+
+HSK is present
+
+```{r}
+
+u <- resid(cps_mod_final)
+
+logu2 <- log(u^2)
+
+varreg<-lm(logu2 ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX)
+           , data=cps)
+
+# summary(varreg)
+w <- 1/exp(fitted(varreg))
+fgls <- lm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX)
+                , data = cps, weight=w)
+# summary(fgls)
+```
+
+
+```{r}
+stargazer(varreg, fgls, type="text")
+```
+
+WLS (2) is exceptionally better. We can see how much less reliant the model is on the constant and more on the actual variables of interest. 
+
+```{r}
+tsdata <- ts(cps, start = 2000)
+res <- dynlm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX)
+             , data = tsdata)
+# summary(res)
+```
+
+```{r}
+res_trend <- dynlm(LOG_INCTOT ~ YEAR + RACE + AGE + SEX + INCTOT + RACE_HL +
+                `RACE_LABEL_American Indian/Aleut/Eskimo` + `RACE_LABEL_Asian only` + 
+                `RACE_LABEL_Asian or Pacific Islander` + `RACE_LABEL_Black-Mixed` +
+                RACE_LABEL_Black + (YEAR * RACE) + (YEAR  * AGE) + (YEAR * SEX) + 
+                  trend(tsdata), data = tsdata)
+# summary(res_trend)
+```
+
+```{r}
+stargazer(res,res_trend, type="text")
+```
+
+
+
+
+```{r}
+linearHypothesis(res, matchCoefs(res, c("SEX","RACE")))
+```
+
+
+```{r}
+b <- coef(res)
+b["SEX"] + b["RACE"] + b["`RACE_LABEL_American Indian/Aleut/Eskimo`"] + b["`RACE_LABEL_Asian only`"] + 
+  + b["`RACE_LABEL_Asian or Pacific Islander`"] + b["RACE_LABEL_Black"] + b["`RACE_LABEL_Black-Mixed`"] + b["YEAR:RACE"] +
+  b["YEAR:AGE"] + b["YEAR:SEX"]
+```
+
+
+
+
