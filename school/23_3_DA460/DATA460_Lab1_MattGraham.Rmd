@@ -1,0 +1,167 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+### Lab 1
+#### Matt Graham
+
+Defining and applying statistics
+
+### Exercise 1
+- There are 20000 total cases
+- There are 9 total variables
+- Categorical variables:
+  - genhlth
+  - gender
+  - exerany
+  - hitplan
+  - smoke100
+- Discrete variables:
+  - weight
+  - height
+  - wtdesire
+  - age
+
+```{r}
+source("http://www.openintro.org/stat/data/cdc.R")
+```
+
+```{r}
+dim(cdc)
+```
+
+```{r}
+names(cdc)
+```
+
+```{r}
+head(cdc)
+
+```
+
+
+```{r}
+tail(cdc)
+```
+
+#### Summaries
+
+```{r}
+summary(cdc$weight)
+```
+
+
+```{r}
+mean(cdc$weight)
+var(cdc$weight)
+median(cdc$weight)
+```
+
+
+```{r}
+table(cdc$smoke100)
+```
+
+
+```{r}
+table(cdc$smoke100)/20000
+```
+
+
+```{r}
+barplot(table(cdc$smoke100))
+```
+
+
+```{r}
+smoke <- table(cdc$smoke100)
+barplot(smoke)
+```
+
+
+### Exercise 2 - Numerical summaries
+
+```{r}
+summary(cdc$age)
+```
+
+Our data shows a wide rage of ages, from just being able to vote at 18, to a logged 99. The middle 50% - or IQR - of our ages range between 31 and 57.
+
+```{r}
+summary(cdc$weight)
+```
+
+Our data shows a wide rage of weight. From 68lbs to a logged 500lbs. The middle 50% - or IQR - of our weights range between 140lbs and 190lbs.
+
+```{r}
+gender <- table(cdc$gender)
+barplot(gender)
+```
+
+
+```{r}
+exerany <- table(cdc$exerany)
+barplot(exerany)
+```
+
+
+### Exercise 3 - Smoking and gender
+
+```{r}
+mosaicplot(table(cdc$gender,cdc$smoke100))
+```
+
+We can see that sex-assigned males are more likely to report being smokers. An interesting evaluation and correlation is how advertising for cigarettes are historically sexual. The allure can pull men in, giving them more of an outlet to "find relief". I would also be interested in understanding the intersection of smokers who also consume beer.
+
+
+### Exercise 4 - Smokers under 23
+
+```{r}
+under23_and_smoke <- subset(cdc, smoke100 == 1 & age < 23)
+head(under23_and_smoke)
+```
+
+
+### Exercise 5 - BMI box plot
+
+```{r}
+bmi <- (cdc$weight / cdc$height^2) * 703
+boxplot(bmi ~ cdc$genhlth)
+```
+
+
+This box plot is interesting. It shows that those with better genetic health have generally lower BMIs compared to everyone else. We can also observe the wider spread in BMI the further "down" the health scale we go.
+
+
+```{r}
+boxplot(bmi ~ cdc$exerany)
+```
+
+
+I wanted to use whether someone exercised in the last month or not to see if there would be any significance between the two. Ultimately, we can see that BMI is much less variable. An interesting note are the far outliers for those who have exercised. They could be someone on a weight loss journey!
+
+
+
+```{r}
+hist(cdc$age)
+```
+
+
+```{r}
+hist(bmi)
+hist(bmi, breaks = 50)
+```
+
+
+
+```{r}
+cov(bmi, cdc$age)
+cor(bmi, cdc$age)
+```
+```{r}
+cdc$bmi <- bmi
+
+# write.csv(cdc, row.names = FALSE)
+```

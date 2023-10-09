@@ -1,0 +1,49 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+### Assignment 2 - Probability
+#### Matt Graham
+
+Kobe and Kobe Streak
+```{r}
+download.file("http://www.openintro.org/stat/data/kobe.RData", destfile = "kobe.RData")
+load("kobe.RData")
+# head(kobe)
+kobe_streak <- calc_streak(kobe$basket)
+barplot(table(kobe_streak))
+summary(kobe_streak)
+table(kobe_streak)
+```
+
+Simulation base
+```{r}
+outcomes <- c("H", "M")
+sim_basket <- sample(outcomes, size = 133, replace = TRUE, prob = c(0.45, 0.55))
+sim_basket_res <- table(sim_basket)
+sim_basket_res
+```
+
+Simulation streak
+```{r}
+sim_streak <- calc_streak(sim_basket)
+barplot(table(sim_streak))
+summary(sim_streak)
+table(sim_streak)
+```
+
+### Exercise 1
+
+Oh wow, this is cool! We can see right off the bat how much wider the streaks are in our simulated model. Something we can see are fewer single baskets, giving us a stronger right skew. We can see we typically miss with a streak = 0, but our highest streaks are 5 and 6 shots, respectively. That's way different than what we have for Kobe.
+
+### Exercise 2
+
+I would fully expect the results to be different. Each run - like each shot made - are independent of each other. Not one simulation, or game in our scenario, are the same, regardless of the same player - weights in our simulation. They would be relatively similar - mean, median, and skew will not shift too much. I would expect multiple simulations to level off into insignificant margins of error within our determined probabilities.
+
+### Exercise 3
+The main difference between Kobe and our simulated independent shooter lies within the greater probability of higher streaks. Kobe never had a streak greater than 4, we had streaks of 5 and 6 in our simulation. Even then, Kobe had a single streak of 4 compared to multiple that we simulated. Overall - including what we summarized in our lab - I don't think there is enough evidence that Kobe and our simulation have similar shooting patterns.
+
+
+
