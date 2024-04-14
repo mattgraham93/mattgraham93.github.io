@@ -1,4 +1,6 @@
+
 def main():
+    
     # Your code here
     # TODO: get and store weather data
     # TODO: plot and normalize weather data
