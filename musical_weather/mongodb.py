@@ -1,7 +1,6 @@
 import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-import pprint
 
 filename = r"D:\Backup\repos\auth.json"
 cert_file = r"D:\Backup\repos\musicalweather.pem"
