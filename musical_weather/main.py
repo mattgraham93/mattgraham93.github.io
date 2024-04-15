@@ -23,6 +23,13 @@ def main():
     https://www.kaggle.com/code/varunsaikanuri/spotify-data-visualization/input?select=songs_normalize.csv
 
     '''
+    '''
+    TODO: finish html scraping for music data
+    TODO: get music data from last.fm and store in mongoDB
+    -- store by artists, albums, tracks, genres, and similar artists
+    '''
+
+
     # TODO: combine weather and music data on weather event and music genre
 
     # TODO: develop a model to recommend music based on weather

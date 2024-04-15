@@ -1,4 +1,5 @@
 import pylast
+import pprint
 
 # You have to have your own unique two values for API_KEY and API_SECRET
 # Obtain yours from https://www.last.fm/api/account/create for Last.fm
