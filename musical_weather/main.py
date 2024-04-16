@@ -3,6 +3,8 @@ import pprint
 
 def main():
     # DONE: get and store weather data
+    # DONE: make model reach out to last.fm for top artists and ALBUMS in Seattle
+
     # gets and stores weather data
     weather_db = weather.weather_main() # future improvement to allow for cities to be entered
     print('Weather stored for Seattle')
@@ -24,18 +26,16 @@ def main():
 
     '''
     '''
-    TODO: finish html scraping for music data
-    TODO: get music data from last.fm and store in mongoDB
-    -- store by artists, albums, tracks, genres, and similar artists
+    DONE: finish html scraping for music data
+    DONE: get music data from last.fm and store in mongoDB
+    TODO: get genres and similar artists
     '''
-
 
     # TODO: combine weather and music data on weather event and music genre
 
     # TODO: develop a model to recommend music based on weather
     # TODO: validate the model
 
-    # TODO: make model reach out to last.fm for top artists and songs in Seattle
     # TODO: make model find artists and songs 1 or 2 degrees of separation from top artists
     # TODO: test the model with different weather data
 
