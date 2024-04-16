@@ -48,8 +48,3 @@ def main():
     # TODO: make model reach out to Spotify for recommendations
     # TODO: make model reach out to Tidal for recommendations
     print(1)
-
-if __name__ == "__main__":
-    # Add an indented block of code here
-    main()
-    pass
