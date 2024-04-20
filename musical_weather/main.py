@@ -28,7 +28,7 @@ def main():
     '''
     DONE: finish html scraping for music data
     DONE: get music data from last.fm and store in mongoDB
-    TODO: get genres and similar artists
+    DONE: get genres and similar artists
     '''
 
     # TODO: combine weather and music data on weather event and music genre

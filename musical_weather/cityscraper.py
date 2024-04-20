@@ -31,27 +31,57 @@ def get_values(vals, datastring):
         # print(f"Searching for {val} with regex: {regx_str}")
         # establish pandas series and get all values searched from regex, name=val=reg_vals.key(i)
         sers = pd.Series(re.findall(regx_str, datastring), name=val)
+        # print(sers)
         # print(f"Found {len(sers)} values")
         # concat column to growing dataframe
         df = pd.concat([df, sers], axis=1)
     return df
 
-def get_artist_info(http_pm, user_agent, artist_url):
-    pass
+def get_artist_details(http_pm, user_agent, artists):
+    artist_page_regs = {'totalscrobbles':'<div class=\"header-new-info-mobile\">\s+.*\s+.*\s+.*>\s+.*\s+</h4>\s+.*\s+.*\s+\">\s+<p\s+>.*\s+.*\s+</div>\s+</li>\s+.*\s+.*\s+Scrobbles\s+.*\s+.*\s+.*\s+.*\s+.*\s+><abbr class=\"intabbr js-abbreviated-counter\" title=\"([\d,]+)\">',
+                        'latestreleaseurl':'<h4 class=\"artist-header-featured-items-item-header\">\s+Latest\s+release\s+.*\s+<h3.*\s+.*\s+href=\"(.*?)\"',
+                        'latestreleasename': '<h4 class=\"artist-header-featured-items-item-header\">\s+Latest\s+release\s+.*\s+<h3.*\s+.*\s+href=\".*\"\s+.*\s+.*\s+>(.*?)</a>',
+                        'popularthisweekurl':'<h4 class=\"artist-header-featured-items-item-header\">\s+Popular\s+this\s+week\s+<.*\s+.*\s+<a\s+href=\"(.*?)\"',
+                        'popularthisweekname':'<h4 class=\"artist-header-featured-items-item-header\">\s+Popular\s+this\s+week\s+<.*\s+.*\s+<a\s+href.*\s+.*\s+\s.*\s+>(.*?)</a>',
+                        'similarartistsurl':'<li\s+class=\"\s+artist-similar-artists-sidebar-item-wrap\s+\"\s+.*\s+.*\s+>\s+<div\s+.*\s+artist-similar-artists-sidebar-item\s+.*\s+.*\s+.*\s+>\s+<h3 class=\"artist-similar-artists-sidebar-item-name\"\s+.*>\s+<a\s+href=\"(.*?)\"',
+                        'similarartistsnames':'<li\s+class=\"\s+artist-similar-artists-sidebar-item-wrap\s+\"\s+.*\s+.*\s+>\s+<div\s+.*\s+artist-similar-artists-sidebar-item\s+.*\s+.*\s+.*\s+>\s+<h3 class=\"artist-similar-artists-sidebar-item-name\"\s+.*>\s+<a\s+href=\".*?\"\s+.*\s+.*\s+>(.*?)</a>',
+                        'genreurls':'<li\s*class=\"tag\".*?\s+><a\s+href=\"(.*?)\"\s+>.*</li>',
+                        'genres':'<li\s*class=\"tag\".*?\s+><a\s+href=\".*\"\s+>(.*?)</a>'
+                        }
+    
+    artist_info = pd.DataFrame()
+
+    for url in artists['artisturl']:
+        artist_url = f"https://www.last.fm/music/{url}"
+        artist_page = get_html(http_pm, user_agent, artist_url)
+        # debug_save_html(artist_page)
+        artist_info = pd.concat([artist_info, get_values(artist_page_regs, artist_page)])
+            
+    return artist_info
+
 
 def get_album_info(http_pm, user_agent, album_url):
     pass
 
-def get_city_artists(http_pm, user_agent, artist_url):
+def get_city_artists(http_pm, user_agent, city_artist_url):
     # tested and verified regex for artist name and listeners
     artist_reg_vals = {
     'artist': 'class=\"link-block-target\"\s*itemprop=\"url\"\s*>(.*?)</a>',  
-    'listeners': "<p class=\"big-artist-list-listeners\">\s+(.*)\s<"
+    'listeners': "<p class=\"big-artist-list-listeners\">\s+(.*)\s<",
+    'artisturl': '\s+<a\s+href="\/music\/(.*?)"'
     }
     # datastring is raw html from page
-    datastring = get_html(http_pm, user_agent, artist_url)
+    datastring = get_html(http_pm, user_agent, city_artist_url)
+    # debug_save_html(datastring)
     # use regex to extract data and store in dataframe
+
     artist_info = get_values(artist_reg_vals, datastring)
+    artist_info.reset_index(drop=True, inplace=True)  # Reset index of artist_info
+
+    artist_details = get_artist_details(http_pm, user_agent, artist_info)
+    artist_details.reset_index(drop=True, inplace=True)  # Reset index of artist_details
+
+    artist_info = pd.concat([artist_info, artist_details], axis=1)
     '''
     # need to get genres of artists
     # need to get similar to artists
@@ -97,7 +127,7 @@ def main():
     http_pm, user_agent = get_connection()
 
     city = "seattle"
-    pages = range(1, 15)
+    pages = range(1, 2)
 
     # cities = ['','','']
     # for city in cities:
@@ -110,22 +140,23 @@ def main():
     
     print(f"Getting data for {city}")
     for page in pages:
-        artist_url = f"https://www.last.fm/tag/{city}/artists?page={page}"
-        artist_df = pd.concat([artist_df, get_city_artists(http_pm, user_agent, artist_url)])
+        # artist_url = f"https://www.last.fm/tag/{city}/artists?page={page}"
+        # artist_df = pd.concat([artist_df, get_city_artists(http_pm, user_agent, artist_url)])
        
         album_url = f"https://www.last.fm/tag/{city}/albums?page={page}"
         album_df = pd.concat([album_df, get_city_albums(http_pm, user_agent, album_url)])
 
-    print(f"Storing data for {city}")
-    lastfm_db = store_city_data(city, artist_df, album_df)
+    # print(f"Storing data for {city}")
+    # lastfm_db = store_city_data(city, artist_df, album_df)
 
-    print(f"Retrieving data for {city}")
-    artist_df_mongo = get_stored_weather(lastfm_db, city, 'artists')
-    album_df_mongo = get_stored_weather(lastfm_db, city, 'albums')
+    # print(f"Retrieving data for {city}")
+    # artist_df_mongo = get_stored_weather(lastfm_db, city, 'artists')
+    # album_df_mongo = get_stored_weather(lastfm_db, city, 'albums')
 
     # print(len(artist_df))
-    # print(artist_df.tail())
-    # print(album_df.head())
+    # print(artist_df.head())
+    # print(artist_df['genreurls'])
+    print(album_df.head())
         
 
 if __name__ == "__main__":
