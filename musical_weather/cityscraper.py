@@ -2,6 +2,7 @@ import pandas as pd
 import urllib3
 import re
 import mongodb
+import lastfm
 
 def get_connection():
     http = urllib3.PoolManager()
@@ -39,26 +40,12 @@ def get_values(vals, datastring):
 
     return df
 
-def get_artist_details(http_pm, user_agent, artists):
-    artist_page_regs = {'totalscrobbles':'<div class=\"header-new-info-mobile\">\s+.*\s+.*\s+.*>\s+.*\s+</h4>\s+.*\s+.*\s+\">\s+<p\s+>.*\s+.*\s+</div>\s+</li>\s+.*\s+.*\s+Scrobbles\s+.*\s+.*\s+.*\s+.*\s+.*\s+><abbr class=\"intabbr js-abbreviated-counter\" title=\"([\d,]+)\">',
-                        'latestreleaseurl':'<h4 class=\"artist-header-featured-items-item-header\">\s+Latest\s+release\s+.*\s+<h3.*\s+.*\s+href=\"(.*?)\"',
-                        'latestreleasename': '<h4 class=\"artist-header-featured-items-item-header\">\s+Latest\s+release\s+.*\s+<h3.*\s+.*\s+href=\".*\"\s+.*\s+.*\s+>(.*?)</a>',
-                        'popularthisweekurl':'<h4 class=\"artist-header-featured-items-item-header\">\s+Popular\s+this\s+week\s+<.*\s+.*\s+<a\s+href=\"(.*?)\"',
-                        'popularthisweekname':'<h4 class=\"artist-header-featured-items-item-header\">\s+Popular\s+this\s+week\s+<.*\s+.*\s+<a\s+href.*\s+.*\s+\s.*\s+>(.*?)</a>',
-                        'similarartistsurl':'<li\s+class=\"\s+artist-similar-artists-sidebar-item-wrap\s+\"\s+.*\s+.*\s+>\s+<div\s+.*\s+artist-similar-artists-sidebar-item\s+.*\s+.*\s+.*\s+>\s+<h3 class=\"artist-similar-artists-sidebar-item-name\"\s+.*>\s+<a\s+href=\"(.*?)\"',
-                        'similarartistsnames':'<li\s+class=\"\s+artist-similar-artists-sidebar-item-wrap\s+\"\s+.*\s+.*\s+>\s+<div\s+.*\s+artist-similar-artists-sidebar-item\s+.*\s+.*\s+.*\s+>\s+<h3 class=\"artist-similar-artists-sidebar-item-name\"\s+.*>\s+<a\s+href=\".*?\"\s+.*\s+.*\s+>(.*?)</a>',
-                        'genreurls':'<li\s*class=\"tag\".*?\s+><a\s+href=\"(.*?)\"\s+>.*</li>',
-                        'genres':'<li\s*class=\"tag\".*?\s+><a\s+href=\".*\"\s+>(.*?)</a>'
-                        }
-    
+def get_artist_details(artists):
+
     artist_info = pd.DataFrame()
-
-    for url in artists['artisturl']:
-        artist_url = f"https://www.last.fm/music/{url}"
-        artist_page = get_html(http_pm, user_agent, artist_url)
+    for artist in artists['artist']:
         # debug_save_html(artist_page)
-        artist_info = pd.concat([artist_info, get_values(artist_page_regs, artist_page)])
-
+        artist_info = pd.concat([artist_info, lastfm.lastfm_get_artist(artist)])
     return artist_info
 
 
@@ -95,7 +82,7 @@ def get_city_artists(http_pm, user_agent, city_artist_url):
     artist_info = get_values(artist_reg_vals, datastring)
     artist_info.reset_index(drop=True, inplace=True)  # Reset index of artist_info
 
-    artist_details = get_artist_details(http_pm, user_agent, artist_info)
+    artist_details = get_artist_details(artist_info)
     artist_details.reset_index(drop=True, inplace=True)  # Reset index of artist_details
 
     artist_info = pd.concat([artist_info, artist_details], axis=1)
