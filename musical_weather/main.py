@@ -1,4 +1,6 @@
 import weather
+import cityscraper
+import lastfm
 import pprint
 
 def main():
@@ -6,16 +8,40 @@ def main():
     # DONE: make model reach out to last.fm for top artists and ALBUMS in Seattle
 
     # gets and stores weather data
-    weather_db = weather.weather_main() # future improvement to allow for cities to be entered
-    print('Weather stored for Seattle')
-    seattle_weather = weather.get_stored_weather(weather_db, 'seattle')
-    print('Example for Seattle')
-    print(pprint.pprint(seattle_weather))
-
-    
+    # weather_db = weather.weather_main() # future improvement to allow for cities to be entered
+    # print('Weather stored for Seattle')
+    # seattle_weather = weather.get_stored_weather(weather_db, 'seattle')
+    # print('Example for Seattle')
+    # print(pprint.pprint(seattle_weather))
     # TODO: plot and normalize weather data
-
     # TODO: determine weather events and normal weather
+
+    seatt_artists, seattle_albums = cityscraper.main()
+
+    top_tags = lastfm.lastfm_get('chart.gettoptags')
+    print(top_tags.status_code)
+    lastfm.jprint(top_tags.json())
+
+    top_artists = lastfm.lastfm_get('chart.gettopartists')
+    print(top_artists.status_code)
+    lastfm.jprint(top_artists.json())
+
+    top_tracks = lastfm.lastfm_get('chart.gettoptracks')
+    print(top_tracks.status_code)
+    lastfm.jprint(top_tracks.json())
+
+    geo_method_artists = 'geo.gettopartists'
+    geo_method_tracks = 'geo.gettoptracks'
+    country = 'United States'
+    city = 'Seattle'
+
+    seattle_top_artists = lastfm.lastfm_get_geo(geo_method_artists, country, city)
+    print(seattle_top_artists.status_code)
+    lastfm.jprint(seattle_top_artists.json())
+
+    seattle_top_tracks = lastfm.lastfm_get_geo(geo_method_tracks, country, city)
+    print(seattle_top_tracks.status_code)
+    lastfm.jprint(seattle_top_tracks.json())
 
     # TODO: get music data or define genres and relevant weather events
     '''
@@ -48,3 +74,7 @@ def main():
     # TODO: make model reach out to Spotify for recommendations
     # TODO: make model reach out to Tidal for recommendations
     print(1)
+
+if __name__ == '__main__':
+    main()
+# Compare this snippet from musical_weather/weather.py:

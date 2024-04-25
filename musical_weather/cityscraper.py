@@ -41,10 +41,11 @@ def get_values(vals, datastring):
     return df
 
 def get_artist_details(artists):
-
+    method = 'artist.getinfo'
     artist_info = pd.DataFrame()
     for artist in artists['artist']:
         # debug_save_html(artist_page)
+        results = lastfm.lastfm_get_artist(method, artist)
         artist_info = pd.concat([artist_info, lastfm.lastfm_get_artist(artist)])
     return artist_info
 
@@ -82,10 +83,10 @@ def get_city_artists(http_pm, user_agent, city_artist_url):
     artist_info = get_values(artist_reg_vals, datastring)
     artist_info.reset_index(drop=True, inplace=True)  # Reset index of artist_info
 
-    artist_details = get_artist_details(artist_info)
-    artist_details.reset_index(drop=True, inplace=True)  # Reset index of artist_details
+    # artist_details = get_artist_details(artist_info)
+    # artist_details.reset_index(drop=True, inplace=True)  # Reset index of artist_details
 
-    artist_info = pd.concat([artist_info, artist_details], axis=1)
+    # artist_info = pd.concat([artist_info, artist_details], axis=1)
 
     return artist_info
 
@@ -114,14 +115,9 @@ def get_city_albums(http_pm, user_agent, album_url):
 
 def store_city_data(city, artist_df, album_df):
     # store data in mongoDB
-    mongo_client = mongodb.get_client()
-    lastfm_db = mongo_client.client['lastfm']
-    artist_collection = lastfm_db[f'{city}_artists']
-    album_collection = lastfm_db[f'{city}_albums']
-    artist_collection.insert_many(artist_df.to_dict('records'))  # https://stackoverflow.com/questions/20167194/insert-a-pandas-dataframe-into-mongodb-using-pymongo
-    album_collection.insert_many(album_df.to_dict('records'))  # https://stackoverflow.com/questions/20167194/insert-a-pandas-dataframe-into-mongodb-using-pymongo
-    
-    return lastfm_db
+    mongodb.store_collection('lastfm', f'{city}_artists', artist_df)
+    mongodb.store_collection('lastfm', f'{city}_albums', album_df)
+
 
 def get_stored_weather(lastfm_db, city, type):
     collection = lastfm_db[f'{city}_{type}']
@@ -160,14 +156,16 @@ def main():
         album_df = pd.concat([album_df, get_city_albums(http_pm, user_agent, album_url)])
 
     print(f"Storing data for {city}")
-    lastfm_db = store_city_data(city, artist_df, album_df)
+    store_city_data(city, artist_df, album_df)
     print(f"Data stored for {city}")
 
     print(f"Retrieving data for {city}")
-    artist_df_mongo = get_stored_weather(lastfm_db, city, 'artists')
-    album_df_mongo = get_stored_weather(lastfm_db, city, 'albums')
+    artist_df_mongo = mongodb.get_stored_data('lastfm', f'{city}_artists')
+    album_df_mongo = mongodb.get_stored_data('lastfm', f'{city}_albums')
 
-    print(artist_df_mongo)
+    # print(artist_df_mongo)
+
+    return artist_df_mongo, album_df_mongo
 
     # print(len(artist_df))
     # print(artist_df.head())

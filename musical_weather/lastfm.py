@@ -21,9 +21,20 @@ def get_payload():
     url = 'https://ws.audioscrobbler.com/2.0/'
     return payload, headers, url
 
-def lastfm_get_artist(artist):
+def lastfm_get_geo(method, country, city):
     payload, headers, url = get_payload()
-    payload['method'] = 'artist.getinfo'
+    payload['method'] = method
+    payload['country'] = country
+    payload['location'] = city
+    payload['limit'] = 100
+
+    response = requests.get(url, headers=headers, params=payload)
+    return response
+
+
+def lastfm_get_artist(method, artist):
+    payload, headers, url = get_payload()
+    payload['method'] = method
     payload['artist'] = artist
 
     response = requests.get(url, headers=headers, params=payload)
@@ -32,7 +43,7 @@ def lastfm_get_artist(artist):
 def lastfm_get(api_call):
     payload, headers, url = get_payload()
     payload['method'] = api_call
-    
+
     response = requests.get(url, headers=headers, params=payload)
     return response
 
@@ -40,14 +51,14 @@ def jprint(obj):
     text = json.dumps(obj, sort_keys=True, indent=4)
     print(text)
 
-def main():
-    methods = ['chart.gettopartists', 'chart.gettoptracks']
-    for method in methods:
-        print(f"Getting data for {method}")
-        call = lastfm_get(method)
-        print(call.status_code)
-        jprint(call.json())
+# def main():
+#     methods = ['chart.gettopartists', 'chart.gettoptracks']
+#     for method in methods:
+#         print(f"Getting data for {method}")
+#         call = lastfm_get(method)
+#         print(call.status_code)
+#         jprint(call.json())
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+    # main()
 # Compare this snippet from musical_weather/weather.py:

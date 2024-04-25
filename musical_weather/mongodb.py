@@ -14,3 +14,16 @@ def get_client():
                        tls=True,
                        tlsCertificateKeyFile=cert_file,
                        server_api=ServerApi('1'))
+
+def store_collection(database_name, collection_name, data):
+    mongo_client = get_client()
+    db = mongo_client.client[database_name]
+    collection = db[collection_name]
+    collection.insert_many(data.to_dict('records'))  # https://stackoverflow.com/questions/20167194/insert-a-pandas-dataframe-into-mongodb-using-pymongo
+    return db
+
+def get_stored_data(database_name, collection_name):
+    mongo_client = get_client()
+    db = mongo_client.client[database_name]
+    collection = db[collection_name]
+    return collection.find_one()
