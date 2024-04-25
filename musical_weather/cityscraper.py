@@ -46,25 +46,20 @@ def get_artist_details(artists):
     for artist in artists['artist']:
         # debug_save_html(artist_page)
         results = lastfm.lastfm_get_artist(method, artist)
-        artist_info = pd.concat([artist_info, lastfm.lastfm_get_artist(artist)])
+        artist_info = pd.concat([artist_info, results.json()])
     return artist_info
 
 
 def get_album_details(http_pm, user_agent, albums):
-    album_page_regs = {'totalscrobbles':'<div class=\"header-new-info-mobile\">\s+.*\s+.*\s+.*>\s+.*\s+</h4>\s+.*\s+.*\s+\">\s+<p\s+>.*\s+.*\s+</div>\s+</li>\s+.*\s+.*\s+Scrobbles\s+.*\s+.*\s+.*\s+.*\s+.*\s+><abbr class=\"intabbr js-abbreviated-counter\" title=\"([\d,]+)\">',
-                   'duration': '<div class=\"metadata-column hidden-xs\">\s+.*\s+.*\s+<dd\s+class=\"catalogue-metadata-description\">\s.+,\s+(.*?)\s+</dd>'
-                    }   
-    
+    method = 'album.getinfo'
     album_info = pd.DataFrame()
 
-    for url in albums['albumurl']:
-        album_url = f"https://www.last.fm/music/{url}" # already has /music/ in the url
-        album_page = get_html(http_pm, user_agent, album_url)
+    for album in albums['album']:
+        artist = albums['artist'][albums['album'] == album].values[0]
+        results = lastfm.lastfm_get_album(method, artist, album)
         # debug_save_html(album_page)
-        album_info = pd.concat([album_info, get_values(album_page_regs, album_page)])
+        album_info = pd.concat([album_info, results.json()])
     
-    debug_save_html(album_page)
-
     return album_info
 
 

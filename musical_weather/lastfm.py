@@ -21,6 +21,15 @@ def get_payload():
     url = 'https://ws.audioscrobbler.com/2.0/'
     return payload, headers, url
 
+def lastfm_get_album(method, artist, album):
+    payload, headers, url = get_payload()
+    payload['method'] = method
+    payload['artist'] = artist
+    payload['album'] = album
+
+    response = requests.get(url, headers=headers, params=payload)
+    return response
+
 def lastfm_get_geo(method, country, city):
     payload, headers, url = get_payload()
     payload['method'] = method
