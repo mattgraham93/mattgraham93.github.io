@@ -80,4 +80,6 @@ daily_data["wind_direction_10m_dominant"] = daily_wind_direction_10m_dominant
 daily_data["shortwave_radiation_sum"] = daily_shortwave_radiation_sum
 
 daily_dataframe = pd.DataFrame(data = daily_data)
+daily_dataframe.set_index("date", inplace = True)
+daily_dataframe.to_csv("daily_weather.csv")
 print(daily_dataframe)
