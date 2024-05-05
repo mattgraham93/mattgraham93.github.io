@@ -73,7 +73,27 @@ def main():
     # TODO: make model reach out to Tidal for top artists and songs in Seattle
     # TODO: make model reach out to Spotify for recommendations
     # TODO: make model reach out to Tidal for recommendations
-    print(1)
+    
+'''
+    primary psuedocode:
+    get validated weather data model
+    -- is there a way to "store" the model?
+    get today's weather
+    --get weather_score_weighted for day
+    get:
+        top artists and albums in Seattle
+        top genres
+        similar artists
+        top tags
+        top artists
+        top tracks
+    
+    get music data
+    -- get scores from spotify
+    -- get lyric scores from genius
+
+'''
+
 
 if __name__ == '__main__':
     main()
