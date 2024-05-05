@@ -35,6 +35,7 @@ def get_historical_scores(historical_weather):
                                     (historical_weather['weather_score'] * historical_weather['weight']) + historical_weather['weight']
                                    )
 
+    historical_weather.drop(columns=['base', 'good', 'bad'], inplace=True)
     return historical_weather.sort_values('weather_score_weighted', ascending=False)
 
 def analyze_condensed_weather(historical_weather):
@@ -115,6 +116,8 @@ def weather_main():
     # print(condensed.head(5))
 
     historical_weather = get_historical_scores(joined)
+    condensed = analyze_condensed_weather(joined)
+
     historical_weather = historical_weather[
                         ['date', 'description', 'weather_score_weighted', 'weight', 'weather_score', 
                         'weather_code', 'temperature_2m_mean', 'temperature_2m_min', 'temperature_2m_max',
@@ -123,12 +126,6 @@ def weather_main():
                         'wind_speed_10m_max', 'wind_gusts_10m_max', 'shortwave_radiation_sum'
                         ]
                        ]
-    print(f"Weather data for Seattle:")
-    print(historical_weather.head(5))
-    return historical_weather
-
-if __name__ == '__main__':
-    # weather_db = weather_main()
-    # pprint.pprint(get_stored_weather(weather_db, 'seattle'))
-    # print('Weather data retrieved successfully')
-    weather_main()
+    # print(f"Weather data for Seattle:")
+    # print(historical_weather.head(5))
+    return historical_weather, condensed
