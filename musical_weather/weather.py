@@ -9,9 +9,21 @@ from urllib.request import urlopen
 import pandas as pd
 import senitment_analysis as sa
 import weather_historical as wh
+import weather_today as wt
 
-def analyze_weather(weather_event):
-    pass
+def analyze_weather(historical_weather):
+    # Analyze the weather data
+    return historical_weather.groupby('description').agg(
+        {'temperature_2m_max': 'mean', 
+         'temperature_2m_min': 'mean', 
+         'temperature_2m_mean': 'mean',
+         'precipitation_sum': 'mean', 
+          'rain_sum': 'mean',
+         'wind_speed_10m_max': 'mean', 
+         'wind_gusts_10m_max': 'mean', 
+         'shortwave_radiation_sum': 'mean',
+         'weather_score': 'mean'}
+         ).reset_index()
 
 def store_weather_data(data):
     mongo_client = mongodb.get_client()
@@ -48,25 +60,23 @@ def weather_main():
     start = '2000-01-01'
     end = '2024-04-30'
     # # get and store latest data
-    # print('Getting weather data for Seattle')
+    print('Getting weather data for Seattle')
     historical_weather = wh.get_historical_weather(start, end)
-    # # store_weather_data(historical_weather)
+    # store_weather_data(historical_weather)
     # print('Weather data stored successfully')
 
-    # # get stored data
+    # get stored data
     # weather_db = weather_main()
-    # pprint.pprint(get_stored_weather(weather_db, 'seattle'))
     # print('Weather data retrieved successfully')
 
     historical_weather = pd.DataFrame(historical_weather)
     historical_weather['weather_code'] = historical_weather['weather_code'].astype(int)
     weather_codes = get_weather_codes()
     weather_codes['weather_code'] = weather_codes['weather_code'].astype(int)
+    weather_codes.drop(columns='image', inplace=True)
     joined = historical_weather.merge(weather_codes, on='weather_code', how='left')
-    
-    print(joined)
-
-              
+    condensed = analyze_weather(joined)
+    print(condensed)
 
 if __name__ == '__main__':
     # weather_db = weather_main()

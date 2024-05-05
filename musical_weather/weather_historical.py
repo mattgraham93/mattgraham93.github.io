@@ -13,8 +13,6 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 # The order of variables in hourly or daily is important to assign them correctly below
 url = "https://archive-api.open-meteo.com/v1/archive"
 
-
-
 def get_historical_weather(start, end):
 	params = {
 	"latitude": 52.52,
