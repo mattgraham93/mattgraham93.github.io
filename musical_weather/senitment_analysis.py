@@ -4,16 +4,21 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-
-
-# requirements: nltk
+# requirements: nltk, textblob, vaderSentiment
 # https://textblob.readthedocs.io/en/dev/
 
 # only need to download once
 # nltk.download('all')
 
+
+def score_weight(score):
+    if score > 0:
+        return 1 + score
+    elif score < 0:
+        return -1 + score
+    else:
+        return 0
 
 def get_score(phrase):
     sentiment_score = 0
@@ -24,12 +29,9 @@ def get_score(phrase):
     words = word_tokenize(phrase)
     words = [lemmatizer.lemmatize(word) for word in words]
     words = [word for word in words if word not in stop_words]
-    sentiment_score += sid.polarity_scores(' '.join(words))['compound']
-    sentiment_score += TextBlob(' '.join(words)).sentiment.polarity
 
-    # Create a SentimentIntensityAnalyzer object.
-    sid_obj = SentimentIntensityAnalyzer()
-    sentiment_score += sid_obj.polarity_scores(phrase)['compound']
+    sentiment_score += score_weight(sid.polarity_scores(' '.join(words))['compound'])    
+    sentiment_score += score_weight(TextBlob(' '.join(words)).sentiment.polarity)
     
     return sentiment_score
 

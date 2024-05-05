@@ -4,16 +4,18 @@ import json
 from lyricsgenius import Genius
 
 filename = r"D:\Backup\repos\auth.json"
-cert_file = r"D:\Backup\repos\musicalweather.pem"
 
 with open(filename) as file:
     data = json.load(file)
-    genius_client_access_toten = data['genius_client_access_toten']
+    genius_client_access_token = data['genius_client_access_token']
 
-genius = Genius(genius_client_access_toten, verbose=False, remove_section_headers=True)
+genius = Genius(genius_client_access_token, 
+                verbose=False, 
+                remove_section_headers=True
+                )
 
 def get_lyrics(artist, song):
-    artist = genius.search_artist(artist, max_songs=0)
+    artist = genius.search_artist(artist, max_songs=3)
     song = genius.search_song(song, artist.name)
     return song.lyrics
 
