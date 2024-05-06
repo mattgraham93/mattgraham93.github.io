@@ -89,6 +89,9 @@ def get_weather_codes():
     wc_df['weather_score'] = wc_df['description'].apply(get_weather_score)
     return wc_df
 
+def weather_weight_model(historical_weather):
+    
+
 def weather_main():
     # Set time period
     start = '2018-01-01'

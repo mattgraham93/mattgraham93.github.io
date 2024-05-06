@@ -4,19 +4,24 @@ import lastfm
 import pprint
 
 def main():
-    # DONE: get and store weather data
-    # DONE: make model reach out to last.fm for top artists and ALBUMS in Seattle
 
-    # gets and stores weather data
-    # weather_db = weather.weather_main() # future improvement to allow for cities to be entered
-    # print('Weather stored for Seattle')
-    # seattle_weather = weather.get_stored_weather(weather_db, 'seattle')
-    # print('Example for Seattle')
-    # print(pprint.pprint(seattle_weather))
+    historical_weather = weather.weather_main()
+    if historical_weather is not None:
+        historical_weather, condensed = historical_weather
+    else:
+        historical_weather, condensed = weather.pd.DataFrame(), weather.pd.DataFrame()
+
+    print(f"Top 5 weather conditions for Seattle:")
+    print(condensed.head(5))
+    
     # TODO: plot and normalize weather data
     # TODO: determine weather events and normal weather
 
-    seatt_artists, seattle_albums = cityscraper.main()
+    seattle_artists = cityscraper.main()
+    if seattle_artists is not None:
+        seattle_artists, seattle_albums = historical_weather
+    else:
+        seattle_artists, seattle_albums = weather.pd.DataFrame(), weather.pd.DataFrame()
 
     top_tags = lastfm.lastfm_get('chart.gettoptags')
     print(top_tags.status_code)
