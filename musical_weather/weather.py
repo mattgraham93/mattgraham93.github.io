@@ -90,7 +90,7 @@ def get_weather_codes():
     return wc_df
 
 def weather_weight_model(historical_weather):
-    
+    pass
 
 def weather_main():
     # Set time period
