@@ -8,10 +8,12 @@ import numpy as np
 import senitment_analysis as sa
 import weather_historical as wh
 import weather_today as wt
+from datetime import datetime
+
 
 def get_historical_scores(historical_weather):
     # Calculate the weather score       
-    historical_weather['weather_score'] = historical_weather['weather_score'].fillna(1).astype(int)
+    historical_weather['weather_score'] = historical_weather['weather_score'].fillna(0).astype(int)
 
     historical_weather['base'] = historical_weather['daylight_duration'] + historical_weather['temperature_2m_mean']
     historical_weather['good'] = historical_weather['sunshine_duration'] + historical_weather['shortwave_radiation_sum']
@@ -20,7 +22,7 @@ def get_historical_scores(historical_weather):
         ) + (
             historical_weather['rain_sum'] * historical_weather['precipitation_hours']
             ) + (
-                historical_weather['snowfall_sum'] * historical_weather['precipitation_hours']**2
+                (historical_weather['snowfall_sum'] * historical_weather['precipitation_hours'])**2
                 )
 
     historical_weather['weight'] = historical_weather['base'] + historical_weather['good'] - historical_weather['bad']
@@ -31,7 +33,7 @@ def get_historical_scores(historical_weather):
                                 ) 
 
     historical_weather['weather_score_weighted'] = np.where(historical_weather['weather_score'] < 0,
-                                    (abs(historical_weather['weather_score']) * historical_weather['weight']) + historical_weather['weight'],
+                                    (historical_weather['weather_score'] * abs(historical_weather['weight'])) + historical_weather['weight'],
                                     (historical_weather['weather_score'] * historical_weather['weight']) + historical_weather['weight']
                                    )
 
@@ -40,7 +42,7 @@ def get_historical_scores(historical_weather):
 
 def analyze_condensed_weather(historical_weather):
     condensed = pd.DataFrame(
-            historical_weather.groupby('description').agg(
+            historical_weather.groupby(['description', 'season']).agg(
             {'temperature_2m_max': 'mean', 
             'temperature_2m_min': 'mean', 
             'temperature_2m_mean': 'mean',
@@ -92,6 +94,18 @@ def get_weather_codes():
 def weather_weight_model(historical_weather):
     pass
 
+def get_season(date):
+    now = (date.month, date.day)
+    if (3, 1) <= now < (5, 31):
+        season = 'spring'
+    elif (6, 1) <= now < (8, 30):
+        season = 'summer'
+    elif (9, 1) <= now < (11, 30):
+        season = 'fall'
+    else:
+        season = 'winter'
+    return season
+
 def weather_main():
     # Set time period
     start = '2018-01-01'
@@ -99,14 +113,13 @@ def weather_main():
     # # get and store latest data
     print('Getting weather data for Seattle')
     historical_weather = wh.get_historical_weather(start, end)
-    # store_weather_data(historical_weather)
-    # print('Weather data stored successfully')
-
+    historical_weather['season'] = pd.Series(historical_weather['date']).apply(lambda date: get_season(date.date()))
     # get stored data
     # weather_db = weather_main()
     # print('Weather data retrieved successfully')
 
     historical_weather = pd.DataFrame(historical_weather)
+    # print(f'{historical_weather.head(5)}')
     historical_weather['weather_code'] = historical_weather['weather_code'].astype(int)
     print(f'Getting weather codes')
     weather_codes = get_weather_codes()
@@ -121,14 +134,17 @@ def weather_main():
     historical_weather = get_historical_scores(joined)
     condensed = analyze_condensed_weather(joined)
 
-    historical_weather = historical_weather[
-                        ['date', 'description', 'weather_score_weighted', 'weight', 'weather_score', 
+    final_cols = ['date', 'description', 'season', 'weather_score_weighted', 'weight', 'weather_score', 
                         'weather_code', 'temperature_2m_mean', 'temperature_2m_min', 'temperature_2m_max',
                         'precipitation_sum', 'rain_sum', 'snowfall_sum',
                         'daylight_duration', 'sunshine_duration', 'precipitation_hours', 
                         'wind_speed_10m_max', 'wind_gusts_10m_max', 'shortwave_radiation_sum'
                         ]
-                       ]
+
+    historical_weather = historical_weather[final_cols]
     # print(f"Weather data for Seattle:")
-    # print(historical_weather.head(5))
+    # print(historical_weather[['date', 'season', 'weather_code']].head(5))
     return historical_weather, condensed
+
+# if __name__ == '__main__':
+#     weather_main()
