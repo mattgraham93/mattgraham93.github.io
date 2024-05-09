@@ -1,0 +1,786 @@
+danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature,song,artist,event,type
+0.357,0.425,5,-7.301,1,0.0333,0.584,0,0.322,0.27,102.078,198040,3,Heather,Conan Gray,Rain,Weather
+0.539,0.179,7,-14.33,1,0.0309,0.921,0.393,0.106,0.145,140.01,198027,3,Like Real People Do,Hozier,Rain,Weather
+0.669,0.613,4,-11.12,0,0.036,0.487,0.176,0.132,0.566,110.668,220720,4,For Emma,Bon Iver,Rain,Weather
+0.508,0.792,0,-7.311,0,0.0297,0.229,0.124,0.145,0.601,147.067,320467,4,Space Song,Beach House,Rain,Weather
+0.741,0.697,0,-7.028,1,0.0277,0.0664,2.28e-05,0.133,0.774,116.109,160133,4,Have You Ever Seen The Rain,Creedence Clearwater Revival,Rain,Weather
+0.612,0.807,10,-2.81,1,0.0336,0.0495,0.0177,0.101,0.398,124.053,240400,4,Sweater Weather,The Neighbourhood,Rain,Weather
+0.453,0.655,9,-4.22,1,0.0257,0.0794,7.06e-06,0.0849,0.366,172.01,236160,4,Somewhere Only We Know,Keane,Rain,Weather
+0.663,0.296,9,-18.09,1,0.0294,0.68,0.00837,0.0879,0.359,112.306,289067,4,Wicked Game,Chris Isaak,Rain,Weather
+0.207,0.292,7,-11.641,1,0.0328,0.818,0.942,0.0934,0.11,141.869,248635,4,Hearing,Sleeping At Last,Rain,Weather
+0.331,0.341,9,-6.057,0,0.0309,0.528,0,0.109,0.152,109.821,285935,4,Love In The Dark,Adele,Rain,Weather
+0.433,0.308,10,-9.001,0,0.0291,0.778,1.46e-05,0.092,0.153,73.331,256236,3,People Help the People,Birdy,Rain,Weather
+0.388,0.66,11,-7.372,1,0.0308,0.312,0.000307,0.0943,0.401,143.554,230507,4,Georgia,Vance Joy,Rain,Weather
+0.507,0.114,10,-15.364,1,0.0305,0.815,0.00394,0.0682,0.0565,74.905,223724,4,Blame The Moon,Hazlett,Rain,Weather
+0.329,0.277,10,-13.111,0,0.0302,0.971,0.024,0.0971,0.121,159.719,289560,3,Rosyln,Bon Iver,Rain,Weather
+0.404,0.664,1,-6.698,1,0.0407,0.542,0.00402,0.11,0.0949,107.747,351640,4,Brooklyn Baby,Lana Del Rey,Rain,Weather
+0.651,0.663,0,-5.569,0,0.0281,0.228,0,0.0994,0.465,102.0,259453,4,She Will Be Loved - Radio Mix,Maroon 5,Rain,Weather
+0.901,0.136,8,-16.127,0,0.102,0.667,0.354,0.109,0.643,150.076,211140,4,Heart To Heart,Mac DeMarco,Rain,Weather
+0.531,0.363,10,-7.672,1,0.0608,0.749,0,0.112,0.259,121.412,229720,4,Work Song,Hozier,Rain,Weather
+0.631,0.348,10,-10.285,1,0.0343,0.926,8.87e-05,0.295,0.32,110.019,232992,4,Miserable Man,David Kushner,Rain,Weather
+0.391,0.335,0,-10.064,1,0.0763,0.389,0,0.102,0.116,174.185,193733,3,Ghost Town,Benson Boone,Rain,Weather
+0.437,0.384,5,-8.384,1,0.042,0.699,2.33e-05,0.121,0.181,139.009,209947,4,Christmas Tree,V,Rain,Weather
+0.405,0.111,0,-11.879,1,0.0369,0.964,4.37e-05,0.0872,0.219,116.86,189475,4,Not About Angels,Birdy,Rain,Weather
+0.657,0.396,7,-9.255,1,0.0293,0.805,1.58e-06,0.103,0.115,110.003,239787,3,I'm with You,Vance Joy,Rain,Weather
+0.828,0.492,0,-9.744,1,0.0276,0.0644,0.00428,0.128,0.789,120.151,257800,4,Dreams - 2004 Remaster,Fleetwood Mac,Rain,Weather
+0.429,0.18,10,-10.694,1,0.0551,0.864,4.4e-06,0.104,0.485,170.645,154800,3,Turn Me On,Norah Jones,Rain,Weather
+0.312,0.168,10,-12.476,0,0.0332,0.888,6.59e-06,0.147,0.154,108.115,271480,1,Old Money,Lana Del Rey,Rain,Weather
+0.422,0.302,11,-9.214,1,0.0372,0.629,7.83e-05,0.104,0.123,114.089,248827,4,Runaway,AURORA,Rain,Weather
+0.311,0.485,6,-5.726,0,0.0365,0.701,0,0.0726,0.225,77.355,208827,4,Train Wreck,James Arthur,Rain,Weather
+0.381,0.502,1,-5.505,0,0.0368,0.16,6.98e-05,0.0842,0.147,144.3,237800,4,Movement,Hozier,Rain,Weather
+0.564,0.412,8,-9.23,0,0.0274,0.554,0,0.151,0.29,144.689,187293,4,Mr. Forgettable,David Kushner,Rain,Weather
+0.49,0.18,0,-9.764,1,0.0344,0.7,3.96e-05,0.0762,0.182,136.455,284000,3,Rivers and Roads,The Head And The Heart,Rain,Weather
+0.559,0.243,1,-12.453,1,0.0326,0.925,0.935,0.108,0.162,69.941,213000,4,Ylang Ylang,FKJ,Rain,Weather
+0.474,0.707,7,-4.534,1,0.0253,0.0831,0,0.162,0.224,83.235,252107,4,Wings,Birdy,Rain,Weather
+0.522,0.074,7,-23.625,0,0.0598,0.929,0.765,0.108,0.342,135.298,141280,3,Between The Bars,Elliott Smith,Rain,Weather
+0.577,0.387,7,-8.607,1,0.274,0.964,0.705,0.208,0.459,146.565,126312,1,worldstar money (interlude),Joji,Rain,Weather
+0.547,0.486,8,-9.941,1,0.14,0.295,0.00143,0.119,0.338,80.338,249173,4,Only Love,Ben Howard,Rain,Weather
+0.415,0.104,0,-11.83,1,0.0426,0.955,3.79e-06,0.104,0.18,82.006,256300,3,Touch,Sleeping At Last,Rain,Weather
+0.574,0.479,8,-7.776,1,0.0355,0.179,0.0803,0.106,0.303,115.263,208854,4,Melting,Kali Uchis,Rain,Weather
+0.703,0.851,1,-4.918,0,0.144,0.031,0,0.354,0.315,89.958,264667,4,Rain,BTS,Rain,Weather
+0.496,0.276,7,-8.464,0,0.0296,0.492,0.00367,0.101,0.0634,153.923,298880,3,Shrike,Hozier,Rain,Weather
+0.469,0.19,4,-11.138,1,0.0373,0.919,0,0.107,0.325,125.103,219536,4,Lay Me Down (feat. John Legend),Sam Smith,Rain,Weather
+0.627,0.873,7,-5.415,1,0.0311,0.00804,0.000583,0.0555,0.628,123.113,147279,4,Who'll Stop The Rain,Creedence Clearwater Revival,Rain,Weather
+0.466,0.496,1,-6.606,1,0.0302,0.626,6.22e-06,0.117,0.352,74.747,269893,4,All the Pretty Girls,KALEO,Rain,Weather
+0.511,0.435,9,-10.254,1,0.0408,0.301,8.2e-05,0.255,0.343,120.207,124022,4,Fool,Frankie Cosmos,Rain,Weather
+0.604,0.517,0,-9.014,1,0.0347,0.768,0.000155,0.123,0.511,127.967,275040,4,cowboy like me,Taylor Swift,Rain,Weather
+0.356,0.611,10,-5.71,1,0.0289,0.000183,0.867,0.127,0.272,170.069,157973,4,Advice,Alex G,Rain,Weather
+0.336,0.318,0,-11.412,1,0.0263,0.317,0.0716,0.111,0.24,79.66,459094,4,The Rain Song - Remaster,Led Zeppelin,Rain,Weather
+0.376,0.595,3,-5.936,1,0.0496,0.303,0,0.095,0.265,144.361,290900,4,When We Were Young,Adele,Rain,Weather
+0.58,0.3,9,-11.257,1,0.0353,0.783,0.00168,0.108,0.112,129.786,175202,4,Please Don't Be,Hazlett,Rain,Weather
+0.516,0.342,4,-8.985,1,0.0425,0.55,0,0.21,0.0993,102.819,206459,4,Lose You To Love Me,Selena Gomez,Rain,Weather
+0.26,0.87,1,-22.09,1,0.335,0.00433,0.959,0.519,0.0394,63.73,164000,4,Cozy Thunder And Rain - Seamless,Drip-Drop,Rain,Weather
+0.197,0.972,11,-16.067,0,0.0934,5.52e-06,0.97,0.355,0.0222,125.529,132125,4,Luscious Rain,Harmonious Nature,Rain,Weather
+0.0831,1.0,7,-13.743,1,0.0626,0.24,0.985,0.937,1e-05,84.42,202000,1,rAin,Rain,Rain,Weather
+0.153,0.972,0,-24.985,1,0.0554,0.116,0.967,0.686,0.00825,103.03,208000,4,Stormy Nights,Chō,Rain,Weather
+0.113,0.593,5,-24.792,0,0.0587,0.0622,0.694,0.463,0.0374,93.914,127803,3,Acidity Rain,Vanessa Storm,Rain,Weather
+0.15,0.999,1,-11.246,1,0.107,0.0233,0.855,0.419,0.0154,135.556,153279,4,Tormenta lejana,Ciclo del Agua,Rain,Weather
+0.157,0.563,4,-16.904,0,0.0632,6.7e-05,0.981,0.499,0.00389,86.796,136719,4,May Storm,Sounds Caused By Lightning,Rain,Weather
+0.136,0.86,10,-23.818,0,0.0682,6.5e-05,0.863,0.384,0.0234,78.889,171868,4,Lightning in the Rain,Tornadoez,Rain,Weather
+0.164,0.987,10,-16.22,0,0.0395,0.128,0.764,0.973,1e-05,114.333,170000,4,Rain Puddles,Noise and Nature,Rain,Weather
+0.166,0.814,6,-25.288,0,0.0655,0.235,0.952,0.382,0.0223,112.814,120000,1,Black Bolt,Haruna Fields,Rain,Weather
+0.167,0.858,5,-20.461,1,0.107,0.000247,0.932,0.527,0.013,118.765,208000,4,Midnight Storm,Ogień,Rain,Weather
+0.164,0.398,0,-25.963,0,0.0802,0.000101,0.926,0.748,0.0564,89.485,121115,4,Perfect Rain,Eva Poured,Rain,Weather
+0.068,0.562,6,-19.857,1,0.113,6.53e-05,0.882,0.257,0.0398,77.712,196000,4,Big Thunder,"Sleep, Study, Focus",Rain,Weather
+0.158,0.542,1,-24.552,1,0.0805,0.000453,0.941,0.391,0.0352,131.109,153066,3,Watch The Storm,Distantic,Rain,Weather
+0.0871,0.782,1,-24.18,1,0.0817,0.00303,0.955,0.488,0.0333,86.31,281619,4,Rain & Distant Thunder,Essential Nature Sounds,Rain,Weather
+0.0764,0.998,3,-26.054,1,0.042,0.696,0.602,0.963,1e-05,82.987,184000,4,Dozy Rain - Rain,Dozy Sounds,Rain,Weather
+0.161,0.736,5,-24.697,0,0.0759,0.000554,0.944,0.143,0.0151,111.754,122000,4,Drops And Thunder,Amida Nature Sounds,Rain,Weather
+0.181,0.977,8,-26.187,1,0.0433,0.13,0.885,0.797,0.0141,91.691,216062,3,Always Raining,Tono,Rain,Weather
+0.147,0.848,1,-21.693,1,0.0697,0.00282,0.386,0.362,0.0239,83.254,170000,4,Sky Thunder,Celestial Noise,Rain,Weather
+0.113,1.0,4,-22.446,1,0.0517,0.365,0.549,0.948,1e-05,161.897,136000,4,Quality Rain,Rain Recordings,Rain,Weather
+0.19,0.999,7,-23.419,0,0.0481,0.967,0.469,0.97,1e-05,84.763,158987,3,Under the Rain Clouds,Natur Musikanten,Rain,Weather
+0.149,0.832,3,-17.274,1,0.108,0.0148,0.893,0.394,1e-05,101.647,137750,3,Night Storm,Four Winds,Rain,Weather
+0.194,0.691,1,-23.188,1,0.105,0.00833,0.918,0.382,0.0351,79.518,127060,3,Nuage Froid,Elise Édouard,Rain,Weather
+0.185,0.465,0,-25.618,0,0.0808,0.000418,0.962,0.481,0.0486,100.669,148608,4,Out In the Wild,Rainy Forecast,Rain,Weather
+0.0717,0.95,5,-19.739,0,0.0659,7.29e-05,0,0.155,0.0303,62.68,131000,5,Pluie Fraîche en Forêt,Équipage ambiant,Rain,Weather
+0.231,0.976,10,-27.426,0,0.0487,0.152,0.987,0.48,0.00672,96.552,131500,5,raining for hours,ame,Rain,Weather
+0.164,0.162,2,-25.235,1,0.0555,0.835,0.671,0.934,1e-05,83.693,208000,3,Distant Rain,Pacific Rain,Rain,Weather
+0.468,0.968,11,-26.555,0,0.0374,0.348,0.933,0.907,0.0147,54.049,127060,3,Garasia Rain Forest,Literrain,Rain,Weather
+0.15,0.667,1,-23.215,1,0.0987,0.0168,0.859,0.478,0.0322,106.449,121115,3,Dark skies,LWD Rain,Rain,Weather
+0.0912,0.995,3,-20.791,1,0.0537,0.144,0.991,0.96,0.000331,88.135,208000,3,rain in stavanger,pluvia,Rain,Weather
+0.107,0.691,1,-21.342,1,0.124,0.0667,0.945,0.427,0.042,86.95,158250,3,Under The Clouds,High Voltage,Rain,Weather
+,,,,,,,,,,,,,Surrender to rain,Rayne,Rain,Weather
+0.209,0.975,1,-24.72,0,0.0638,0.399,0.882,0.941,0.0174,83.862,167500,4,Rain On The Porch,Miraflor,Rain,Weather
+0.237,0.512,2,-27.513,1,0.0465,0.119,0.323,0.818,0.00328,70.243,129000,3,Raining Me Softly,Epiphonema,Rain,Weather
+0.196,0.881,8,-16.184,1,0.067,0.0212,0.892,0.403,0.0276,78.994,236000,5,Endless Rain Loop,Four Winds,Rain,Weather
+0.143,1.0,8,-18.58,0,0.0699,0.33,0.997,0.99,1e-05,76.895,214998,3,Blu Droplets,ANCIENT RAIN,Rain,Weather
+0.153,0.999,3,-26.543,0,0.0468,0.6,0.376,0.892,1e-05,133.621,174000,4,REM Cycle Rain,NatuREM,Rain,Weather
+0.0783,0.921,5,-21.387,0,0.0544,0.0508,0.916,0.333,0.0244,173.967,126000,4,Tumult Weather,Lunacy,Rain,Weather
+0.214,0.99,2,-31.911,1,0.0534,0.142,0.993,0.901,1e-05,109.631,120000,3,Morgonregn,Regnskur,Rain,Weather
+0.132,0.979,11,-18.141,1,0.0746,0.199,0.875,0.347,0.0118,143.096,174000,5,Storms Out,Nature Trudge,Rain,Weather
+0.159,0.993,2,-13.688,1,0.05,0.125,1.0,0.786,1e-05,81.965,192000,1,Det Regnar,Regnmannen,Rain,Weather
+0.155,0.629,1,-27.102,1,0.069,0.00195,0.00174,0.404,0.0348,106.743,208000,4,Voltage Dreams,Zinan,Rain,Weather
+0.171,0.943,9,-23.278,1,0.0743,0.00428,0.862,0.947,0.0206,123.31,146333,3,Forte pluie et tonnerre,Orage et pluit,Rain,Weather
+0.136,0.453,0,-19.117,0,0.529,0.016,0.981,0.885,1e-05,95.44,156038,4,Wet Weather,Electricality,Rain,Weather
+0.126,1.0,11,-23.63,1,0.0353,0.173,0.897,0.929,1e-05,84.275,160000,4,Forest Spirits (Rain),NatuREM,Rain,Weather
+0.24,0.394,8,-24.248,1,0.101,0.0266,0.822,0.355,0.0356,61.023,156008,4,Distant Storm,Skyyy,Rain,Weather
+0.162,0.63,1,-21.441,0,0.0662,0.000333,0.989,0.384,0.0232,128.04,208000,4,The Sky's Awake,Drivotra,Rain,Weather
+0.0781,0.86,6,-19.798,1,0.0593,0.063,0.986,0.709,0.00484,170.265,208000,4,Beyond Storm,Salvo,Rain,Weather
+0.0593,0.851,9,-20.334,0,0.0759,0.000395,0.989,0.413,0.0285,49.529,153750,4,Thunderclaps,WeatherBug,Rain,Weather
+0.191,0.455,0,-25.649,0,0.0954,0.000426,0.92,0.5,0.038,106.107,150094,4,Natural Sounds Of Nature,Harmless Harmonics,Rain,Weather
+0.196,0.991,1,-16.965,1,0.0624,0.119,0.987,0.951,0.0207,137.201,221000,4,Earth Rain,Celestial Noise,Rain,Weather
+0.0572,0.678,1,-23.838,1,0.0857,0.000144,0.922,0.8,0.0264,68.88,208000,3,Graue Wolken,BLITZ,Rain,Weather
+0.167,0.365,7,-21.465,0,0.0581,0.000113,0.959,0.442,0.0218,79.946,138948,4,Soothing Rainstorm,Selectrodynamic,Rain,Weather
+0.0636,0.553,10,-29.364,0,0.0592,0.117,0.882,0.224,0.0307,192.041,124000,4,Storm Dreaming,Haruna Fields,Rain,Weather
+0.214,0.555,5,-26.795,0,0.0589,0.0275,0.866,0.743,0.0361,97.864,154552,4,Rain White Noise,Sound FX of Nature,Rain,Weather
+0.0814,0.611,10,-25.657,0,0.07,0.00134,0.00157,0.455,0.0221,85.317,160125,4,Stormy Nights And Days,Empyrean,Rain,Weather
+0.0831,0.879,5,-22.131,1,0.0621,0.00138,0.922,0.696,0.0164,71.864,130775,3,Light Rain Thunder,VDWW,Rain,Weather
+0.107,0.346,8,-28.767,1,0.106,0.00323,0.976,0.22,0.119,154.348,156008,3,Storm Is Building Up,Weather Man,Rain,Weather
+0.0765,0.86,6,-19.085,1,0.0546,0.000115,0.936,0.324,0.0206,171.805,159010,4,Piogga,L'acqua Cade,Rain,Weather
+0.185,0.841,5,-22.828,1,0.0569,0.0345,0.863,0.787,0.0202,88.729,159753,4,Meditation Thunder,Thundertalk,Rain,Weather
+0.15,0.998,4,-18.276,0,0.0873,0.0157,0.933,0.974,0.00723,105.149,132667,3,Tormenta de la selva,El Tiempo Central,Rain,Weather
+0.0804,0.624,6,-25.236,1,0.0555,0.0825,0.88,0.402,0.0306,170.408,127062,4,Super Soft Rain with Super Soft Thunder,The Natural Healing,Rain,Weather
+0.174,0.779,1,-24.874,1,0.0526,0.000449,0.936,0.431,0.0272,91.122,216000,4,Omnius Storm,humidum,Rain,Weather
+0.076,0.897,6,-21.396,1,0.0587,0.0144,0.929,0.606,0.026,51.892,137462,4,Wet Rain Season,FX waves,Rain,Weather
+0.158,0.721,10,-26.002,1,0.0538,0.000743,0.897,0.574,0.0283,99.349,168000,4,A Rainy Day At The Park,Waters Of Deluge,Rain,Weather
+0.0805,0.226,5,-19.451,1,0.0572,0.000419,0.967,0.619,0.0335,85.303,159753,4,Calm Thunder,Nature's Noise,Rain,Weather
+0.0547,0.617,5,-25.149,0,0.405,0.00596,0.974,0.906,1e-05,57.167,188222,4,Light Rain and Thunder,Mindful Measures,Rain,Weather
+0.207,0.696,10,-20.473,0,0.073,5.23e-06,0.96,0.392,0.0171,104.487,216000,3,Sky Is Rumbling,Calm Storm,Rain,Weather
+0.19,0.969,1,-19.798,1,0.0534,0.215,0.974,0.137,0.024,78.062,158250,4,Sonic Thunder,Isamu,Rain,Weather
+0.059,0.619,1,-26.684,1,0.0757,0.000103,0.933,0.397,0.0297,68.917,216000,5,Storms Eye,R. Guru,Rain,Weather
+0.189,0.628,7,-27.797,1,0.0657,8.43e-05,0.415,0.388,0.0319,86.306,180000,3,Rumbling,Oluja,Rain,Weather
+0.127,0.815,2,-22.048,1,0.0698,0.00193,0.861,0.931,0.0148,144.644,139333,5,Tormenta ligera,Tromentas Naturales,Rain,Weather
+0.232,0.587,1,-29.416,1,0.11,0.0167,0.947,0.0928,0.118,119.349,156008,3,Storm Through The Night,Skyyy,Rain,Weather
+0.151,0.698,5,-21.274,1,0.0549,0.199,0.964,0.354,0.0251,74.846,159753,4,Light Thunder,Zhock Wave,Rain,Weather
+0.142,0.537,1,-25.143,1,0.101,9.66e-06,0.813,0.142,0.0902,140.249,167047,4,Storm During Night,Atmospheric Force,Rain,Weather
+0.09,0.102,11,-27.101,0,0.0729,0.00242,0.958,0.497,0.0234,88.863,181398,4,Soft Thunder,Tellus Recordings,Rain,Weather
+0.171,0.496,1,-29.777,1,0.0907,4.28e-05,0.92,0.389,0.0386,118.452,180000,4,Heavy Storm,Tempest,Rain,Weather
+0.165,0.55,2,-20.38,1,0.0772,0.0423,0.706,0.415,0.00922,115.406,154552,3,Thunderstorm In the Forest,Weather Watcher,Rain,Weather
+0.186,0.918,1,-19.888,0,0.059,0.461,0.95,0.345,0.02,109.014,147534,4,Longing for rain,Zuni,Rain,Weather
+0.151,0.549,1,-24.57,1,0.0683,0.000386,0.901,0.599,0.0365,100.886,159667,4,Légère pluie d'orage,Pluie et tonnerre,Rain,Weather
+0.0707,0.816,1,-23.877,1,0.0751,0.000758,0.878,0.486,0.0219,177.026,216000,4,Lightning,Polar Night,Rain,Weather
+0.0957,0.492,1,-31.627,1,0.0648,0.324,0.965,0.273,0.0321,88.597,192000,3,Rain & Thunder,Ogień,Rain,Weather
+0.209,0.478,1,-30.603,1,0.0639,0.000179,0.91,0.394,0.0343,90.688,216000,4,Rain Coming Down,Adam Storme,Rain,Weather
+,,,,,,,,,,,,,Peaceful Weather,Exclusive Nature,Rain,Weather
+0.134,0.668,6,-23.875,1,0.0566,0.0759,0.855,0.301,0.0302,87.783,145638,1,Soft Clappering Rain With Distant Storm,Livia Michaels,Rain,Weather
+0.167,0.633,6,-23.77,0,0.105,0.00482,0.975,0.394,0.0222,116.279,130034,4,Extra Wide Rain - extra,The Noisy Outdoors,Rain,Weather
+0.19,0.69,5,-24.35,0,0.0629,0.00393,0.943,0.377,0.0223,86.059,161239,3,Rain Morning,Natural Dream Makers,Rain,Weather
+0.0573,0.607,0,-23.21,0,0.0794,0.011,0.886,0.409,0.0351,57.346,129667,3,Pluie légère et tonnerre,Tonerre,Rain,Weather
+0.089,0.81,7,-24.036,0,0.0489,0.173,0.748,0.394,0.0283,69.822,182000,3,Light Outdoors Rain With Thunder,Nature Calm,Rain,Weather
+0.16,0.62,10,-25.337,0,0.0639,8.08e-05,0.94,0.606,0.0287,129.976,208000,5,Ice of Rain,Polar Night,Rain,Weather
+0.241,0.897,0,-17.103,1,0.0715,0.000205,0.964,0.525,0.00917,52.035,129289,4,Orage et pluie,Hi-Def FX,Rain,Weather
+0.157,0.641,5,-24.415,1,0.0557,0.00629,0.931,0.667,0.0375,89.639,128546,4,"Calm Rain, Thunder",Climate Hive,Rain,Weather
+0.17,0.996,4,-22.638,0,0.0659,0.141,0.989,0.754,0.00266,122.995,173147,3,Rainy Nights,Night FX,Rain,Weather
+0.058,0.996,5,-17.803,1,0.0903,0.000896,0.977,0.554,0.00818,62.284,147122,4,Feel The Weather,Thunderive,Rain,Weather
+0.186,0.438,7,-21.501,1,0.0605,6.33e-05,0.908,0.419,0.0211,76.202,141333,4,Trueno distante,Pacifica Norte,Rain,Weather
+0.151,0.788,1,-25.0,1,0.0696,0.0018,0.909,0.383,0.0234,135.907,216000,3,Storming For Days,Salvo,Rain,Weather
+0.0732,0.739,1,-26.256,1,0.0558,0.0539,0.95,0.588,0.0268,79.362,180000,3,Take Cover,Oluja,Rain,Weather
+0.146,0.544,1,-29.533,1,0.0553,0.0025,0.659,0.388,0.0318,98.894,180000,5,Dark Storm,Taranis,Rain,Weather
+0.0683,0.561,1,-29.603,1,0.0582,0.000973,0.959,0.482,0.0323,51.904,216062,4,Sleep Under Cover,Drivotra,Rain,Weather
+0.157,0.947,9,-18.268,0,0.0586,0.0171,0.948,0.378,1e-05,99.21,154333,4,Pouring Rain And Thunder,Berg & Sjo,Rain,Weather
+0.365,0.273,4,-16.526,0,0.038,0.94,0.431,0.109,0.238,132.285,248960,5,Mystery of Love,Sufjan Stevens,Rain,Weather
+0.612,0.807,10,-2.81,1,0.0336,0.0495,0.0177,0.101,0.398,124.053,240400,4,Sweater Weather,The Neighbourhood,Rain,Weather
+0.436,0.655,1,-8.37,0,0.0583,0.499,8.1e-06,0.688,0.412,121.002,279204,4,Good Days,SZA,Rain,Weather
+0.566,0.366,7,-12.808,1,0.028,0.113,0.181,0.155,0.237,129.959,184154,4,we fell in love in october,girl in red,Rain,Weather
+0.592,0.416,1,-9.794,1,0.0246,0.882,0.000586,0.112,0.417,96.002,210080,4,Bloom - Bonus Track,The Paper Kites,Rain,Weather
+0.188,0.411,0,-9.733,1,0.0484,0.174,0.153,0.0843,0.159,187.376,305747,3,All I Want,Kodaline,Rain,Weather
+0.484,0.731,1,-6.694,1,0.0379,0.431,0,0.151,0.51,101.654,204280,4,Riptide,Vance Joy,Rain,Weather
+0.47,0.623,0,-5.655,1,0.0302,0.392,0.000439,0.0992,0.298,77.861,225973,4,Trouble,Cage The Elephant,Rain,Weather
+0.638,0.668,2,-3.442,1,0.0259,0.0822,0,0.0815,0.299,113.945,208766,4,Cigarette Daydreams,Cage The Elephant,Rain,Weather
+0.559,0.32,6,-7.694,1,0.0414,0.0644,0.132,0.173,0.497,147.366,341200,4,Malibu 1992,COIN,Rain,Weather
+0.54,0.381,7,-14.323,1,0.0347,0.0217,0.000687,0.305,0.343,155.882,204991,4,i wanna be your girlfriend,girl in red,Rain,Weather
+0.664,0.573,5,-6.519,1,0.0277,0.613,0.000363,0.0857,0.566,76.02,160097,4,Ophelia,The Lumineers,Rain,Weather
+0.479,0.545,7,-7.346,1,0.0688,0.365,0,0.0963,0.243,74.897,252733,4,Let Her Go,Passenger,Rain,Weather
+0.678,0.484,5,-5.795,1,0.0361,0.529,2.01e-05,0.0766,0.493,82.004,239317,4,I'm Not The Only One,Sam Smith,Rain,Weather
+0.522,0.128,4,-18.717,1,0.0357,0.894,0.026,0.0941,0.124,109.986,187932,4,Can We Kiss Forever?,Kina,Rain,Weather
+0.576,0.835,2,-6.826,1,0.0486,0.337,0,0.082,0.476,150.017,257720,4,It Will Rain,Bruno Mars,Rain,Weather
+0.593,0.263,4,-14.029,0,0.0567,0.844,5.36e-06,0.127,0.109,76.379,238520,4,Skinny Love,Bon Iver,Rain,Weather
+0.413,0.42,0,-6.444,1,0.0416,0.588,6.39e-05,0.11,0.185,84.126,172724,4,Stay With Me,Sam Smith,Rain,Weather
+0.609,0.444,7,-9.129,1,0.106,0.603,6.86e-06,0.104,0.166,118.402,228707,3,If I Ain't Got You,Alicia Keys,Rain,Weather
+0.715,0.372,5,-8.237,1,0.0443,0.638,0,0.169,0.474,91.931,201000,4,Too Good At Goodbyes,Sam Smith,Rain,Weather
+0.663,0.706,1,-4.972,0,0.0383,0.0654,0,0.115,0.474,122.013,257840,4,Counting Stars,OneRepublic,Rain,Weather
+0.606,0.799,9,-4.452,1,0.0261,0.0128,0,0.15,0.638,103.014,232907,4,Make You Mine,PUBLIC,Rain,Weather
+0.771,0.607,5,-12.02,0,0.113,0.336,0,0.122,0.79,90.039,101000,4,Lost in You,khai dreams,Rain,Weather
+0.64,0.74,4,-4.083,1,0.0284,0.0115,0.00678,0.167,0.785,116.879,216320,4,The Less I Know The Better,Tame Impala,Rain,Weather
+0.707,0.767,7,-7.072,1,0.0323,0.0279,0.000295,0.169,0.832,139.985,204014,4,Hot Rod,Dayglow,Rain,Weather
+0.641,0.842,9,-7.27,1,0.0292,0.132,0.91,0.419,0.5,129.98,278769,4,Can I Call You Tonight?,Dayglow,Rain,Weather
+0.736,0.449,1,-11.462,0,0.425,0.33,0.000162,0.0898,0.326,80.126,219080,4,Location,Khalid,Rain,Weather
+0.608,0.168,0,-13.007,1,0.0895,0.885,0,0.165,0.469,122.774,175560,4,Build Me Up Buttercup,Lara Anderson,Rain,Weather
+0.434,0.677,10,-7.535,1,0.119,0.384,0.0684,0.119,0.218,167.927,204209,4,Beige,Yoke Lore,Rain,Weather
+0.725,0.199,2,-12.478,1,0.0357,0.982,0.00395,0.1,0.264,120.031,195359,4,Home,Edith Whiskers,Rain,Weather
+0.658,0.294,4,-8.533,0,0.0321,0.422,5.2e-05,0.0749,0.358,74.038,278180,4,Get You (feat. Kali Uchis),Daniel Caesar,Rain,Weather
+0.566,0.664,4,-5.303,0,0.0464,0.634,0,0.116,0.437,128.945,241693,4,Take Me to Church,Hozier,Rain,Weather
+0.498,0.235,1,-16.541,0,0.188,0.72,0,0.144,0.0895,118.917,179080,4,Get You The Moon (feat. Snøw),Kina,Rain,Weather
+0.515,0.479,3,-7.458,1,0.0261,0.544,0.00598,0.191,0.284,88.964,209274,4,SLOW DANCING IN THE DARK,Joji,Rain,Weather
+0.762,0.387,10,-8.643,0,0.0277,0.239,0.00756,0.13,0.273,109.959,239147,4,Big Jet Plane,Angus & Julia Stone,Rain,Weather
+0.658,0.291,2,-10.572,1,0.0292,0.872,0,0.114,0.295,103.962,232533,4,Hey There Delilah,Plain White T's,Rain,Weather
+0.824,0.448,0,-14.694,1,0.0945,0.756,3.5e-05,0.126,0.565,129.989,88644,4,Sunflower Feelings,Kuzu Mellow,Rain,Weather
+0.506,0.48,5,-5.418,1,0.0266,0.449,0,0.147,0.351,86.042,204427,4,Stay,Post Malone,Rain,Weather
+0.247,0.438,5,-8.478,1,0.0358,0.0447,0.000867,0.111,0.39,185.711,198213,3,I Can't Handle Change,Roar,Rain,Weather
+0.585,0.471,4,-9.934,0,0.0616,0.0967,0.0184,0.115,0.323,93.099,142000,4,Star Shopping,Lil Peep,Rain,Weather
+0.575,0.386,9,-9.584,0,0.037,0.785,0.000289,0.229,0.466,116.408,249191,4,Ivy,Frank Ocean,Rain,Weather
+0.439,0.274,0,-10.629,1,0.0312,0.502,0.00181,0.15,0.403,80.426,117395,4,School Globes,Removebeforeflight,Rain,Weather
+0.691,0.631,2,-6.478,1,0.0368,0.0483,1.13e-05,0.104,0.8,92.004,161124,4,Why'd You Only Call Me When You're High?,Arctic Monkeys,Rain,Weather
+0.612,0.28,0,-8.648,1,0.0434,0.932,0,0.088,0.387,72.795,213827,4,When I Was Your Man,Bruno Mars,Rain,Weather
+0.498,0.59,1,-4.721,0,0.032,0.511,0,0.107,0.0784,145.867,217867,4,Talking to the Moon,Bruno Mars,Rain,Weather
+0.674,0.578,10,-5.804,1,0.0408,0.331,0,0.135,0.34,145.07,231267,4,Better Now,Post Malone,Rain,Weather
+0.677,0.401,9,-8.467,1,0.0308,0.712,0,0.116,0.195,111.825,232852,4,This Town,Niall Horan,Rain,Weather
+0.682,0.9,9,-5.028,1,0.0874,0.0884,0.063,0.0685,0.937,100.721,179499,4,Looking Out for You,Joy Again,Rain,Weather
+0.682,0.683,8,-6.444,0,0.0287,0.156,2.32e-05,0.273,0.64,120.023,178000,4,Are You Bored Yet? (feat. Clairo),Wallows,Rain,Weather
+0.384,0.765,6,-4.463,1,0.0579,0.646,0.00352,0.522,0.567,129.903,252231,4,Sunflower,Rex Orange County,Rain,Weather
+0.503,0.446,5,-6.279,1,0.0547,0.904,0,0.303,0.476,174.062,160661,4,i think you're really cool,guardin,Rain,Weather
+0.568,0.597,10,-9.631,1,0.0405,0.801,0.17,0.309,0.197,105.415,273059,3,In Luv With U,Finn,Rain,Weather
+0.576,0.157,8,-13.882,1,0.0914,0.795,0.156,0.0707,0.43,127.987,224768,4,This Is a Love Song Not a Sad Song,Lonely$adboy,Rain,Weather
+0.608,0.269,0,-7.201,1,0.0329,0.983,1.96e-06,0.337,0.389,126.372,135714,3,Can't Help Falling in Love,Christian Leave,Rain,Weather
+0.513,0.318,0,-10.451,1,0.0314,0.796,0,0.177,0.249,81.923,160307,3,Bloom Later,Jesse®,Rain,Weather
+0.637,0.864,8,-4.381,1,0.0468,0.484,0,0.222,0.706,99.995,214720,4,Saturday Sun,Vance Joy,Rain,Weather
+0.521,0.268,1,-15.199,1,0.0407,0.739,0.177,0.0718,0.272,119.879,192500,4,Drifting Away,khai dreams,Rain,Weather
+0.693,0.403,0,-8.773,1,0.191,0.946,5.07e-06,0.104,0.677,115.621,157388,4,You're the Reason,Chris Wright,Rain,Weather
+0.737,0.408,5,-7.941,1,0.104,0.802,0,0.171,0.374,127.918,190348,4,Let's Fall in Love for the Night,FINNEAS,Rain,Weather
+0.517,0.206,5,-12.233,1,0.0421,0.924,0,0.118,0.489,80.401,189187,4,I Will Follow You into the Dark,Death Cab for Cutie,Rain,Weather
+0.332,0.179,5,-11.83,1,0.0326,0.879,0,0.0886,0.315,96.524,125667,4,Yesterday - Remastered 2009,The Beatles,Rain,Weather
+0.635,0.101,7,-15.911,1,0.0862,0.965,2.73e-05,0.0845,0.503,75.334,122000,4,Libra,Pity Party (Girls Club),Rain,Weather
+0.707,0.455,6,-10.44,0,0.0374,0.136,0.00104,0.096,0.37,110.004,248736,4,Japanese Pancakes,Fran Vasilić,Rain,Weather
+0.619,0.437,7,-11.756,1,0.0314,0.465,0.00619,0.0971,0.408,89.508,285053,4,Stop This Train,John Mayer,Rain,Weather
+0.495,0.238,1,-11.026,1,0.03,0.958,0.0118,0.0875,0.357,175.958,198200,4,The Heart of Life,John Mayer,Rain,Weather
+0.599,0.449,7,-7.423,1,0.0529,0.161,2.66e-05,0.107,0.143,158.0,205116,3,Stuck On You,Giveon,Rain,Weather
+0.762,0.604,7,-5.296,0,0.11,0.114,0,0.0271,0.847,168.007,97960,4,Babydoll,Dominic Fike,Rain,Weather
+0.755,0.528,5,-14.475,1,0.0657,0.086,0.00642,0.202,0.362,107.724,217500,4,Paradise,Rex Orange County,Rain,Weather
+0.281,0.0842,4,-17.476,1,0.0474,0.97,7.09e-06,0.0776,0.088,202.415,259735,4,Belly (The Grass Stains),Rex Orange County,Rain,Weather
+0.608,0.305,4,-14.037,1,0.053,0.653,0,0.103,0.222,113.818,206975,4,Corduroy Dreams,Rex Orange County,Rain,Weather
+0.567,0.263,5,-13.51,1,0.103,0.891,0,0.183,0.247,111.86,136000,4,A Song About Being Sad,Rex Orange County,Rain,Weather
+0.424,0.235,8,-20.423,1,0.0434,0.541,4.57e-05,0.136,0.187,120.204,241000,4,Know Love,Rex Orange County,Rain,Weather
+0.573,0.2,9,-9.567,1,0.0805,0.906,0,0.134,0.333,121.255,135707,4,Untitled,Rex Orange County,Rain,Weather
+0.86,0.332,1,-10.263,1,0.22,0.807,0,0.106,0.26,140.949,115000,4,Edition,Rex Orange County,Rain,Weather
+0.575,0.714,6,-5.247,1,0.0596,0.395,0,0.115,0.32,144.982,262231,4,Best Friend,Rex Orange County,Rain,Weather
+0.781,0.452,5,-9.798,0,0.26,0.78,3e-06,0.0902,0.463,163.899,171789,4,Uno,Rex Orange County,Rain,Weather
+0.399,0.235,5,-9.774,1,0.0334,0.734,1.56e-06,0.161,0.197,105.645,279693,3,Happiness,Rex Orange County,Rain,Weather
+0.639,0.526,0,-6.697,1,0.0256,0.245,2.43e-05,0.25,0.488,130.033,216880,3,Mr. Loverman,Ricky Montgomery,Rain,Weather
+0.591,0.746,8,-7.762,1,0.0444,0.000729,0,0.127,0.432,107.965,194717,4,Televised,HUNNY,Rain,Weather
+0.524,0.532,6,-6.07,0,0.026,0.0285,7.86e-05,0.242,0.367,135.678,224893,4,Sweetie Little Jean,Cage The Elephant,Rain,Weather
+0.609,0.413,5,-11.407,1,0.0351,0.876,0.0239,0.0799,0.0697,130.969,238747,4,Ms,alt-J,Rain,Weather
+0.466,0.763,0,-4.448,1,0.0318,0.000501,0,0.0973,0.293,154.914,244693,4,Mind Over Matter,Young the Giant,Rain,Weather
+0.52,0.852,0,-5.866,1,0.0543,0.00237,5.79e-05,0.0733,0.234,140.267,253587,4,505,Arctic Monkeys,Rain,Weather
+0.469,0.19,4,-11.138,1,0.0373,0.919,0,0.107,0.325,125.103,219536,4,Lay Me Down,Sam Smith,Rain,Weather
+0.329,0.444,1,-9.973,1,0.0417,0.0578,0.0352,0.113,0.225,162.279,282206,4,Kilby Girl,The Backseat Lovers,Rain,Weather
+0.885,0.581,11,-8.813,1,0.0378,0.427,0.000204,0.0759,0.728,114.016,313684,4,Stolen Dance,Milky Chance,Rain,Weather
+0.516,0.755,5,-3.724,1,0.0383,0.0633,0.00103,0.107,0.165,140.099,262173,4,Burning Pile,Mother Mother,Rain,Weather
+0.449,0.635,1,-8.301,1,0.275,0.0413,0,0.188,0.608,84.414,218493,4,You & Me,Marc E. Bassy,Rain,Weather
+0.739,0.448,10,-10.28,0,0.138,0.189,0,0.118,0.553,81.044,206533,4,Saved,Khalid,Rain,Weather
+0.441,0.219,8,-14.586,1,0.0419,0.935,0,0.115,0.244,94.021,199120,4,Coaster,Khalid,Rain,Weather
+0.785,0.702,7,-4.517,1,0.0464,0.643,0,0.175,0.569,116.021,167640,4,Hopeless,Khalid,Rain,Weather
+0.71,0.405,9,-10.864,0,0.0519,0.777,0.000163,0.111,0.402,103.04,207960,4,Cold Blooded,Khalid,Rain,Weather
+0.678,0.575,1,-7.086,1,0.123,0.101,9.38e-06,0.116,0.367,100.007,241867,4,Winter,Khalid,Rain,Weather
+0.778,0.574,2,-7.775,0,0.0327,0.368,0,0.126,0.663,112.048,276227,4,Keep Me,Khalid,Rain,Weather
+0.767,0.512,6,-6.777,1,0.0591,0.893,0.000223,0.103,0.489,123.921,207107,4,Shot Down,Khalid,Rain,Weather
+0.472,0.265,6,-10.059,0,0.0356,0.959,0.000499,0.1,0.204,111.558,170680,4,Angels,Khalid,Rain,Weather
+0.729,0.65,5,-3.539,1,0.0313,0.0702,6.69e-05,0.0829,0.347,110.02,209160,4,Habits (Stay High),Tove Lo,Rain,Weather
+0.583,0.344,2,-8.765,1,0.0559,0.774,0,0.143,0.581,65.203,110129,3,Clouded,Brent Faiyaz,Rain,Weather
+0.508,0.792,0,-7.311,0,0.0297,0.229,0.124,0.145,0.601,147.067,320467,4,Space Song,Beach House,Rain,Weather
+0.514,0.424,0,-10.645,1,0.0282,0.918,0.849,0.126,0.416,71.114,90324,4,Vas,jagger finn,Rain,Weather
+0.741,0.62,10,-5.505,1,0.0412,0.0295,0.000809,0.0398,0.934,117.038,251424,4,Too Sweet,Hozier,Sun,Weather
+0.484,0.731,1,-6.694,1,0.0379,0.431,0,0.151,0.51,101.654,204280,4,Riptide,Vance Joy,Sun,Weather
+0.56,0.936,3,-5.835,1,0.0439,0.00847,0,0.161,0.371,112.96,218013,4,Tongue Tied,GROUPLOVE,Sun,Weather
+0.673,0.902,10,-4.886,1,0.0553,0.0164,0.0145,0.269,0.704,97.007,225133,4,The Sound Of Sunshine,Michael Franti & Spearhead,Sun,Weather
+0.392,0.629,5,-7.056,1,0.0334,0.718,3.65e-06,0.129,0.72,124.511,153240,4,Wouldn't It Be Nice,The Beach Boys,Sun,Weather
+0.871,0.346,5,-9.481,1,0.0522,0.298,9.24e-06,0.108,0.659,110.054,207680,4,Better Together,Jack Johnson,Sun,Weather
+0.935,0.479,11,-10.981,0,0.306,0.107,5.16e-05,0.118,0.773,123.643,211000,4,Jamming,Bob Marley & The Wailers,Sun,Weather
+0.647,0.868,0,-6.427,0,0.106,0.088,0.124,0.129,0.804,121.82,242240,4,Sunny,Boney M.,Sun,Weather
+0.471,0.924,8,-3.906,1,0.0584,0.00301,0,0.313,0.716,154.962,177280,4,Everybody Talks,Neon Trees,Sun,Weather
+0.551,0.819,2,-4.489,1,0.0525,0.0103,0.0437,0.153,0.846,174.917,137760,4,A-Punk,Vampire Weekend,Sun,Weather
+0.657,0.435,10,-15.707,1,0.0552,0.739,0,0.167,0.771,135.975,181133,4,Dancing in the Moonlight,King Harvest,Sun,Weather
+0.654,0.81,4,-6.26,0,0.0288,0.00719,0.00251,0.165,0.661,114.622,200307,4,Island In The Sun,Weezer,Sun,Weather
+0.739,0.522,7,-12.304,0,0.151,0.821,0.00124,0.233,0.619,138.263,146390,4,Goodie Bag,Still Woozy,Sun,Weather
+0.573,0.683,5,-6.644,1,0.176,0.461,0,0.0935,0.817,169.519,142787,4,Rich Girl,Daryl Hall & John Oates,Sun,Weather
+0.62,0.761,10,-7.282,0,0.175,0.207,0.000147,0.269,0.194,146.003,209483,4,Back On 74,Jungle,Sun,Weather
+0.72,0.744,1,-6.938,0,0.12,0.237,0,0.255,0.619,78.953,243773,4,Cupid's Chokehold / Breakfast in America,Gym Class Heroes,Sun,Weather
+0.765,0.679,6,-5.82,1,0.0463,0.225,8.68e-06,0.112,0.487,144.962,212850,4,Take It Easy,Surfaces,Sun,Weather
+0.818,0.623,9,-5.901,0,0.043,0.201,0,0.112,0.968,120.104,138000,4,"Cheesin’ (with Cautious Clay, Remi Wolf, Still Woozy, Sophie Meiers, Claud, Melanie Faye, & HXNS)",Cautious Clay,Sun,Weather
+0.773,0.679,7,-6.51,0,0.0315,0.219,0.00263,0.297,0.544,127.002,198448,4,Got Me Started,Troye Sivan,Sun,Weather
+0.543,0.526,2,-9.703,1,0.0582,0.0447,0.0533,0.0778,0.384,153.0,243529,3,Maple Syrup,The Backseat Lovers,Sun,Weather
+0.828,0.492,0,-9.744,1,0.0276,0.0644,0.00428,0.128,0.789,120.151,257800,4,Dreams - 2004 Remaster,Fleetwood Mac,Sun,Weather
+0.764,0.705,3,-5.279,0,0.0278,0.0371,1.94e-05,0.0943,0.672,101.003,196520,4,Wait a Minute!,WILLOW,Sun,Weather
+0.81,0.618,7,-10.581,1,0.0382,0.0139,0.000254,0.0296,0.804,120.063,194723,4,I Can See Clearly Now,Jimmy Cliff,Sun,Weather
+0.671,0.845,11,-4.93,0,0.048,0.0207,0,0.329,0.775,110.056,176579,4,Dance The Night - From Barbie The Album,Dua Lipa,Sun,Weather
+0.532,0.795,1,-3.979,1,0.0358,0.0559,0,0.295,0.78,143.837,199267,4,It's a Beautiful Day,Michael Bublé,Sun,Weather
+0.689,0.952,2,-5.249,0,0.114,0.113,0.78,0.298,0.415,107.978,177521,4,Dominoes,Jungle,Sun,Weather
+0.766,0.547,0,-7.25,1,0.0264,0.229,1.5e-05,0.104,0.556,105.01,183720,4,"Sitting, Waiting, Wishing",Jack Johnson,Sun,Weather
+0.636,0.676,2,-3.442,1,0.0263,0.0807,0,0.0831,0.273,113.98,208760,4,Cigarette Daydreams,Cage The Elephant,Sun,Weather
+0.671,0.463,11,-8.534,1,0.0439,0.391,0,0.162,0.347,85.002,208533,4,Young Blood,Noah Kahan,Sun,Weather
+0.732,0.665,0,-8.561,1,0.0559,0.125,0.33,0.275,0.376,111.973,167026,4,Good Life (feat. Elderbrook),Good Life,Sun,Weather
+0.443,0.533,7,-5.956,1,0.0473,0.429,3.66e-06,0.332,0.596,183.791,222813,4,Someone New,Hozier,Sun,Weather
+0.604,0.894,2,-5.0,1,0.037,0.0212,0,0.0299,0.901,145.017,187253,4,Junk Of The Heart (Happy),The Kooks,Sun,Weather
+0.839,0.83,11,-8.785,1,0.0479,0.363,0.0491,0.112,0.908,117.997,261973,4,Flashed Junk Mind,Milky Chance,Sun,Weather
+0.592,0.727,6,-4.956,1,0.0478,0.693,0,0.195,0.644,129.5,169320,4,Sunny,Marvin Gaye,Sun,Weather
+0.615,0.743,7,-6.569,1,0.041,0.237,0.00431,0.148,0.528,162.22,158474,4,Down the Line,Beach Fossils,Sun,Weather
+0.704,0.701,2,-5.442,1,0.0594,0.058,0,0.127,0.592,88.024,168163,4,Lease On Life,Andy Grammer,Sun,Weather
+0.681,0.373,2,-13.2,1,0.0568,0.633,0.00113,0.0751,0.623,123.423,164733,4,I Can See Clearly Now - Edit,Johnny Nash,Sun,Weather
+0.629,0.677,1,-7.239,1,0.0299,0.122,9.72e-06,0.0962,0.627,132.783,195000,4,Sunshine Superman,Donovan,Sun,Weather
+0.742,0.546,1,-7.694,1,0.0315,0.172,0.38,0.115,0.868,104.996,260520,4,Bags,Clairo,Sun,Weather
+0.929,0.463,9,-8.651,1,0.308,0.143,5.3e-06,0.0634,0.755,124.084,255840,4,Buffalo Soldier,Bob Marley & The Wailers,Sun,Weather
+0.536,0.775,8,-6.765,1,0.0394,0.228,0.000142,0.0947,0.485,151.39,201413,4,Cleopatra,The Lumineers,Sun,Weather
+0.836,0.696,7,-6.37,1,0.0401,0.8,0,0.0949,0.954,112.692,186567,4,Oogum Boogum Song,Brenton Wood,Sun,Weather
+0.403,0.803,7,-5.363,1,0.0626,0.239,0,0.103,0.814,153.314,169307,4,She Moves In Her Own Way,The Kooks,Sun,Weather
+0.714,0.633,0,-4.069,1,0.181,0.227,1.73e-05,0.276,0.869,160.02,207017,4,Lately,Forrest Frank,Sun,Weather
+0.523,0.687,7,-5.601,1,0.105,0.0215,2.86e-06,0.203,0.711,90.036,217480,4,Almost (Sweet Music),Hozier,Sun,Weather
+0.728,0.841,10,-7.682,0,0.0567,0.00242,9.09e-05,0.106,0.402,125.991,156391,4,Rush,Troye Sivan,Sun,Weather
+0.623,0.763,9,-4.412,1,0.0719,0.199,6.52e-06,0.126,0.199,108.871,226610,4,Buttercup,Hippo Campus,Sun,Weather
+0.67,0.786,0,-5.216,1,0.0366,0.0418,0,0.145,0.806,90.009,190493,4,Keep Your Head Up (Album Version),Andy Grammer,Sun,Weather
+0.707,0.763,2,-6.512,1,0.0915,0.0282,2.26e-06,0.102,0.827,159.976,108984,4,For A Minute,WizTheMc,Sun,Weather
+0.76,0.579,0,-7.374,1,0.0567,0.0127,0.00344,0.106,0.129,100.011,213600,4,Summertime Magic,Childish Gambino,Sun,Weather
+0.838,0.536,1,-8.645,0,0.0478,0.555,0.000376,0.111,0.107,104.988,195173,4,Catch & Release - Deepend Remix,Matt Simons,Sun,Weather
+0.702,0.52,7,-8.618,1,0.0546,0.103,0.153,0.115,0.0489,115.07,240010,4,Matter of Time,Vandelux,Sun,Weather
+0.739,0.522,7,-12.304,0,0.151,0.821,0.00124,0.233,0.619,138.263,146390,4,Goodie Bag,Still Woozy,Sun,Weather
+0.637,0.864,8,-4.381,1,0.0468,0.484,0,0.222,0.706,99.995,214720,4,Saturday Sun,Vance Joy,Sun,Weather
+0.422,0.44,11,-5.53,1,0.0544,0.617,0,0.0837,0.332,128.934,120308,5,this is what falling in love feels like,JVKE,Sun,Weather
+0.599,0.354,9,-11.486,1,0.0365,0.942,0.00323,0.0849,0.105,77.445,317453,4,Tuhan Sebut Sia-Sia,Amigdala,Sun,Weather
+0.577,0.366,8,-11.792,1,0.0368,0.879,7.76e-05,0.137,0.0841,129.923,212785,4,LIMBO,keshi,Sun,Weather
+0.602,0.881,1,-5.875,0,0.0443,0.00462,0.0266,0.111,0.577,125.012,467587,4,Let It Happen,Tame Impala,Sun,Weather
+0.861,0.602,2,-7.314,0,0.0617,0.369,0.0644,0.0751,0.684,114.978,225181,4,Something About You,Hayden James,Sun,Weather
+0.571,0.544,6,-10.613,1,0.0299,0.453,0.00805,0.322,0.216,132.052,132631,4,Romantic Homicide,d4vd,Sun,Weather
+0.64,0.635,8,-7.565,0,0.226,0.271,0,0.319,0.475,100.034,223187,4,Stole the Show,Kygo,Sun,Weather
+0.87,0.699,5,-5.541,0,0.0459,0.245,6.76e-06,0.0588,0.727,126.967,198440,4,Walking On A Dream,Empire Of The Sun,Sun,Weather
+0.527,0.54,10,-9.874,0,0.21,0.76,0.0712,0.0774,0.311,108.804,154000,1,Price,PALASTIC,Sun,Weather
+0.818,0.626,6,-5.991,0,0.0352,0.185,6.01e-05,0.056,0.943,125.035,186240,4,This Town,Saco,Sun,Weather
+0.765,0.762,11,-5.069,0,0.123,0.42,8.58e-05,0.104,0.444,114.975,153391,4,Crazy,Lost Frequencies,Sun,Weather
+0.385,0.504,5,-3.204,0,0.034,0.296,0.00676,0.111,0.33,66.452,145736,4,this is what slow dancing feels like,JVKE,Sun,Weather
+0.6,0.688,5,-8.339,0,0.201,0.159,1.29e-05,0.409,0.0793,99.977,156600,4,Nevermind,Dennis Lloyd,Sun,Weather
+0.764,0.705,3,-5.279,0,0.0278,0.0371,1.94e-05,0.0943,0.672,101.003,196520,4,Wait a Minute!,WILLOW,Sun,Weather
+0.64,0.74,4,-4.083,1,0.0284,0.0115,0.00678,0.167,0.785,116.879,216320,4,The Less I Know The Better,Tame Impala,Sun,Weather
+0.521,0.526,5,-6.032,1,0.0281,0.243,0.00537,0.108,0.502,130.694,268293,4,Would That I,Hozier,Sun,Weather
+0.346,0.5,10,-6.097,1,0.0388,0.757,0,0.189,0.191,202.466,176667,3,Until I Found You,Stephen Sanchez,Sun,Weather
+0.769,0.841,4,-5.365,0,0.0423,0.114,0,0.229,0.712,116.016,153107,4,Cool Kids,Toby Rose,Sun,Weather
+0.389,0.598,7,-8.436,1,0.0309,0.531,0.407,0.143,0.517,143.931,400560,4,My Jinji,落日飛車 Sunset Rollercoaster,Sun,Weather
+0.901,0.136,8,-16.127,0,0.102,0.667,0.354,0.109,0.643,150.076,211140,4,Heart To Heart,Mac DeMarco,Sun,Weather
+0.695,0.763,0,-3.497,1,0.0396,0.189,0.00242,0.0863,0.551,120.042,215280,4,Circles,Post Malone,Sun,Weather
+0.848,0.629,0,-6.198,1,0.0424,0.016,0.18,0.049,0.586,130.017,153519,4,Somebody (2024),Gotye,Sun,Weather
+0.726,0.835,0,-3.914,1,0.0341,0.041,9.45e-06,0.068,0.579,123.986,184071,4,Never Let Me Go,Alok,Sun,Weather
+0.636,0.676,2,-3.442,1,0.0263,0.0807,0,0.0831,0.273,113.98,208760,4,Cigarette Daydreams,Cage The Elephant,Sun,Weather
+0.659,0.615,11,-5.865,0,0.0644,0.27,0,0.187,0.193,119.843,164010,4,Dancing In The Moonlight (feat. NEIMY),Jubël,Sun,Weather
+0.664,0.714,7,-6.645,0,0.111,0.0353,8.42e-06,0.0843,0.71,101.969,197933,4,I Took A Pill In Ibiza - Seeb Remix,Mike Posner,Sun,Weather
+0.871,0.346,5,-9.481,1,0.0522,0.298,9.24e-06,0.108,0.659,110.054,207680,4,Better Together,Jack Johnson,Sun,Weather
+0.804,0.702,9,-6.042,0,0.0342,0.159,0.00101,0.237,0.486,118.998,148461,4,Chasing (feat. NEIMY),Solar State,Sun,Weather
+0.7,0.705,5,-6.026,1,0.0414,0.148,0.0343,0.161,0.521,99.97,246169,4,Wonderwall,TEEMID,Sun,Weather
+0.704,0.647,7,-8.039,0,0.0849,0.732,0.000197,0.117,0.153,110.095,139636,4,Need You,Horizon Blue,Sun,Weather
+0.484,0.731,1,-6.694,1,0.0379,0.431,0,0.151,0.51,101.654,204280,4,Riptide,Vance Joy,Sun,Weather
+0.879,0.565,11,-8.809,1,0.037,0.412,0.000239,0.0798,0.685,114.009,313627,4,Stolen Dance,Milky Chance,Sun,Weather
+0.599,0.539,8,-5.897,1,0.034,0.356,5.38e-06,0.102,0.188,121.947,273640,4,Treat You Better,RÜFÜS DU SOL,Sun,Weather
+0.828,0.492,0,-9.744,1,0.0276,0.0644,0.00428,0.128,0.789,120.151,257800,4,Dreams - 2004 Remaster,Fleetwood Mac,Sun,Weather
+0.615,0.743,7,-6.569,1,0.041,0.237,0.00431,0.148,0.528,162.22,158474,4,Down the Line,Beach Fossils,Sun,Weather
+0.853,0.798,4,-7.995,0,0.068,0.0158,0.948,0.0967,0.42,129.983,269150,4,Glue,BICEP,Sun,Weather
+0.916,0.72,0,-8.548,1,0.1,0.36,0.00016,0.0958,0.761,103.314,237000,4,Could You Be Loved,Bob Marley & The Wailers,Sun,Weather
+0.654,0.67,1,-10.393,1,0.0403,0.149,0.157,0.118,0.528,120.028,147125,4,Sunbeams,NSH,Sun,Weather
+0.52,0.852,0,-5.866,1,0.0543,0.00237,5.79e-05,0.0733,0.234,140.267,253587,4,505,Arctic Monkeys,Sun,Weather
+0.238,0.441,3,-7.42,1,0.0364,0.912,0.433,0.167,0.164,79.445,219909,4,this is what autumn feels like,JVKE,Sun,Weather
+0.772,0.604,5,-9.548,1,0.0826,0.129,0.619,0.13,0.338,121.995,419500,4,No Man No Cry,Jimmy Sax,Sun,Weather
+0.579,0.549,5,-8.262,0,0.0909,0.104,0.0202,0.0964,0.155,119.74,238120,4,Sonnentanz - Sun Don't Shine,Klangkarussell,Sun,Weather
+0.741,0.592,6,-9.059,0,0.0308,0.665,0.854,0.116,0.822,111.984,310133,4,Feel Your Weight - Poolside Remix,Rhye,Sun,Weather
+0.574,0.479,8,-7.776,1,0.0355,0.179,0.0803,0.106,0.303,115.263,208854,4,Melting,Kali Uchis,Sun,Weather
+0.545,0.968,9,-3.553,0,0.0853,0.0387,0.00325,0.331,0.527,169.965,209386,4,Out of My League,Fitz and The Tantrums,Sun,Weather
+0.679,0.506,9,-9.497,0,0.0671,0.421,0.00216,0.434,0.588,114.967,169472,4,I've Been In Love,Jungle,Sun,Weather
+0.484,0.731,1,-6.694,1,0.0379,0.431,0,0.151,0.51,101.654,204280,4,Riptide,Vance Joy,Sun,Weather
+0.545,0.968,9,-3.553,0,0.0853,0.0387,0.00325,0.331,0.527,169.965,209386,4,Out of My League,Fitz and The Tantrums,Sun,Weather
+0.573,0.683,5,-6.644,1,0.176,0.461,0,0.0935,0.817,169.519,142787,4,Rich Girl,Daryl Hall & John Oates,Sun,Weather
+0.694,0.712,7,-3.923,0,0.046,0.132,0,0.211,0.799,98.023,201122,4,Lush Life,Zara Larsson,Sun,Weather
+0.52,0.903,2,-5.497,1,0.042,0.00517,0,0.254,0.652,74.988,219801,4,Someone To You,BANNERS,Sun,Weather
+0.647,0.868,0,-6.427,0,0.106,0.088,0.124,0.129,0.804,121.82,242240,4,Sunny,Boney M.,Sun,Weather
+0.814,0.373,7,-8.017,1,0.116,0.602,1.7e-05,0.0931,0.632,114.548,191907,4,Banana Pancakes,Jack Johnson,Sun,Weather
+0.676,0.828,0,-5.799,1,0.0454,0.0242,0.0105,0.364,0.669,122.228,187733,4,Grace Kelly,MIKA,Sun,Weather
+0.608,0.768,0,-5.227,1,0.0475,0.0913,0,0.0629,0.809,88.059,244880,4,Sunday Morning,Maroon 5,Sun,Weather
+0.666,0.83,0,-5.715,1,0.0751,0.0123,0,0.191,0.702,113.03,236002,4,"CAN'T STOP THE FEELING! (from DreamWorks Animation's ""TROLLS"")",Justin Timberlake,Sun,Weather
+0.491,0.583,7,-10.964,1,0.0376,0.185,0,0.406,0.908,150.566,183307,4,Brown Eyed Girl,Van Morrison,Sun,Weather
+0.637,0.864,8,-4.381,1,0.0468,0.484,0,0.222,0.706,99.995,214720,4,Saturday Sun,Vance Joy,Sun,Weather
+0.782,0.685,4,-6.237,1,0.0309,0.166,1.18e-05,0.16,0.603,118.02,180566,4,Cheerleader (Felix Jaehn Remix) - Radio Edit,OMI,Sun,Weather
+0.702,0.825,6,-3.787,0,0.0601,0.00883,0,0.0674,0.915,102.977,203064,4,Levitating (feat. DaBaby),Dua Lipa,Sun,Weather
+0.588,0.791,7,-5.595,1,0.0402,0.00245,0.00258,0.118,0.487,94.933,231000,4,Style,Taylor Swift,Sun,Weather
+0.826,0.49,9,-10.477,1,0.0676,0.00916,4.41e-06,0.0415,0.627,74.128,180267,4,Three Little Birds,Bob Marley & The Wailers,Sun,Weather
+0.392,0.629,5,-7.056,1,0.0334,0.718,3.65e-06,0.129,0.72,124.511,153240,4,Wouldn't It Be Nice,The Beach Boys,Sun,Weather
+0.555,0.727,6,-4.202,1,0.0388,0.0579,7.52e-06,0.0937,0.739,82.142,223120,4,Jackie and Wilson,Hozier,Sun,Weather
+0.501,0.809,7,-5.264,1,0.0938,0.0338,0.00602,0.119,0.258,149.964,252819,4,Dog Days Are Over,Florence + The Machine,Sun,Weather
+0.764,0.705,3,-5.279,0,0.0278,0.0371,1.94e-05,0.0943,0.672,101.003,196520,4,Wait a Minute!,WILLOW,Sun,Weather
+0.56,0.936,3,-5.835,1,0.0439,0.00847,0,0.161,0.371,112.96,218013,4,Tongue Tied,GROUPLOVE,Sun,Weather
+0.748,0.788,1,-7.055,1,0.0334,0.0591,0,0.0863,0.884,120.076,235493,4,Sugar,Maroon 5,Sun,Weather
+0.655,0.632,2,-4.802,1,0.0489,0.0189,0,0.0722,0.447,120.113,188493,4,Tear in My Heart,Twenty One Pilots,Sun,Weather
+0.632,0.686,6,-7.665,0,0.243,0.549,0,0.2,0.329,89.949,170770,4,Eastside (with Halsey & Khalid),benny blanco,Sun,Weather
+0.589,0.389,0,-5.972,1,0.028,0.851,0,0.0772,0.501,89.1,197470,4,Count on Me,Bruno Mars,Sun,Weather
+0.717,0.732,4,-4.985,1,0.0426,0.0394,0,0.136,0.708,119.996,292307,4,Soak Up The Sun,Sheryl Crow,Sun,Weather
+0.935,0.479,11,-10.981,0,0.306,0.107,5.16e-05,0.118,0.773,123.643,211000,4,Jamming,Bob Marley & The Wailers,Sun,Weather
+0.942,0.641,7,-10.15,1,0.0333,0.331,0.179,0.028,0.966,114.443,296147,4,This Must Be the Place (Naive Melody) - 2005 Remaster,Talking Heads,Sun,Weather
+0.838,0.536,1,-8.645,0,0.0478,0.555,0.000376,0.111,0.107,104.988,195173,4,Catch & Release - Deepend Remix,Matt Simons,Sun,Weather
+0.734,0.828,6,-4.433,0,0.033,0.398,0.0225,0.136,0.717,127.023,205000,4,Following the Sun,SUPER-Hi,Sun,Weather
+0.49,0.88,2,-4.856,1,0.0435,0.00154,0,0.103,0.392,169.949,184013,4,Chemical,Post Malone,Sun,Weather
+0.879,0.565,11,-8.809,1,0.037,0.412,0.000239,0.0798,0.685,114.009,313627,4,Stolen Dance,Milky Chance,Sun,Weather
+0.521,0.526,5,-6.032,1,0.0281,0.243,0.00537,0.108,0.502,130.694,268293,4,Would That I,Hozier,Sun,Weather
+0.729,0.836,8,-4.312,1,0.0462,0.156,3.27e-05,0.336,0.288,113.998,154731,4,Riptide,TWOPILOTS,Sun,Weather
+0.69,0.89,0,-4.866,0,0.0507,0.00903,1.61e-05,0.188,0.713,124.018,181478,4,Substitution (feat. Julian Perretta),Purple Disco Machine,Sun,Weather
+0.655,0.819,0,-4.852,1,0.0316,0.000176,0.00374,0.104,0.766,117.956,192790,5,Safe And Sound,Capital Cities,Sun,Weather
+0.866,0.537,8,-5.786,1,0.0335,0.053,0.0156,0.0866,0.643,111.987,177933,4,Crazy,Gnarls Barkley,Sun,Weather
+0.916,0.72,0,-8.548,1,0.1,0.36,0.00016,0.0958,0.761,103.314,237000,4,Could You Be Loved,Bob Marley & The Wailers,Sun,Weather
+0.414,0.663,6,-7.77,1,0.0456,0.163,0,0.138,0.33,108.98,223400,4,False Confidence,Noah Kahan,Sun,Weather
+0.72,0.744,1,-6.938,0,0.12,0.237,0,0.255,0.619,78.953,243773,4,Cupid's Chokehold / Breakfast in America,Gym Class Heroes,Sun,Weather
+0.632,0.863,0,-5.21,1,0.0446,0.0449,1.01e-06,0.13,0.731,101.976,215840,4,Missing Piece,Vance Joy,Sun,Weather
+0.755,0.522,2,-4.368,1,0.0575,0.533,0,0.0685,0.925,89.96,157560,4,Sunflower - Spider-Man: Into the Spider-Verse,Post Malone,Sun,Weather
+0.735,0.784,11,-7.128,0,0.0332,0.449,0.154,0.105,0.582,120.012,191000,4,Shots - Broiler Remix,Imagine Dragons,Sun,Weather
+0.53,0.632,6,-7.908,0,0.0279,0.0026,0,0.419,0.413,108.028,200120,4,Gimme That Sunshine,Animal Island,Sun,Weather
+0.446,0.915,9,-6.221,1,0.141,0.00281,3.87e-05,0.218,0.398,190.013,204520,4,I Wanna Get Better,Bleachers,Sun,Weather
+0.546,0.592,2,-6.723,1,0.0325,0.296,0.000492,0.602,0.114,111.732,302080,4,Home,Edward Sharpe & The Magnetic Zeros,Sun,Weather
+0.471,0.924,8,-3.906,1,0.0584,0.00301,0,0.313,0.716,154.962,177280,4,Everybody Talks,Neon Trees,Sun,Weather
+0.569,0.902,11,-4.007,1,0.0536,0.00521,2.92e-06,0.124,0.944,137.986,231893,4,I’m Alive (Life Sounds Like),Michael Franti & Spearhead,Sun,Weather
+0.543,0.461,3,-6.724,1,0.0302,0.577,0,0.0563,0.385,96.803,173173,4,Good Old-Fashioned Lover Boy - Remastered 2011,Queen,Sun,Weather
+0.723,0.604,10,-6.254,0,0.0319,0.179,0.000463,0.0939,0.562,111.497,240880,4,Keep Moving,Jungle,Sun,Weather
+0.82,0.528,9,-11.18,1,0.032,0.107,0.0188,0.257,0.926,120.089,272107,4,All I Wanna Do,Sheryl Crow,Sun,Weather
+0.777,0.601,2,-5.931,1,0.126,0.0406,0.00201,0.0348,0.68,97.911,261973,4,Maria Maria (feat. The Product G&B),Santana,Sun,Weather
+0.828,0.492,0,-9.744,1,0.0276,0.0644,0.00428,0.128,0.789,120.151,257800,4,Dreams - 2004 Remaster,Fleetwood Mac,Sun,Weather
+0.692,0.651,9,-8.267,1,0.0324,0.292,0.00241,0.105,0.706,97.923,254560,4,Lovely Day,Bill Withers,Sun,Weather
+0.704,0.797,0,-5.927,1,0.0475,0.0826,0.000745,0.0546,0.825,139.994,148486,4,I Ain't Worried,OneRepublic,Sun,Weather
+0.674,0.89,1,-4.446,0,0.0459,0.203,0,0.0819,0.737,97.02,216773,4,"Hey, Soul Sister",Train,Sun,Weather
+0.679,0.568,6,-10.74,1,0.0423,0.422,0.00928,0.322,0.93,159.69,242640,4,It Ain't Over 'Til It's Over,Lenny Kravitz,Sun,Weather
+0.609,0.692,1,-2.958,1,0.0259,0.0157,0,0.0864,0.454,116.959,233720,3,Dandelions,Ruth B.,Sun,Weather
+0.484,0.731,1,-6.694,1,0.0379,0.431,0,0.151,0.51,101.654,204280,4,Riptide,Vance Joy,Sun,Weather
+0.439,0.434,7,-14.918,1,0.0265,0.0783,5.18e-05,0.14,0.204,94.843,274707,4,Linger,The Cranberries,Sun,Weather
+0.773,0.758,1,-4.993,1,0.0381,0.0422,0,0.305,0.925,144.033,224840,4,Rude,MAGIC!,Sun,Weather
+0.717,0.455,5,-8.303,1,0.0276,0.0846,0,0.11,0.389,127.812,200733,4,Budapest,George Ezra,Sun,Weather
+0.547,0.693,0,-8.786,1,0.0353,9.24e-05,5.46e-05,0.113,0.583,119.567,239227,4,Save Tonight,Eagle-Eye Cherry,Sun,Weather
+0.526,0.749,3,-6.964,1,0.0283,0.023,1.76e-06,0.0692,0.421,99.982,208680,4,Kiss Me,Sixpence None The Richer,Sun,Weather
+0.481,0.638,0,-5.862,1,0.0276,0.153,0,0.154,0.497,79.064,259933,4,Drops of Jupiter (Tell Me),Train,Sun,Weather
+0.609,0.923,9,-3.908,1,0.0338,0.16,4.73e-06,0.295,0.961,115.996,294987,4,Smooth (feat. Rob Thomas),Santana,Sun,Weather
+0.711,0.292,4,-15.523,0,0.037,0.313,0,0.131,0.194,103.951,296800,4,Fast Car,Tracy Chapman,Sun,Weather
+0.417,0.33,9,-13.925,1,0.0275,0.247,0.000689,0.0677,0.175,157.113,295600,3,Fade Into You,Mazzy Star,Sun,Weather
+0.585,0.55,11,-7.342,1,0.0255,0.408,3.97e-05,0.115,0.839,78.176,218280,4,All Your'n,Tyler Childers,Sun,Weather
+0.765,0.837,1,-3.113,0,0.032,0.00107,1.06e-05,0.0801,0.721,122.028,195973,4,Drive By,Train,Sun,Weather
+0.654,0.81,4,-6.26,0,0.0288,0.00719,0.00251,0.165,0.661,114.622,200307,4,Island In The Sun,Weezer,Sun,Weather
+0.436,0.655,1,-8.37,0,0.0583,0.499,8.1e-06,0.688,0.412,121.002,279204,4,Good Days,SZA,Sun,Weather
+0.739,0.511,9,-7.844,1,0.0362,0.167,1.34e-06,0.133,0.542,96.038,215360,4,Put Your Records On,Corinne Bailey Rae,Sun,Weather
+0.682,0.765,1,-5.021,0,0.0395,0.0268,3.42e-05,0.188,0.567,90.807,182747,4,Santeria,Sublime,Sun,Weather
+0.551,0.645,4,-13.093,1,0.0354,0.0031,0.00376,0.421,0.508,128.665,271560,4,Dreams,The Cranberries,Sun,Weather
+0.535,0.66,9,-7.174,1,0.0297,0.455,0,0.135,0.577,148.044,298373,4,Wagon Wheel,Darius Rucker,Sun,Weather
+0.623,0.449,5,-13.333,1,0.0253,0.212,0,0.0613,0.573,84.383,256000,4,Free Fallin',Tom Petty,Sun,Weather
+0.792,0.647,4,-8.314,1,0.045,0.255,0.000223,0.132,0.694,102.477,209547,4,Upside Down,Jack Johnson,Sun,Weather
+0.578,0.817,0,-6.541,1,0.0363,0.183,2.85e-06,0.285,0.734,141.621,272293,4,Mr. Jones,Counting Crows,Sun,Weather
+0.703,0.444,11,-9.331,1,0.0417,0.559,0,0.0973,0.712,150.96,242947,4,I'm Yours,Jason Mraz,Sun,Weather
+0.587,0.767,0,-5.713,1,0.0449,0.225,0,0.112,0.664,100.38,201707,4,Suddenly I See,KT Tunstall,Sun,Weather
+0.492,0.81,7,-5.315,1,0.0847,0.0416,0.00379,0.117,0.245,149.954,251840,4,Dog Days Are Over,Florence + The Machine,Sun,Weather
+0.621,0.901,2,-5.396,1,0.0302,0.17,0,0.0875,0.744,113.967,300773,4,You Get What You Give,New Radicals,Sun,Weather
+0.776,0.763,5,-8.124,1,0.0534,0.182,0.00647,0.077,0.82,128.433,280000,4,You Can Call Me Al,Paul Simon,Sun,Weather
+0.608,0.768,0,-5.227,1,0.0475,0.0913,0,0.0629,0.809,88.059,244880,4,Sunday Morning,Maroon 5,Sun,Weather
+0.526,0.299,8,-13.797,1,0.031,0.941,0.097,0.106,0.679,156.848,200627,4,Sunrise,Norah Jones,Sun,Weather
+0.64,0.864,7,-6.576,1,0.0314,0.00832,0,0.123,0.701,102.026,268360,4,Semi-Charmed Life,Third Eye Blind,Sun,Weather
+0.389,0.476,9,-9.342,1,0.0316,0.619,5.09e-05,0.255,0.566,148.117,217107,4,No Rain,Blind Melon,Sun,Weather
+0.578,0.756,2,-5.82,1,0.115,0.157,0.000232,0.249,0.663,176.739,201173,4,Waiting On the World to Change,John Mayer,Sun,Weather
+0.636,0.634,7,-10.01,1,0.0342,0.0364,0.147,0.0998,0.599,111.563,252812,4,Texas Sun,Khruangbin,Sun,Weather
+0.562,0.934,5,-5.562,1,0.0607,0.00211,0,0.199,0.558,103.042,275640,4,Life is a Highway,Rascal Flatts,Sun,Weather
+0.568,0.824,9,-4.613,1,0.0299,0.403,0,0.0855,0.753,108.625,174760,4,Love Grows (Where My Rosemary Goes),Edison Lighthouse,Sun,Weather
+0.7,0.864,7,-3.629,1,0.0283,0.0212,0,0.0956,0.887,102.997,297587,4,All Summer Long,Kid Rock,Sun,Weather
+0.583,0.786,2,-3.142,0,0.0301,0.0208,0,0.188,0.573,123.055,258827,4,Love Song,Sara Bareilles,Sun,Weather
+0.478,0.854,7,-5.454,1,0.0289,0.0204,1.21e-06,0.115,0.274,91.854,274160,4,Closing Time,Semisonic,Sun,Weather
+0.573,0.781,8,-6.406,1,0.0555,0.0767,2.64e-05,0.0813,0.343,139.934,231907,4,Malibu,Miley Cyrus,Sun,Weather
+0.593,0.642,2,-7.284,1,0.0299,0.313,0.000582,0.0804,0.736,76.403,239440,4,I Try,Macy Gray,Sun,Weather
+0.592,0.729,8,-4.156,1,0.0448,0.022,0,0.0653,0.709,116.03,236267,4,Over My Head (Cable Car),The Fray,Sun,Weather
+0.868,0.347,5,-9.529,1,0.0536,0.308,2e-05,0.11,0.659,110.059,207680,4,Better Together,Jack Johnson,Sun,Weather
+0.537,0.84,9,-4.626,1,0.0363,0.2,2.15e-06,0.0998,0.211,124.269,224693,4,She's so High,Tal Bachman,Sun,Weather
+0.734,0.586,2,-11.866,1,0.129,0.125,0,0.0367,0.762,109.933,230467,4,Never Too Much,Luther Vandross,Sun,Weather
+0.647,0.729,5,-6.251,1,0.0236,0.0206,0.0489,0.134,0.687,94.01,249627,4,Your Body Is a Wonderland,John Mayer,Sun,Weather
+0.833,0.679,8,-4.496,1,0.0365,0.0834,0.00258,0.0769,0.975,109.917,219867,4,Every Morning,Sugar Ray,Sun,Weather
+0.649,0.618,9,-10.728,1,0.0265,0.596,1.46e-06,0.192,0.667,114.688,210267,4,You Got It,Roy Orbison,Sun,Weather
+0.643,0.614,2,-12.878,1,0.0279,0.25,7.17e-06,0.214,0.891,93.982,224467,4,Weather With You,Crowded House,Sun,Weather
+0.816,0.375,7,-8.053,1,0.0996,0.607,8.66e-06,0.0933,0.615,114.303,191907,4,Banana Pancakes,Jack Johnson,Sun,Weather
+0.848,0.666,0,-6.547,1,0.274,0.173,0.000699,0.129,0.744,96.662,251573,4,Can I Kick It?,A Tribe Called Quest,Sun,Weather
+0.744,0.453,5,-11.977,1,0.0348,0.627,0.421,0.0898,0.122,103.773,239960,4,I Love You Always Forever,Donna Lewis,Sun,Weather
+0.626,0.816,9,-10.593,1,0.131,0.237,1.8e-06,0.104,0.798,105.307,164813,4,Me and Julio Down by the Schoolyard,Paul Simon,Sun,Weather
+0.476,0.594,5,-6.879,1,0.135,0.0599,0,0.0785,0.314,159.702,141050,4,Cover Me In Sunshine,P!nk,Sun,Weather
+0.747,0.662,1,-7.9,0,0.0796,0.0118,0,0.138,0.63,88.926,221467,4,Can't Take My Eyes Off of You - (I Love You Baby),Ms. Lauryn Hill,Sun,Weather
+0.766,0.547,0,-7.25,1,0.0264,0.229,1.5e-05,0.104,0.556,105.01,183720,4,"Sitting, Waiting, Wishing",Jack Johnson,Sun,Weather
+0.607,0.82,11,-7.754,1,0.0597,0.0541,6.8e-05,0.269,0.768,126.988,207507,4,Breathless,The Corrs,Sun,Weather
+0.49,0.873,6,-5.861,1,0.0355,0.107,5.19e-06,0.118,0.513,103.272,229587,4,Only Wanna Be With You,Hootie & The Blowfish,Sun,Weather
+0.663,0.697,0,-9.442,1,0.0473,0.156,0.0224,0.0663,0.744,166.001,206973,4,Amber,311,Sun,Weather
+0.555,0.698,0,-8.874,1,0.0287,0.403,0,0.0851,0.816,168.12,277267,4,Truly Madly Deeply,Savage Garden,Sun,Weather
+0.651,0.747,1,-7.269,0,0.0699,0.0528,0,0.207,0.776,147.518,249520,4,"Baby, I Love Your Way",Big Mountain,Sun,Weather
+0.681,0.373,2,-13.2,1,0.0568,0.633,0.00113,0.0751,0.623,123.423,164733,4,I Can See Clearly Now - Edit,Johnny Nash,Sun,Weather
+0.705,0.634,5,-6.083,0,0.0282,0.0405,3.53e-05,0.349,0.639,98.008,169373,4,Our Day Will Come,Amy Winehouse,Sun,Weather
+0.801,0.545,2,-13.637,1,0.0357,0.709,0.00176,0.104,0.862,124.941,250933,4,Margaritaville,Jimmy Buffett,Sun,Weather
+0.697,0.474,9,-6.663,1,0.0351,0.603,0,0.11,0.249,127.904,196280,4,Bubbly,Colbie Caillat,Sun,Weather
+0.657,0.655,0,-8.3,1,0.0248,0.135,0.00303,0.102,0.668,92.259,222013,4,Hand in My Pocket - 2015 Remaster,Alanis Morissette,Sun,Weather
+0.946,0.289,11,-9.413,1,0.0584,0.152,2e-05,0.234,0.816,102.073,129627,4,Sweet Pea,Amos Lee,Sun,Weather
+0.398,0.804,11,-5.559,1,0.0451,0.175,0,0.181,0.709,186.752,194307,4,This Kiss,Faith Hill,Sun,Weather
+0.578,0.727,10,-4.872,1,0.0332,0.0304,1.99e-05,0.172,0.885,170.593,231840,4,You Are the Best Thing,Ray LaMontagne,Sun,Weather
+0.202,0.0927,7,-19.678,1,0.038,0.977,0.881,0.103,0.0735,115.616,218333,4,Interlude,ABBOTT,Cloud,Weather
+0.29,0.127,2,-26.739,1,0.0447,0.866,0.835,0.0884,0.0363,67.774,87017,5,springtime,Piedkies,Cloud,Weather
+0.4,0.0432,2,-32.257,0,0.0373,0.983,0.897,0.0977,0.162,115.123,186600,4,Spring,Hania Rani,Cloud,Weather
+0.507,0.252,5,-21.444,1,0.0306,0.933,0.909,0.104,0.042,98.964,81433,4,Invisible,Vivian Roost,Cloud,Weather
+0.193,0.155,7,-21.234,1,0.0355,0.868,0.956,0.065,0.0371,68.224,217325,3,Reaping in Joy,We Dream of Eden,Cloud,Weather
+0.337,0.138,9,-17.349,0,0.0392,0.839,0.922,0.112,0.0399,119.878,279000,4,Broken Dreams,Ben Berkenbosch,Cloud,Weather
+0.458,0.164,9,-16.448,0,0.0301,0.965,0.919,0.0903,0.0671,138.024,313299,3,daydreaming,Remy Van Kesteren,Cloud,Weather
+0.121,0.0971,2,-22.27,0,0.0367,0.963,0.947,0.0981,0.0404,56.513,143187,4,Still Day,Roger Eno,Cloud,Weather
+0.171,0.0265,6,-31.356,0,0.0384,0.469,0.923,0.0911,0.0356,138.17,140250,1,A Brief Silence,Mauricio Trabanino,Cloud,Weather
+0.185,0.0107,2,-30.347,0,0.0353,0.985,0.962,0.0682,0.0388,99.669,217371,3,Ripples - Ambient Rework,Pablo J. Garmon,Cloud,Weather
+0.181,0.242,5,-15.505,1,0.0382,0.988,0.791,0.135,0.0395,79.909,250114,1,Snowdancer,Sonant,Cloud,Weather
+0.11,0.123,2,-24.438,0,0.043,0.984,0.858,0.0688,0.0358,194.855,139808,1,Fair Passage,Angus MacRae,Cloud,Weather
+0.17,0.221,2,-17.589,0,0.0413,0.951,0.928,0.127,0.116,125.682,141190,4,Mirrored,Francesco Siano,Cloud,Weather
+0.323,0.0588,5,-23.973,1,0.0392,0.966,0.9,0.11,0.105,68.652,135800,4,Love Came,Peter Gregson,Cloud,Weather
+0.27,0.074,5,-28.387,1,0.0421,0.991,0.932,0.0758,0.128,120.001,291000,4,álom,Lara Somogyi,Cloud,Weather
+0.671,0.447,10,-12.432,1,0.036,0.955,0.888,0.126,0.794,140.035,151714,4,sunrise mtn,Jenny Owen Youngs,Cloud,Weather
+0.227,0.305,2,-16.419,1,0.0326,0.96,0.952,0.0784,0.122,99.941,203500,4,The Voice of the Earth,Sayuri Hayashi Egnell,Cloud,Weather
+0.181,0.0577,11,-22.564,1,0.0394,0.94,0.789,0.0656,0.0706,175.264,285080,4,CPH-ARN,Henrik Lindstrand,Cloud,Weather
+0.16,0.191,0,-17.657,1,0.0364,0.959,0.968,0.108,0.282,159.385,177000,3,Beyond Infinity - Reimagined,Javi Lobe,Cloud,Weather
+0.103,0.178,9,-19.509,0,0.0414,0.939,0.753,0.0815,0.0359,68.019,188681,4,What Remains,Felix Rösch,Cloud,Weather
+0.659,0.285,0,-16.327,0,0.0332,0.913,0.921,0.11,0.046,108.961,240161,5,Concrete Clouds,Vince Pope,Cloud,Weather
+0.208,0.185,0,-18.986,1,0.0361,0.911,0.911,0.0729,0.0538,119.813,310000,4,Remembered Words,Hollie Kenniff,Cloud,Weather
+0.628,0.323,10,-20.821,0,0.0401,0.988,0.944,0.104,0.039,130.004,210240,4,Stillness - Reworked,Poppy Ackroyd,Cloud,Weather
+0.412,0.125,7,-17.658,0,0.0305,0.959,0.884,0.111,0.0509,133.916,207757,4,VIM,Martin Kohlstedt,Cloud,Weather
+0.399,0.223,6,-15.605,1,0.0355,0.852,0.902,0.111,0.058,119.995,243000,4,Circle,Phil France,Cloud,Weather
+0.159,0.0959,2,-23.189,1,0.0363,0.971,0.906,0.0582,0.0367,61.233,296000,5,Ray,Blurstem,Cloud,Weather
+0.288,0.291,9,-13.774,0,0.0412,0.911,0.0843,0.385,0.0596,73.7,161933,4,Drang,ABBOTT,Cloud,Weather
+0.207,0.283,10,-17.44,1,0.0407,0.333,0.944,0.0819,0.0352,141.207,171667,4,Young and Alive,Patrick Jonsson,Cloud,Weather
+0.373,0.163,6,-21.807,1,0.0332,0.936,0.936,0.128,0.0377,94.057,137680,4,"Video Tape - From ""Surface""",Ólafur Arnalds,Cloud,Weather
+0.338,0.171,8,-17.536,0,0.0364,0.974,0.941,0.168,0.0937,124.805,212733,4,Familiar,ABBOTT,Cloud,Weather
+0.58,0.281,4,-17.901,1,0.0285,0.975,0.947,0.0839,0.271,159.967,276366,4,Nebula,Pieter de Graaf,Cloud,Weather
+0.387,0.13,9,-25.332,1,0.0325,0.956,0.917,0.0901,0.15,140.111,158571,4,Father,Foli,Cloud,Weather
+0.335,0.11,0,-20.3,0,0.0344,0.992,0.828,0.124,0.0775,62.476,172491,4,Allure,VILLEMIN,Cloud,Weather
+0.0734,0.102,1,-23.647,1,0.036,0.667,0.787,0.117,0.0353,50.422,175462,4,The Kingdom,Dear Gravity,Cloud,Weather
+0.461,0.267,7,-18.293,1,0.045,0.918,0.951,0.0699,0.0731,196.009,308571,3,The Passage,Martin Herzberg,Cloud,Weather
+0.365,0.0854,10,-24.777,0,0.0302,0.961,0.966,0.125,0.177,79.998,276354,3,Drifts,Kevin Stahl,Cloud,Weather
+0.148,0.18,0,-19.32,1,0.0416,0.947,0.948,0.111,0.0338,75.942,236000,4,Slaap,Henrik Meierkord,Cloud,Weather
+0.266,0.129,10,-24.438,1,0.041,0.886,0.961,0.156,0.0563,73.819,82190,5,Healing As A Family,Aisling Brouwer,Cloud,Weather
+0.458,0.442,0,-16.736,1,0.0294,0.223,0.765,0.121,0.0764,114.999,321792,4,Infinite,Grandbrothers,Cloud,Weather
+0.0634,0.0363,0,-30.546,1,0.0417,0.936,0.925,0.0735,0.0882,50.788,150500,4,Eclipse,Richome,Cloud,Weather
+0.271,0.132,8,-21.112,1,0.0286,0.964,0.884,0.0897,0.0761,91.965,254000,3,a safe place,Nick Vereshchak,Cloud,Weather
+0.128,0.249,2,-14.721,1,0.0351,0.75,0.923,0.0771,0.039,70.055,225000,3,Smoking et robe du soir,Brique a Braq,Cloud,Weather
+0.0878,0.069,6,-25.401,1,0.0419,0.931,0.902,0.131,0.0349,81.315,204120,4,Open Handed,From Somewhere Quiet,Cloud,Weather
+0.481,0.144,7,-17.059,1,0.0285,0.977,0.85,0.118,0.108,72.047,198188,3,Pure (Ride the World),Brendan Eder Ensemble,Cloud,Weather
+0.255,0.0225,7,-27.278,1,0.0374,0.951,0.89,0.0987,0.0389,68.861,192338,4,ok,Lionel Scardino,Cloud,Weather
+0.357,0.176,2,-15.325,1,0.0392,0.955,0.82,0.0727,0.0548,124.997,199079,3,Heaven's Light,David Tolk,Cloud,Weather
+0.0619,0.139,3,-19.189,1,0.0449,0.948,0.953,0.104,0.0343,57.289,295641,4,Gliding Meditation,Riverest,Cloud,Weather
+0.106,0.189,7,-20.393,1,0.031,0.949,0.92,0.0592,0.126,84.808,205000,4,Fluttering Eyelids,Picturesque Sound,Cloud,Weather
+0.363,0.0318,3,-28.069,1,0.0318,0.994,0.901,0.111,0.303,79.447,367239,4,Agatha,Luke Howard,Cloud,Weather
+0.574,0.441,11,-15.886,0,0.0362,0.709,0.889,0.0874,0.0482,120.018,175250,3,Flowing,Jonas Gewald,Cloud,Weather
+0.588,0.238,7,-14.669,1,0.0296,0.679,0.909,0.327,0.353,120.012,333107,4,Outlier,Twinsleep,Cloud,Weather
+0.366,0.112,5,-21.185,1,0.033,0.9,0.885,0.107,0.0515,109.76,178952,4,Circle 29,Foam and Sand,Cloud,Weather
+0.0591,0.218,10,-16.966,0,0.0416,0.213,0.896,0.111,0.0716,58.634,239560,3,A Thought - Instrumental,Brian Eno,Cloud,Weather
+0.512,0.193,4,-20.981,0,0.031,0.76,0.734,0.0952,0.0403,129.993,207735,4,chrysalis,Maurizio Iannuzzi,Cloud,Weather
+0.603,0.127,6,-17.965,0,0.0416,0.957,0.865,0.102,0.372,110.055,114000,4,Inward Road,Aukai,Cloud,Weather
+0.154,0.298,8,-12.528,1,0.0337,0.885,0.962,0.111,0.0359,139.814,250000,3,Merveille,Joel Christian Goffin,Cloud,Weather
+0.306,0.504,7,-9.909,0,0.169,0.801,0.896,0.326,0.0372,63.139,280013,4,Waldgeist,Autumn Glow,Cloud,Weather
+0.249,0.297,4,-15.377,1,0.0349,0.855,0.886,0.0667,0.0375,140.052,224299,3,vi (almost equal to) ix,Akira Kosemura,Cloud,Weather
+0.488,0.105,9,-20.235,0,0.0391,0.949,0.911,0.101,0.0649,116.002,319397,4,Change,Jordane Tumarinson,Cloud,Weather
+0.486,0.171,0,-20.501,0,0.0384,0.089,0.937,0.0959,0.0742,158.047,400846,4,Nocturne 4 - Alva Noto Remodel,Craig Armstrong,Cloud,Weather
+0.22,0.119,9,-22.764,0,0.0363,0.719,0.928,0.0826,0.0365,73.11,226750,4,Everyday Things,David Cordero,Cloud,Weather
+0.275,0.474,7,-13.297,0,0.0391,0.702,0.922,0.105,0.14,117.51,276610,4,In All This Heavy Blue,Hania Rani,Cloud,Weather
+0.632,0.248,9,-19.628,0,0.0372,0.966,0.908,0.0923,0.0396,97.026,277104,4,i am a strange loop,Arms and Sleepers,Cloud,Weather
+0.482,0.178,10,-21.641,1,0.0328,0.957,0.915,0.0712,0.0398,110.125,255480,4,Postcards for the Backyard,Neighborhood Libraries,Cloud,Weather
+0.133,0.215,7,-25.591,0,0.0413,0.452,0.91,0.0944,0.0398,67.61,156857,4,From The Distance,Alegria Cruz,Cloud,Weather
+0.421,0.238,7,-17.628,0,0.0295,0.97,0.876,0.107,0.0374,111.211,301299,4,Rose in Abstract - Portico Quartet Remix,Balmorhea,Cloud,Weather
+0.175,0.214,4,-19.223,0,0.036,0.937,0.921,0.0726,0.0343,120.072,246499,1,Hiraeth,Clemens Ruh,Cloud,Weather
+0.459,0.056,0,-22.239,1,0.0325,0.971,0.89,0.115,0.0464,80.054,200750,4,Dandelion Feathers,Cora Zea,Cloud,Weather
+0.148,0.191,0,-21.632,1,0.0362,0.935,0.93,0.0941,0.128,79.246,295307,3,Music For Growing Flowers - Pt. 7,Erland Cooper,Cloud,Weather
+0.0741,0.146,5,-15.795,1,0.0489,0.97,0.96,0.313,0.0319,78.897,204000,3,Ballongen,Henrik Meierkord,Cloud,Weather
+0.15,0.0335,11,-22.908,0,0.0485,0.963,0.923,0.0941,0.0338,136.366,228707,4,Post,Henrik Lindstrand,Cloud,Weather
+0.172,0.216,7,-19.572,0,0.0428,0.495,0.912,0.103,0.0331,114.01,175000,4,Being Outside Being,Mike Lazarev,Cloud,Weather
+0.0973,0.132,9,-20.283,0,0.0369,0.97,0.698,0.117,0.0387,81.702,272421,4,Deliverance,Maarten Schellekens,Cloud,Weather
+0.118,0.103,7,-18.951,0,0.0394,0.974,0.836,0.129,0.038,62.221,205408,3,The Orchard,Jakob Ahlbom,Cloud,Weather
+0.431,0.0647,4,-27.937,0,0.0566,0.991,0.869,0.338,0.0708,67.871,179500,4,Hind / Aska - Harpa Sessions,Gabríel Ólafs,Cloud,Weather
+0.218,0.0363,2,-29.249,1,0.036,0.961,0.874,0.0787,0.0492,68.636,332607,3,Solanales,Balmorhea,Cloud,Weather
+0.0964,0.134,0,-18.012,0,0.0371,0.957,0.664,0.0638,0.037,170.017,252905,4,Single Cell,Angus MacRae,Cloud,Weather
+0.469,0.119,1,-19.002,1,0.0296,0.995,0.928,0.102,0.421,110.033,142066,4,motives,praam,Cloud,Weather
+0.529,0.273,5,-19.073,1,0.0658,0.981,0.909,0.111,0.0391,151.51,178697,3,Løvfald,Søndag Søndag,Cloud,Weather
+0.394,0.134,7,-19.321,1,0.0308,0.963,0.8,0.084,0.0508,90.039,204672,4,In Love,Moments,Cloud,Weather
+0.389,0.0357,7,-25.075,1,0.0558,0.994,0.926,0.0785,0.31,141.252,264053,4,We Contain Multitudes — piano reworks,Yiruma,Cloud,Weather
+0.396,0.262,11,-20.063,0,0.0341,0.909,0.958,0.353,0.049,100.011,204760,4,Fractals,Blake Ewing,Cloud,Weather
+0.189,0.314,6,-19.161,1,0.045,0.421,0.93,0.113,0.0568,122.906,220500,3,And It Goes On - Michael A. Muller Rework,Daigo Hanada,Cloud,Weather
+0.402,0.0931,2,-26.164,0,0.0366,0.954,0.959,0.136,0.126,119.868,157000,4,The Fertile Night,Danny Mulhern,Cloud,Weather
+0.237,0.285,2,-20.239,1,0.041,0.793,0.976,0.0897,0.0388,140.36,243250,3,Birki,Jónsi,Cloud,Weather
+0.429,0.12,6,-18.46,1,0.033,0.237,0.811,0.316,0.452,89.959,197347,4,Moving Slowly,Wilson Trouvé,Cloud,Weather
+0.145,0.0315,7,-26.783,1,0.0415,0.992,0.97,0.11,0.184,72.713,282094,4,Slumber,Maarten Schellekens,Cloud,Weather
+0.322,0.16,6,-22.779,1,0.0391,0.959,0.941,0.0911,0.16,71.928,204845,4,Duvet,Niklas Paschburg,Cloud,Weather
+0.138,0.146,7,-19.986,0,0.0328,0.896,0.835,0.281,0.0372,165.155,257315,3,Circle 31,Foam and Sand,Cloud,Weather
+0.273,0.0338,1,-33.878,0,0.0343,0.984,0.878,0.105,0.134,147.649,227675,3,Woven Song — piano reworks,Hania Rani,Cloud,Weather
+0.185,0.0299,9,-21.86,0,0.0408,0.941,0.818,0.0973,0.0334,73.425,265987,5,A New Beginning,Atli Örvarsson,Cloud,Weather
+0.336,0.052,3,-25.364,1,0.0283,0.952,0.955,0.0695,0.0366,62.748,149977,4,Clearly,Roger Eno,Cloud,Weather
+0.211,0.216,9,-19.6,0,0.0473,0.893,0.957,0.0791,0.0285,92.468,93923,4,|Instinct| One,Paavo Virtanen,Cloud,Weather
+0.346,0.00674,3,-27.933,1,0.0396,0.978,0.936,0.134,0.0386,66.685,211525,4,Reflections,Nairuz,Cloud,Weather
+0.226,0.199,11,-15.491,0,0.0418,0.913,0.312,0.265,0.092,87.394,220953,3,Vårsøg (Arr. for Violin and Orchestra by Ben Palmer),Henning Sommerro,Cloud,Weather
+0.144,0.25,6,-17.1,1,0.0373,0.879,0.89,0.0854,0.034,88.913,255483,3,Glow - Foam and Sand Rework,Robot Koch,Cloud,Weather
+0.17,0.345,7,-14.579,0,0.0412,0.694,0.559,0.173,0.0909,117.188,234524,3,Sept Douleurs,Alexandra Hamilton-Ayres,Cloud,Weather
+0.134,0.108,3,-20.627,1,0.0343,0.979,0.902,0.109,0.0373,87.948,229311,4,Whispers - Strings,Aron van Selm,Cloud,Weather
+0.247,0.126,7,-21.405,1,0.0345,0.991,0.936,0.0913,0.159,101.26,128044,4,cosmos,praam,Cloud,Weather
+0.201,0.194,9,-24.175,1,0.0433,0.92,0.909,0.0996,0.038,119.144,192914,4,Dependent,Christopher Galovan,Cloud,Weather
+0.717,0.429,11,-10.996,0,0.032,0.465,0.959,0.133,0.366,93.997,211915,4,Intro to Present,Tree Climber,Cloud,Weather
+0.0756,0.108,5,-18.132,0,0.0443,0.698,0.917,0.106,0.0614,80.669,161000,3,No Time Left For Us,oversyncing,Cloud,Weather
+0.791,0.466,2,-11.648,1,0.0498,0.655,0.88,0.0937,0.392,94.972,207947,4,Maturing Skies,Tree Climber,Cloud,Weather
+0.679,0.113,2,-19.025,1,0.0795,0.991,0.916,0.0827,0.0793,159.986,126115,4,Life Is Beautiful,KataNas,Cloud,Weather
+0.621,0.473,6,-16.808,1,0.0371,0.596,0.79,0.188,0.295,144.004,160000,4,Blackbirds Sing in the Shadows of the Stars,Tree Climber,Cloud,Weather
+0.557,0.388,8,-16.913,1,0.0436,0.976,0.811,0.0764,0.448,166.521,108107,3,Safe Travels!,holy islander,Cloud,Weather
+0.681,0.29,11,-8.745,1,0.0406,0.5,0.864,0.0872,0.0648,87.005,190517,4,First Historian,Tree Climber,Cloud,Weather
+0.634,0.285,0,-13.247,1,0.0391,0.786,0.766,0.0935,0.179,140.003,200598,4,Amidst This Love,Pr4ntik,Cloud,Weather
+0.624,0.316,4,-14.732,1,0.0478,0.642,0.772,0.0889,0.266,85.992,140143,4,Days,Tree Climber,Cloud,Weather
+0.231,0.21,6,-19.149,0,0.0295,0.823,0.889,0.0861,0.16,85.363,155111,4,Breathtaking,A.T.P.,Cloud,Weather
+0.362,0.34,4,-12.413,0,0.0298,0.679,0.936,0.377,0.1,171.957,195178,4,Forgotten Path,Høxde,Cloud,Weather
+0.636,0.649,5,-12.605,1,0.0356,0.511,0.863,0.121,0.281,141.974,167746,4,Born from Dreams,Tree Climber,Cloud,Weather
+0.314,0.237,8,-18.519,1,0.0284,0.973,0.911,0.108,0.0394,89.971,195959,4,Echoes From Home,Høxde,Cloud,Weather
+0.375,0.255,2,-16.637,0,0.0307,0.926,0.942,0.126,0.17,152.004,155938,4,No Time Like Now,Høxde,Cloud,Weather
+0.74,0.502,0,-12.089,1,0.0315,0.41,0.948,0.0813,0.396,111.985,180000,4,Bending Shadows,Tree Climber,Cloud,Weather
+0.476,0.215,0,-19.337,1,0.0333,0.883,0.907,0.333,0.0576,131.76,139774,4,Geneva Grasslands,Yoann Garel,Cloud,Weather
+0.502,0.233,1,-14.316,1,0.0319,0.515,0.738,0.121,0.0396,79.978,135375,4,Hues of Warmth,Tosso,Cloud,Weather
+0.715,0.2,10,-18.052,1,0.0345,0.977,0.91,0.0978,0.11,120.919,156000,4,2250,violini5t,Cloud,Weather
+0.369,0.162,3,-21.487,0,0.0449,0.655,0.734,0.103,0.075,134.925,132223,4,Under The Two Moons,holy islander,Cloud,Weather
+0.58,0.0977,10,-22.415,1,0.0703,0.994,0.951,0.111,0.226,136.326,337894,4,Finding Space,Handel,Cloud,Weather
+0.368,0.305,1,-12.353,0,0.0384,0.892,0.978,0.0983,0.105,114.961,163826,3,Awakening,Pawel Morytko,Cloud,Weather
+0.574,0.2,11,-19.158,1,0.051,0.836,0.848,0.127,0.0392,75.006,186433,1,Paper Boat,Aniket,Cloud,Weather
+0.171,0.0999,3,-24.098,1,0.0411,0.963,0.927,0.109,0.178,128.085,138000,4,And Before I Knew It,like gentle rain,Cloud,Weather
+0.18,0.209,5,-21.561,1,0.0336,0.497,0.924,0.0835,0.0453,159.702,231000,3,Collapsing Fate,kz1teryyy,Cloud,Weather
+0.601,0.319,1,-14.225,0,0.0446,0.669,0.265,0.381,0.212,80.007,192242,4,"See Ya', Friend",Pr4ntik,Cloud,Weather
+0.671,0.399,1,-14.612,1,0.043,0.771,0.855,0.276,0.476,147.957,145946,4,Heartlands,Ippi,Cloud,Weather
+0.333,0.109,2,-21.998,1,0.0386,0.94,0.926,0.108,0.118,124.304,155750,4,Like Sunlight In My Room,BigRicePiano,Cloud,Weather
+0.714,0.415,3,-13.636,1,0.0359,0.646,0.846,0.0902,0.349,132.016,212784,4,Since I Met You,Pr4ntik,Cloud,Weather
+0.352,0.146,11,-22.974,1,0.0322,0.861,0.901,0.111,0.192,180.031,152000,3,Quiet Harmony,Høxde,Cloud,Weather
+0.738,0.472,2,-13.26,1,0.046,0.715,0.882,0.106,0.418,121.995,137769,4,Unwind,Aniket,Cloud,Weather
+0.576,0.446,0,-12.462,0,0.0403,0.347,0.635,0.104,0.379,81.965,194657,4,Overgrew,Pr4ntik,Cloud,Weather
+0.301,0.149,2,-17.558,1,0.0302,0.98,0.983,0.11,0.105,79.874,132000,4,Above The Clouds,Locky Farrell,Cloud,Weather
+0.507,0.29,5,-12.461,0,0.027,0.602,0.83,0.267,0.0385,78.991,173538,4,Rain,Høxde,Cloud,Weather
+0.609,0.36,10,-11.545,1,0.0272,0.532,0.928,0.111,0.665,96.01,146250,4,Wishing Well,MoonEra,Cloud,Weather
+0.567,0.154,1,-19.271,1,0.0262,0.943,0.925,0.111,0.315,140.022,137143,4,middle of the night,muun,Cloud,Weather
+0.494,0.019,10,-25.998,1,0.0736,0.995,0.949,0.131,0.228,61.526,187928,4,I'll be there,Handel,Cloud,Weather
+0.103,0.348,3,-15.126,1,0.0338,0.886,0.857,0.125,0.0751,81.851,302023,1,If I Could Fly Away,Little Music,Cloud,Weather
+0.634,0.408,5,-12.703,1,0.0301,0.685,0.877,0.113,0.0863,120.053,112000,4,petals and barks,UmeChokoreto,Cloud,Weather
+0.585,0.374,2,-15.175,1,0.0362,0.734,0.928,0.0986,0.248,133.853,145851,4,Shooting Stars,Old Blanket,Cloud,Weather
+0.224,0.0838,9,-19.359,0,0.033,0.98,0.897,0.373,0.185,88.133,126000,4,Until Next Time,Pedro Coudsi,Cloud,Weather
+0.593,0.204,2,-19.079,0,0.0289,0.885,0.858,0.102,0.0798,129.99,152308,4,Facing Truth,Deerson,Cloud,Weather
+0.348,0.449,7,-13.19,0,0.0312,0.523,0.848,0.355,0.038,82.943,189399,4,Highlands,Høxde,Cloud,Weather
+0.258,0.219,5,-17.778,1,0.0354,0.95,0.908,0.194,0.155,144.201,130909,5,Evergreen Forest,Astra,Cloud,Weather
+0.688,0.389,0,-13.456,1,0.0388,0.681,0.773,0.167,0.0407,111.998,142020,4,Gentle Rain,Pedro Coudsi,Cloud,Weather
+0.367,0.378,2,-14.384,0,0.0297,0.945,0.924,0.563,0.0895,81.058,188053,4,Into The Forest,Høxde,Cloud,Weather
+0.731,0.411,11,-12.7,1,0.0711,0.688,0.924,0.0716,0.115,83.982,165716,4,Daydreaming,Aniket,Cloud,Weather
+0.568,0.186,9,-17.041,0,0.0324,0.953,0.916,0.0901,0.132,115.059,120522,4,Warrior Within,cloudly.,Cloud,Weather
+0.467,0.24,3,-17.29,1,0.0312,0.917,0.961,0.125,0.372,109.982,139636,4,Swaying Trees,Astra,Cloud,Weather
+0.545,0.492,10,-12.576,1,0.0276,0.348,0.798,0.87,0.0917,93.988,158298,4,Mountain River,Høxde,Cloud,Weather
+0.127,0.229,2,-16.436,0,0.0318,0.791,0.94,0.0935,0.0379,84.644,160069,4,Nowhere,A.T.P.,Cloud,Weather
+0.494,0.394,10,-10.616,1,0.0612,0.31,0.953,0.0973,0.291,200.071,170562,3,Evening Hours,Pr4ntik,Cloud,Weather
+0.497,0.226,6,-16.561,1,0.0296,0.897,0.891,0.12,0.103,79.978,175125,4,The Parade of Planets,kz1teryyy,Cloud,Weather
+0.584,0.368,0,-15.811,1,0.0394,0.878,0.918,0.119,0.182,79.965,162000,4,Reality,Høxde,Cloud,Weather
+0.466,0.335,8,-14.821,1,0.0413,0.225,0.96,0.109,0.128,74.947,159412,3,It's All Up Now,Pr4ntik,Cloud,Weather
+0.412,0.188,7,-17.525,1,0.0327,0.876,0.911,0.104,0.0848,90.744,145950,4,Aloft,Little Music,Cloud,Weather
+0.321,0.353,11,-12.44,1,0.0392,0.264,0.852,0.075,0.263,236.799,206598,3,Far Away,Pr4ntik,Cloud,Weather
+0.0961,0.109,11,-20.437,1,0.042,0.918,0.906,0.132,0.0657,88.989,139990,4,Last Hope,t e o,Cloud,Weather
+0.42,0.354,2,-14.413,0,0.0308,0.651,0.961,0.0918,0.0544,78.001,179769,4,Seeds of Life,Høxde,Cloud,Weather
+0.336,0.215,8,-19.422,0,0.0325,0.856,0.956,0.0914,0.0521,132.183,154545,3,In The Clouds,Aniket,Cloud,Weather
+0.522,0.305,2,-18.222,0,0.0327,0.942,0.924,0.137,0.0914,119.98,172000,4,Voyageur,Høxde,Cloud,Weather
+0.696,0.182,1,-24.112,1,0.0454,0.969,0.942,0.108,0.479,120.01,127000,3,Childhood Memories,Cygnet,Cloud,Weather
+0.634,0.204,7,-18.996,1,0.0323,0.958,0.944,0.547,0.261,120.021,131562,3,Sailing To Dublin,Yoann Garel,Cloud,Weather
+0.14,0.285,9,-16.838,0,0.0316,0.894,0.91,0.371,0.0492,79.295,116250,4,Distant Satellites,pajama boy,Cloud,Weather
+0.601,0.419,4,-13.967,1,0.14,0.196,0.904,0.0743,0.305,164.152,196120,4,Distance,Pr4ntik,Cloud,Weather
+0.449,0.321,5,-16.066,1,0.0318,0.879,0.926,0.104,0.112,136.05,234656,4,Tears From A Cloud,Little Music,Cloud,Weather
+0.182,0.257,9,-16.557,1,0.0328,0.943,0.938,0.1,0.112,137.764,203143,4,The Last Protocol,Evenbluer,Cloud,Weather
+0.619,0.295,11,-12.793,1,0.0278,0.804,0.926,0.0967,0.354,86.973,154514,4,Sunny Pages,Høxde,Cloud,Weather
+0.283,0.206,4,-17.076,1,0.0333,0.317,0.963,0.111,0.0602,114.887,133484,3,Lostness,jara,Cloud,Weather
+0.4,0.187,7,-16.852,1,0.0385,0.973,0.927,0.119,0.0607,120.072,172000,4,In The Blind,Marcus Paul,Cloud,Weather
+0.668,0.31,2,-15.354,1,0.0415,0.662,0.893,0.116,0.579,119.955,112156,4,Where the Trail Leads,Kanyun,Cloud,Weather
+0.253,0.0647,5,-21.516,1,0.0513,0.991,0.886,0.109,0.226,69.363,147500,4,Mornings In A Picture Frame,like gentle rain,Cloud,Weather
+0.637,0.281,0,-13.084,1,0.0299,0.732,0.952,0.17,0.173,130.021,119967,4,Sunrise Roast,Astra,Cloud,Weather
+0.485,0.102,3,-17.927,1,0.0315,0.937,0.966,0.0804,0.0659,126.007,120124,4,Beyond The Lights,Pianoverse,Cloud,Weather
+0.583,0.642,0,-8.943,1,0.0373,0.787,0.875,0.0656,0.139,140.016,123428,4,Blue Skies,Neele Harder,Cloud,Weather
+0.5,0.266,2,-18.257,1,0.0307,0.903,0.879,0.206,0.136,112.02,180000,4,Echoes Through the Portal,Moon-uh,Cloud,Weather
+0.52,0.195,6,-18.872,1,0.0338,0.919,0.907,0.389,0.0579,66.009,149091,4,our days,Theo Aabel,Cloud,Weather
+0.587,0.0965,0,-20.083,1,0.0346,0.978,0.933,0.103,0.215,104.931,157428,3,Solitude,Fugee,Cloud,Weather
+0.639,0.409,7,-14.555,0,0.0248,0.803,0.87,0.12,0.143,99.956,134399,4,Glimmer Of Light,Høxde,Cloud,Weather
+0.603,0.39,10,-11.403,1,0.0403,0.534,0.869,0.104,0.683,84.008,168351,4,Learning To Love,C4C,Cloud,Weather
+0.308,0.15,0,-17.358,1,0.0299,0.971,0.89,0.0855,0.111,73.533,152733,3,Don't Wake Me Up,Pianoverse,Cloud,Weather
+0.743,0.352,7,-10.024,1,0.0448,0.444,0.794,0.106,0.586,139.897,140471,4,Up The Mountain,C4C,Cloud,Weather
+0.556,0.291,9,-13.479,0,0.0353,0.798,0.702,0.0789,0.0541,112.93,171692,3,last bird singing,Tosso,Cloud,Weather
+0.34,0.363,9,-13.372,0,0.0376,0.726,0.921,0.37,0.0733,119.848,161750,4,Reason for the rain,Fika Beats,Cloud,Weather
+0.555,0.039,5,-20.228,0,0.0398,0.962,0.922,0.11,0.0847,95.087,153034,4,Morning Dew,jara,Cloud,Weather
+0.59,0.586,8,-12.355,1,0.0454,0.743,0.833,0.253,0.298,131.982,94154,4,The Narrow Path,kiwala.,Cloud,Weather
+0.528,0.193,7,-15.501,1,0.0287,0.9,0.888,0.0845,0.154,150.065,178400,4,Midnight Clouds,Astra,Cloud,Weather
+0.494,0.119,4,-21.845,0,0.0358,0.956,0.937,0.109,0.129,161.982,133649,4,Sunny Droplet,jara,Cloud,Weather
+0.699,0.273,0,-11.684,1,0.038,0.465,0.874,0.154,0.272,75.012,134400,4,Woolly Bears,Prithvi,Cloud,Weather
+0.547,0.355,5,-11.325,1,0.0258,0.79,0.918,0.0951,0.313,140.03,130286,4,Spirit in the sky,Dark Winter,Cloud,Weather
+0.834,0.284,4,-12.73,1,0.427,0.799,0.837,0.218,0.399,79.992,108000,4,bygones,mell-ø,Cloud,Weather
+0.549,0.403,10,-14.989,1,0.0458,0.989,0.921,0.0875,0.414,152.056,129687,4,Dancing Fairies,KataNas,Cloud,Weather
+0.471,0.327,9,-14.907,1,0.0296,0.91,0.907,0.44,0.142,140.075,171692,4,Into the Unknown,kz1teryyy,Cloud,Weather
+0.676,0.198,9,-16.137,1,0.0354,0.795,0.825,0.102,0.257,133.031,130286,4,Depths,Nuver,Cloud,Weather
+0.458,0.521,5,-15.96,1,0.0503,0.928,0.954,0.127,0.19,136.002,133264,4,The Time We Cherish,Melvyn Nielsen,Cloud,Weather
+0.617,0.476,4,-10.11,0,0.0288,0.723,0.494,0.738,0.275,81.011,172000,4,Skiff,t.Stratt,Cloud,Weather
+0.439,0.424,8,-15.033,0,0.0389,0.488,0.824,0.134,0.0767,139.989,193286,4,Heiko,Kyoma,Cloud,Weather
+0.543,0.262,10,-10.947,1,0.127,0.907,0.913,0.111,0.296,180.067,108187,4,The Journey Ahead,bedroom lofi,Cloud,Weather
+0.53,0.169,8,-18.674,1,0.0403,0.922,0.942,0.196,0.129,127.667,140389,4,Dinner In Paris,Yoann Garel,Cloud,Weather
+0.549,0.271,4,-13.788,1,0.0316,0.87,0.683,0.221,0.103,100.031,119659,4,Through the Meadows,Astra,Cloud,Weather
+0.418,0.522,7,-13.536,0,0.0672,0.547,0.862,0.217,0.153,182.86,217000,3,Last Hope,karasu.,Cloud,Weather
+0.597,0.848,4,-5.458,1,0.0406,0.173,0,0.373,0.324,139.876,233896,4,Dónde está el amor (feat. Jesse & Joy),Pablo Alborán,Cloud,Weather
+0.783,0.685,9,-5.008,1,0.0271,0.627,3.49e-06,0.108,0.54,107.01,236333,4,Rosas,La Oreja de Van Gogh,Cloud,Weather
+0.901,0.136,8,-16.127,0,0.102,0.667,0.354,0.109,0.643,150.076,211140,4,Heart To Heart,Mac DeMarco,Cloud,Weather
+0.575,0.679,2,-3.845,1,0.0278,0.0664,0,0.0956,0.601,107.878,187520,3,Me Voy,Julieta Venegas,Cloud,Weather
+0.31,0.663,3,-6.075,1,0.101,0.44,0,0.609,0.407,172.768,239400,3,No Me Doy Por Vencido,Luis Fonsi,Cloud,Weather
+0.798,0.299,0,-9.634,1,0.0447,0.723,3.67e-05,0.129,0.701,115.03,206147,4,El Bolero,Yami Safdie,Cloud,Weather
+0.591,0.28,4,-5.494,1,0.0283,0.889,0,0.124,0.348,141.916,271800,4,All I Ask,Adele,Cloud,Weather
+0.481,0.81,9,-5.704,1,0.133,0.234,0,0.0809,0.328,175.697,232253,4,Yo Te Esperaré,Cali Y El Dandee,Cloud,Weather
+0.479,0.477,11,-6.886,1,0.0363,0.127,0,0.15,0.127,151.97,288893,4,¡Corre!,Jesse & Joy,Cloud,Weather
+0.697,0.336,9,-10.395,1,0.0424,0.598,0.00528,0.107,0.31,82.029,216680,3,Evergreen (You Didn’t Deserve Me At All),Omar Apollo,Cloud,Weather
+0.709,0.366,8,-8.696,1,0.0472,0.0256,0,0.308,0.407,74.511,174000,4,Dueles Tan Bien,Bruses,Cloud,Weather
+0.575,0.664,4,-5.303,0,0.0481,0.637,0,0.116,0.437,129.071,241688,4,Take Me To Church,Hozier,Cloud,Weather
+0.453,0.655,9,-4.22,1,0.0257,0.0794,7.06e-06,0.0849,0.366,172.01,236160,4,Somewhere Only We Know,Keane,Cloud,Weather
+0.5,0.292,0,-8.554,1,0.0323,0.746,0,0.188,0.37,145.879,185200,4,Little Do You Know,Alex & Sierra,Cloud,Weather
+0.643,0.275,0,-15.462,1,0.0315,0.939,0.454,0.115,0.603,90.022,206712,4,Kukira Kau Rumah,Amigdala,Cloud,Weather
+0.509,0.547,10,-6.548,0,0.0417,0.399,0,0.215,0.197,109.436,234147,4,Pretty When You Cry,Lana Del Rey,Cloud,Weather
+0.456,0.336,2,-15.466,1,0.0264,0.333,0.799,0.0737,0.0762,87.435,362973,4,Stop Waiting,Cigarettes After Sex,Cloud,Weather
+0.331,0.341,9,-6.057,0,0.0309,0.528,0,0.109,0.152,109.821,285935,4,Love In The Dark,Adele,Cloud,Weather
+0.778,0.422,0,-10.114,1,0.0482,0.921,0.00924,0.0958,0.187,120.033,176472,4,bitches broken hearts,Billie Eilish,Cloud,Weather
+0.545,0.466,6,-6.659,1,0.0301,0.0381,0,0.353,0.351,139.978,251147,4,La De La Mala Suerte,Jesse & Joy,Cloud,Weather
+0.47,0.235,5,-7.298,1,0.038,0.933,0,0.095,0.134,103.87,239240,4,Jueves,La Oreja de Van Gogh,Cloud,Weather
+0.459,0.545,6,-4.874,1,0.0282,0.142,0,0.105,0.194,137.941,248587,3,When I Look At You,Miley Cyrus,Cloud,Weather
+0.621,0.31,9,-10.164,0,0.0283,0.945,6.12e-05,0.117,0.125,111.881,240707,4,Stay,Rihanna,Cloud,Weather
+0.462,0.265,11,-5.307,1,0.0294,0.88,0,0.131,0.419,106.357,168520,3,My Everything,Ariana Grande,Cloud,Weather
+0.564,0.412,8,-9.23,0,0.0274,0.554,0,0.151,0.29,144.689,187293,4,Mr. Forgettable,David Kushner,Cloud,Weather
+0.626,0.784,0,-4.58,1,0.0252,0.464,1.66e-06,0.109,0.494,103.924,202822,4,Cuando no estás,Andrés Calamaro,Cloud,Weather
+0.508,0.792,0,-7.311,0,0.0297,0.229,0.124,0.145,0.601,147.067,320467,4,Space Song,Beach House,Cloud,Weather
+0.357,0.425,5,-7.301,1,0.0333,0.584,0,0.322,0.27,102.078,198040,3,Heather,Conan Gray,Cloud,Weather
+0.376,0.595,3,-5.936,1,0.0496,0.303,0,0.095,0.265,144.361,290900,4,When We Were Young,Adele,Cloud,Weather
+0.706,0.46,1,-9.061,1,0.0296,0.847,0.00793,0.106,0.226,102.98,219013,4,You're Somebody Else,flora cash,Cloud,Weather
+0.531,0.834,2,-3.944,1,0.052,0.277,0,0.131,0.526,142.026,247640,4,Dueles,Jesse & Joy,Cloud,Weather
+0.405,0.111,0,-11.879,1,0.0369,0.964,4.37e-05,0.0872,0.219,116.86,189475,4,Not About Angels,Birdy,Cloud,Weather
+0.462,0.24,0,-12.077,1,0.0377,0.92,0,0.113,0.32,171.319,244000,4,champagne problems,Taylor Swift,Cloud,Weather
+0.498,0.59,1,-4.721,0,0.032,0.511,0,0.107,0.0784,145.867,217867,4,Talking to the Moon,Bruno Mars,Cloud,Weather
+0.552,0.603,8,-5.71,1,0.0334,0.199,0,0.151,0.231,139.907,232720,4,That Should Be Me,Justin Bieber,Cloud,Weather
+0.651,0.441,7,-11.74,1,0.0346,0.519,0.708,0.0959,0.373,109.979,234174,4,Pistol,Cigarettes After Sex,Cloud,Weather
+0.525,0.786,11,-4.98,0,0.0436,0.132,0,0.0612,0.566,146.025,218200,4,Si Tu Te Vas,TINI,Cloud,Weather
+0.445,0.179,1,-12.938,1,0.0396,0.952,0.00056,0.107,0.119,72.246,193080,4,Heal,Tom Odell,Cloud,Weather
+0.453,0.5,11,-8.153,1,0.0338,0.555,0.000541,0.123,0.396,160.964,250596,3,'Cause You Have To,LANY,Cloud,Weather
+0.529,0.543,8,-8.558,1,0.139,0.326,0,0.108,0.581,74.266,266627,4,Coincidir,Macaco,Cloud,Weather
+0.29,0.133,7,-13.233,1,0.0334,0.893,2.31e-05,0.112,0.164,175.663,228413,4,Sampai Menutup Mata,Acha Septriasa,Cloud,Weather
+0.4,0.398,10,-6.038,0,0.0385,0.786,3.47e-06,0.333,0.16,111.661,229933,4,Me Soltaste,Jesse & Joy,Cloud,Weather
+0.499,0.683,2,-5.036,0,0.0354,0.542,0,0.0923,0.275,139.701,230347,4,Disparo al Corazón,Ricky Martin,Cloud,Weather
+0.611,0.847,11,-4.26,0,0.299,0.507,0,0.25,0.668,175.836,308947,4,La Bella Y La Bestia,Porta,Cloud,Weather
+0.618,0.217,10,-15.372,1,0.0515,0.836,0.000163,0.538,0.0872,116.014,202103,4,Will He,Joji,Cloud,Weather
+0.463,0.376,4,-8.572,1,0.0393,0.757,0,0.28,0.517,147.463,202853,3,Mi Princesa,David Bisbal,Cloud,Weather
+0.473,0.465,5,-7.289,1,0.0281,0.419,0,0.125,0.221,134.856,274213,3,Que Quieres De Mi,Luis Fonsi,Cloud,Weather
+0.576,0.155,6,-14.405,1,0.0341,0.834,0.000137,0.0906,0.0946,109.843,256689,3,Be My Mistake,The 1975,Cloud,Weather
+0.681,0.792,1,-4.795,1,0.0587,0.334,2.05e-06,0.295,0.4,98.09,160536,4,CORAZÓN VACÍO,Maria Becerra,Cloud,Weather
+0.46,0.615,5,-3.472,0,0.0331,0.0633,0,0.109,0.414,167.927,283160,4,You Were Beautiful,DAY6,Cloud,Weather
+0.311,0.485,6,-5.726,0,0.0365,0.701,0,0.0726,0.225,77.355,208827,4,Train Wreck,James Arthur,Cloud,Weather
+0.331,0.341,9,-6.057,0,0.0309,0.528,0,0.109,0.152,109.821,285935,4,Love In The Dark,Adele,Cloud,Weather
+0.516,0.467,0,-6.184,1,0.0302,0.662,0,0.0853,0.386,132.861,173307,4,What A Time (feat. Niall Horan),Julia Michaels,Cloud,Weather
+0.418,0.248,3,-9.997,1,0.0451,0.954,4.21e-06,0.108,0.298,130.953,243007,4,Already Gone,Sleeping At Last,Cloud,Weather
+0.56,0.473,5,-7.23,1,0.0533,0.618,0,0.31,0.441,109.414,175345,4,Fingers Crossed,Lauren Spencer Smith,Cloud,Weather
+0.621,0.31,9,-10.164,0,0.0283,0.945,6.12e-05,0.117,0.125,111.881,240707,4,Stay,Rihanna,Cloud,Weather
+0.357,0.425,5,-7.301,1,0.0333,0.584,0,0.322,0.27,102.078,198040,3,Heather,Conan Gray,Cloud,Weather
+0.513,0.25,5,-9.376,0,0.0367,0.913,0,0.117,0.351,74.103,220541,4,Sorry,Halsey,Cloud,Weather
+0.474,0.707,7,-4.534,1,0.0253,0.0831,0,0.162,0.224,83.235,252107,4,Wings,Birdy,Cloud,Weather
+0.469,0.19,4,-11.138,1,0.0373,0.919,0,0.107,0.325,125.103,219536,4,Lay Me Down (feat. John Legend),Sam Smith,Cloud,Weather
+0.643,0.275,0,-15.462,1,0.0315,0.939,0.454,0.115,0.603,90.022,206712,4,Kukira Kau Rumah,Amigdala,Cloud,Weather
+0.358,0.557,10,-7.398,1,0.059,0.695,0,0.0902,0.494,85.043,211467,4,Say You Won't Let Go,James Arthur,Cloud,Weather
+0.591,0.28,4,-5.494,1,0.0283,0.889,0,0.124,0.348,141.916,271800,4,All I Ask,Adele,Cloud,Weather
+0.215,0.316,3,-12.201,1,0.0297,0.135,0.244,0.595,0.19,94.627,258986,3,Medicine,Daughter,Cloud,Weather
+0.575,0.679,2,-3.845,1,0.0278,0.0664,0,0.0956,0.601,107.878,187520,3,Me Voy,Julieta Venegas,Cloud,Weather
+0.386,0.136,6,-9.267,1,0.0458,0.932,0,0.0653,0.0976,67.016,225853,3,Lost Without You,Freya Ridings,Cloud,Weather
+0.661,0.714,5,-5.68,0,0.121,0.314,0,0.179,0.464,147.998,212120,4,Let You Down,NF,Cloud,Weather
+0.582,0.451,9,-6.163,1,0.0388,0.292,0,0.101,0.242,75.126,265382,4,Take Me Home,Jess Glynne,Cloud,Weather
+0.508,0.792,0,-7.311,0,0.0297,0.229,0.124,0.145,0.601,147.067,320467,4,Space Song,Beach House,Cloud,Weather
+0.405,0.111,0,-11.879,1,0.0369,0.964,4.37e-05,0.0872,0.219,116.86,189475,4,Not About Angels,Birdy,Cloud,Weather
+0.512,0.526,1,-5.44,1,0.0251,0.0724,0,0.0675,0.249,85.024,226330,4,Sad Song (feat. Elena Coats),We The Kings,Cloud,Weather
+0.329,0.277,10,-13.111,0,0.0302,0.971,0.024,0.0971,0.121,159.719,289560,3,Rosyln,Bon Iver,Cloud,Weather
+0.696,0.543,11,-6.164,1,0.0489,0.308,0,0.0939,0.479,107.969,246880,4,Can I Be Him,James Arthur,Cloud,Weather
+0.552,0.603,8,-5.71,1,0.0334,0.199,0,0.151,0.231,139.907,232720,4,That Should Be Me,Justin Bieber,Cloud,Weather
+0.693,0.467,4,-9.558,0,0.043,0.0497,0.452,0.107,0.402,105.955,197733,4,Mary,Alex G,Cloud,Weather
+0.342,0.396,4,-6.673,1,0.0327,0.549,0,0.0708,0.109,136.19,252320,4,Helium,Sia,Cloud,Weather
+0.512,0.455,0,-6.775,0,0.0332,0.0998,0,0.151,0.0759,143.149,287733,4,Recuérdame,Pablo Alborán,Cloud,Weather
+0.375,0.409,0,-8.713,0,0.037,0.205,0,0.1,0.196,127.854,259991,3,Monsters,James Blunt,Cloud,Weather
+0.5,0.292,0,-8.554,1,0.0323,0.746,0,0.188,0.37,145.879,185200,4,Little Do You Know,Alex & Sierra,Cloud,Weather
+0.47,0.235,5,-7.298,1,0.038,0.933,0,0.095,0.134,103.87,239240,4,Jueves,La Oreja de Van Gogh,Cloud,Weather
+0.577,0.387,7,-8.607,1,0.274,0.964,0.705,0.208,0.459,146.565,126312,1,worldstar money (interlude),Joji,Cloud,Weather
+0.44,0.323,9,-5.957,1,0.0281,0.692,0,0.103,0.158,77.986,232587,4,Just A Little Bit Of Your Heart,Ariana Grande,Cloud,Weather
+0.545,0.466,6,-6.659,1,0.0301,0.0381,0,0.353,0.351,139.978,251147,4,La De La Mala Suerte,Jesse & Joy,Cloud,Weather
+0.522,0.074,7,-23.625,0,0.0598,0.929,0.765,0.108,0.342,135.298,141280,3,Between The Bars,Elliott Smith,Cloud,Weather
+0.467,0.157,11,-9.649,1,0.0336,0.974,1.46e-06,0.0816,0.277,108.13,242564,4,Chasing Cars,Sleeping At Last,Cloud,Weather
+0.433,0.308,10,-9.001,0,0.0291,0.778,1.46e-05,0.092,0.153,73.331,256236,3,People Help the People,Birdy,Cloud,Weather
+0.345,0.587,5,-8.346,1,0.0364,0.539,0.0731,0.119,0.258,119.479,317760,4,Sad Girl,Lana Del Rey,Cloud,Weather
+0.376,0.595,3,-5.936,1,0.0496,0.303,0,0.095,0.265,144.361,290900,4,When We Were Young,Adele,Cloud,Weather
+0.715,0.372,5,-8.237,1,0.0443,0.638,0,0.169,0.474,91.931,201000,4,Too Good At Goodbyes,Sam Smith,Cloud,Weather
+0.666,0.423,0,-8.012,1,0.0429,0.494,0,0.106,0.154,129.893,205280,4,Million Reasons,Lady Gaga,Cloud,Weather
+0.489,0.413,0,-6.499,1,0.0314,0.59,0,0.0639,0.246,136.116,231920,4,The Cut That Always Bleeds,Conan Gray,Cloud,Weather
+0.389,0.277,7,-10.757,1,0.0323,0.698,0,0.0966,0.125,89.32,247347,4,I'll Be Good,Jaymes Young,Cloud,Weather
+0.445,0.179,1,-12.938,1,0.0396,0.952,0.00056,0.107,0.119,72.246,193080,4,Heal,Tom Odell,Cloud,Weather
+0.901,0.136,8,-16.127,0,0.102,0.667,0.354,0.109,0.643,150.076,211140,4,Heart To Heart,Mac DeMarco,Cloud,Weather
+0.536,0.311,1,-10.396,1,0.0288,0.82,1.65e-05,0.107,0.246,147.486,260533,4,Let It Go,James Bay,Cloud,Weather
+0.207,0.292,7,-11.641,1,0.0328,0.818,0.942,0.0934,0.11,141.869,248635,4,Hearing,Sleeping At Last,Cloud,Weather
+0.379,0.29,4,-8.487,1,0.0513,0.952,0.000996,0.118,0.184,165.997,201080,4,Skinny Love,Birdy,Cloud,Weather
+0.571,0.422,1,-7.561,0,0.0422,0.374,0,0.127,0.169,113.016,242293,4,The Truth Untold (feat. Steve Aoki),BTS,Cloud,Weather
+0.412,0.159,9,-14.214,1,0.0278,0.991,0.772,0.083,0.0389,85.462,103920,4,That Home,The Cinematic Orchestra,Cloud,Weather
+0.699,0.304,1,-11.192,1,0.0993,0.779,0.000993,0.137,0.271,119.705,160184,4,the remedy for a broken heart (why am I so in love),XXXTENTACION,Cloud,Weather
+0.476,0.495,7,-6.095,1,0.0242,3.28e-05,0.915,0.506,0.114,90.0,137231,4,The Singularity,Ghostemane,Cloud,Weather
+0.475,0.915,6,-6.324,0,0.0345,0.00168,3.47e-05,0.101,0.599,138.637,99691,4,Head,Cities Aviv,Cloud,Weather
+0.392,0.766,0,-5.697,0,0.153,0.765,0,0.19,0.418,136.28,234153,4,B.O.R. (Birth of Rap),Lil B,Cloud,Weather
+0.631,0.802,10,-6.043,0,0.0904,0.0747,0.00344,0.533,0.394,95.602,165042,4,Come To Life,Young Fathers,Cloud,Weather
+0.339,0.421,2,-12.38,1,0.0449,0.728,0.536,0.068,0.324,93.038,165244,5,Phenomeno,Tohji,Cloud,Weather
+0.512,0.835,1,-6.05,0,0.135,0.00367,6.64e-05,0.101,0.485,153.857,125034,4,Realms,Cities Aviv,Cloud,Weather
+0.49,0.988,8,-2.77,1,0.165,0.00209,0,0.049,0.359,130.093,134827,4,URL Irl,Cities Aviv,Cloud,Weather
+0.713,0.687,6,-3.494,1,0.219,0.0128,0,0.755,0.24,140.153,277248,4,Pretty Bitch,Lil B,Cloud,Weather
+0.579,0.771,11,-8.362,1,0.0342,0.0825,0.358,0.173,0.261,139.933,222572,4,Fool,Cities Aviv,Cloud,Weather
+0.585,0.542,10,-12.216,0,0.0562,0.316,7.31e-05,0.14,0.323,149.967,207455,4,Worlds of Pressure,Cities Aviv,Cloud,Weather
