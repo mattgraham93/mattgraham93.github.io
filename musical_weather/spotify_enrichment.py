@@ -32,7 +32,8 @@ def spotify_main():
     song_location = get_song_uri('california', 'chappell roan')
     song_id = song_location[1]
     song_measures = api.tracks.audio_features(song_id)
-    print(song_measures.keys())
+    
+    return song_measures, song_location
 
 if __name__ == '__main__':
     spotify_main()
