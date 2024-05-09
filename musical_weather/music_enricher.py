@@ -2,6 +2,7 @@ import senitment_analysis
 import requests
 import json
 from lyricsgenius import Genius
+import spotify_enrichment as se
 
 filename = r"D:\Backup\repos\auth.json"
 
