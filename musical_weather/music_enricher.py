@@ -15,6 +15,7 @@ genius = Genius(genius_client_access_token,
                 )
 
 def get_lyrics(artist, song):
+    print(f"Getting lyrics for {song} by {artist}")
     artist = genius.search_artist(artist, max_songs=3)
     song = genius.search_song(song, artist.name)
     return song.lyrics
@@ -23,9 +24,10 @@ def main():
     artist = "chappell roan"
     song = "california"
     lyrics = get_lyrics(artist, song)
+    print(f("Getting score for {song} by {artist}"))
     lyric_score = senitment_analysis.get_score(lyrics)
     # print(lyrics)
-    print(lyric_score)
+    print(f"Score for {song}: {lyric_score}")
 
 if __name__ == '__main__':
     main()
