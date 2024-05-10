@@ -43,12 +43,14 @@ def get_playlist_tracks(playlist_id):
     track_info = []
     for item in tracks['items']:
         track = item['track']
-        track_uri = track['uri']
-        track_id = track['id']
-        track_popularity = track['popularity']
-        artist = track['artists'][0]['name']
-        track_title = track['name']
-        track_info.append((artist, track_title, track_uri, track_id, track_popularity))
+        if track is not None:
+            track_uri = track.get('uri')
+            track_id = track.get('id')
+            track_popularity = track.get('popularity')
+            artist = track['artists'][0]['name'] if track.get('artists') else None
+            track_title = track.get('name')
+            if None not in [track_uri, track_id, track_popularity, artist, track_title]:
+                track_info.append((artist, track_title, track_uri, track_id, track_popularity))
 
     return track_info
 
