@@ -1,6 +1,8 @@
 import sys
 import json
 import spotify
+import pandas as pd
+import time
 
 from spotify_py_sdk import SpotifyApi, SdkConfig
 
@@ -53,6 +55,45 @@ def get_playlist_tracks(playlist_id):
                 track_info.append((artist, track_title, track_uri, track_id, track_popularity))
 
     return track_info
+
+
+def process_playlists(playlists):
+    season_playlist_df = pd.DataFrame()
+
+    # Initialize the dictionary
+    playlists_without_track_info = {'playlistid': []}
+
+    for i in range(len(playlists['playlistid'])):
+        print(f"Playlist {i+1}/{len(playlists['playlistid'])}")
+        # Get the playlist id, event, and type
+        playlist_id = playlists['playlistid'][i]
+        event = playlists['event'][i]
+        type_ = playlists['type'][i]
+
+        # Get track info for the playlist
+        track_info = get_playlist_tracks(playlist_id)
+
+        # Check if track_info is not None before proceeding
+        if track_info is not None:
+            for info in track_info:
+                artist, track_title, track_uri, track_id, track_popularity = info
+                song_measures = api.tracks.audio_features(track_id)
+                numeric_values_dict = {k: v for k, v in song_measures.items() if isinstance(v, (int, float))}
+                numeric_values_dict['song'] = track_title
+                numeric_values_dict['artist'] = artist
+                numeric_values_dict['event'] = event
+                numeric_values_dict['type'] = type_
+                numeric_values_dict['popularity'] = track_popularity
+                numeric_values_df = pd.Series(numeric_values_dict).to_frame().T
+                season_playlist_df = pd.concat([season_playlist_df, numeric_values_df], ignore_index=True)
+                print(f"Song: {track_title} - Artist: {artist}", end='\r', flush=True)
+                time.sleep(0.1)  # Optional: add a small delay for better visualization
+        else:
+            # Append the playlist id to the dictionary
+            playlists_without_track_info['playlistid'].append(playlist_id)
+            print(f"No track info available for playlist {playlist_id}")
+
+    return season_playlist_df, playlists_without_track_info
 
 # def spotify_main():
 #     playlist_id = '37i9dQZF1DX4aYNO8X5RpR'  # replace with your playlist id
