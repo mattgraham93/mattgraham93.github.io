@@ -53,59 +53,64 @@ class SpotifyHandler:
             return None
 
         track_info = []
+        artist_genres_cache = {}  # Initialize the cache
         for item in tracks['items']:
             track = item['track']
             if track is not None:
+                # print(f"Getting track info", end="\r", flush=True)
                 track_uri = track.get('uri')
                 track_id = track.get('id')
+                track_title = track.get('name')
                 track_popularity = track.get('popularity')
                 artist = track['artists'][0]['name'] if track.get('artists') else None
                 artist_id = track['artists'][0]['id'] if track.get('artists') else None
-                genres = self.api.artists.get(artist_id)['genres'] if artist_id else None
-                track_title = track.get('name')
+
+                print("Getting artist info", end="\r", flush=True)
+                if artist_id in artist_genres_cache:  # Check if the genres are in the cache
+                    genres = artist_genres_cache[artist_id]
+                else:
+                    print(f"Getting genres for {artist}", end="\r", flush=True)
+                    genres = self.api.artists.get(artist_id)['genres'] if artist_id else None
+                    artist_genres_cache[artist_id] = genres  # Store the genres in the cache
+
                 if None not in [track_uri, track_id, track_popularity, artist, track_title, genres]:
-                    track_info.append((artist, track_title, track_uri, track_id, track_popularity, genres))
+                    track_info.append((track_uri, track_id, track_popularity, artist, track_title, genres))
 
         return track_info
     
     def process_playlists(self, playlists):
         season_playlist_df = pd.DataFrame()
 
-        # Initialize the dictionary
         playlists_without_track_info = {'playlistid': []}
 
         for i in range(len(playlists['playlistid'])):
-            print(f"Playlist {i+1}/{len(playlists['playlistid'])}")
-            # Get the playlist id, event, and type
             playlist_id = playlists['playlistid'][i]
             event = playlists['event'][i]
             type_ = playlists['type'][i]
 
-            # Get track info for the playlist
             track_info = self.get_playlist_tracks(playlist_id)
 
-            # Check if track_info is not None before proceeding
             if track_info is not None:
                 for info in track_info:
-                    artist, track_title, track_uri, track_id, track_popularity, genres = info
+                    track_uri, track_id, track_popularity, artist, track_title, genres = info
                     song_measures = self.api.tracks.audio_features(track_id)
-                    numeric_values_dict = {k: v for k, v in song_measures.items() if isinstance(v, (int, float))}
-                    numeric_values_dict['song'] = track_title
-                    numeric_values_dict['artist'] = artist
-                    numeric_values_dict['event'] = event
-                    numeric_values_dict['type'] = type_
-                    numeric_values_dict['popularity'] = track_popularity
-                    numeric_values_dict['genres'] = genres
-                    numeric_values_dict['track_uri'] = track_uri
-                    numeric_values_df = pd.Series(numeric_values_dict).to_frame().T
-                    season_playlist_df = pd.concat([season_playlist_df, numeric_values_df], ignore_index=True)
-                    print(f"Song: {track_title} - Artist: {artist}", end='\r', flush=True)
-                    time.sleep(0.1)  # Optional: add a small delay for better visualization
+                    if song_measures is not None and isinstance(song_measures, list) and len(song_measures) > 0:
+                        song_measures = song_measures[0]  # Extract the first element from the list
+                        numeric_values_dict = song_measures
+                        numeric_values_dict['song'] = track_title
+                        numeric_values_dict['artist'] = artist
+                        numeric_values_dict['event'] = event
+                        numeric_values_dict['type'] = type_
+                        numeric_values_dict['popularity'] = track_popularity
+                        numeric_values_dict['genres'] = genres
+                        numeric_values_dict['track_uri'] = track_uri
+                        numeric_values_df = pd.DataFrame(numeric_values_dict, index=[0])
+                        season_playlist_df = pd.concat([season_playlist_df, numeric_values_df], ignore_index=True)
+                        print(f"Song: {track_title} - Artist: {artist}", end='\r', flush=True)
+                    else:
+                        print(f"No audio features available for track {track_id}")
             else:
-                # Append the playlist id to the dictionary
                 playlists_without_track_info['playlistid'].append(playlist_id)
                 print(f"No track info available for playlist {playlist_id}")
 
         return season_playlist_df, playlists_without_track_info
-    
-# Now you can use spotify_handler.get_song_uri, spotify_handler.get_playlist_tracks, etc.
