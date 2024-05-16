@@ -43,6 +43,7 @@ def get_playlist_tracks(playlist_id):
         return None
 
     track_info = []
+    track_ids = []
     for item in tracks['items']:
         track = item['track']
         if track is not None:
@@ -51,11 +52,26 @@ def get_playlist_tracks(playlist_id):
             track_popularity = track.get('popularity')
             artist = track['artists'][0]['name'] if track.get('artists') else None
             track_title = track.get('name')
-            if None not in [track_uri, track_id, track_popularity, artist, track_title]:
-                track_info.append((artist, track_title, track_uri, track_id, track_popularity))
+            if None not in [artist, track_title, track_id, track_popularity]:
+                track_info.append({
+                    'artist': artist,
+                    'track_title': track_title,
+                    'track_id': track_id,
+                    'track_popularity': track_popularity
+                })
+                track_ids.append(track_id)
 
-    return track_info
+    # Get audio features for all tracks
+    audio_features = api.tracks.audio_features(track_ids)
+    if audio_features is None:
+        print(f"No audio features found for tracks in playlist {playlist_id}")
+        return None
 
+    for i, features in enumerate(audio_features):
+        if features is not None:
+            track_info[i].update(features)
+
+    return pd.DataFrame(track_info)
 
 def process_playlists(playlists):
     season_playlist_df = pd.DataFrame()
@@ -72,12 +88,13 @@ def process_playlists(playlists):
 
         # Get track info for the playlist
         track_info = get_playlist_tracks(playlist_id)
-
+        print(track_info)
         # Check if track_info is not None before proceeding
         if track_info is not None:
             for info in track_info:
-                artist, track_title, track_uri, track_id, track_popularity = info
+                artist, track_title, track_id, track_popularity = info
                 song_measures = api.tracks.audio_features(track_id)
+                print(song_measures, info)
                 numeric_values_dict = {k: v for k, v in song_measures.items() if isinstance(v, (int, float))}
                 numeric_values_dict['song'] = track_title
                 numeric_values_dict['artist'] = artist
