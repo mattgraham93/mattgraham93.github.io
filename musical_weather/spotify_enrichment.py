@@ -64,7 +64,10 @@ def process_track_info(track_info, event, type_, api):
         print(f"Getting audio features for track ids {track_ids_chunk}")
         song_measures_list = api.tracks.audio_features(track_ids_chunk)  # Get audio features for multiple tracks
 
-        for song_measures, info in zip(song_measures_list, track_info):
+        # Get the corresponding chunk of track_info
+        track_info_chunk = track_info[track_ids.index(track_ids_chunk[0]):track_ids.index(track_ids_chunk[-1])+1]
+
+        for song_measures, info in zip(song_measures_list, track_info_chunk):
             if song_measures is not None and info is not None:
                 numeric_values_dict = {k: v for k, v in song_measures.items() if isinstance(v, (int, float))}
                 numeric_values_dict['song'] = info[0]  # Assuming info[0] is 'track_title'
@@ -78,7 +81,6 @@ def process_track_info(track_info, event, type_, api):
                 print(f"\rProcessed Song {song_counter}: {info[0]} - Artist: {info[1]}", end="")
 
     return data_list
-
 
 def get_playlist_tracks(playlist_id):
     print(f"Getting tracks for playlist {playlist_id}")
@@ -112,7 +114,7 @@ def process_playlists(playlists):
             playlists_without_track_info['playlistid'].append(playlist_id)
             continue  # Skip the rest of the loop for this playlist
 
-        data_list = process_track_info(track_info, event, type_, api)
+        data_list.extend(process_track_info(track_info, event, type_, api))  # Use extend instead of =
 
         print(f"\nFinished processing playlist {playlist_id}")
         time.sleep(0.35)  # Add a delay of 0.33 seconds after each request

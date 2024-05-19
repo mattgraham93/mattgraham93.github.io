@@ -94,6 +94,20 @@ def get_weather_codes():
 def weather_weight_model(historical_weather):
     pass
 
+def map_weather(description):
+    if 'Sunny' in description:
+        return 'Sun'
+    elif 'Cloud' in description:
+        return 'Cloud'
+    elif 'Snow' in description:
+        return 'Snow'
+    elif 'Rain' in description or 'Heavy Drizzle' in description:
+        return 'Rain'
+    elif 'Drizzle' in description:
+        return 'Drizzle'
+    else:
+        return 'Storm'  # If none of the above conditions are met, return 'Storm'
+
 def get_season(date):
     now = (date.month, date.day)
     if (3, 1) <= now < (5, 31):
