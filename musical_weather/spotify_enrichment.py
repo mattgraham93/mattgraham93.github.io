@@ -34,19 +34,12 @@ def get_song_uri(song, artist):
 
     return song_uri, song_id, song_popularity    
 
-def get_playlist_tracks(playlist_id):
-    print(f"Getting tracks for playlist {playlist_id}")
-    tracks = api.playlists.get_playlist_items(playlist_id)
 
-    if 'items' not in tracks:
-        print(f"No tracks found for playlist {playlist_id}")
-        return None
-
+def get_track_info(tracks):
     track_info = []
     for item in tracks['items']:
         track = item['track']
         if track is not None:
-            track_uri = track.get('uri')
             track_id = track.get('id')
             track_popularity = track.get('popularity')
             artist = track['artists'][0]['name'] if track.get('artists') else None
@@ -56,43 +49,76 @@ def get_playlist_tracks(playlist_id):
 
     return track_info
 
+def process_track_info(track_info, event, type_, api):
+    # Initialize the data list and song counter
+    data_list = []
+    song_counter = 0
+
+    # Collect all track ids from the playlist
+    track_ids = [info[2] for info in track_info if info is not None]
+
+    # Split track_ids into chunks of 100
+    track_ids_chunks = [track_ids[i:i + 100] for i in range(0, len(track_ids), 100)]
+
+    for track_ids_chunk in track_ids_chunks:
+        print(f"Getting audio features for track ids {track_ids_chunk}")
+        song_measures_list = api.tracks.audio_features(track_ids_chunk)  # Get audio features for multiple tracks
+
+        for song_measures, info in zip(song_measures_list, track_info):
+            if song_measures is not None and info is not None:
+                numeric_values_dict = {k: v for k, v in song_measures.items() if isinstance(v, (int, float))}
+                numeric_values_dict['song'] = info[0]  # Assuming info[0] is 'track_title'
+                numeric_values_dict['track_id'] = info[2]  # Assuming info[2] is 'track_id'
+                numeric_values_dict['artist'] = info[1]  # Assuming info[1] is 'artist'
+                numeric_values_dict['event'] = event
+                numeric_values_dict['type'] = type_
+                numeric_values_dict['popularity'] = info[3]  # Assuming info[3] is 'track_popularity'
+                data_list.append(numeric_values_dict)
+                song_counter += 1  # Increment song counter
+                print(f"\rProcessed Song {song_counter}: {info[0]} - Artist: {info[1]}", end="")
+
+    return data_list
+
+
+def get_playlist_tracks(playlist_id):
+    print(f"Getting tracks for playlist {playlist_id}")
+    tracks = api.playlists.get_playlist_items(playlist_id)
+
+    if 'items' not in tracks:
+        print(f"No tracks found for playlist {playlist_id}")
+        return None
+
+    return get_track_info(tracks)
+
 
 def process_playlists(playlists):
-    season_playlist_df = pd.DataFrame()
-
     # Initialize the dictionary
     playlists_without_track_info = {'playlistid': []}
+    data_list = []  # Initialize data_list before the playlist loop
 
     for i in range(len(playlists['playlistid'])):
-        print(f"Playlist {i+1}/{len(playlists['playlistid'])}")
+        print(f"Processing Playlist {i+1}/{len(playlists['playlistid'])}")
         # Get the playlist id, event, and type
         playlist_id = playlists['playlistid'][i]
         event = playlists['event'][i]
         type_ = playlists['type'][i]
 
+        print(f"Getting track info for playlist {playlist_id}")
         # Get track info for the playlist
         track_info = get_playlist_tracks(playlist_id)
+        
+        if not track_info:  # If track_info is None or an empty list
+            print(f"No track info found for playlist {playlist_id}")
+            playlists_without_track_info['playlistid'].append(playlist_id)
+            continue  # Skip the rest of the loop for this playlist
 
-        track_ids = [info[2] for info in track_info if info is not None]  # Get track ids from track_info
-        track_ids_chunks = [track_ids[i:i + 100] for i in range(0, len(track_ids), 100)]  # Split track_ids into chunks of 100
+        data_list = process_track_info(track_info, event, type_, api)
 
-        for track_ids_chunk in track_ids_chunks:
-            song_measures_list = api.tracks.audio_features(track_ids_chunk)  # Get audio features for multiple tracks
-
-            for song_measures in song_measures_list:
-                if song_measures is not None:
-                    numeric_values_dict = {k: v for k, v in song_measures.items() if isinstance(v, (int, float))}
-                    numeric_values_dict['song'] = song_measures['name']
-                    numeric_values_dict['track_id'] = song_measures['id']
-                    numeric_values_dict['artist'] = song_measures['artists'][0]['name']
-                    numeric_values_dict['event'] = event
-                    numeric_values_dict['type'] = type_
-                    numeric_values_dict['popularity'] = song_measures['popularity']
-                    numeric_values_df = pd.Series(numeric_values_dict).to_frame().T
-                    season_playlist_df = pd.concat([season_playlist_df, numeric_values_df], ignore_index=True)
-                    print(f"Song: {song_measures['name']} - Artist: {song_measures['artists'][0]['name']}", end='\r', flush=True)
-
+        print(f"\nFinished processing playlist {playlist_id}")
         time.sleep(0.35)  # Add a delay of 0.33 seconds after each request
+
+    print("Creating DataFrame")
+    season_playlist_df = pd.DataFrame(data_list)  # Create DataFrame after the playlist loop
 
     return season_playlist_df, playlists_without_track_info
 
