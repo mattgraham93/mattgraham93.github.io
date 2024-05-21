@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime, timedelta
+from matplotlib.dates import relativedelta
 import matplotlib.pyplot as plt
 import mongodb
 import json
@@ -121,9 +122,18 @@ def get_season(date):
     return season
 
 def weather_main():
-    # Set time period
-    start = '2018-01-01'
-    end = '2024-04-30'
+
+    # Get today's date
+    today = datetime.now()
+
+    # Subtract one day
+    yesterday = today - timedelta(days=1)
+    start = yesterday - relativedelta(years=10)
+
+    # Convert to string
+    end = yesterday.strftime('%Y-%m-%d')
+    start = start.strftime('%Y-%m-%d')
+
     # # get and store latest data
     print('Getting weather data for Seattle')
     historical_weather = wh.get_historical_weather(start, end)
