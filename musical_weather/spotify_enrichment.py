@@ -34,6 +34,27 @@ def get_song_uri(song, artist):
 
     return song_uri, song_id, song_popularity    
 
+def scale_score(weather_score, track_score, is_preciptitation):
+    return weather_score * track_score
+
+def calculate_base_score(playlist_data):
+    playlist_data['base_score'] = playlist_data['duration_ms'] / playlist_data['tempo']
+
+    playlist_data['best'] = (playlist_data['energy'] / 0.001) + (playlist_data['valence'] / 0.001)
+    playlist_data['good'] = abs((playlist_data['danceability'] / 0.01) + (playlist_data['energy'] / 0.01))
+    playlist_data['bad'] = -1 * ((playlist_data['acousticness'] / 0.01) + (playlist_data['liveness'] / 0.01))
+
+    # Calculate the score, subtracting 'is_precipitation'
+    playlist_data['score'] = playlist_data['base_score'] + playlist_data['best'] + playlist_data['good'] - playlist_data['bad']
+
+    # If 'is_precipitation' is 1, multiply the score by -1
+    playlist_data.loc[playlist_data['is_precipitation'] == 1, 'score'] *= -1
+
+    playlist_data['score'] = playlist_data['score'].astype(float)
+
+    playlist_data.drop(columns=['base_score', 'best', 'good', 'bad'], inplace=True)
+
+    return playlist_data
 
 def get_track_info(tracks):
     track_info = []
@@ -80,7 +101,22 @@ def process_track_info(track_info, event, type_, api):
                 song_counter += 1  # Increment song counter
                 print(f"\rProcessed Song {song_counter}: {info[0]} - Artist: {info[1]}", end="")
 
-    return data_list
+    # Convert data_list to DataFrame
+    playlist_data = pd.DataFrame(data_list)
+    
+    # Create a new column 'is_precipitation' that is True if the event is 'Rain', 'Snow', 'Storm', or 'Drizzle'
+    playlist_data.loc[:, 'is_precipitation'] = playlist_data['event'].isin(['Rain', 'Snow', 'Storm', 'Drizzle'])
+
+    # Fill NaN values with 0
+    playlist_data['is_precipitation'] = playlist_data['is_precipitation'].fillna(0)
+
+    # Convert the boolean values to integers (True becomes 1, False becomes 0)
+    playlist_data.loc[:, 'is_precipitation'] = playlist_data['is_precipitation'].astype(int)
+
+    # Call calculate_base_score function
+    playlist_data = calculate_base_score(playlist_data)
+
+    return playlist_data
 
 def get_playlist_tracks(playlist_id):
     print(f"Getting tracks for playlist {playlist_id}")
@@ -94,8 +130,9 @@ def get_playlist_tracks(playlist_id):
 
 
 def process_playlists(playlists):
-    # Initialize the dictionary
+    # Initialize the dictionaries
     playlists_without_track_info = {'playlistid': []}
+    playlists_without_data = {'playlistid': []}
     data_list = []  # Initialize data_list before the playlist loop
 
     for i in range(len(playlists['playlistid'])):
@@ -107,8 +144,13 @@ def process_playlists(playlists):
 
         print(f"Getting track info for playlist {playlist_id}")
         # Get track info for the playlist
-        track_info = get_playlist_tracks(playlist_id)
-        
+        try:
+            track_info = get_playlist_tracks(playlist_id)
+        except json.JSONDecodeError:
+            print(f"No data returned for playlist {playlist_id}")
+            playlists_without_data['playlistid'].append(playlist_id)
+            continue  # Skip the rest of the loop for this playlist
+
         if not track_info:  # If track_info is None or an empty list
             print(f"No track info found for playlist {playlist_id}")
             playlists_without_track_info['playlistid'].append(playlist_id)
@@ -122,7 +164,7 @@ def process_playlists(playlists):
     print("Creating DataFrame")
     season_playlist_df = pd.DataFrame(data_list)  # Create DataFrame after the playlist loop
 
-    return season_playlist_df, playlists_without_track_info
+    return season_playlist_df, playlists_without_track_info, playlists_without_data
 
 # def spotify_main():
 #     playlist_id = '37i9dQZF1DX4aYNO8X5RpR'  # replace with your playlist id
