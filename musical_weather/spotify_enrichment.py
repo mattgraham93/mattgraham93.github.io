@@ -1,5 +1,6 @@
 import sys
 import json
+from scipy import stats
 import spotify
 import pandas as pd
 import numpy as np
@@ -41,6 +42,18 @@ def get_song_uri(song, artist):
 def scale_score(weather_score, track_score, is_preciptitation):
     return weather_score * track_score
 
+def calculate_t_score(playlist_df):
+    # Group by event and track_id, and calculate mean score
+    mean_scores = playlist_df.groupby(['event', 'track_id'])['score'].mean()
+
+    # Calculate t-score for each track in relation to its event
+    playlist_df['t_score'] = playlist_df.apply(lambda row: stats.ttest_ind(
+        [row['score']],
+        mean_scores[row['event']].tolist(),
+        equal_var=False
+    )[0] if len(mean_scores[row['event']].tolist()) > 1 else 0, axis=1)
+
+    return playlist_df
 
 def get_best_transformations(playlist_data, highly_skewed_columns, numerical_cols): 
     best_transformations = {}
@@ -170,7 +183,7 @@ def process_track_info(track_info, event, type_, api):
     track_ids_chunks = [track_ids[i:i + 100] for i in range(0, len(track_ids), 100)]
 
     for track_ids_chunk in track_ids_chunks:
-        print(f"Getting audio features for track ids {track_ids_chunk}")
+        print(f"Getting audio features for {len(track_ids_chunk)} track ids")
         song_measures_list = api.tracks.audio_features(track_ids_chunk)  # Get audio features for multiple tracks
 
         # Get the corresponding chunk of track_info
@@ -256,7 +269,11 @@ def process_playlists(playlists):
     # Calculate base scores
     playlist_df = transform_playlist_data(playlist_df, numerical_cols)
     playlist_df = calculate_base_score(playlist_df)
-    
+
+    # Calculate t-scores for each track
+    print("Calculating grouped scores")
+    playlist_df = calculate_t_score(playlist_df)
+
     return playlist_df, playlists_without_track_info, playlists_without_data
 
 # def spotify_main():
