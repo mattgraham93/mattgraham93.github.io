@@ -7,11 +7,14 @@ import uuid
 
 from blueprints.activities import activities
 
-# Flask app creation
+# Flask app creation 
 # https://medium.com/google-cloud/deploy-a-python-flask-server-using-google-cloud-run-d47f728cc864
 
 # site template courtesy of pro-dev-ph
 # https://github.com/pro-dev-ph/bootstrap-responsive-web-application-template
+
+# web app tutorial:
+# https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 
 def create_app():
   app = Flask(__name__, static_folder='templates/assets')
@@ -47,7 +50,23 @@ def create_app():
   
   @app.route("/ping")
   def hello_world():
-     return "pong"
+    return "pong"
+  
+  '''
+    what needs to happen:
+    get and load:
+      - weather data
+      - music data
+      
+    develop and load transformed data
+    
+    get user input
+    run model
+    
+    return list of songs with spotify uris / links
+    
+    ideally: find way to save to playlist
+  '''
   
   @app.route("/basic_table.html")
   def basic_table():
@@ -65,12 +84,12 @@ def create_app():
   @app.after_request
   def after_request(response):
     if response and response.get_json():
-        data = response.get_json()
+      data = response.get_json()
 
-        data["time_request"] = int(time.time())
-        data["version"] = config.VERSION
+      data["time_request"] = int(time.time())
+      data["version"] = config.VERSION
 
-        response.set_data(json.dumps(data))
+      response.set_data(json.dumps(data))
 
     return response
   
