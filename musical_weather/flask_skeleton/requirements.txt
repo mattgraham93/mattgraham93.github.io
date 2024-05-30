@@ -6,6 +6,7 @@ nltk==3.8.1
 numpy==1.24.4
 openmeteo_requests==1.2.0
 pandas==1.5.3
+pydantic==1.10.12
 pymongo==4.6.3
 python-dotenv==1.0.1
 Requests==2.32.2
@@ -17,3 +18,4 @@ spotify==0.10.2
 spotify_py_sdk==0.1.2
 textblob==0.18.0.post0
 urllib3==1.26.18
+uuid==1.30
