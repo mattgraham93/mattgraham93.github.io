@@ -17,5 +17,5 @@ scipy==1.13.1
 spotify==0.10.2
 spotify_py_sdk==0.1.2
 textblob==0.18.0.post0
-urllib3==1.26.18
+urllib3==1.26.19
 uuid==1.30
