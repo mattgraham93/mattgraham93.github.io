@@ -2,7 +2,7 @@ Flask==2.2.5
 gunicorn==22.0.0
 lyricsgenius==3.0.1
 matplotlib==3.8.0
-nltk==3.8.1
+nltk==3.9
 numpy==1.24.4
 openmeteo_requests==1.2.0
 pandas==1.5.3
