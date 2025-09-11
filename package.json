@@ -1,0 +1,24 @@
+{
+  "name": "mattgraham93.github.io",
+  "version": "1.0.0",
+  "description": "Welcome to my repository! This is my dedicated home for all personal, professional, and academic work. All work is original and my own.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattgraham93/mattgraham93.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattgraham93/mattgraham93.github.io/issues"
+  },
+  "homepage": "https://github.com/mattgraham93/mattgraham93.github.io#readme"
+}
