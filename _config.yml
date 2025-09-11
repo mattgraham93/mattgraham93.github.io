@@ -1,3 +1,7 @@
 theme: jekyll-theme-minimal
 title: Octocat's homepage
 description: Bookmark this to keep an eye on my project updates!
+
+exclude:
+  - "*.Rmd"
+  - "school/22_3_DA410/**/*.Rmd"
