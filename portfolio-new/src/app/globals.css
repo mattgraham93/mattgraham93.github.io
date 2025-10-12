@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark theme by default */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #8b5cf6; /* Purple */
+  --secondary: #10b981; /* Mint green */
+  --accent: #3b82f6; /* Blue */
+  --muted: #374151;
+  --border: #374151;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Smooth transitions */
+* {
+  transition: colors 0.2s ease;
+}
