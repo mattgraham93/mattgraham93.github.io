@@ -139,7 +139,7 @@ export default function CMSAdmin() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                     <input
                       type="text"
-                      defaultValue="Matt Graham"
+                      defaultValue="Mattie Graham"
                       className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                       disabled
                     />

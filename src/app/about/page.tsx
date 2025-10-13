@@ -57,7 +57,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-white mb-6">My Story</h2>
               <div className="space-y-6 text-lg leading-relaxed">
                 <p className="text-gray-300">
-                  Hi there! I'm Matt Graham, a passionate and humble data enthusiast with expertise in 
+                  Hi there! I'm Mattie Graham, a passionate and humble data enthusiast with expertise in 
                   <span className="text-purple-400 font-semibold"> ethical data practices</span>. I strive to make 
                   complex math and data meaningful in our daily lives.
                 </p>
