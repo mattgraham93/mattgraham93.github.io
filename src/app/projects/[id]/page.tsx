@@ -1,5 +1,3 @@
-"use client";
-
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +7,13 @@ interface ProjectPageProps {
   params: {
     id: string;
   };
+}
+
+// Generate static paths for all projects
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }));
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {

@@ -46,24 +46,42 @@ export const projects: Project[] = [
   {
     id: 'portfolio-optimization',
     title: 'Global CRE Data Program',
-    description: 'Predictive data program to suggest areas to improve investment and run scenarios to identify opportunities for space reduction',
-    longDescription: 'Developed a comprehensive real estate portfolio optimization system that aggregates data from multiple sources to provide predictive insights. The system helps identify investment opportunities and potential areas for space reduction through advanced analytics and scenario modeling.',
+    description: 'Bridging enterprise data silos across real estate teams at Meta.',
+    longDescription: `<div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white mb-4">A Deeper Dive</h2>
+      
+      <p class="mb-6">In the intricate ecosystem of global corporate real estate management, where six different systems are managed by six distinct teams, data silos and inconsistencies become inevitable challenges. The Global CRE Data Program emerged as a transformative initiative to bridge these gaps, serving as an interim solution for Meta's Global Real Estate Management Program while addressing the complexities of cross-team collaboration.</p>
+      
+      <p class="mb-6">This ambitious project tackled the fundamental challenge of integrating disparate data sources across real estate planning, management, finance, and people teams. By establishing a unified data architecture, the program aimed to eliminate the confusion and inefficiencies that arise when multiple teams operate with different metrics, definitions, and data representations.</p>
+      
+      <p class="mb-6">The initiative focused on creating standardized approaches to data collection, processing, and analysis across all real estate operations. This involved careful mapping of existing data flows, identification of critical integration points, and development of robust validation mechanisms to ensure data quality and consistency across the entire portfolio.</p>
+      
+      <p class="mb-6">Key stakeholders including lease administrators, portfolio managers, workplace planners, and space planners collaborated intensively to align on definitions, metrics, and representation standards. This cross-functional approach ensured that the solution would serve the diverse needs of all teams while maintaining the integrity and reliability of the data ecosystem.</p>
+      
+      <p class="mb-6">The program's success lay in its ability to transform fragmented data landscapes into a cohesive, actionable intelligence platform that empowered decision-makers across Meta's global real estate operations. By establishing this foundation, the initiative paved the way for more advanced analytics and optimization projects while ensuring that all teams could work from a single source of truth.</p>
+      
+      <p class="mb-6">Throughout the project lifecycle, extensive stakeholder alignment sessions were conducted to ensure that the solution addressed the unique requirements of each team while maintaining consistency across the organization. The team navigated complex technical challenges including data quality issues, system integration limitations, and the need for real-time synchronization across multiple platforms.</p>
+      
+      <p class="mb-6">The implementation involved careful consideration of data governance principles, establishing clear protocols for data access, modification, and validation. This ensured that while teams could access the information they needed, the integrity of the shared data ecosystem remained intact.</p>
+      
+      <p class="mb-6">As the program evolved, it became clear that this initiative was not just about technical integration, but about fundamentally changing how teams collaborated and made decisions. The unified data platform fostered better communication, reduced redundant efforts, and enabled more strategic, data-driven decision making across Meta's global real estate portfolio.</p>
+    </div>`,
     category: 'professional',
-    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Tableau', 'SQL'],
-    image: '/assets/images/real-estate-model.png',
+    technologies: ['Data Integration', 'Enterprise Architecture', 'Cross-functional Collaboration', 'Real Estate Analytics', 'SQL', 'ETL'],
+    image: '/assets/images/supply-demand-model.png',
     githubUrl: 'https://github.com/mattgraham93/portfolio-optimization',
     impact: {
-      metric: 'Cost Savings',
-      value: '$2.3M'
+      metric: 'Systems Unified',
+      value: '6 Teams'
     },
-    tags: ['Data Science', 'Predictive Analytics', 'Real Estate', 'Portfolio Optimization'],
+    tags: ['Data Integration', 'Enterprise Architecture', 'Real Estate', 'Cross-functional Teams', 'Meta'],
     featured: true,
-    date: '2024-01-15'
+    date: '2023-12-15'
   },
   {
     id: 'supply-demand',
     title: 'Global Real Estate Supply and Demand Modeling',
-    description: 'Tying active building capacity and attendance across 6 systems managed by 6 teams, inconsistencies are bound to happen. Supply and Demand bridges those gaps by integrating 2 new data sources and leveraging new methods to model historical through future supply and demand.',
+    description: 'Integrated 6 disparate systems to create unified real estate capacity tracking and forecasting model. Enhanced Meta\'s portfolio optimization with predictive analytics and dynamic scenario planning.',
     longDescription: `<h2 class="text-2xl font-bold text-white mb-4">A Deeper Dive</h2>
     
     <p class="mb-6">Once upon a time, in a bustling city, Meta, a global corporation, embarked on an ambitious project named "Supply and Demand" as part of their Portfolio Optimization program. The goal of the program was to optimize Meta's global corporate real estate portfolio, improve data accuracy, and align with their evolving business needs.</p>
@@ -96,7 +114,7 @@ export const projects: Project[] = [
     <p>And so, Meta's journey towards a unified and data-driven approach to global corporate real estate management continued, marking a new chapter in their success story.</p>`,
     category: 'professional',
     technologies: ['SQL', 'Hive', 'Python', 'ETL', 'Data Modeling', 'Apache Airflow', 'Power BI'],
-    image: '/assets/images/supply-demand-model.png',
+    image: '/assets/images/supply-demand-regional.png',
     githubUrl: 'https://github.com/mattgraham93/mattgraham93.github.io/blob/main/archive/examples/hive/supply_forecast_data_model.sql',
     demoUrl: '/assets/supply_demand/FCS supply and demand.drawio.html',
     impact: {
@@ -109,20 +127,40 @@ export const projects: Project[] = [
   },
   {
     id: 'location-scoring',
-    title: 'Feasibility: Location Scoring Model',
-    description: 'Before making real estate decisions, we must normalize our portfolio first',
-    longDescription: 'Created a sophisticated location scoring model that normalizes portfolio data across different markets and property types. The model evaluates multiple factors including demographics, market conditions, and accessibility to provide standardized location scores for decision-making.',
+    title: 'Global Real Estate Location Scoring Model',
+    description: 'Machine learning model to evaluate office spaces and guide strategic real estate decisions.',
+    longDescription: `<div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white mb-4">A Deeper Dive</h2>
+      
+      <p class="mb-6">Once upon a time, in the vast landscape of corporate operations, where optimizing portfolios and meeting supply and demand were paramount, a project called Location Scoring emerged. This project, an offspring of the esteemed Portfolio Optimization initiative and a sister to the renowned Supply and Demand endeavor, held the promise of revolutionizing the way businesses assessed their physical locations. Its purpose was to provide invaluable insights and scoring based on a range of factors, shaping the destiny of workplaces within the realm of Meta, a prominent client in the industry.</p>
+      
+      <p class="mb-6">With a clear vision in mind, Location Scoring set out to uncover the hidden truths about office spaces, unraveling the secrets of their performance and untapped potential. It aimed to strike the delicate balance between investment, experience, and utilization, utilizing machine learning techniques to analyze a comprehensive set of features associated with leased and owned spaces. By harnessing the power of data, Location Scoring aspired to guide decision-makers in identifying the buildings or floors that could be repurposed or vacated, ultimately paving the way for strategic transformations.</p>
+      
+      <p class="mb-6">As the project unfolded, a diverse set of stakeholders, including lease administrators, portfolio managers, workplace planners, and space planners, rallied around the cause. Their shared commitment and expertise fueled the project's growth and ensured that it aligned with the goals and objectives of Meta. Each stakeholder brought unique perspectives and requirements, contributing to the holistic nature of Location Scoring and its ability to address a wide range of business needs.</p>
+      
+      <p class="mb-6">To bring Location Scoring to life, a team of dedicated individuals embarked on a journey of research, alignment, and collaboration. They delved into industry best practices, examined performance metrics, and explored innovative approaches to scoring and evaluating office spaces. The team understood the significance of data quality and consistency, realizing that accurate and reliable information would form the foundation of Location Scoring's success.</p>
+      
+      <p class="mb-6">As the project gained momentum, key milestones were achieved. The team meticulously mapped out the features and metrics that would shape the scoring model, ensuring a comprehensive and insightful evaluation of each location. They carefully considered factors such as space utilization, cost performance, facility condition index, employee experience, and even the cultural dynamics of teams within the spaces. These multi-faceted aspects painted a vivid picture of each location's value, enabling decision-makers to make informed choices that aligned with Meta's strategic objectives.</p>
+      
+      <p class="mb-6">The journey of Location Scoring was not without its challenges. The team encountered limitations in data availability and had to overcome technical hurdles in consolidating information from various sources. They sought alignment on definitions, metrics, and representation, striving for a standardized approach that would enhance the accuracy and reliability of the scoring model. Collaborations with internal and external partners, including real estate experts and data providers, played a crucial role in shaping the project's direction and refining its methodologies.</p>
+      
+      <p class="mb-6">Despite the obstacles, the team's unwavering dedication propelled Location Scoring forward. The project began to take shape, with the development of a robust data model and the integration of cutting-edge technologies. The team harnessed the power of machine learning algorithms, leveraging vast amounts of data to generate meaningful insights and scores for each location within Meta's portfolio.</p>
+      
+      <p class="mb-6">As the project neared completion, the anticipation grew. The stakeholders eagerly awaited the unveiling of Location Scoring and the transformative impact it would have on Meta's operations. They envisioned a future where data-driven decisions and optimized office spaces would drive efficiency, cost-effectiveness, and employee satisfaction. The possibilities were endless, and the potential for Meta's success was boundless.</p>
+      
+      <p class="mb-6">And so, with every milestone achieved and every challenge overcome, Location Scoring emerged as a beacon of innovation within the corporate world. It stood as a testament to the power of data, collaboration, and a shared vision to revolutionize the way businesses assess and optimize their physical locations. With Location Scoring, Meta embarked on a new era of strategic decision-making, ushering in a brighter and more efficient future.</p>
+    </div>`,
     category: 'professional',
-    technologies: ['Python', 'Machine Learning', 'Geospatial Analysis', 'R', 'GIS'],
-    image: '/assets/images/location-scoring-intro2.png',
+    technologies: ['Machine Learning', 'Python', 'Data Analysis', 'Real Estate Analytics', 'Feature Engineering', 'Scoring Models'],
+    image: '/assets/images/location-scoring-intro.png',
     githubUrl: 'https://github.com/mattgraham93/location-scoring',
     impact: {
-      metric: 'Locations Scored',
-      value: '500+'
+      metric: 'Decision Accuracy',
+      value: '+65%'
     },
-    tags: ['Machine Learning', 'Location Analytics', 'Scoring Models', 'GIS'],
+    tags: ['Machine Learning', 'Location Analytics', 'Scoring Models', 'Real Estate', 'Meta', 'Portfolio Optimization'],
     featured: true,
-    date: '2024-03-10'
+    date: '2024-01-10'
   },
   {
     id: 'gdp-analysis',

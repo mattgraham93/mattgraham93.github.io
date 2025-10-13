@@ -10,7 +10,7 @@ const featuredProjects = projects
     title: project.title,
     description: project.description,
     image: project.image,
-    link: project.demoUrl || project.githubUrl || `/projects/${project.id}`,
+    link: `/projects/${project.id}`, // Always link to project page first
     tags: project.tags
   }));
 
