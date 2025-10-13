@@ -1,44 +1,206 @@
-# mattgraham93.github.io
+# Modern Portfolio Website
 
-Welcome to my repository! This is my dedicated home for all personal, professional, and academic work. All work is original and my own. 
+A sleek, modern portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features a dark theme with purple/blue/emerald color scheme, smooth animations, and an easy-to-use content management system.
 
-It is my goal to help make the world more equitable using data to drive an empathic story, focusing on relating human behavior to responses in our environments.
+## ✨ Features
 
-## Primary works
-### Analyses
+- **Modern Design**: Dark theme with smooth animations and professional layout
+- **Responsive**: Fully responsive design that works on all devices
+- **Interactive Components**: 
+  - Hero section with profile image
+  - Featured projects showcase
+  - Advanced project filtering system
+  - Interactive resume with detailed sections
+  - Professional contact form
+  - Blog system (expandable)
+- **Easy Content Management**: Update projects, blog posts, and personal info without touching code
+- **Performance Optimized**: Built with Next.js 15 and Turbopack for fast development and production builds
+- **SEO Ready**: Proper meta tags, semantic HTML, and optimized for search engines
 
-Multivariate analyses: [R](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/school/22_3_DA410)
+## 🚀 Quick Start
 
-House Representation by GDP analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/analysis/state_leg_gdp_analysis/congress_gdp_analysis.ipynb)/[article](https://grahammr93.medium.com/can-us-state-gdp-determine-congressional-representation-e3cda57285f3)
+### Prerequisites
+- Node.js 18+ installed
+- Git installed
 
-Healthcare analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/DA310_Group5Project(1).ipynb)
+### Installation
 
-HR analysis: [python/jupyter]()
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mattgraham93/mattgraham93.github.io.git
+   cd mattgraham93.github.io
+   ```
 
-Salary regression analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/Assignment%209.ipynb)
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Mortality analysis: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/21_4_ISIT333/analysis/ex_2-2_mortality.ipynb)
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-Basic linear regression: [python/jupyter](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/school/22_1_DA310/multiple_linear/stock_market.ipynb)
+4. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
+## 📁 Project Structure
 
-### Programs
-Employee database program: [python/pandas/SQLite3](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/school/21_4_ISIT333/final)
+```
+mattgraham93.github.io/
+├── src/
+│   ├── app/                 # Next.js app router pages
+│   │   ├── about/          # About page
+│   │   ├── admin/          # CMS admin interface
+│   │   ├── blog/           # Blog pages
+│   │   ├── contact/        # Contact page with form
+│   │   ├── projects/       # Projects showcase
+│   │   ├── resume/         # Interactive resume
+│   │   └── layout.tsx      # Root layout
+│   ├── components/         # Reusable React components
+│   │   ├── navigation.tsx  # Main navigation
+│   │   ├── hero.tsx        # Hero section
+│   │   ├── contact-form.tsx # Contact form
+│   │   └── ...            # Other components
+│   └── data/
+│       └── cms-config.ts   # 📝 EDIT THIS FILE FOR CONTENT
+├── public/                 # Static assets
+│   ├── images/            # Project and blog images
+│   └── assets/            # Other static files
+├── archive/               # Historical files and old projects
+└── DEPLOYMENT.md          # Detailed deployment guide
+```
 
-Web scraper: [python/jupyter](https://github.com/mattgraham93/DA320/blob/main/MattGraham_Assignment2.ipynb)
+## 🎨 Customization
 
-Pokemon API: [python/webAPI](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/python/personal/pokemon_api.py)
+### 🔧 Update Your Content
 
-### Pure math
-Applied statistics: [python](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/school/22_1_MATH341)
+The easiest way to customize your portfolio is by editing the `src/data/cms-config.ts` file:
 
-## Fun programs/algorithms
-Random number checker assigner/checker: [python](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/python/personal/random_checker.py)
+**Add a new project:**
+```typescript
+{
+  id: 'my-project',
+  title: 'My Awesome Project',
+  description: 'Brief description...',
+  category: 'professional',
+  technologies: ['React', 'Node.js', 'PostgreSQL'],
+  image: '/images/my-project.jpg',
+  githubUrl: 'https://github.com/username/repo',
+  featured: true,
+  date: '2024-01-15'
+}
+```
 
-Finding bigrams: [python](https://github.com/mattgraham93/mattgraham93.github.io/blob/main/examples/python/personal/practice/find_bigrams.py)
+**Update personal information:**
+```typescript
+export const personalInfo = {
+  name: 'Your Name',
+  title: 'Your Professional Title',
+  email: 'your@email.com',
+  // ... more settings
+};
+```
 
+**Add social links:**
+```typescript
+export const socialLinks = [
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/yourprofile',
+    platform: 'linkedin'
+  }
+  // ... more links
+];
+```
 
-## Interviews
-Pete for America interview: [SQL/PowerBI](https://app.powerbi.com/view?r=eyJrIjoiZTE0ZDE5NGUtY2E4Yi00YjdmLTgwNWItMjM0N2NlNWQzNmYzIiwidCI6ImY5NGMyNTFjLTEzNDctNDIyZS1iM2VhLThhYzU2YmVmZDZjYiIsImMiOjZ9)
+### 🎨 Design Customization
 
-Redfin interview: [SQL/Tableau](https://github.com/mattgraham93/mattgraham93.github.io/tree/main/examples/interviews/redfin)
+The website uses CSS custom properties for easy theme customization. Edit `src/app/globals.css` to change colors:
+
+```css
+:root {
+  --color-purple: #8b5cf6;
+  --color-blue: #3b82f6;
+  --color-emerald: #10b981;
+  /* ... more variables */
+}
+```
+
+## 📦 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🌐 Deployment
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions for:
+- GitHub Pages
+- Vercel
+- Netlify
+- Other platforms
+
+## � Archive
+
+The `archive/` folder contains historical files and previous versions of this portfolio, including:
+- Educational coursework and data analysis projects
+- Previous website versions and static HTML files
+- Code examples and analysis notebooks
+- Old development configurations
+
+These files are preserved for reference but are not part of the active website.
+
+## �🛠️ Built With
+
+- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Build Tool**: [Turbopack](https://turbo.build/pack)
+
+## 📖 Content Management
+
+### Admin Interface
+Visit `/admin` in your browser for a visual overview of your content management options.
+
+### Easy Updates
+1. **Projects**: Add to `projects` array in `cms-config.ts`
+2. **Blog Posts**: Add to `blogPosts` array in `cms-config.ts`
+3. **Personal Info**: Update `personalInfo` object
+4. **Social Links**: Update `socialLinks` array
+5. **Images**: Add to `public/images/` directory
+
+### Content Types
+- **Projects**: Showcase your work with descriptions, technologies, and links
+- **Blog Posts**: Share insights and tutorials (supports Markdown)
+- **Personal Info**: Bio, skills, contact information
+- **Social Links**: Professional and social media profiles
+
+## 🤝 Contributing
+
+This is a personal portfolio template, but suggestions and improvements are welcome!
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🆘 Support
+
+Having issues? Check out:
+- [DEPLOYMENT.md](./DEPLOYMENT.md) for deployment help
+- [Next.js Documentation](https://nextjs.org/docs)
+- [GitHub Issues](https://github.com/mattgraham93/mattgraham93.github.io/issues) for bug reports
+
+---
+
+**Built with ❤️ by Matt Graham**
+
+*A modern, professional portfolio solution for data professionals and developers.*

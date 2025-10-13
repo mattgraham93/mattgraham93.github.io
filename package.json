@@ -1,24 +1,29 @@
 {
-  "name": "mattgraham93.github.io",
-  "version": "1.0.0",
-  "description": "Welcome to my repository! This is my dedicated home for all personal, professional, and academic work. All work is original and my own.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "example": "examples"
-  },
+  "name": "portfolio-new",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "export": "next build && next export"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattgraham93/mattgraham93.github.io.git"
+  "dependencies": {
+    "next": "15.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-icons": "^5.5.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mattgraham93/mattgraham93.github.io/issues"
-  },
-  "homepage": "https://github.com/mattgraham93/mattgraham93.github.io#readme"
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
 }
