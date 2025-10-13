@@ -358,7 +358,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     name: 'Email',
-    url: 'mailto:grahammr93@gmail.com',
+    url: 'mailto:eight-amens76@icloud.com',
     platform: 'email'
   },
   // Add more social links by copying the structure above
@@ -370,7 +370,7 @@ export const socialLinks: SocialLink[] = [
 export const personalInfo = {
   name: 'Matt Graham',
   title: 'Data Analyst & Business Intelligence Specialist',
-  email: 'grahammr93@gmail.com',
+  email: 'eight-amens76@icloud.com',
   location: 'United States',
   bio: `I'm a passionate data analyst with expertise in transforming complex datasets into actionable insights. 
         I specialize in statistical analysis, machine learning, and data visualization to help organizations 

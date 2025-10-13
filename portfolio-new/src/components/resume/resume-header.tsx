@@ -31,13 +31,13 @@ export function ResumeHeader() {
 
       <div className="flex flex-wrap justify-center gap-6 text-sm">
         <a 
-          href="mailto:grahammr93@gmail.com" 
+          href="mailto:eight-amens76@icloud.com" 
           className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 7.89a1 1 0 001.32 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          grahammr93@gmail.com
+          eight-amens76@icloud.com
         </a>
         <a 
           href="https://linkedin.com/in/matt-graham-939794157" 

@@ -148,7 +148,7 @@ export default function CMSAdmin() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
                     <input
                       type="email"
-                      defaultValue="grahammr93@gmail.com"
+                      defaultValue="eight-amens76@icloud.com"
                       className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white"
                       disabled
                     />

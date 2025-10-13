@@ -32,7 +32,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     name: 'Email',
-    url: 'mailto:grahammr93@gmail.com',
+    url: 'mailto:eight-amens76@icloud.com',
     icon: <FaEnvelope className="text-2xl" />,
     color: 'hover:text-emerald-400',
     description: 'Direct email communication'
