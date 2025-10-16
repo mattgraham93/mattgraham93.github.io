@@ -123,7 +123,7 @@ export const projects: Project[] = [
     </div>`,
     category: 'personal',
     technologies: ['Python', 'API Integration', 'Full-Stack Development', 'Data Analysis', 'Machine Learning', 'Interactive Visualizations', 'Backend Development'],
-    image: '/assets/images/mtg-ecorec-visualizations.png.png',
+    image: '/assets/images/mtg-ecorec-visualizations.png',
     demoUrl: 'https://mtgecorec-b9fkfngtawggfpbw.westus3-01.azurewebsites.net/',
     githubUrl: 'https://github.com/mattgraham93/mtgecorec',
     impact: {
