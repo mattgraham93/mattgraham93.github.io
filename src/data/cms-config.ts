@@ -44,6 +44,97 @@ export interface SocialLink {
 // To add a new project, copy an existing project object and modify the values
 export const projects: Project[] = [
   {
+    id: 'mtg-ecorec',
+    title: 'MTG EcoRec',
+    description: 'Full-stack application integrating multiple APIs to analyze the Magic: The Gathering economy with comprehensive data insights and strategic recommendations.',
+    longDescription: `<div class="space-y-6">
+      <h2 class="text-2xl font-bold text-white mb-4">Navigate the Magic: The Gathering Economy</h2>
+      
+      <div class="bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-lg p-6 border border-emerald-500/30 mb-8 text-center">
+        <p class="text-lg text-emerald-200 font-medium mb-4">🚀 Live Demo Available - Explore Now!</p>
+        <a href="https://mtgecorec-b9fkfngtawggfpbw.westus3-01.azurewebsites.net/" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 text-sm">
+          🎯 Try MTG EcoRec
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <p class="mb-6">Magic: The Gathering isn't just a game—it's a $2 billion global economy where cardboard rectangles can be worth more than gold. Since its release in 1993, MTG has evolved from a niche hobby into a sophisticated marketplace where strategy, scarcity, and speculation intersect.</p>
+      
+      <div class="grid md:grid-cols-3 gap-6 my-8">
+        <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
+          <div class="text-2xl mb-3">📊</div>
+          <h3 class="text-lg font-semibold text-purple-400 mb-2">Market Analysis</h3>
+          <p class="text-gray-300 text-sm">Deep dive into card prices, trends, and market dynamics across thousands of Magic cards.</p>
+        </div>
+        <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
+          <div class="text-2xl mb-3">🎯</div>
+          <h3 class="text-lg font-semibold text-blue-400 mb-2">Strategic Recommendations</h3>
+          <p class="text-gray-300 text-sm">Get personalized card recommendations based on your budget, playstyle, and investment goals.</p>
+        </div>
+        <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
+          <div class="text-2xl mb-3">📈</div>
+          <h3 class="text-lg font-semibold text-emerald-400 mb-2">Data-Driven Insights</h3>
+          <p class="text-gray-300 text-sm">Interactive visualizations reveal patterns in rarity, colors, sets, and price movements.</p>
+        </div>
+      </div>
+      
+      <h3 class="text-xl font-bold text-white mb-4">The Story of MTG's Economy</h3>
+      
+      <p class="mb-6">Built as a comprehensive full-stack application, MTG EcoRec integrates multiple APIs to continuously gather and analyze data from over 35,000 unique cards. Our real-time analysis reveals fascinating patterns: certain colors command premium prices, rare cards from legendary sets appreciate dramatically, and market dynamics shift with each new release. The backend infrastructure seamlessly processes API data while the frontend delivers interactive insights into this complex ecosystem where player preferences, tournament formats, and digital innovations constantly reshape value.</p>
+      
+      <p class="mb-6">Whether you're a competitive player seeking an edge, a collector building a legacy, or an investor exploring alternative assets, understanding MTG's economy is crucial. Our tools help you navigate this fascinating world with confidence and insight.</p>
+      
+      <div class="bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-lg p-6 border border-purple-500/30 my-8">
+        <h3 class="text-lg font-semibold text-purple-300 mb-4">Key Features (In Development)</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+            Multi-API integration for real-time data collection
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+            Full-stack architecture with backend data processing
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+            Market analysis across 35,000+ unique cards
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+            Interactive frontend with dynamic visualizations
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+            Personalized investment recommendations engine
+          </li>
+        </ul>
+      </div>
+      
+      <div class="text-center">
+        <a href="https://mtgecorec-b9fkfngtawggfpbw.westus3-01.azurewebsites.net/" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105">
+          🚀 Explore MTG EcoRec Live
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+      </div>
+    </div>`,
+    category: 'personal',
+    technologies: ['Python', 'API Integration', 'Full-Stack Development', 'Data Analysis', 'Machine Learning', 'Interactive Visualizations', 'Backend Development'],
+    image: '/assets/images/mtg-ecorec-visualizations.png.png',
+    demoUrl: 'https://mtgecorec-b9fkfngtawggfpbw.westus3-01.azurewebsites.net/',
+    githubUrl: 'https://github.com/mattgraham93/mtgecorec',
+    impact: {
+      metric: 'Cards Analyzed',
+      value: '35,000+'
+    },
+    tags: ['Full-Stack Development', 'API Integration', 'Data Science', 'Market Analysis', 'Gaming Economy', 'Live Demo'],
+    featured: true,
+    date: '2025-10-15'
+  },
+  {
     id: 'portfolio-optimization',
     title: 'Global CRE Data Program',
     description: 'Bridging enterprise data silos across real estate teams at Meta.',

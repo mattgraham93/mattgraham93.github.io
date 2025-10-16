@@ -26,9 +26,10 @@ export function FeaturedProjects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
-            <div 
+            <Link 
               key={index}
-              className="group bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-purple-500/50 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-purple-500/10 hover:transform hover:scale-[1.02]"
+              href={project.link}
+              className="group bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-purple-500/50 transition-all duration-500 ease-out hover:shadow-xl hover:shadow-purple-500/10 hover:transform hover:scale-[1.02] block cursor-pointer"
             >
               <div className="relative overflow-hidden">
                 <ProjectImage
@@ -61,18 +62,14 @@ export function FeaturedProjects() {
                   {project.description}
                 </p>
                 
-                <Link 
-                  href={project.link}
-                  className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold transition-all duration-300 ease-out"
-                  target={project.link.startsWith('http') ? '_blank' : '_self'}
-                >
+                <div className="inline-flex items-center gap-2 text-emerald-400 group-hover:text-emerald-300 font-semibold transition-all duration-300 ease-out">
                   Read More
                   <svg className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </Link>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
