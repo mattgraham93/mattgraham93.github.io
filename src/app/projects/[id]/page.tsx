@@ -16,8 +16,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects.find(p => p.id === params.id);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { id } = await params;
+  const project = projects.find(p => p.id === id);
 
   if (!project) {
     notFound();
